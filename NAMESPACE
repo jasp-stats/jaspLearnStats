@@ -1,1 +1,2 @@
-import(jaspBase)
+export(LSTcentralLimitTheorem)
+export(LSTdescriptives)
