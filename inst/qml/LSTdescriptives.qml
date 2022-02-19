@@ -327,11 +327,23 @@ Form
 			label:                              qsTr("Show density (Histogram only)")
 			}
 		}
+		
+		
+								CheckBox{name: "LSdescHistBarRugs";
+			label: qsTr("Display rug marks");
+			checked: true}
 		}
 					
 			CheckBox{name: "LSdescDotPlot";
 			label: qsTr("Dot plot");
 			checked: true
+			
+			
+			
+			
+			CheckBox{name: "LSdescDotPlotRugs";
+			label: qsTr("Display rug marks");
+			checked: true}
 					}
 	}
 	

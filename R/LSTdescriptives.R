@@ -49,7 +49,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   mean <- 0
   sd <- 1
   skew <- 1000
-   
+  
   pdPlot <- createJaspPlot(title = gettext("Theoretical example distribution"), width = 500, height = 300)
   pdPlot$position <- 1
   
@@ -181,7 +181,10 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       yLimits <- range(yBreaks) * 1.3
       yMax <- max(yLimits)
       plotObject <- ggplot2::ggplot(data, ggplot2::aes(x = x)) + ggplot2::geom_bar(fill = "grey",
-                                                                                   col = "black", size = .3) + 
+                                                                                   col = "black", size = .3)
+      if (options[["LSdescHistBarRugs"]])
+        plotObject <- plotObject + ggplot2::geom_rug(data = data, mapping = ggplot2::aes(x = x), sides = "b")
+      plotObject <- plotObject + 
         ggplot2::scale_y_continuous(name = "Counts", breaks = yBreaks, limits = yLimits) + 
         ggplot2::scale_x_continuous(name = "Observations", breaks = xBreaks, limits = xLimits) + 
         jaspGraphs::geom_rangeframe() + jaspGraphs::themeJaspRaw()
@@ -194,7 +197,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
         xLimits <- range(xBreaks)
       }
       plotObject <- jaspDescriptives:::.plotMarginal(data$x, variableName = "Observations", displayDensity = displayDensity,
-                                                     binWidthType = "sturges") 
+                                                     binWidthType = "sturges", rugs = options[["LSdescHistBarRugs"]]) 
       yMax <- max(ggplot2::ggplot_build(plotObject)$data[[1]]$y) * 1.3
       yBreaks <- jaspGraphs::getPrettyAxisBreaks(ggplot2::ggplot_build(plotObject)$data[[1]]$y)
       yLimits <- c(0, yMax)
@@ -336,7 +339,10 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   p <- ggplot2::ggplot(data = data, ggplot2::aes(x = x)) +
     ggplot2::geom_dotplot(binaxis = 'x', stackdir = 'up', dotsize = dotsize, fill = "grey") +
     ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks, limits = xLimits) +
-    ggplot2::coord_fixed()
+    ggplot2::coord_fixed() 
+  
+  if (options[["LSdescDotPlotRugs"]])
+    p <- p + ggplot2::geom_rug(data = data, mapping = ggplot2::aes(x = x), sides = "b")
   
   pData <- ggplot2::ggplot_build(p)$data
   dotWidth <- pData[[1]]$width[1] * dotsize
@@ -348,9 +354,6 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   p <- p + ggplot2::scale_y_continuous(name = "Count", limits = yLimits, breaks = yBreaks, labels = yLabels) + 
     jaspGraphs::geom_rangeframe() +
     jaspGraphs::themeJaspRaw()
-  # ggplot2::theme(axis.ticks.y = ggplot2::element_blank(),
-  #                axis.title.y = ggplot2::element_blank(),
-  #                axis.text.y = ggplot2::element_blank())
   
   if (options[["LSdescCT"]] == "LSdescMedian"| options[["LSdescCT"]] == "LSdescMMM") {
     sortedDf <- data.frame(x = sort(data$x))
