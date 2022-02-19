@@ -244,8 +244,8 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       modeHeight <- as.numeric(modeCol)
       plotData <- ggplot2::ggplot_build(plot)$data
       if (length(mode) == 1) {
-        modeLabelText <- ifelse(discrete, gettextf("Mode = %i (n = %i)", mode, modeHeight),
-                                gettextf("Mode = %.2f (n = %i)", mode, modeHeight))
+        modeLabelText <- ifelse(discrete, gettextf("Mode = %i (Count = %i)", mode, modeHeight),
+                                gettextf("Mode = %.2f (Count = %i)", mode, modeHeight))
         modeLabelData <- data.frame(x = xPos, y = yMax, label = modeLabelText)
       } else {
         firstMode <- ifelse(discrete, gettextf("Mode = {%i", mode[1]), gettextf("Mode = {%.2f", mode[1]))
@@ -255,7 +255,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
           otherModes <- gettextf(rep(", %.2f", length(mode) - 1), mode[2:length(mode)])
         }
         otherModes <- paste(otherModes, collapse = "")
-        modeHeightString <- gettextf( "} (n = %i)", modeHeight)
+        modeHeightString <- gettextf( "} (Count = %i)", modeHeight)
         modeLabelText <- paste(firstMode, otherModes, modeHeightString, sep = "")
         modeLabelData <- data.frame(x = xPos, y = yMax, label = modeLabelText)
       }
