@@ -50,15 +50,17 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   sd <- 1
   skew <- 1000
   
-  pdPlot <- createJaspPlot(title = gettext("Theoretical example distribution"), width = 500, height = 300)
+  pdPlot <- createJaspPlot(title = gettext("Theoretical example distribution"), width = 700, height = 400)
   pdPlot$position <- 1
   
   
   xLimits <- c(mean - 5 * sd, mean + 5 * sd)
   yLimits <- c(-.1 , .5)
-  hLineData <- data.frame(x = c(mean - 4 * sd, mean + 4 * sd), y = rep(0, 2))
+  distLimits <- c(mean - 4 * sd, mean + 4 * sd)
+  hLineData <- data.frame(x = distLimits, y = rep(0, 2))
   
   df <- data.frame(x = .scaledSkewedNormal(100000, xi = mean, omega = sd, alpha = skew))
+  df <- subset(df, df$x > distLimits[1] & df$x < distLimits[2])
   pdPlotObject <-  ggplot2::ggplot(df, ggplot2::aes(x = x)) +
     ggplot2::geom_density(mapping = ggplot2::aes(y = ..density..), n = 2^7, bw = sd/3, size = 1) +
     ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = hLineData, size = 1) +
@@ -69,8 +71,32 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
                    axis.text.x = ggplot2::element_blank(), axis.title.x = ggplot2::element_blank(),
                    axis.text.y = ggplot2::element_blank(), axis.title.y = ggplot2::element_blank())
   
+  #to make density line stop a dist limits
+  densityOverlayData1 <- data.frame(x = c(xLimits[1], distLimits[1]), y = rep(0, 2))
+  densityOverlayData2 <- data.frame(x = c(xLimits[2], distLimits[2]), y = rep(0, 2))
+  
+  pdPlotObject <- pdPlotObject +
+    ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = densityOverlayData1, color = "white", size = 4) +
+    ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = densityOverlayData2, color = "white", size = 4)
+  
+  plotData <- ggplot2::ggplot_build(pdPlotObject)$data[[1]]
+    
   if(options[["LSdescCT"]] == "LSdescMean" | options[["LSdescCT"]] == "LSdescMMM"){
-    pdPlotObject <- pdPlotObject + ggplot2::geom_vline(xintercept = mean, size = 1, color = "red") +
+    meanLineData <- data.frame(x = c(rep(mean, 2)), y = c(0, max(yLimits) * .95))
+    triangleData <- data.frame(x = c(mean, mean + .4, mean - .4), y = c(0, -.05, -.05))
+    balanceLineData1 <- data.frame(x = c(seq(-3.8, -4.2, length.out = 40), seq(-4.2, -4.1, length.out = 60)),
+                                   y = seq(-.04, .04, length.out = 100))
+    balanceLineData2 <- data.frame(x = c(seq(-4, -4.3, length.out = 40), seq(-4.3, -4.25, length.out = 60)),
+                                   y = seq(-.04, .02, length.out = 100))
+    balanceLineData3 <- data.frame(x = balanceLineData1$x * -1, y = balanceLineData1$y)
+    balanceLineData4 <- data.frame(x = balanceLineData2$x * -1, y = balanceLineData2$y)
+    pdPlotObject <- pdPlotObject + 
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = meanLineData, size = 1, color = "red") +
+      ggplot2::geom_polygon(mapping = ggplot2::aes(x = x, y = y), data = triangleData, fill = "red") +
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = balanceLineData1, size = 1.2, color = "red") +
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = balanceLineData2, size = 1, color = "red") +
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = balanceLineData3, size = 1.2, color = "red") +
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = balanceLineData4, size = 1, color = "red") +
       ggplot2::geom_label(data = data.frame(x = mean, y = max(yLimits)*0.95, label = gettext("Mean")), 
                           mapping = ggplot2::aes(x = x, y = y, label = label), color = "red", size = 6)
     text <- gettext("Text for Mean : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
@@ -79,9 +105,10 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   
   if(options[["LSdescCT"]] == "LSdescMedian"| options[["LSdescCT"]] == "LSdescMMM"){
     median <- median(df$x)
+    medianLineData <- data.frame(x = c(rep(median, 2)), y = c(0, max(yLimits) * .95))
     pdPlotObject <- pdPlotObject +
-      ggplot2::geom_vline(xintercept = median, size = 1, color = "green") +
-      ggplot2::geom_label(data = data.frame(x = median, y = max(yLimits)*0.85, label = gettext("Median")), 
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = medianLineData, size = 1, color = "green") +
+      ggplot2::geom_label(data = data.frame(x = median, y = max(yLimits)*0.95, label = gettext("Median")), 
                           mapping = ggplot2::aes(x = x, y = y, label = label), color = "green", size = 6)
     text <- gettext("Text for Median:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
     
@@ -91,10 +118,11 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   }
   
   if(options[["LSdescCT"]] == "LSdescMode"| options[["LSdescCT"]] == "LSdescMMM"){
-    plotData <- ggplot2::ggplot_build(pdPlotObject)$data[[1]]
     mode <- plotData$x[plotData$y == max(plotData$y)]
-    pdPlotObject <- pdPlotObject + ggplot2::geom_vline(xintercept = mode, size = 1, color = "blue") + 
-      ggplot2::geom_label(data = data.frame(x = mode, y = max(yLimits)*0.75, label = gettext("Mode")), 
+    modeLineData <- data.frame(x = c(rep(mode, 2)), y = c(0, max(plotData$y)))
+    pdPlotObject <- pdPlotObject +
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = modeLineData, size = 1, color = "blue") +
+      ggplot2::geom_label(data = data.frame(x = mode, y = max(yLimits)*0.95, label = gettext("Mode")), 
                           mapping = ggplot2::aes(x = x, y = y, label = label), color = "blue", size = 6)
     text <- gettext("Text for Mode:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
   }
