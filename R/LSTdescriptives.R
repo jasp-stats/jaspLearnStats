@@ -129,10 +129,12 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   
   if(options[["LSdescCT"]] == "LSdescMode"| options[["LSdescCT"]] == "LSdescMMM"){
     mode <- plotData$x[plotData$y == max(plotData$y)]
-    modeLineData <- data.frame(x = c(rep(mode, 2)), y = c(0, max(plotData$y)))
+    modeVLineData <- data.frame(x = c(rep(mode, 2)), y = c(0, max(plotData$y)))
+    modeHLineData <- data.frame(x = c(mode - .7, mode + .7), y = rep(max(plotData$y) + 0.003, 2))
     pdPlotObject <- pdPlotObject +
-      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = modeLineData, size = 1, color = "blue") +
-      ggplot2::geom_label(data = data.frame(x = mode, y = max(yLimits)*0.95, label = gettext("Mode")), 
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = modeVLineData, size = 1, color = "blue") +
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = modeHLineData, size = 1, color = "lightblue") +
+      ggplot2::geom_label(data = data.frame(x = mode, y = max(yLimits)*0.45, label = gettext("Mode")), 
                           mapping = ggplot2::aes(x = x, y = y, label = label), color = "blue", size = 6)
     text <- gettext("Text for Mode:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
   }
