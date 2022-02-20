@@ -398,7 +398,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   yMax <- ifelse(max(yBreaks) < (10 * dotWidth), (10 * dotWidth), max(yBreaks))
   yLimits <-  c(0, yMax + (2 * dotWidth))
   
-  p <- p + ggplot2::scale_y_continuous(name = "Count", limits = yLimits, breaks = yBreaks, labels = yLabels) + 
+  p <- p + ggplot2::scale_y_continuous(name = "Counts", limits = yLimits, breaks = yBreaks, labels = yLabels) + 
     jaspGraphs::geom_rangeframe() +
     jaspGraphs::themeJaspRaw()
   
@@ -415,8 +415,12 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
                                r = dotWidth / 2)
       medianLineData <- data.frame(x = c(x0, med),
                                    y = c(y0, max(yLimits) * .9))
+      chairData <- data.frame(x = c(x0 - dotWidth * .65, x0 - dotWidth * .65,
+                                    x0 + dotWidth * .65, x0 + dotWidth * .65),
+                              y = c(y0 + dotWidth/2, y0, y0, y0 - dotWidth/2))
       p <- p + ggforce::geom_circle(data = circleData, mapping = ggplot2::aes(x0 = x0, y0 = y0, r = r),
-                                    inherit.aes = FALSE, fill = "green")
+                                    inherit.aes = FALSE, fill = "green") +
+        ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = chairData, size = 1, color = "springgreen4")
       if (!allCTs)
         p <- p +  ggplot2::geom_path(data = medianLineData, mapping = ggplot2::aes(x = x, y = y), color = "green",
                                      size = 1)
@@ -438,6 +442,9 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
                                r0 = rep(0, 2),
                                start = start,
                                end = end)
+      chairData <- data.frame(x = c(halfwayDots$lowerDot$x - dotWidth * .65, halfwayDots$lowerDot$x - dotWidth * .65,
+                                    halfwayDots$lowerDot$x + dotWidth * .65, halfwayDots$lowerDot$x + dotWidth * .65),
+                              y = c(y0lower + dotWidth, y0lower + dotWidth/2, y0lower + dotWidth/2, y0lower))
       medianLineData1 <- data.frame(x = c(halfwayDots$lowerDot$x, med),
                                     y = c(y0lower, max(yLimits) * .95))
       medianLineData2 <- data.frame(x = c(halfwayDots$upperDot$x, med),
@@ -445,7 +452,8 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       
       p <- p + ggforce::geom_arc_bar(data = circleData,
                                      mapping = ggplot2::aes(x0 = x0, y0 = y0, r0 = r0, r = r,  start = start, end = end),
-                                     inherit.aes = FALSE, fill = "green")
+                                     inherit.aes = FALSE, fill = "green") +
+        ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = chairData, size = 1, color = "springgreen4")
       if(!allCTs){
         p <- p + ggplot2::geom_path(data = medianLineData1, mapping = ggplot2::aes(x = x, y = y), color = "green", size = 1) +
           ggplot2::geom_path(data = medianLineData2, mapping = ggplot2::aes(x = x, y = y), color = "green", size = 1)
