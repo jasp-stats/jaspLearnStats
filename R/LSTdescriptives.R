@@ -60,7 +60,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   hLineData <- data.frame(x = distLimits, y = rep(0, 2))
   
   df <- data.frame(x = .scaledSkewedNormal(100000, xi = mean, omega = sd, alpha = skew))
-  df <- subset(df, df$x > distLimits[1] & df$x < distLimits[2])
+  df <- subset(df, df$x > distLimits[1] & df$x < distLimits[2]) # remove values outside limits
   pdPlotObject <-  ggplot2::ggplot(df, ggplot2::aes(x = x)) +
     ggplot2::geom_density(mapping = ggplot2::aes(y = ..density..), n = 2^10, bw = sd/3, size = 1) +
     ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = hLineData, size = 1) +
@@ -80,8 +80,43 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = densityOverlayData2, color = "white", size = 4)
   
   plotData <- ggplot2::ggplot_build(pdPlotObject)$data[[1]]
+  allCTs <- options[["LSdescCT"]] == "LSdescMMM"
+
+  if(options[["LSdescCT"]] == "LSdescMedian"| allCTs){
+    median <- median(df$x)
+    medianLineHeight <- plotData$y[which.min(abs(plotData$x - median))]
+    medianLineData <- data.frame(x = c(rep(median, 2)), y = c(0, medianLineHeight))
+    fiftyPercentLabels <- data.frame(x = c(median + .85, median - .85), y = rep(.1, 2), label = rep("50%", 2))
+    labelXPos <- ifelse(allCTs, 4, median)
+    labelYPos <- ifelse(allCTs, max(yLimits) * .85, max(yLimits) * .55)
     
-  if(options[["LSdescCT"]] == "LSdescMean" | options[["LSdescCT"]] == "LSdescMMM"){
+    pdPlotObject <- pdPlotObject +
+      ggplot2::geom_ribbon(mapping = ggplot2::aes(ymin = 0, ymax = y), data = subset(plotData, plotData$x > median),
+                           fill = "grey") +
+      ggplot2::geom_ribbon(mapping = ggplot2::aes(ymin = 0, ymax = y), data = subset(plotData, plotData$x < median),
+                           fill = "grey", alpha = .5) +
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = medianLineData, size = 1, color = "green") +
+      ggplot2::geom_label(data = data.frame(x = labelXPos, y = labelYPos, label = gettext("Median")), 
+                          mapping = ggplot2::aes(x = x, y = y, label = label), color = "green", size = 6) +
+      ggplot2::geom_text(data = fiftyPercentLabels, mapping = ggplot2::aes(x = x, y = y, label = label), size = 7)
+    text <- gettext("Text for Median:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+  }
+  
+  if(options[["LSdescCT"]] == "LSdescMode"| allCTs){
+    mode <- plotData$x[plotData$y == max(plotData$y)]
+    modeVLineData <- data.frame(x = c(rep(mode, 2)), y = c(0, max(plotData$y)))
+    modeHLineData <- data.frame(x = c(mode - .7, mode + .7), y = rep(max(plotData$y) + 0.003, 2))
+    labelXPos <- ifelse(allCTs, 4, mode)
+    labelYPos <- ifelse(allCTs, max(yLimits) * .75, max(yLimits) * .45)
+    pdPlotObject <- pdPlotObject +
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = modeVLineData, size = 1, color = "blue") +
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = modeHLineData, size = 1, color = "lightblue") +
+      ggplot2::geom_label(data = data.frame(x = labelXPos, y = labelYPos, label = gettext("Mode")), 
+                          mapping = ggplot2::aes(x = x, y = y, label = label), color = "blue", size = 6)
+    text <- gettext("Text for Mode:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+  }
+  
+  if(options[["LSdescCT"]] == "LSdescMean" | allCTs){
     meanLineHeight <- plotData$y[which.min(abs(plotData$x - mean))]
     meanLineData <- data.frame(x = c(rep(mean, 2)), y = c(0, meanLineHeight))
     triangleData <- data.frame(x = c(mean, mean + .4, mean - .4), y = c(0, -.05, -.05))
@@ -93,6 +128,9 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
                                    y = seq(-.04, .02, length.out = 100))
     balanceLineData3 <- data.frame(x = balanceLineData1$x * -1, y = balanceLineData1$y)
     balanceLineData4 <- data.frame(x = balanceLineData2$x * -1, y = balanceLineData2$y)
+    labelXPos <- ifelse(allCTs, 4, mean)
+    labelYPos <- ifelse(allCTs, max(yLimits) * .95, max(yLimits) * .2)
+    
     pdPlotObject <- pdPlotObject + 
       ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = meanLineData, size = 1, color = "red") +
       ggplot2::geom_polygon(mapping = ggplot2::aes(x = x, y = y), data = triangleData, fill = "red") +
@@ -102,42 +140,11 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = balanceLineData2, size = 1, color = "rosybrown2") +
       ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = balanceLineData3, size = 1.2, color = "rosybrown2") +
       ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = balanceLineData4, size = 1, color = "rosybrown2") +
-      ggplot2::geom_label(data = data.frame(x = mean, y = max(yLimits)*0.2, label = gettext("Mean")), 
+      ggplot2::geom_label(data = data.frame(x = labelXPos, y = labelYPos, label = gettext("Mean")), 
                           mapping = ggplot2::aes(x = x, y = y, label = label), color = "red", size = 6)
     text <- gettext("Text for Mean : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
   }
   
-  if(options[["LSdescCT"]] == "LSdescMedian"| options[["LSdescCT"]] == "LSdescMMM"){
-    median <- median(df$x)
-    medianLineData <- data.frame(x = c(rep(median, 2)), y = c(0, max(yLimits) * .95))
-    fiftyPercentLabels <- data.frame(x = c(median + .6, median - .6), y = rep(.15, 2), label = rep("50%", 2))
-    pdPlotObject <- pdPlotObject +
-      ggplot2::geom_ribbon(mapping = ggplot2::aes(ymin = 0, ymax = y), data = subset(plotData, plotData$x > median),
-                           fill = "blue", alpha = .5) +
-      ggplot2::geom_ribbon(mapping = ggplot2::aes(ymin = 0, ymax = y), data = subset(plotData, plotData$x < median),
-                           fill = "orange", alpha = .5) +
-      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = medianLineData, size = 1, color = "green") +
-      ggplot2::geom_label(data = data.frame(x = median, y = max(yLimits)*0.95, label = gettext("Median")), 
-                          mapping = ggplot2::aes(x = x, y = y, label = label), color = "green", size = 5) +
-      ggplot2::geom_text(data = fiftyPercentLabels, mapping = ggplot2::aes(x = x, y = y, label = label), size = 7)
-    text <- gettext("Text for Median:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
-    
-    
-    #ggplot2::geom_area(mapping = ggplot2::aes(x = ifelse(x>65 & x< 70 , x, 0)),
-    # fill = 'purple') +      MAP DENSITY AT TOP LAYER??
-  }
-  
-  if(options[["LSdescCT"]] == "LSdescMode"| options[["LSdescCT"]] == "LSdescMMM"){
-    mode <- plotData$x[plotData$y == max(plotData$y)]
-    modeVLineData <- data.frame(x = c(rep(mode, 2)), y = c(0, max(plotData$y)))
-    modeHLineData <- data.frame(x = c(mode - .7, mode + .7), y = rep(max(plotData$y) + 0.003, 2))
-    pdPlotObject <- pdPlotObject +
-      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = modeVLineData, size = 1, color = "blue") +
-      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = modeHLineData, size = 1, color = "lightblue") +
-      ggplot2::geom_label(data = data.frame(x = mode, y = max(yLimits)*0.45, label = gettext("Mode")), 
-                          mapping = ggplot2::aes(x = x, y = y, label = label), color = "blue", size = 6)
-    text <- gettext("Text for Mode:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
-  }
   pdPlot$plotObject <- pdPlotObject
   
   
