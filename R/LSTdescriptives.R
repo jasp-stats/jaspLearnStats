@@ -47,23 +47,35 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   jaspResults[["descExplanationS"]] <- createJaspContainer(gettext("Explanation"))
   jaspResults[["descExplanationS"]]$position <- 1
   
-  plot <- createJaspPlot(title = gettext("Example distribution"), width = 700, height = 400)
+  plot <- createJaspPlot(title = gettext("Example distribution"), width = 500, height = 500)
   plot$position <- 1
   
-  set.seed(1337)
+  set.seed(1)
   data <- data.frame(index = 1:20, x = sample(0:20, 20))
   
   xBreaks <- jaspGraphs::getPrettyAxisBreaks(data$x)
   yBreaks <- c(1, 5, 10, 15, 20)
-
-  plotObject <- ggplot2::ggplot() +
-    ggplot2::geom_point(data = data, mapping = ggplot2::aes(x = x, y = index),
-                        size = 5, fill = "grey", color = "black", shape = 21) +
-    ggplot2::scale_y_continuous(name = "Observation No.", breaks = yBreaks, limits = c(-5, 20)) +
+  
+  if (options[["LSdescS"]] == "LSdescRange") {
+    sortedDf <- data[order(data$x),]
+    sortedDf <- cbind(sortedDf, list("extreme" = c("min", rep("normal", 18), "max")))
+    
+    
+    plotObject <- ggplot2::ggplot() +
+      ggplot2::geom_point(data = sortedDf, mapping = ggplot2::aes(x = x, y = index, fill = extreme),
+                          size = 6, color = "black", shape = 21)
+  }else {
+    plotObject <- ggplot2::ggplot() +
+      ggplot2::geom_point(data = data, mapping = ggplot2::aes(x = x, y = index),
+                          size = 6, fill = "grey", color = "black", shape = 21)
+  }
+  plotObject <- plotObject + 
+    ggplot2::scale_y_continuous(name = "Observation No.", breaks = yBreaks, limits = c(-1, 20)) +
     ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks) +
     jaspGraphs::geom_rangeframe() +
     jaspGraphs::themeJaspRaw()
-  plotObject
+  
+  plotData <- ggplot2::ggplot_build(plotObject)$data[[1]]
   
   
   text <- gettext("Text for comparison:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")

@@ -264,7 +264,7 @@ Form
 		RadioButtonGroup
 		{
 		title:                                  qsTr("Select measure of spread")
-		name:                                   "LSdescSpread"
+		name:                                   "LSdescS"
 
 			RadioButton
 			{
