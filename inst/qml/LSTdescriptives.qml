@@ -317,7 +317,7 @@ Form
 			RadioButton
 			{
 			name:                               "LSdescHistCount"
-			label:                              qsTr("Show count")
+			label:                              qsTr("Show counts")
 			checked:                            true
 			}
 

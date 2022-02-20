@@ -81,7 +81,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   
   plotData <- ggplot2::ggplot_build(pdPlotObject)$data[[1]]
   allCTs <- options[["LSdescCT"]] == "LSdescMMM"
-
+  
   if(options[["LSdescCT"]] == "LSdescMedian"| allCTs){
     median <- median(df$x)
     medianLineHeight <- plotData$y[which.min(abs(plotData$x - median))]
@@ -341,7 +341,8 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   if (options[["LSdescCT"]] == "LSdescMean" | options[["LSdescCT"]] == "LSdescMMM") {
     mean <- mean(data$x)
     if (lines)
-      plot <- plot + ggplot2::geom_vline(xintercept = mean, size = 1, color = "red")
+      plot <- plot + ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y),
+                                        data = data.frame(x = rep(mean, 2), y = c(0, yMax)), size = 1, color = "red")
     if (options[["LSdescCT"]] == "LSdescMean") {
       plot <- plot + ggplot2::geom_label(data = data.frame(x = mean, y = yMax, label = gettextf("Mean = %.2f", mean)), 
                                          mapping = ggplot2::aes(x = x, y = y, label = label), color = "red", size = labelSize)
@@ -353,7 +354,8 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   if (options[["LSdescCT"]] == "LSdescMedian"| options[["LSdescCT"]] == "LSdescMMM") {
     median <- median(data$x)
     if (lines)
-      plot <- plot + ggplot2::geom_vline(xintercept = median, size = 1, color = "green")
+      plot <- plot + ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y),
+                                        data = data.frame(x = rep(median, 2), y = c(0, yMax)), size = 1, color = "green")
     if (options[["LSdescCT"]] == "LSdescMedian") {
       plot <- plot +  ggplot2::geom_label(data = data.frame(x = median, y = yMax, label = gettextf("Median = %.2f", median)), 
                                           mapping = ggplot2::aes(x = x, y = y, label = label), color = "green", size = labelSize)
