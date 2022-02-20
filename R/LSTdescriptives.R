@@ -27,7 +27,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   
   if(options[["LSdescCentralOrSpread"]] == "LSdescCentralTendency"){
     if (options[["LSdescExplanationC"]])
-      .descExplanation(jaspResults, options)
+      .descExplanationCT(jaspResults, options)
     if (options[["LSdescHistBar"]]) {
       .lstDescCreateHistogramOrBarplot(jaspResults, options, data, ready, discrete)
     }
@@ -35,16 +35,48 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       .lstDescCreateDotplot(jaspResults, options, data, ready, discrete)
   }
   
-  if(options[["LSdescCentralOrSpread"]] == "LSdescCentralTendency"){
-    #all spread plots go here
+  if(options[["LSdescCentralOrSpread"]] == "LSdescSpread"){
+    if (options[["LSdescExplanationS"]])
+      .descExplanationS(jaspResults, options)
   }
   
 }
 
 
-.descExplanation <- function(jaspResults, options) {
-  jaspResults[["descExplanation"]] <- createJaspContainer(gettext("Explanation"))
-  jaspResults[["descExplanation"]]$position <- 1
+.descExplanationS <- function(jaspResults, options){
+  jaspResults[["descExplanationS"]] <- createJaspContainer(gettext("Explanation"))
+  jaspResults[["descExplanationS"]]$position <- 1
+  
+  plot <- createJaspPlot(title = gettext("Example distribution"), width = 700, height = 400)
+  plot$position <- 1
+  
+  set.seed(1337)
+  data <- data.frame(index = 1:20, x = sample(0:20, 20))
+  
+  xBreaks <- jaspGraphs::getPrettyAxisBreaks(data$x)
+  yBreaks <- c(1, 5, 10, 15, 20)
+
+  plotObject <- ggplot2::ggplot() +
+    ggplot2::geom_point(data = data, mapping = ggplot2::aes(x = x, y = index),
+                        size = 5, fill = "grey", color = "black", shape = 21) +
+    ggplot2::scale_y_continuous(name = "Observation No.", breaks = yBreaks, limits = c(-5, 20)) +
+    ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks) +
+    jaspGraphs::geom_rangeframe() +
+    jaspGraphs::themeJaspRaw()
+  plotObject
+  
+  
+  text <- gettext("Text for comparison:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+  
+  plot$plotObject <- plotObject
+  
+  jaspResults[["descExplanationS"]][["Plot"]] <- plot
+  jaspResults[["descExplanationS"]][["Text"]] <- createJaspHtml(text, "p")
+}
+
+.descExplanationCT <- function(jaspResults, options) {
+  jaspResults[["descExplanationCT"]] <- createJaspContainer(gettext("Explanation"))
+  jaspResults[["descExplanationCT"]]$position <- 1
   
   mean <- 0
   sd <- 1
@@ -80,8 +112,8 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = densityOverlayData2, color = "white", size = 4)
   
   plotData <- ggplot2::ggplot_build(pdPlotObject)$data[[1]]
-  allCTs <- options[["LSdescCT"]] == "LSdescMMM"
   
+  allCTs <- options[["LSdescCT"]] == "LSdescMMM"
   if(options[["LSdescCT"]] == "LSdescMedian"| allCTs){
     median <- median(df$x)
     medianLineHeight <- plotData$y[which.min(abs(plotData$x - median))]
@@ -145,16 +177,14 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     text <- gettext("Text for Mean : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
   }
   
-  pdPlot$plotObject <- pdPlotObject
-  
-  
   if (options[["LSdescCT"]] == "LSdescMMM"){
     text <- gettext("Text for comparison:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
   }
   
+  pdPlot$plotObject <- pdPlotObject
   
-  jaspResults[["descExplanation"]][["Plot"]] <- pdPlot
-  jaspResults[["descExplanation"]][["Text"]] <- createJaspHtml(text, "p")
+  jaspResults[["descExplanationCT"]][["Plot"]] <- pdPlot
+  jaspResults[["descExplanationCT"]][["Text"]] <- createJaspHtml(text, "p")
 }
 
 
