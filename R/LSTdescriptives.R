@@ -47,7 +47,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   jaspResults[["descExplanationS"]] <- createJaspContainer(gettext("Explanation"))
   jaspResults[["descExplanationS"]]$position <- 1
   
-  plot <- createJaspPlot(title = gettext("Example distribution"), width = 500, height = 500)
+  plot <- createJaspPlot(title = gettext("Example distribution"), width = 600, height = 600)
   plot$position <- 1
   
   set.seed(1)
@@ -58,8 +58,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   
   if (options[["LSdescS"]] == "LSdescRange") {
     sortedDf <- data[order(data$x),]
-    sortedDf <- cbind(sortedDf, list("extreme" = c("min", rep("normal", 18), "max")))
-    
+    sortedDf <- cbind(sortedDf, list("extreme" = c("min", rep("normal", 19), "max")))
     
     plotObject <- ggplot2::ggplot() +
       ggplot2::geom_point(data = sortedDf, mapping = ggplot2::aes(x = x, y = index, fill = extreme),
@@ -88,30 +87,45 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = rangeLabelData, color = "orange", size = 6) +
       ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = minLabelData, color = "blue", size = 6) +
       ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = maxLabelData, color = "red", size = 6) +
-      ggplot2::scale_y_continuous(name = "Observation No.", breaks = yBreaks, limits = c(-1, 20)) +
+      ggplot2::scale_y_continuous(name = "Observation No.", breaks = yBreaks, limits = c(-1, 21)) +
       ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks, limits = c(-1, 21))
-    
-  }else {
-    plotObject <- ggplot2::ggplot(data = data, mapping = ggplot2::aes(x = x, y = index))
-  }
-  plotObject <- plotObject +
-    jaspGraphs::geom_rangeframe() +
-    jaspGraphs::themeJaspRaw()
-
-  if (options[["LSdescS"]] == "LSdescQR") {
+  }else if (options[["LSdescS"]] == "LSdescQR") {
     quartiles <- quantile(data$x)
-    quartiles[2]
-    plotObject <- plotObject + 
+    twentyfivePercentLabels <- data.frame(x = c(2.5, 7.5, 12.5, 17.5), y = rep(10, 4), label = rep("25%", 4))
+    q1LineData <- data.frame(x = rep(quartiles[2], 2), y = c(21, -.5))
+    q2LineData <- data.frame(x = rep(quartiles[3], 2), y = c(21, 1))
+    q3LineData <- data.frame(x = rep(quartiles[4], 2), y = c(21, -.5))
+    iqrLineData <- data.frame(x = c(quartiles[2], quartiles[4]), y = rep(-.5, 2))
+    arrowHeadData1 <- data.frame(x = c(quartiles[2], quartiles[2] + .3, quartiles[2] + .3), y = c(-.5, 0, -1))
+    arrowHeadData2 <- data.frame(x = c(quartiles[4], quartiles[4] - .3, quartiles[4] - .3), y = c(-.5, 0, -1))
+    labelData <- data.frame(x = c(quartiles[2:4], quartiles[3]), y = c(rep(16, 3), -.5),
+                            label = gettext("1st quartile", "2nd quartile / \n Median", "3rd quartile", "IQR"))
+    
+    plotObject <- ggplot2::ggplot(data = data, mapping = ggplot2::aes(x = x, y = index)) +
       ggplot2::geom_ribbon(mapping = ggplot2::aes(xmin = 0, xmax = quartiles[2]), fill = "salmon4") +
       ggplot2::geom_ribbon(mapping = ggplot2::aes(xmin = quartiles[2], xmax = quartiles[3]), fill = "salmon3") +
       ggplot2::geom_ribbon(mapping = ggplot2::aes(xmin = quartiles[3], xmax = quartiles[4]), fill = "salmon2") +
-      ggplot2::geom_ribbon(mapping = ggplot2::aes(xmin = quartiles[4], xmax = quartiles[5]), fill = "salmon1") +
+      ggplot2::geom_ribbon(mapping = ggplot2::aes(xmin = quartiles[4], xmax = quartiles[5]), fill = "salmon") +
+      ggplot2::geom_text(mapping = ggplot2::aes(x = x, y = y, label = label), data = twentyfivePercentLabels, size = 7) +
       ggplot2::geom_point(size = 6, fill = "grey", color = "black", shape = 21) +
-      ggplot2::scale_y_continuous(name = "Observation No.", breaks = yBreaks, limits = c(1, 21)) +
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = q1LineData, color = "purple", size = 1) +
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = q2LineData, color = "green", size = 1) +
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = q3LineData, color = "dodgerblue", size = 1) +
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = iqrLineData, color = "orange", size = 1) +
+      ggplot2::geom_polygon(mapping = ggplot2::aes(x = x, y = y), data = arrowHeadData1, fill = "orange") + 
+      ggplot2::geom_polygon(mapping = ggplot2::aes(x = x, y = y), data = arrowHeadData2, fill = "orange") +
+      ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = labelData,
+                          color = c("purple", "green", "dodgerblue", "orange"), size = 5) +
+      ggplot2::scale_y_continuous(name = "Observation No.", breaks = yBreaks, limits = c(-1, 21)) +
       ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks, limits = c(0, 20))
-    
   }
-    
+  
+  
+  
+  plotObject <- plotObject +
+    jaspGraphs::geom_rangeframe() +
+    jaspGraphs::themeJaspRaw()
+  
   plotData <- ggplot2::ggplot_build(plotObject)$data[[1]]
   
   
