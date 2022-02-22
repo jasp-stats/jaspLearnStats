@@ -51,10 +51,10 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   plot$position <- 1
   
   set.seed(1)
-  data <- data.frame(index = 1:20, x = sample(0:20, 20))
+  data <- data.frame(index = 1:21, x = sample(0:20, 21))
   
   xBreaks <- jaspGraphs::getPrettyAxisBreaks(data$x)
-  yBreaks <- c(1, 5, 10, 15, 20)
+  yBreaks <- c(1, 6, 11, 16, 21)
   
   if (options[["LSdescS"]] == "LSdescRange") {
     sortedDf <- data[order(data$x),]
@@ -87,19 +87,31 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       ggplot2::geom_polygon(mapping = ggplot2::aes(x = x, y = y), data = arrowHeadData2, fill = "orange") +
       ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = rangeLabelData, color = "orange", size = 6) +
       ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = minLabelData, color = "blue", size = 6) +
-      ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = maxLabelData, color = "red", size = 6)
+      ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = maxLabelData, color = "red", size = 6) +
+      ggplot2::scale_y_continuous(name = "Observation No.", breaks = yBreaks, limits = c(-1, 20)) +
+      ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks, limits = c(-1, 21))
     
   }else {
-    plotObject <- ggplot2::ggplot() +
-      ggplot2::geom_point(data = data, mapping = ggplot2::aes(x = x, y = index),
-                          size = 6, fill = "grey", color = "black", shape = 21)
+    plotObject <- ggplot2::ggplot(data = data, mapping = ggplot2::aes(x = x, y = index))
   }
-  plotObject <- plotObject + 
-    ggplot2::scale_y_continuous(name = "Observation No.", breaks = yBreaks, limits = c(-1, 20)) +
-    ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks, limits = c(-1, 21)) +
+  plotObject <- plotObject +
     jaspGraphs::geom_rangeframe() +
     jaspGraphs::themeJaspRaw()
-  
+
+  if (options[["LSdescS"]] == "LSdescQR") {
+    quartiles <- quantile(data$x)
+    quartiles[2]
+    plotObject <- plotObject + 
+      ggplot2::geom_ribbon(mapping = ggplot2::aes(xmin = 0, xmax = quartiles[2]), fill = "salmon4") +
+      ggplot2::geom_ribbon(mapping = ggplot2::aes(xmin = quartiles[2], xmax = quartiles[3]), fill = "salmon3") +
+      ggplot2::geom_ribbon(mapping = ggplot2::aes(xmin = quartiles[3], xmax = quartiles[4]), fill = "salmon2") +
+      ggplot2::geom_ribbon(mapping = ggplot2::aes(xmin = quartiles[4], xmax = quartiles[5]), fill = "salmon1") +
+      ggplot2::geom_point(size = 6, fill = "grey", color = "black", shape = 21) +
+      ggplot2::scale_y_continuous(name = "Observation No.", breaks = yBreaks, limits = c(1, 21)) +
+      ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks, limits = c(0, 20))
+    
+  }
+    
   plotData <- ggplot2::ggplot_build(plotObject)$data[[1]]
   
   
