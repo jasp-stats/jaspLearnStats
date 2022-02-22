@@ -63,7 +63,32 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     
     plotObject <- ggplot2::ggplot() +
       ggplot2::geom_point(data = sortedDf, mapping = ggplot2::aes(x = x, y = index, fill = extreme),
-                          size = 6, color = "black", shape = 21)
+                          size = 6, color = "black", shape = 21) +
+      ggplot2::scale_fill_manual(values = c("min" = "blue", "normal" = "gray", "max" = "red"))
+    
+    minY <- which.min(data$x)
+    minX <- min(data$x)
+    minLineData <- data.frame(x = rep(minX, 2), y = c(minY, -.5))
+    maxY <- which.max(data$x)
+    maxX <- max(data$x)
+    maxLineData <- data.frame(x = rep(maxX, 2), y = c(maxY, -.5))
+    rangeLineData <- data.frame(x = c(minX, maxX), y = rep(-.5, 2))
+    arrowHeadData1 <- data.frame(x = c(minX, minX + .3, minX + .3), y = c(-.5, 0, -1))
+    arrowHeadData2 <- data.frame(x = c(maxX, maxX - .3, maxX - .3), y = c(-.5, 0, -1))
+    rangeLabelData <- data.frame(x = (maxX - minX) / 2, y = -.5, label = gettext("Range"))
+    minLabelData <- data.frame(x = minX, y = (minY - .5) / 2, label = gettext("Min."))
+    maxLabelData <- data.frame(x = maxX, y = (maxY - .5) / 2, label = gettext("Max."))
+    
+    plotObject <- plotObject +
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = minLineData, color = "blue", size = 1) + 
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = maxLineData, color = "red", size = 1) +
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = rangeLineData, color = "orange", size = 1.5) + 
+      ggplot2::geom_polygon(mapping = ggplot2::aes(x = x, y = y), data = arrowHeadData1, fill = "orange") + 
+      ggplot2::geom_polygon(mapping = ggplot2::aes(x = x, y = y), data = arrowHeadData2, fill = "orange") +
+      ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = rangeLabelData, color = "orange", size = 6) +
+      ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = minLabelData, color = "blue", size = 6) +
+      ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = maxLabelData, color = "red", size = 6)
+    
   }else {
     plotObject <- ggplot2::ggplot() +
       ggplot2::geom_point(data = data, mapping = ggplot2::aes(x = x, y = index),
@@ -71,7 +96,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   }
   plotObject <- plotObject + 
     ggplot2::scale_y_continuous(name = "Observation No.", breaks = yBreaks, limits = c(-1, 20)) +
-    ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks) +
+    ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks, limits = c(-1, 21)) +
     jaspGraphs::geom_rangeframe() +
     jaspGraphs::themeJaspRaw()
   
