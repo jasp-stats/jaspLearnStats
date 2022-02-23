@@ -50,8 +50,8 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   plot <- createJaspPlot(title = gettext("Example distribution"), width = 600, height = 600)
   plot$position <- 1
   
-  set.seed(1)
-  data <- data.frame(index = 1:21, x = sample(0:20, 21))
+  set.seed(123)
+  data <- data.frame(index = 1:21, x = rnorm(21, 10, 2.5))   #sample(0:20, 21)
   
   xBreaks <- jaspGraphs::getPrettyAxisBreaks(data$x)
   yBreaks <- c(1, 6, 11, 16, 21)
@@ -74,7 +74,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     rangeLineData <- data.frame(x = c(minX, maxX), y = rep(-.5, 2))
     arrowHeadData1 <- data.frame(x = c(minX, minX + .3, minX + .3), y = c(-.5, 0, -1))
     arrowHeadData2 <- data.frame(x = c(maxX, maxX - .3, maxX - .3), y = c(-.5, 0, -1))
-    rangeLabelData <- data.frame(x = (maxX - minX) / 2, y = -.5, label = gettext("Range"))
+    rangeLabelData <- data.frame(x = (maxX + minX) / 2, y = -.5, label = gettext("Range"))
     minLabelData <- data.frame(x = minX, y = (minY - .5) / 2, label = gettext("Min."))
     maxLabelData <- data.frame(x = maxX, y = (maxY - .5) / 2, label = gettext("Max."))
     
@@ -88,25 +88,27 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = minLabelData, color = "blue", size = 6) +
       ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = maxLabelData, color = "red", size = 6) +
       ggplot2::scale_y_continuous(name = "Observation No.", breaks = yBreaks, limits = c(-1, 21)) +
-      ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks, limits = c(-1, 21))
+      ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks, limits = range(xBreaks))
   }else if (options[["LSdescS"]] == "LSdescQR") {
     quartiles <- quantile(data$x)
-    twentyfivePercentLabels <- data.frame(x = c(2.5, 7.5, 12.5, 17.5), y = rep(10, 4), label = rep("25%", 4))
+    twentyfivePercentLabels <- data.frame(x = c(sum(quartiles[1:2])/2, sum(quartiles[2:3])/2,
+                                                sum(quartiles[3:4])/2, sum(quartiles[4:5])/2),
+                                          y = rep(10, 4), label = rep("25%", 4))
     q1LineData <- data.frame(x = rep(quartiles[2], 2), y = c(21, -.5))
     q2LineData <- data.frame(x = rep(quartiles[3], 2), y = c(21, 1))
     q3LineData <- data.frame(x = rep(quartiles[4], 2), y = c(21, -.5))
     iqrLineData <- data.frame(x = c(quartiles[2], quartiles[4]), y = rep(-.5, 2))
     arrowHeadData1 <- data.frame(x = c(quartiles[2], quartiles[2] + .3, quartiles[2] + .3), y = c(-.5, 0, -1))
     arrowHeadData2 <- data.frame(x = c(quartiles[4], quartiles[4] - .3, quartiles[4] - .3), y = c(-.5, 0, -1))
-    labelData <- data.frame(x = c(quartiles[2:4], quartiles[3]), y = c(rep(16, 3), -.5),
+    labelData <- data.frame(x = c(rep(max(xBreaks)+2, 3), mean(data$x)), y = c(20, 18, 16, -.5),
                             label = gettext("1st quartile", "2nd quartile / \n Median", "3rd quartile", "IQR"))
     
     plotObject <- ggplot2::ggplot(data = data, mapping = ggplot2::aes(x = x, y = index)) +
-      ggplot2::geom_ribbon(mapping = ggplot2::aes(xmin = 0, xmax = quartiles[2]), fill = "salmon4") +
+      ggplot2::geom_ribbon(mapping = ggplot2::aes(xmin = min(data$x), xmax = quartiles[2]), fill = "salmon4") +
       ggplot2::geom_ribbon(mapping = ggplot2::aes(xmin = quartiles[2], xmax = quartiles[3]), fill = "salmon3") +
       ggplot2::geom_ribbon(mapping = ggplot2::aes(xmin = quartiles[3], xmax = quartiles[4]), fill = "salmon2") +
       ggplot2::geom_ribbon(mapping = ggplot2::aes(xmin = quartiles[4], xmax = quartiles[5]), fill = "salmon") +
-      ggplot2::geom_text(mapping = ggplot2::aes(x = x, y = y, label = label), data = twentyfivePercentLabels, size = 7) +
+      ggplot2::geom_text(mapping = ggplot2::aes(x = x, y = y, label = label), data = twentyfivePercentLabels, size = 5) +
       ggplot2::geom_point(size = 6, fill = "grey", color = "black", shape = 21) +
       ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = q1LineData, color = "purple", size = 1) +
       ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = q2LineData, color = "green", size = 1) +
@@ -117,7 +119,46 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = labelData,
                           color = c("purple", "green", "dodgerblue", "orange"), size = 5) +
       ggplot2::scale_y_continuous(name = "Observation No.", breaks = yBreaks, limits = c(-1, 21)) +
-      ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks, limits = c(0, 20))
+      ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks, limits = c(min(xBreaks), max(xBreaks) + 5))
+  }else if (options[["LSdescS"]] == "LSdescVar") {
+    meanPoint <- mean(data$x)
+    meanLineData <- data.frame(x = rep(meanPoint, 2), y = c(21, 1))
+    labelData <- data.frame(x = meanPoint, y = 11, label = gettext("Mean"))
+
+    plotObject <- ggplot2::ggplot(data = data, mapping = ggplot2::aes(x = x, y = index)) +
+      ggplot2::geom_point(size = 6, fill = "grey", color = "black", shape = 21) 
+    for (i in 1:length(data$x)) {
+      devLineData <- data.frame(x = c(data$x[i], meanPoint), y = rep(data$index[i], 2))
+      plotObject <- plotObject +
+        ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = devLineData, size = 1, color = "dodgerblue")
+    }
+    plotObject <- plotObject +
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = meanLineData, size = 1, color = "red") +
+      ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = labelData, size = 5, color = "red") +
+      ggplot2::scale_y_continuous(name = "Observation No.", breaks = yBreaks, limits = c(0, 21)) +
+      ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks, limits = range(xBreaks)) 
+  }else if (options[["LSdescS"]] == "LSdescSD") {
+    stdDev <- sd(data$x)
+    meanPoint <- mean(data$x)
+    meanLineData <- data.frame(x = rep(meanPoint, 2), y = c(21, 1))
+    labelData <- data.frame(x = meanPoint, y = 11, label = gettext("Mean"))
+    sdLabels <- data.frame(x = c(sum(min(xBreaks), meanPoint - 2*stdDev)/2, sum(meanPoint - stdDev, meanPoint - 2*stdDev)/2,
+                                 sum(meanPoint, meanPoint - stdDev)/2, sum(meanPoint, meanPoint + stdDev)/2, 
+                                 sum(meanPoint + stdDev, meanPoint + 2*stdDev)/2, sum(meanPoint + 2*stdDev, meanPoint + 3*stdDev)/2),
+                           y = rep(11, 6), label = gettext("-3 SD", "-2 SD", "-1 SD", "+1 SD", "+2 SD", "+3 SD"))
+    plotObject <- ggplot2::ggplot(data = data, mapping = ggplot2::aes(x = x, y = index)) +
+      ggplot2::geom_ribbon(mapping = ggplot2::aes(xmin = meanPoint, xmax = min(xBreaks)), fill = "salmon") +
+      ggplot2::geom_ribbon(mapping = ggplot2::aes(xmin = meanPoint, xmax = max(xBreaks)), fill = "salmon") +
+      ggplot2::geom_ribbon(mapping = ggplot2::aes(xmin = meanPoint, xmax = meanPoint + 2*stdDev), fill = "salmon2") +
+      ggplot2::geom_ribbon(mapping = ggplot2::aes(xmin = meanPoint, xmax = meanPoint - 2*stdDev), fill = "salmon2") +
+      ggplot2::geom_ribbon(mapping = ggplot2::aes(xmin = meanPoint, xmax = meanPoint + stdDev), fill = "salmon4") +
+      ggplot2::geom_ribbon(mapping = ggplot2::aes(xmin = meanPoint, xmax = meanPoint - stdDev), fill = "salmon4") +
+      ggplot2::geom_text(mapping = ggplot2::aes(x = x, y = y, label = label), data = sdLabels, size = 4) +
+      ggplot2::geom_point(size = 6, fill = "grey", color = "black", shape = 21) +
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = meanLineData, size = 1, color = "red") +
+      ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = labelData, size = 5, color = "red") +
+      ggplot2::scale_y_continuous(name = "Observation No.", breaks = yBreaks, limits = c(0, 21)) +
+      ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks, limits = range(xBreaks))
   }
   
   
