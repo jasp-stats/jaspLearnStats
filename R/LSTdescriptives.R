@@ -25,12 +25,12 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   #checking whether data is discrete or continuous, whereas only integers are treated as discrete
   discrete <- ifelse(all(data$x == as.integer(data$x)), TRUE, FALSE)
   
+
   if(options[["LSdescCentralOrSpread"]] == "LSdescCentralTendency"){
     if (options[["LSdescExplanationC"]])
       .descExplanationCT(jaspResults, options)
-    if (options[["LSdescHistBar"]]) {
-      .lstDescCreateHistogramOrBarplot(jaspResults, options, data, ready, discrete)
-    }
+    if (options[["LSdescHistBar"]])
+      .lstDescCreateHistogramOrBarplot(jaspResults, options, data, ready, discrete, stats = "ct")
     if (options[["LSdescDotPlot"]])
       .lstDescCreateDotplot(jaspResults, options, data, ready, discrete)
   }
@@ -38,6 +38,8 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   if(options[["LSdescCentralOrSpread"]] == "LSdescSpread"){
     if (options[["LSdescExplanationS"]])
       .descExplanationS(jaspResults, options)
+    if (options[["LSdescHistBar"]])
+      .lstDescCreateHistogramOrBarplot(jaspResults, options, data, ready, discrete, stats = "spread")
   }
   
 }
@@ -124,7 +126,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     meanPoint <- mean(data$x)
     meanLineData <- data.frame(x = rep(meanPoint, 2), y = c(21, 1))
     labelData <- data.frame(x = meanPoint, y = 11, label = gettext("Mean"))
-
+    
     plotObject <- ggplot2::ggplot(data = data, mapping = ggplot2::aes(x = x, y = index)) +
       ggplot2::geom_point(size = 6, fill = "grey", color = "black", shape = 21) 
     for (i in 1:length(data$x)) {
@@ -343,18 +345,41 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   return(df)
 }
 
-.lstDescCreateHistogramOrBarplot <- function(jaspResults, options, data, ready, discrete){
+.drawSpreadVisualization <- function(jaspResults, options, data, plotObject, yMax){
+  if (options[["LSdescS"]] == "LSdescRange"){
+    minX <- min(data$x)
+    maxX <- max(data$x)
+    range <- maxX - minX
+    minLineData <- data.frame(x = rep(minX, 2), y = c(0, yMax))
+    maxLineData <- data.frame(x = rep(maxX, 2), y = c(0, yMax))
+    rangeLineData <- data.frame(x = c(minX, maxX), y = rep(yMax * .95, 2))
+    labelData <- data.frame(x = c(minX, maxX, (minX + maxX)/2),
+                            y = c(yMax * .9, yMax * .9, yMax * .95),
+                            label = c(gettextf("Min.: %.2f", minX), gettextf("Max.: %.2f", maxX), gettextf("Range: %.2f", range)))
+    plotObject <- plotObject + 
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = minLineData, size = 1, color = "blue") +
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = maxLineData, size = 1, color = "red") +
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = rangeLineData, size = 1, color = "orange") +
+      ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = labelData, size = 5, 
+                          color = c("blue", "red", "orange"))
+  }
+  return(plotObject)
+}
+
+.lstDescCreateHistogramOrBarplot <- function(jaspResults, options, data, ready, discrete, stats = c("ct", "spread")){
   title <- ifelse(discrete, "Barplot", "Histogram")
   jaspResults[["descHistogramOrBarplot"]] <- createJaspContainer(gettext(title))
   p <- createJaspPlot(title = gettext(title), width = 700, height = 400)
   p$position <- 2
-  allCTs <- options[["LSdescCT"]] == "LSdescMMM"
+  
+  if (stats == "ct")
+    allCTs <- options[["LSdescCT"]] == "LSdescMMM"
   
   if (ready) {
     if (discrete){
       xBreaks <- unique(as.integer(jaspGraphs::getPrettyAxisBreaks(data$x)))
-      if (allCTs){
-        xLimits <- c(xBreaks[1] - abs(xBreaks[2] - xBreaks[1])/2, xBreaks[length(xBreaks)] * 1.4)
+      if (stats == "ct" && allCTs){
+        xLimits <- c(xBreaks[1] - abs(xBreaks[2] - xBreaks[1])/2, max(xBreaks) * 1.4)
       } else {
         xLimits <- range(xBreaks[1] - abs(xBreaks[2] - xBreaks[1])/2, max(xBreaks))
       }
@@ -372,7 +397,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     } else{
       displayDensity <- options[["LSdescHistCountOrDens"]] == "LSdescHistDens"
       xBreaks <- jaspGraphs::getPrettyAxisBreaks(data$x)
-      if (allCTs) {
+      if (stats == "ct" && allCTs) {
         xLimits <- c(xBreaks[1], xBreaks[length(xBreaks)] * 1.4)
       } else {
         xLimits <- range(xBreaks)
@@ -385,7 +410,11 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       plotObject <- plotObject + ggplot2::scale_y_continuous(limits = yLimits, breaks = yBreaks) +
         ggplot2::scale_x_continuous(name = "Observations", breaks = xBreaks, limits = xLimits) 
     }
-    plotObject <- .drawMeanMedianOrModeLine(jaspResults, options, data, plotObject, yMax = yMax, discrete = discrete)
+    if (stats == "ct") {
+      plotObject <- .drawMeanMedianOrModeLine(jaspResults, options, data, plotObject, yMax = yMax, discrete = discrete)
+    } else if (stats == "spread") {
+      plotObject <- .drawSpreadVisualization(jaspResults, options, data, plotObject, yMax = yMax)
+    }
     p$plotObject <- plotObject
   }
   jaspResults[["descHistogramOrBarplot"]] <- p
