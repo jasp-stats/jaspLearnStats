@@ -345,8 +345,8 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   return(df)
 }
 
-.drawSpreadVisualization <- function(jaspResults, options, data, plotObject, yMax){
-  if (options[["LSdescS"]] == "LSdescRange"){
+.drawSpreadVisualization <- function(jaspResults, options, data, plotObject, yMax) {
+  if (options[["LSdescS"]] == "LSdescRange") {
     minX <- min(data$x)
     maxX <- max(data$x)
     range <- maxX - minX
@@ -362,6 +362,26 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = rangeLineData, size = 1, color = "orange") +
       ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = labelData, size = 5, 
                           color = c("blue", "red", "orange"))
+  } else if (options[["LSdescS"]] == "LSdescQR") {
+    quartiles <- quantile(data$x)
+    iqr <- IQR(data$x)
+    maxX <- max(data$x)
+    q1LineData <- data.frame(x = rep(quartiles[2], 2), y = c(0, yMax))
+    q2LineData <- data.frame(x = rep(quartiles[3], 2), y = c(0, yMax * .95))
+    q3LineData <- data.frame(x = rep(quartiles[4], 2), y = c(0, yMax))
+    iqrLineData <- data.frame(x = c(quartiles[2], quartiles[4]), y = rep(yMax * .95, 2))
+    labelData <- data.frame(x = c(rep(maxX, 3), sum(quartiles[2], quartiles[4])/2),
+                            y = c(yMax * c(.95, .85, .75), yMax * .95),
+                            label = c(gettextf("1st quar. = %.2f", quartiles[2]), gettextf("2nd quar. / \n Median = %.2f", quartiles[3]),
+                                               gettextf("3rd quar. = %.2f", quartiles[4]), gettextf("IQR = %.2f", iqr)))
+    
+    plotObject <- plotObject +
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = q1LineData, color = "purple", size = 1) +
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = q2LineData, color = "green", size = 1) +
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = q3LineData, color = "dodgerblue", size = 1) +
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = iqrLineData, color = "orange", size = 1) +
+      ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = labelData,
+                          color = c("purple", "green", "dodgerblue", "orange"), size = 4)
   }
   return(plotObject)
 }
@@ -378,10 +398,11 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   if (ready) {
     if (discrete){
       xBreaks <- unique(as.integer(jaspGraphs::getPrettyAxisBreaks(data$x)))
+      xStep <- xBreaks[2] - xBreaks[1]
       if (stats == "ct" && allCTs){
-        xLimits <- c(xBreaks[1] - abs(xBreaks[2] - xBreaks[1])/2, max(xBreaks) * 1.4)
+        xLimits <- c(xBreaks[1] - xStep/2, max(xBreaks) * 1.4)
       } else {
-        xLimits <- range(xBreaks[1] - abs(xBreaks[2] - xBreaks[1])/2, max(xBreaks))
+        xLimits <- c(min(xBreaks) - xStep/2, max(xBreaks) + xStep/2)
       }
       yBreaks <- unique(round(jaspGraphs::getPrettyAxisBreaks(c(0, table(data$x)))))
       yLimits <- range(yBreaks) * 1.3
@@ -397,10 +418,11 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     } else{
       displayDensity <- options[["LSdescHistCountOrDens"]] == "LSdescHistDens"
       xBreaks <- jaspGraphs::getPrettyAxisBreaks(data$x)
+      xStep <- xBreaks[2] - xBreaks[1]
       if (stats == "ct" && allCTs) {
-        xLimits <- c(xBreaks[1], xBreaks[length(xBreaks)] * 1.4)
+        xLimits <- c(min(xBreaks) - xStep/2, xBreaks[length(xBreaks)] * 1.4)
       } else {
-        xLimits <- range(xBreaks)
+        xLimits <- c(min(xBreaks) - xStep/2, max(xBreaks) + xStep/2)
       }
       plotObject <- jaspDescriptives:::.plotMarginal(data$x, variableName = "Observations", displayDensity = displayDensity,
                                                      binWidthType = "sturges", rugs = options[["LSdescHistBarRugs"]]) 
