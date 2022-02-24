@@ -386,15 +386,52 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     stdDev <- sd(data$x)
     meanPoint <- mean(data$x)
     meanLineData <- data.frame(x = rep(meanPoint, 2), y = c(0, yMax * .95))
-    labelData <- data.frame(x = meanPoint, y = yMax *.95, label = gettextf("Mean = %2.f", meanPoint))
+    labelData <- data.frame(x = rep(meanPoint, 2), y = yMax * c(.95, .85),
+                            label = c(gettextf("Mean = %2.f", meanPoint), gettextf("SD = %2.f", stdDev)))
+    
+    minX <- min(data$x)
+    maxX <- max(data$x)
+    sdsMin <- round((abs(meanPoint - minX) / stdDev) + .5)
+    sdsMax <- round((abs(meanPoint - maxX) / stdDev) + .5)
+    colorPalette <- c("salmon4", "olivedrab4", "salmon2", "olivedrab2", "salmon", "olivedrab")
+    for(i in 1:sdsMin){
+      sdLineMax <- meanPoint - stdDev * (i-1)
+      if (i != max(sdsMin)){
+        sdLineMin <- meanPoint - stdDev * (i)
+        sdLineData <- data.frame(x = c(sdLineMax, sdLineMin, sdLineMin),
+                                 y = c(yMax * .85, yMax * .85, yMax * .8))
+      } else {
+        sdLineMin <- minX
+        sdLineData <- data.frame(x = c(sdLineMax, sdLineMin), 
+                                 y = rep(yMax * .85, 2))
+      }
+      plotObject <- plotObject +
+        ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = sdLineData, color = colorPalette[i], size = 1)
+    }
+    for(i in 1:sdsMax){
+      sdLineMin <- meanPoint + stdDev * (i-1)
+      if (i != max(sdsMax)){
+        sdLineMax <- meanPoint + stdDev * (i)
+        sdLineData <- data.frame(x = c(sdLineMin, sdLineMax, sdLineMax),
+                                 y = c(yMax * .85, yMax * .85, yMax * .8))
+      } else {
+        sdLineMin <- maxX
+        sdLineData <- data.frame(x = c(sdLineMax, sdLineMin), 
+                                 y = rep(yMax * .85, 2))
+      }
+      plotObject <- plotObject +
+        ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = sdLineData, color = colorPalette[i], size = 1)
+    }
     sdLabels <- data.frame(x = c(sum(min(data$x), meanPoint - 2*stdDev)/2, sum(meanPoint - stdDev, meanPoint - 2*stdDev)/2,
                                  sum(meanPoint, meanPoint - stdDev)/2, sum(meanPoint, meanPoint + stdDev)/2, 
                                  sum(meanPoint + stdDev, meanPoint + 2*stdDev)/2, sum(meanPoint + 2*stdDev, max(data$x))/2),
                            y = rep(11, 6), label = gettext("-3 SD", "-2 SD", "-1 SD", "+1 SD", "+2 SD", "+3 SD"))
+    
     plotObject <- plotObject +
       ggplot2::geom_text(mapping = ggplot2::aes(x = x, y = y, label = label), data = sdLabels, size = 4) +
       ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = meanLineData, size = 1, color = "red") +
-      ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = labelData, size = 5, color = "red")
+      ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = labelData, size = 4,
+                          color = c("red", "dodgerblue"))
   }
   return(plotObject)
 }
