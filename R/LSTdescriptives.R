@@ -382,6 +382,19 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = iqrLineData, color = "orange", size = 1) +
       ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = labelData,
                           color = c("purple", "green", "dodgerblue", "orange"), size = 4)
+  }else if (options[["LSdescS"]] == "LSdescSD") {
+    stdDev <- sd(data$x)
+    meanPoint <- mean(data$x)
+    meanLineData <- data.frame(x = rep(meanPoint, 2), y = c(0, yMax * .95))
+    labelData <- data.frame(x = meanPoint, y = yMax *.95, label = gettextf("Mean = %2.f", meanPoint))
+    sdLabels <- data.frame(x = c(sum(min(data$x), meanPoint - 2*stdDev)/2, sum(meanPoint - stdDev, meanPoint - 2*stdDev)/2,
+                                 sum(meanPoint, meanPoint - stdDev)/2, sum(meanPoint, meanPoint + stdDev)/2, 
+                                 sum(meanPoint + stdDev, meanPoint + 2*stdDev)/2, sum(meanPoint + 2*stdDev, max(data$x))/2),
+                           y = rep(11, 6), label = gettext("-3 SD", "-2 SD", "-1 SD", "+1 SD", "+2 SD", "+3 SD"))
+    plotObject <- plotObject +
+      ggplot2::geom_text(mapping = ggplot2::aes(x = x, y = y, label = label), data = sdLabels, size = 4) +
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = meanLineData, size = 1, color = "red") +
+      ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = labelData, size = 5, color = "red")
   }
   return(plotObject)
 }
