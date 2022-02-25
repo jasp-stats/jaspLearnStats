@@ -25,14 +25,14 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   #checking whether data is discrete or continuous, whereas only integers are treated as discrete
   discrete <- ifelse(all(data$x == as.integer(data$x)), TRUE, FALSE)
   
-
+  
   if(options[["LSdescCentralOrSpread"]] == "LSdescCentralTendency"){
     if (options[["LSdescExplanationC"]])
       .descExplanationCT(jaspResults, options)
     if (options[["LSdescHistBar"]])
       .lstDescCreateHistogramOrBarplot(jaspResults, options, data, ready, discrete, stats = "ct")
     if (options[["LSdescDotPlot"]])
-      .lstDescCreateDotplot(jaspResults, options, data, ready, discrete)
+      .lstDescCreateDotplot(jaspResults, options, data, ready, discrete, stats = "ct")
   }
   
   if(options[["LSdescCentralOrSpread"]] == "LSdescSpread"){
@@ -40,8 +40,9 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       .descExplanationS(jaspResults, options)
     if (options[["LSdescHistBar"]])
       .lstDescCreateHistogramOrBarplot(jaspResults, options, data, ready, discrete, stats = "spread")
+    if (options[["LSdescDotPlot"]])
+      .lstDescCreateDotplot(jaspResults, options, data, ready, discrete, stats = "spread")
   }
-  
 }
 
 
@@ -373,7 +374,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     labelData <- data.frame(x = c(rep(maxX, 3), sum(quartiles[2], quartiles[4])/2),
                             y = c(yMax * c(.95, .85, .75), yMax * .95),
                             label = c(gettextf("1st quar. = %.2f", quartiles[2]), gettextf("2nd quar. / \n Median = %.2f", quartiles[3]),
-                                               gettextf("3rd quar. = %.2f", quartiles[4]), gettextf("IQR = %.2f", iqr)))
+                                      gettextf("3rd quar. = %.2f", quartiles[4]), gettextf("IQR = %.2f", iqr)))
     
     plotObject <- plotObject +
       ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = q1LineData, color = "purple", size = 1) +
@@ -494,18 +495,20 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   jaspResults[["descHistogramOrBarplot"]] <- p
 }
 
-.lstDescCreateDotplot <- function(jaspResults, options, data, ready, discrete){
+.lstDescCreateDotplot <- function(jaspResults, options, data, ready, discrete, stats = c("ct", "spread")){
   jaspResults[["descDotplot"]] <- createJaspContainer(gettext("Dotplot"))
   height <- 400 + (length(data$x) / 50) * 25
   dp <- createJaspPlot(title = gettext("Dotplot"), width = 700, height = height)
   dp$position <- 3
   
   if (ready){
-    dpPlotObjectList <- .lstDescCreateDotPlotObject(data, options)
+    dpPlotObjectList <- .lstDescCreateDotPlotObject(data, options, stats = stats)
     dpPlotObject <- dpPlotObjectList$p
-    if ((options[["LSdescCT"]] == "LSdescMean" | options[["LSdescCT"]] == "LSdescMode" | options[["LSdescCT"]] == "LSdescMMM"))
-      dpPlotObject <- .drawMeanMedianOrModeLine(jaspResults, options, data, dpPlotObject, yMax = dpPlotObjectList$yMax,
-                                                lines = FALSE, discrete = discrete)
+    if (stats == "ct"){
+      if ((options[["LSdescCT"]] == "LSdescMean" | options[["LSdescCT"]] == "LSdescMode" | options[["LSdescCT"]] == "LSdescMMM"))
+        dpPlotObject <- .drawMeanMedianOrModeLine(jaspResults, options, data, dpPlotObject, yMax = dpPlotObjectList$yMax,
+                                                  lines = FALSE, discrete = discrete)
+    }
     dp$plotObject <- dpPlotObject
   }
   
@@ -605,7 +608,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
 }
 
 
-.lstDescCreateDotPlotObject <- function(data, options){
+.lstDescCreateDotPlotObject <- function(data, options, stats = c("ct", "spread")){
   n <- length(data$x)
   if (length(unique(data$x)) == 1){ 
     dotsize <- .0333
@@ -615,12 +618,18 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     dotsize <- 1
   }
   
-  allCTs <- options[["LSdescCT"]] == "LSdescMMM"
   labelSize <- 3 + 300 / (100 + n * 2)
   
+  if (stats == "ct") {
+    allCTs <- options[["LSdescCT"]] == "LSdescMMM"
+  } else {
+    allCTs <- FALSE
+  }
+  
   xBreaks <- jaspGraphs::getPrettyAxisBreaks(data$x)
-  xBuffer <- ifelse(allCTs, 1.4, 1.1)
-  xLimits <- c(min(xBreaks) * .9, max(xBreaks) * xBuffer)
+  xStep <- xBreaks[2] - xBreaks[1]
+  xBuffer <- ifelse(allCTs, xStep * 2, xStep/2)
+  xLimits <- c(min(xBreaks) - xStep/2, max(xBreaks) + xBuffer)
   
   p <- ggplot2::ggplot(data = data, ggplot2::aes(x = x)) +
     ggplot2::geom_dotplot(binaxis = 'x', stackdir = 'up', dotsize = dotsize, fill = "grey") +
@@ -640,92 +649,121 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   p <- p + ggplot2::scale_y_continuous(name = "Counts", limits = yLimits, breaks = yBreaks, labels = yLabels) + 
     jaspGraphs::geom_rangeframe() +
     jaspGraphs::themeJaspRaw()
-  
-  if (options[["LSdescCT"]] == "LSdescMedian"| options[["LSdescCT"]] == "LSdescMMM") {
-    sortedDf <- data.frame(x = sort(data$x))
-    halfway <- median(as.numeric(rownames(sortedDf)))
-    med <- median(data$x)
-    if(n %% 2 != 0){   # if median is a single datapoint
-      halfwayDot <- pData[[1]][halfway,]
-      y0 <- ifelse(halfwayDot$countidx == 1, dotWidth/2, dotWidth/2 + (halfwayDot$countidx - 1) * dotWidth)
-      x0 <- halfwayDot$x
-      circleData <- data.frame(x0 = x0, 
+  if (stats == "ct"){
+    if (options[["LSdescCT"]] == "LSdescMedian"| options[["LSdescCT"]] == "LSdescMMM") {
+      sortedDf <- data.frame(x = sort(data$x))
+      halfway <- median(as.numeric(rownames(sortedDf)))
+      med <- median(data$x)
+      if(n %% 2 != 0){   # if median is a single datapoint
+        halfwayDot <- pData[[1]][halfway,]
+        y0 <- ifelse(halfwayDot$countidx == 1, dotWidth/2, dotWidth/2 + (halfwayDot$countidx - 1) * dotWidth)
+        x0 <- halfwayDot$x
+        circleData <- data.frame(x0 = x0, 
+                                 y0 = y0,
+                                 r = dotWidth / 2)
+        medianLineData <- data.frame(x = c(x0, med),
+                                     y = c(y0, max(yLimits) * .9))
+        chairData <- data.frame(x = c(x0 - dotWidth * .65, x0 - dotWidth * .65,
+                                      x0 + dotWidth * .65, x0 + dotWidth * .65),
+                                y = c(y0 + dotWidth/2, y0, y0, y0 - dotWidth/2))
+        p <- p + ggforce::geom_circle(data = circleData, mapping = ggplot2::aes(x0 = x0, y0 = y0, r = r),
+                                      inherit.aes = FALSE, fill = "green") +
+          ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = chairData, size = 1, color = "springgreen4")
+        if (!allCTs)
+          p <- p +  ggplot2::geom_path(data = medianLineData, mapping = ggplot2::aes(x = x, y = y), color = "green",
+                                       size = 1)
+      } else {  # if median is the average of two points
+        halfwayDots <- list("lowerDot" = pData[[1]][halfway - .5,],
+                            "upperDot" = pData[[1]][halfway + .5,])
+        y0lower <- ifelse(halfwayDots$lowerDot$countidx == 1, dotWidth / 2, dotWidth / 2 + (halfwayDots$lowerDot$countidx - 1) * dotWidth)
+        y0upper <- ifelse(halfwayDots$upperDot$countidx == 1, dotWidth / 2, dotWidth / 2 + (halfwayDots$upperDot$countidx - 1) * dotWidth)
+        if (all(c(halfwayDots$lowerDot$count, halfwayDots$upperDot$count) == 1)) {
+          start <- c(pi * 2, pi * 2)
+          end <-c(pi * 3, pi)
+        } else {
+          start <- c(pi * 1.5, pi / 2)
+          end <- c(pi * 2.5, pi * 1.5)
+        }
+        circleData <- data.frame(x0 = c(halfwayDots$lowerDot$x, halfwayDots$upperDot$x),
+                                 y0 = c(y0lower, y0upper),
+                                 r = rep(dotWidth/2, 2),
+                                 r0 = rep(0, 2),
+                                 start = start,
+                                 end = end)
+        chairData <- data.frame(x = c(halfwayDots$lowerDot$x - dotWidth * .65, halfwayDots$lowerDot$x - dotWidth * .65,
+                                      halfwayDots$lowerDot$x + dotWidth * .65, halfwayDots$lowerDot$x + dotWidth * .65),
+                                y = c(y0lower + dotWidth, y0lower + dotWidth/2, y0lower + dotWidth/2, y0lower))
+        medianLineData1 <- data.frame(x = c(halfwayDots$lowerDot$x, med),
+                                      y = c(y0lower, max(yLimits) * .95))
+        medianLineData2 <- data.frame(x = c(halfwayDots$upperDot$x, med),
+                                      y = c(y0upper, max(yLimits) * .95))
+        
+        p <- p + ggforce::geom_arc_bar(data = circleData,
+                                       mapping = ggplot2::aes(x0 = x0, y0 = y0, r0 = r0, r = r,  start = start, end = end),
+                                       inherit.aes = FALSE, fill = "green") +
+          ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = chairData, size = 1, color = "springgreen4")
+        if(!allCTs){
+          p <- p + ggplot2::geom_path(data = medianLineData1, mapping = ggplot2::aes(x = x, y = y), color = "green", size = 1) +
+            ggplot2::geom_path(data = medianLineData2, mapping = ggplot2::aes(x = x, y = y), color = "green", size = 1)
+        }
+      }
+      if(!allCTs)
+        p <- p + ggplot2::geom_label(data = data.frame(x = med, y = max(yLimits) * .95, label = gettextf("Median = %.2f", median(data$x))), 
+                                     mapping = ggplot2::aes(x = x, y = y, label = label), color = "green", size = labelSize)
+    }
+    if (options[["LSdescCT"]] == "LSdescMean" || options[["LSdescCT"]] == "LSdescMMM"){
+      mean <- mean(data$x)
+      y0 <- dotWidth / 2
+      circleData <- data.frame(x0 = mean, 
                                y0 = y0,
                                r = dotWidth / 2)
-      medianLineData <- data.frame(x = c(x0, med),
-                                   y = c(y0, max(yLimits) * .9))
-      chairData <- data.frame(x = c(x0 - dotWidth * .65, x0 - dotWidth * .65,
-                                    x0 + dotWidth * .65, x0 + dotWidth * .65),
-                              y = c(y0 + dotWidth/2, y0, y0, y0 - dotWidth/2))
+      meanLineData <- data.frame(x = c(mean, mean),
+                                 y = c(y0 + dotWidth / 2,  max(yLimits) * .95))
       p <- p + ggforce::geom_circle(data = circleData, mapping = ggplot2::aes(x0 = x0, y0 = y0, r = r),
-                                    inherit.aes = FALSE, fill = "green") +
-        ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = chairData, size = 1, color = "springgreen4")
+                                    inherit.aes = FALSE, fill = "red", alpha = .3, color = "red", n = 4)
       if (!allCTs)
-        p <- p +  ggplot2::geom_path(data = medianLineData, mapping = ggplot2::aes(x = x, y = y), color = "green",
-                                     size = 1)
-    } else {  # if median is the average of two points
-      halfwayDots <- list("lowerDot" = pData[[1]][halfway - .5,],
-                          "upperDot" = pData[[1]][halfway + .5,])
-      y0lower <- ifelse(halfwayDots$lowerDot$countidx == 1, dotWidth / 2, dotWidth / 2 + (halfwayDots$lowerDot$countidx - 1) * dotWidth)
-      y0upper <- ifelse(halfwayDots$upperDot$countidx == 1, dotWidth / 2, dotWidth / 2 + (halfwayDots$upperDot$countidx - 1) * dotWidth)
-      if (all(c(halfwayDots$lowerDot$count, halfwayDots$upperDot$count) == 1)) {
-        start <- c(pi * 2, pi * 2)
-        end <-c(pi * 3, pi)
-      } else {
-        start <- c(pi * 1.5, pi / 2)
-        end <- c(pi * 2.5, pi * 1.5)
-      }
-      circleData <- data.frame(x0 = c(halfwayDots$lowerDot$x, halfwayDots$upperDot$x),
-                               y0 = c(y0lower, y0upper),
-                               r = rep(dotWidth/2, 2),
-                               r0 = rep(0, 2),
-                               start = start,
-                               end = end)
-      chairData <- data.frame(x = c(halfwayDots$lowerDot$x - dotWidth * .65, halfwayDots$lowerDot$x - dotWidth * .65,
-                                    halfwayDots$lowerDot$x + dotWidth * .65, halfwayDots$lowerDot$x + dotWidth * .65),
-                              y = c(y0lower + dotWidth, y0lower + dotWidth/2, y0lower + dotWidth/2, y0lower))
-      medianLineData1 <- data.frame(x = c(halfwayDots$lowerDot$x, med),
-                                    y = c(y0lower, max(yLimits) * .95))
-      medianLineData2 <- data.frame(x = c(halfwayDots$upperDot$x, med),
-                                    y = c(y0upper, max(yLimits) * .95))
-      
-      p <- p + ggforce::geom_arc_bar(data = circleData,
-                                     mapping = ggplot2::aes(x0 = x0, y0 = y0, r0 = r0, r = r,  start = start, end = end),
-                                     inherit.aes = FALSE, fill = "green") +
-        ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = chairData, size = 1, color = "springgreen4")
-      if(!allCTs){
-        p <- p + ggplot2::geom_path(data = medianLineData1, mapping = ggplot2::aes(x = x, y = y), color = "green", size = 1) +
-          ggplot2::geom_path(data = medianLineData2, mapping = ggplot2::aes(x = x, y = y), color = "green", size = 1)
+        p <- p + ggplot2::geom_path(data = meanLineData, mapping = ggplot2::aes(x = x, y = y), color = "red", size = .8)
+    }
+    if (options[["LSdescCT"]] == "LSdescMode" || options[["LSdescCT"]] == "LSdescMMM"){
+      if(length(unique(data$x)) != n){
+        modeTable <- table(data$x)
+        mode <- as.numeric(names(modeTable[modeTable == max(modeTable)]))
+        modeLineYPos <- dotWidth * max(pData[[1]]$count)
+        for (i in 1:length(mode)){
+          modeLineXPos <- pData[[1]]$x[pData[[1]]$xmin < mode[i] & pData[[1]]$xmax > mode[i]][1]
+          lineData <- data.frame(x = modeLineXPos, y = c(modeLineYPos, modeLineYPos + dotWidth / 2))
+          p <- p + ggplot2::geom_path(data = lineData, mapping = ggplot2::aes(x = x, y = y), color = "blue", size = 3)
+        }
+        p <- p + ggplot2::geom_hline(yintercept = modeLineYPos, color = "blue", size = 1)
       }
     }
-    if(!allCTs)
-      p <- p + ggplot2::geom_label(data = data.frame(x = med, y = max(yLimits) * .95, label = gettextf("Median = %.2f", median(data$x))), 
-                                   mapping = ggplot2::aes(x = x, y = y, label = label), color = "green", size = labelSize)
-  }
-  if (options[["LSdescCT"]] == "LSdescMean" || options[["LSdescCT"]] == "LSdescMMM"){
-    mean <- mean(data$x)
-    y0 <- dotWidth / 2
-    circleData <- data.frame(x0 = mean, 
-                             y0 = y0,
-                             r = dotWidth / 2)
-    meanLineData <- data.frame(x = c(mean, mean),
-                               y = c(y0 + dotWidth / 2,  max(yLimits) * .95))
-    p <- p + ggforce::geom_circle(data = circleData, mapping = ggplot2::aes(x0 = x0, y0 = y0, r = r),
-                                  inherit.aes = FALSE, fill = "red", alpha = .3, color = "red", n = 4)
-    if (!allCTs)
-      p <- p + ggplot2::geom_path(data = meanLineData, mapping = ggplot2::aes(x = x, y = y), color = "red", size = .8)
-  }
-  if (options[["LSdescCT"]] == "LSdescMode" || options[["LSdescCT"]] == "LSdescMMM"){
-    if(length(unique(data$x)) != n){
-      modeTable <- table(data$x)
-      mode <- as.numeric(names(modeTable[modeTable == max(modeTable)]))
-      modeLineYPos <- dotWidth * max(pData[[1]]$count)
-      for (i in 1:length(mode)){
-        modeLineXPos <- pData[[1]]$x[pData[[1]]$xmin < mode[i] & pData[[1]]$xmax > mode[i]][1]
-        lineData <- data.frame(x = modeLineXPos, y = c(modeLineYPos, modeLineYPos + dotWidth / 2))
-        p <- p + ggplot2::geom_path(data = lineData, mapping = ggplot2::aes(x = x, y = y), color = "blue", size = 3)
-      }
-      p <- p + ggplot2::geom_hline(yintercept = modeLineYPos, color = "blue", size = 1)
+  } else if (stats == "spread"){
+    if (options[["LSdescS"]] == "LSdescRange") {
+      range <- max(data$x) - min(data$x)
+      minDot <- pData[[1]][1,]
+      maxDot <- pData[[1]][n,]
+      minY0 <- dotWidth/2
+      maxY0 <- ifelse(maxDot$countidx == 1, dotWidth/2, dotWidth/2 + (maxDot$countidx - 1) * dotWidth)
+      circleData  <- data.frame(x0 = c(minDot$x, maxDot$x),
+                                y0 = c(minY0, maxY0),
+                                r = dotWidth/2)
+      minLineData <- data.frame(x = rep(minDot$x, 2), y = c(0, max(yLimits)))
+      maxLineData <-  data.frame(x = rep(maxDot$x, 2), y = c(0, max(yLimits)))
+      rangeLineData <- data.frame(x = c(minDot$x, maxDot$x), y = rep(max(yLimits) * .95, 2))
+      labelData <- data.frame(x = c(minDot$x, maxDot$x, range/2),
+                              y = c(max(yLimits) * .9, max(yLimits) * .9, max(yLimits) * .95),
+                              label = c(gettextf("Min.: %.2f", min(data$x)), gettextf("Max.: %.2f", max(data$x)), 
+                                        gettextf("Range: %.2f", range)))
+      p <- p +
+        ggforce::geom_circle(data = circleData[1,], mapping = ggplot2::aes(x0 = x0, y0 = y0, r = r),
+                             inherit.aes = FALSE, fill = "blue") +
+        ggforce::geom_circle(data = circleData[2,], mapping = ggplot2::aes(x0 = x0, y0 = y0, r = r),
+                             inherit.aes = FALSE, fill = "red") +
+        ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = minLineData, color = "blue", size = 1) +
+        ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = maxLineData, color = "red", size = 1) +
+        ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = rangeLineData, color = "orange", size = 1) +
+        ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = labelData, size = 5,
+                            color = c("blue", "red", "orange"))
     }
   }
   return(list("p" = p, "yMax" = max(yLimits) * .95))
