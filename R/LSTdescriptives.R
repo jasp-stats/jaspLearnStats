@@ -400,6 +400,10 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
         sdLineMin <- meanPoint - stdDev * (i)
         sdLineData <- data.frame(x = c(sdLineMax, sdLineMin, sdLineMin),
                                  y = c(yMax * .85, yMax * .85, yMax * .8))
+        sdLabelData <- data.frame(x = sdLineMin, y = yMax * .88, label = gettextf("-%i SD", i))
+        plotObject <- plotObject +
+          ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = sdLabelData, size = 3,
+                              color = colorPalette[i])
       } else {
         sdLineMin <- minX
         sdLineData <- data.frame(x = c(sdLineMax, sdLineMin), 
@@ -414,6 +418,10 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
         sdLineMax <- meanPoint + stdDev * (i)
         sdLineData <- data.frame(x = c(sdLineMin, sdLineMax, sdLineMax),
                                  y = c(yMax * .85, yMax * .85, yMax * .8))
+        sdLabelData <- data.frame(x = sdLineMax, y = yMax * .88, label = gettextf("+%i SD", i))
+        plotObject <- plotObject +
+          ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = sdLabelData, size = 3,
+                              color = colorPalette[i])
       } else {
         sdLineMin <- maxX
         sdLineData <- data.frame(x = c(sdLineMax, sdLineMin), 
@@ -422,13 +430,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       plotObject <- plotObject +
         ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = sdLineData, color = colorPalette[i], size = 1)
     }
-    sdLabels <- data.frame(x = c(sum(min(data$x), meanPoint - 2*stdDev)/2, sum(meanPoint - stdDev, meanPoint - 2*stdDev)/2,
-                                 sum(meanPoint, meanPoint - stdDev)/2, sum(meanPoint, meanPoint + stdDev)/2, 
-                                 sum(meanPoint + stdDev, meanPoint + 2*stdDev)/2, sum(meanPoint + 2*stdDev, max(data$x))/2),
-                           y = rep(11, 6), label = gettext("-3 SD", "-2 SD", "-1 SD", "+1 SD", "+2 SD", "+3 SD"))
-    
     plotObject <- plotObject +
-      ggplot2::geom_text(mapping = ggplot2::aes(x = x, y = y, label = label), data = sdLabels, size = 4) +
       ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = meanLineData, size = 1, color = "red") +
       ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = labelData, size = 4,
                           color = c("red", "dodgerblue"))
