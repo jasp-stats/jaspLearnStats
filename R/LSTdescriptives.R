@@ -93,7 +93,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       ggplot2::scale_y_continuous(name = "Observation No.", breaks = yBreaks, limits = c(-1, 21)) +
       ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks, limits = range(xBreaks))
   }else if (options[["LSdescS"]] == "LSdescQR") {
-    quartiles <- quantile(data$x)
+    quartiles <- quantile(data$x, type = 2)
     twentyfivePercentLabels <- data.frame(x = c(sum(quartiles[1:2])/2, sum(quartiles[2:3])/2,
                                                 sum(quartiles[3:4])/2, sum(quartiles[4:5])/2),
                                           y = rep(10, 4), label = rep("25%", 4))
@@ -364,8 +364,8 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = labelData, size = 5, 
                           color = c("blue", "red", "orange"))
   } else if (options[["LSdescS"]] == "LSdescQR") {
-    quartiles <- quantile(data$x)
-    iqr <- IQR(data$x)
+    quartiles <- quantile(data$x, type = 2)
+    iqr <- quartiles[4] - quartiles[2]
     maxX <- max(data$x)
     q1LineData <- data.frame(x = rep(quartiles[2], 2), y = c(0, yMax))
     q2LineData <- data.frame(x = rep(quartiles[3], 2), y = c(0, yMax * .95))
@@ -651,7 +651,8 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     jaspGraphs::themeJaspRaw()
   if (stats == "ct"){
     if (options[["LSdescCT"]] == "LSdescMedian"| options[["LSdescCT"]] == "LSdescMMM") {
-      p <- .dotPlotVisualizeMedian(data, p, dotsize, labelSize, yLimits, allCTs, labelText = gettext("Median"), quartile = 2)
+      p <- .dotPlotVisualizeQuartiles(data, p, dotsize, labelSize, yLimits, allCTs, labelText = gettext("Median"), quartile = 2,
+                                   color = "green")
     }
     if (options[["LSdescCT"]] == "LSdescMean" || options[["LSdescCT"]] == "LSdescMMM"){
       mean <- mean(data$x)
@@ -683,10 +684,13 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     if (options[["LSdescS"]] == "LSdescRange") {
       p <- .dotPlotVisualizeRange(data, p, dotsize, yLimits)
     } else if (options[["LSdescS"]] == "LSdescQR"){
-      p <- .dotPlotVisualizeMedian(data, p, dotsize, labelSize, yLimits, labelText = gettext("2nd quar. / \n Median"),
-                                   quartile = 2)
-      p <- .dotPlotVisualizeMedian(data, p, dotsize, labelSize, yLimits, labelText = gettext("1st quar."), quartile = 1)
-      p <- .dotPlotVisualizeMedian(data, p, dotsize, labelSize, yLimits, labelText = gettext("3rd quar."), quartile = 3)
+      p <- .dotPlotVisualizeQuartiles(data, p, dotsize, labelSize, yLimits, labelText = gettext("2nd quar. / \n Median"),
+                                   quartile = 2, labelsInCorner = TRUE, color = "green")
+      p <- .dotPlotVisualizeQuartiles(data, p, dotsize, labelSize, yLimits, labelText = gettext("1st quar."), quartile = 1,
+                                   labelsInCorner = TRUE, color = "purple")
+      p <- .dotPlotVisualizeQuartiles(data, p, dotsize, labelSize, yLimits, labelText = gettext("3rd quar."), quartile = 3,
+                                   labelsInCorner = TRUE, color = "dodgerblue")
+      p <- .dotPlotIQRLine(data, p, yLimits)
     }
   }
   return(list("p" = p, "yMax" = max(yLimits) * .95))
@@ -723,14 +727,16 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   return(plotObject)
 }
 
-.dotPlotVisualizeMedian <- function(data, plotObject, dotsize, labelSize, yLimits, allCTs = FALSE, labelText, quartile) {
+.dotPlotVisualizeQuartiles <- function(data, plotObject, dotsize, labelSize, yLimits, allCTs = FALSE, labelText, quartile,
+                                    labelsInCorner = FALSE, color = c("green", "purple", "dodgerblue")) {
+  color2 <- switch(color, "green" = "springgreen4", "purple" = "pink", "dodgerblue" = "blue")
   n <- length(data$x)
   pData <- ggplot2::ggplot_build(plotObject)$data
   dotWidth <- pData[[1]]$width[1] * dotsize
   sortedDf <- data.frame(x = sort(data$x))
-  location <- as.integer(quantile(as.numeric(rownames(sortedDf)))*2) / 2 # round to nearest half
+  location <- as.integer(quantile(as.numeric(rownames(sortedDf)), type = 2) * 2) / 2 # round to nearest half
   location <- location[quartile + 1]
-  quartileValue <- quantile(data$x)[quartile + 1]
+  quartileValue <- quantile(data$x, type = 2)[quartile + 1]
   if(location == as.integer(location)){   # if median is a single datapoint
     halfwayDot <- pData[[1]][location,]
     y0 <- ifelse(halfwayDot$countidx == 1, dotWidth/2, dotWidth/2 + (halfwayDot$countidx - 1) * dotWidth)
@@ -738,16 +744,16 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     circleData <- data.frame(x0 = x0, 
                              y0 = y0,
                              r = dotWidth / 2)
-    medianLineData <- data.frame(x = c(x0, quartileValue),
-                                 y = c(y0, max(yLimits) * .9))
+    lineData <- data.frame(x = c(x0, quartileValue),
+                                 y = c(y0, max(yLimits) * .95))
     chairData <- data.frame(x = c(x0 - dotWidth * .65, x0 - dotWidth * .65,
                                   x0 + dotWidth * .65, x0 + dotWidth * .65),
                             y = c(y0 + dotWidth/2, y0, y0, y0 - dotWidth/2))
     plotObject <- plotObject + ggforce::geom_circle(data = circleData, mapping = ggplot2::aes(x0 = x0, y0 = y0, r = r),
-                                                    inherit.aes = FALSE, fill = "green") +
-      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = chairData, size = 1, color = "springgreen4")
+                                                    inherit.aes = FALSE, fill = color) +
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = chairData, size = 1, color = color2)
     if (!allCTs)
-      plotObject <- plotObject + ggplot2::geom_path(data = medianLineData, mapping = ggplot2::aes(x = x, y = y), color = "green",
+      plotObject <- plotObject + ggplot2::geom_path(data = lineData, mapping = ggplot2::aes(x = x, y = y), color = color,
                                                     size = 1)
   } else {  # if median is the average of two points
     halfwayDots <- list("lowerDot" = pData[[1]][location - .5,],
@@ -760,6 +766,10 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     } else {
       start <- c(pi * 1.5, pi / 2)
       end <- c(pi * 2.5, pi * 1.5)
+      chairData <- data.frame(x = c(halfwayDots$lowerDot$x - dotWidth * .65, halfwayDots$lowerDot$x - dotWidth * .65,
+                                    halfwayDots$lowerDot$x + dotWidth * .65, halfwayDots$lowerDot$x + dotWidth * .65),
+                              y = c(y0lower + dotWidth, y0lower + dotWidth/2, y0lower + dotWidth/2, y0lower))
+      plotObject <- plotObject + ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = chairData, size = 1, color = color2)
     }
     circleData <- data.frame(x0 = c(halfwayDots$lowerDot$x, halfwayDots$upperDot$x),
                              y0 = c(y0lower, y0upper),
@@ -767,27 +777,51 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
                              r0 = rep(0, 2),
                              start = start,
                              end = end)
-    chairData <- data.frame(x = c(halfwayDots$lowerDot$x - dotWidth * .65, halfwayDots$lowerDot$x - dotWidth * .65,
-                                  halfwayDots$lowerDot$x + dotWidth * .65, halfwayDots$lowerDot$x + dotWidth * .65),
-                            y = c(y0lower + dotWidth, y0lower + dotWidth/2, y0lower + dotWidth/2, y0lower))
-    medianLineData1 <- data.frame(x = c(halfwayDots$lowerDot$x, quartileValue),
-                                  y = c(y0lower, max(yLimits) * .95))
-    medianLineData2 <- data.frame(x = c(halfwayDots$upperDot$x, quartileValue),
-                                  y = c(y0upper, max(yLimits) * .95))
+    if(labelsInCorner){
+      lineYStart <- ifelse(halfwayDots$lowerDot$x == halfwayDots$upperDot$x, y0upper, 0)
+      lineData <- data.frame(x = rep(quartileValue, 2), y = c(lineYStart, max(yLimits) * .95))
+      if(!allCTs){
+        plotObject <- plotObject + 
+          ggplot2::geom_path(data = lineData, mapping = ggplot2::aes(x = x, y = y), color = color, size = 1)
+      }
+    }else {
+      lineData1 <- data.frame(x = c(halfwayDots$lowerDot$x, quartileValue),
+                              y = c(y0lower, max(yLimits) * .95))
+      lineData2 <- data.frame(x = c(halfwayDots$upperDot$x, quartileValue),
+                              y = c(y0upper, max(yLimits) * .95))
+      plotObject <- plotObject + 
+        ggplot2::geom_path(data = lineData1, mapping = ggplot2::aes(x = x, y = y), color = color, size = 1) +
+        ggplot2::geom_path(data = lineData2, mapping = ggplot2::aes(x = x, y = y), color = color, size = 1)
+    }
     
     plotObject <- plotObject + 
       ggforce::geom_arc_bar(data = circleData,
                             mapping = ggplot2::aes(x0 = x0, y0 = y0, r0 = r0, r = r,  start = start, end = end),
-                            inherit.aes = FALSE, fill = "green") +
-      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = chairData, size = 1, color = "springgreen4")
-    if(!allCTs){
-      plotObject <- plotObject + ggplot2::geom_path(data = medianLineData1, mapping = ggplot2::aes(x = x, y = y), color = "green", size = 1) +
-        ggplot2::geom_path(data = medianLineData2, mapping = ggplot2::aes(x = x, y = y), color = "green", size = 1)
-    }
+                            inherit.aes = FALSE, fill = color)
   }
   label <- paste(labelText, "= %.2f")
-  if(!allCTs)
-    plotObject <- plotObject + ggplot2::geom_label(data = data.frame(x = quartileValue, y = max(yLimits) * .95, label = gettextf(label, quartileValue)), 
-                                                   mapping = ggplot2::aes(x = x, y = y, label = label), color = "green", size = labelSize)
+  if(!allCTs){
+    if(labelsInCorner){
+      labelXPos <- max(data$x)
+      labelYPos <- switch(quartile, max(yLimits) * .95, max(yLimits) * .85, max(yLimits) * .75)
+    } else{
+      labelXPos <- quartileValue
+      labelYPos <- max(yLimits) * .95
+    }
+    plotObject <- plotObject + ggplot2::geom_label(data = data.frame(x = labelXPos, y = labelYPos, label = gettextf(label, quartileValue)), 
+                                                   mapping = ggplot2::aes(x = x, y = y, label = label), color = color, size = labelSize)
+  }
   return(plotObject)
+}
+
+.dotPlotIQRLine <- function(data, plotObject, yLimits){
+  quartiles <- quantile(data$x, type = 2, names = FALSE)
+  iqr <- quartiles[4] - quartiles[2]
+  lineData <- data.frame(x = c(quartiles[2], quartiles[4]), y = rep(max(yLimits)* .95, 2))
+  labelXPos <- (quartiles[4] + quartiles[2]) / 2
+  labelData <- data.frame(x = labelXPos, y = max(yLimits)*.95, label = gettextf("IQR = %.2f", iqr))
+  plotObject <- plotObject +
+    ggplot2::geom_path(data = lineData, mapping = ggplot2::aes(x = x, y = y), color = "orange", size = 1) +
+    ggplot2::geom_label(data = labelData, mapping = ggplot2::aes(x = x, y = y, label = label), color = "orange",
+                        size = 4)
 }
