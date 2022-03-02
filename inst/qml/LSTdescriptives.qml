@@ -26,327 +26,308 @@ Form
 {
 	columns: 1
 	
-	
-				DropDown
-		{
+	DropDown
+	{
 		name: "LSdescCentralOrSpread"
 		label: qsTr("Statistics to explain")
 		indexDefaultValue: 0
+		id: lsDescCentralOrSpread
 		values:
 		[
-		{label: qsTr("Central tendency"),		value: "LSdescCentralTendency"},
-		{label: qsTr("Spread"),	value: "LSdescSpread"}
+			{label: qsTr("Central tendency"),		value: "LSdescCentralTendency"},
+			{label: qsTr("Spread"),	value: "LSdescSpread"}
 		]
-		id: lsDescCentralOrSpread
-		}
-		
+	}
 	
 	Section
 	{
-	title: qsTr("Data options")
-	columns:	1
+		title: qsTr("Data options")
+		columns:	1
+	
+		RadioButtonGroup
+		{
+			columns:	3
+			name:		"lstDescDataType"
+			title:		qsTr("Data Input Type")
+			id:			lstDescDataType
 			
-	RadioButtonGroup
-	{
-		columns:	3
-		name:		"lstDescDataType"
-		title:		qsTr("Data Input Type")
-		id:			lstDescDataType
-		
-		
-		
-						RadioButton
-		{
-			value:		"dataRandom"
-			label:		qsTr("Random Sample")
-			id:			dataTypeA
-			checked:	true
+			RadioButton
+			{
+				value:		"dataRandom"
+				label:		qsTr("Random Sample")
+				id:			dataTypeA
+				checked:	true
+			}
+			
+			RadioButton
+			{
+				value:		"dataSequence"
+				label:		qsTr("Enter sequence")
+				id:			dataTypeB
+			}
+			
+			RadioButton
+			{
+				value:		"dataVariable"
+				label:		qsTr("Select variable")
+				id:			dataTypeC
+				enabled:	mainWindow.dataAvailable
+			}
 		}
 		
-				RadioButton
+		Group
 		{
-			value:		"dataSequence"
-			label:		qsTr("Enter sequence")
-			id:			dataTypeB
-		}
-
-		RadioButton
-		{
-			value:		"dataVariable"
-			label:		qsTr("Select variable")
-			id:			dataTypeC
-			enabled:	mainWindow.dataAvailable
-		}
-
-
-
-	}
+			columns: 2
 	
-	Group
-	{
-	columns: 2
-	
-	DoubleField
-	{
+			DoubleField
+			{
 				name:			"lstDescSampleN"
 				visible:	dataTypeA.checked
 				label:			qsTr("Sample size")
 				fieldWidth:		60
 				defaultValue:	100
 				decimals:		0
-	}
-	
-	DoubleField
-	{
+			}
+			
+			DoubleField
+			{
 				name:			"lstDescSampleSeed"
 				visible:	dataTypeA.checked
 				label:			qsTr("Set seed")
 				fieldWidth:		60
 				defaultValue:	123
 				decimals:		0
-	}
-	
-	}
-	
-	
-	
-	Group
-	{
-	
-		RadioButtonGroup
-	{
-		columns:	3
-		name:		"lstDescSampleDistType"
-		visible:	dataTypeA.checked
-		title:		qsTr("Distribution Type")
-		id:			distributionType
-		
-		RadioButton
-		{
-			value:		"lstSampleDistDiscrete"
-			label:		qsTr("Discrete")
-			id:			distTypeDisc
-			checked:	true
+			}
 		}
+		
+		Group
+		{
+		
+			RadioButtonGroup
+			{
+				columns:	3
+				name:		"lstDescSampleDistType"
+				visible:	dataTypeA.checked
+				title:		qsTr("Distribution Type")
+				id:			distributionType
+		
+				RadioButton
+				{
+					value:		"lstSampleDistDiscrete"
+					label:		qsTr("Discrete")
+					id:			distTypeDisc
+					checked:	true
+				}
 				
-		RadioButton
-		{
-			value:		"lstSampleDistCont"
-			label:		qsTr("Continuous")
-			id:			distTypeCont
-		}
-		
-		
-	}
+				RadioButton
+				{
+					value:		"lstSampleDistCont"
+					label:		qsTr("Continuous")
+					id:			distTypeCont
+				}	
+			}
+			
+			DropDown
+			{
+				name: "LSdescDiscreteDistributions"
+				visible:	dataTypeA.checked && distTypeDisc.checked
+				label: qsTr("Distribution")
+				indexDefaultValue: 0
+				id: lsDescDiscreteDistributions
+				values:
+				[
+					{label: qsTr("Binomial distribution"),		value: "binomialDist"},
+					{label: qsTr("Poisson distribution"),		value: "poissonDist"}
+				]
+			}
 		
 			DropDown
-		{
-		name: "LSdescDiscreteDistributions"
-		visible:	dataTypeA.checked && distTypeDisc.checked
-		label: qsTr("Distribution")
-		indexDefaultValue: 0
-		values:
-		[
-		{label: qsTr("Binomial distribution"),		value: "binomialDist"},
-		{label: qsTr("Poisson distribution"),		value: "poissonDist"}
-		]
-		id: lsDescDiscreteDistributions
+			{
+				name: "LSdescContinuousDistributions"
+				visible:	dataTypeA.checked && distTypeCont.checked
+				label: qsTr("Distribution")
+				indexDefaultValue: 0
+				id: lsDescContinuousDistributions
+				values:
+				[
+					{label: qsTr("Skewed normal distribution"),		value: "skewedNormal"},
+					{label: qsTr("Uniform distribution"),		value: "uniform"},
+					{label: qsTr("Normal distribution"),		value: "normal"}
+				]
+			}
 		}
 		
-		DropDown
+		TextArea
 		{
-		name: "LSdescContinuousDistributions"
-		visible:	dataTypeA.checked && distTypeCont.checked
-		label: qsTr("Distribution")
-		indexDefaultValue: 0
-		values:
-		[
-		{label: qsTr("Skewed normal distribution"),		value: "skewedNormal"},
-		{label: qsTr("Uniform distribution"),		value: "uniform"},
-		{label: qsTr("Normal distribution"),		value: "normal"}
-		]
-		id: lsDescContinuousDistributions
+			title:		qsTr("Comma-separated Sequence of Observations")
+			visible:	dataTypeB.checked
+			height:		100
+			name:     "lstDescDataSequenceInput"
+			textType:	JASP.TextTypeSource
+			separators:	[",",";","\n"]
 		}
-	}
-
-
-	TextArea
-	{
-		title:		qsTr("Comma-separated Sequence of Observations")
-		visible:	dataTypeB.checked
-		height:		100
-		name:     "lstDescDataSequenceInput"
-		textType:	JASP.TextTypeSource
-		separators:	[",",";","\n"]
-	}
-
-
-	Group
-	{
-		visible: dataTypeC.checked
-
-		VariablesForm
+		
+		Group
 		{
-			preferredHeight:	150
-
-			AvailableVariablesList
+			visible: dataTypeC.checked
+			
+			VariablesForm
 			{
-				name:	"allVariables"
-				title:	qsTr("Available")
-			}
-
-			AssignedVariablesList
-			{
-				name:				"selectedVariable"
-				title:				qsTr("Selected")
-				singleVariable:		true
-				allowedColumns:		["ordinal", "scale"]
-
+				preferredHeight:	150
+				
+				AvailableVariablesList
+				{
+					name:	"allVariables"
+					title:	qsTr("Available")
+				}
+				
+				AssignedVariablesList
+				{
+					name:				"selectedVariable"
+					title:				qsTr("Selected")
+					singleVariable:		true
+					allowedColumns:		["ordinal", "scale"]
+				}
 			}
 		}
 	}
-
-	}
 	
-	
-		Section
+	Section
 	{
-	title: qsTr("Central Tendency Measures")
-	visible: lsDescCentralOrSpread.currentValue == "LSdescCentralTendency"
-	
-
+		title: qsTr("Central Tendency Measures")
+		visible: lsDescCentralOrSpread.currentValue == "LSdescCentralTendency"
+		
 		RadioButtonGroup
 		{
-		title:                                  qsTr("Select Central Tendency Measure")
-		name:                                   "LSdescCT"
+			title:                                  qsTr("Select Central Tendency Measure")
+			name:                                   "LSdescCT"
 
 			RadioButton
 			{
-			name:                               "LSdescMean"
-			label:                              qsTr("Show Mean")
-			checked:                            true
+				name:                               "LSdescMean"
+				label:                              qsTr("Show Mean")
+				checked:                            true
 			}
-
+			
 			RadioButton
 			{
-			name:                               "LSdescMedian"
-			label:                              qsTr("Show Median")
+				name:                               "LSdescMedian"
+				label:                              qsTr("Show Median")
 			}
-		
+			
 			RadioButton
 			{
 			name:                               "LSdescMode"
 			label:                              qsTr("Show Mode")
 			}
 			
-						RadioButton
+			RadioButton
 			{
-			name:                               "LSdescMMM"
-			label:                              qsTr("Compare All")
+				name:                               "LSdescMMM"
+				label:                              qsTr("Compare All")
 			}
 		}
 		
-			CheckBox{name: "LSdescExplanationC";
-			label: qsTr("Show explanation");
+		CheckBox
+		{
+			name: "LSdescExplanationC"
+			label: qsTr("Show explanation")
 			checked: true
-					}
-					
+		}
 	}
 	
-	
-	
-			Section
+	Section
 	{
-	title: qsTr("Measures of spread")
-	visible: lsDescCentralOrSpread.currentValue == "LSdescSpread"
-	
-
+		title: qsTr("Measures of spread")
+		visible: lsDescCentralOrSpread.currentValue == "LSdescSpread"
+		
 		RadioButtonGroup
 		{
-		title:                                  qsTr("Select measure of spread")
-		name:                                   "LSdescS"
+			title:	qsTr("Select measure of spread")
+			name:	"LSdescS"
 
 			RadioButton
 			{
-			name:                               "LSdescRange"
-			label:                              qsTr("Show range")
-			checked:                            true
-			}
-
-			RadioButton
-			{
-			name:                               "LSdescQR"
-			label:                              qsTr("Show quartiles")
-			}
-		
-			RadioButton
-			{
-			name:                               "LSdescVar"
-			label:                              qsTr("Show variance")
+				name:		"LSdescRange"
+				label:		qsTr("Show range")
+				checked:	true
 			}
 			
 			RadioButton
 			{
-			name:                               "LSdescSD"
-			label:                              qsTr("Show standard deviation")
+				name:	"LSdescQR"
+				label:	qsTr("Show quartiles")
+			}
+		
+			RadioButton
+			{
+				name:	"LSdescVar"
+				label:	qsTr("Show variance")
+			}
+		
+			RadioButton
+			{
+				name:	"LSdescSD"
+				label:	qsTr("Show standard deviation")
 			}
 		}
 		
-			CheckBox{name: "LSdescExplanationS";
-			label: qsTr("Show explanation");
-			checked: true
-					}
-					
-	}
-	
-	
-	
-			Section
-	{
-	title: qsTr("Plots")
-	
-	
-			CheckBox{name: "LSdescHistBar";
-			label: qsTr("Histogram / Barplot");
-			checked: true
-			
-		RadioButtonGroup
+		CheckBox
 		{
-		name:                                   "LSdescHistCountOrDens"
-
-			RadioButton
-			{
-			name:                               "LSdescHistCount"
-			label:                              qsTr("Show counts")
-			checked:                            true
-			}
-
-			RadioButton
-			{
-			name:                               "LSdescHistDens"
-			label:                              qsTr("Show density (Histogram only)")
-			}
+			name:		"LSdescExplanationS"
+			label:		qsTr("Show explanation")
+			checked:	true
 		}
-		
-		
-								CheckBox{name: "LSdescHistBarRugs";
-			label: qsTr("Display rug marks");
-			checked: true}
-		}
-					
-			CheckBox{name: "LSdescDotPlot";
-			label: qsTr("Dot plot");
-			checked: true
-			
-			
-			
-			
-			CheckBox{name: "LSdescDotPlotRugs";
-			label: qsTr("Display rug marks");
-			checked: true}
-					}
 	}
 	
-	
+	Section
+	{
+		title: qsTr("Plots")
+		
+		CheckBox
+		{
+			name:		"LSdescHistBar"
+			label:		qsTr("Histogram / Barplot")
+			checked:	true
+		
+			RadioButtonGroup
+			{
+				name:	"LSdescHistCountOrDens"
+			
+				RadioButton
+				{
+					name:		"LSdescHistCount"
+					label:		qsTr("Show counts")
+					checked:	true
+				}
+			
+				RadioButton
+				{
+					name:	"LSdescHistDens"
+					label:	qsTr("Show density (Histogram only)")
+				}
+			}
+			
+			CheckBox
+			{
+				name:		"LSdescHistBarRugs"
+				label:		qsTr("Display rug marks")
+				checked:	true
+			}
+		}
+		
+		CheckBox
+		{
+			name:		"LSdescDotPlot"
+			label:		qsTr("Dot plot")
+			checked:	true
 
+			CheckBox
+			{
+				name:		"LSdescDotPlotRugs"
+				label:		qsTr("Display rug marks")
+				checked:	true
+			}
+		}
+	}
 }
