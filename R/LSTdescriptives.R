@@ -49,6 +49,9 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
 .descExplanationS <- function(jaspResults, options){
   jaspResults[["descExplanationS"]] <- createJaspContainer(gettext("Explanation"))
   jaspResults[["descExplanationS"]]$position <- 1
+  jaspResults[["descExplanationS"]]$dependOn(options = c("LSdescCentralOrSpread",
+                                                         "LSdescS", 
+                                                         "LSdescExplanationS"))
   
   plot <- createJaspPlot(title = gettext("Example distribution"), width = 600, height = 600)
   plot$position <- 1
@@ -184,6 +187,9 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
 .descExplanationCT <- function(jaspResults, options) {
   jaspResults[["descExplanationCT"]] <- createJaspContainer(gettext("Explanation"))
   jaspResults[["descExplanationCT"]]$position <- 1
+  jaspResults[["descExplanationCT"]]$dependOn(options = c("LSdescCentralOrSpread",
+                                                          "LSdescCT",
+                                                          "LSdescExplanationC"))
   
   mean <- 0
   sd <- 1
@@ -388,7 +394,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     meanPoint <- mean(data$x)
     meanLineData <- data.frame(x = rep(meanPoint, 2), y = c(0, yMax * .95))
     labelData <- data.frame(x = rep(meanPoint, 2), y = yMax * c(.95, .85),
-                            label = c(gettextf("Mean = %2.f", meanPoint), gettextf("SD = %2.f", stdDev)))
+                            label = c(gettextf("Mean = %.2f", meanPoint), gettextf("SD = %.2f", stdDev)))
     
     minX <- min(data$x)
     maxX <- max(data$x)
@@ -400,7 +406,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       if (i != max(sdsMin)){
         sdLineMin <- meanPoint - stdDev * (i)
         sdLineData <- data.frame(x = c(sdLineMax, sdLineMin, sdLineMin),
-                                 y = c(yMax * .85, yMax * .85, yMax * .8))
+                                 y = c(yMax * .85, yMax * .85, 0))
         sdLabelData <- data.frame(x = sdLineMin, y = yMax * .88, label = gettextf("-%i SD", i))
         plotObject <- plotObject +
           ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = sdLabelData, size = 3,
@@ -418,7 +424,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       if (i != max(sdsMax)){
         sdLineMax <- meanPoint + stdDev * (i)
         sdLineData <- data.frame(x = c(sdLineMin, sdLineMax, sdLineMax),
-                                 y = c(yMax * .85, yMax * .85, yMax * .8))
+                                 y = c(yMax * .85, yMax * .85, 0))
         sdLabelData <- data.frame(x = sdLineMax, y = yMax * .88, label = gettextf("+%i SD", i))
         plotObject <- plotObject +
           ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = sdLabelData, size = 3,
@@ -444,6 +450,20 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   jaspResults[["descHistogramOrBarplot"]] <- createJaspContainer(gettext(title))
   p <- createJaspPlot(title = gettext(title), width = 700, height = 400)
   p$position <- 2
+  p$dependOn(options = c("LSdescCentralOrSpread",
+                         "lstDescDataType",
+                         "lstDescSampleN",
+                         "lstDescSampleSeed",
+                         "lstDescSampleDistType",
+                         "LSdescDiscreteDistributions",
+                         "LSdescContinuousDistributions",
+                         "lstDescDataSequenceInput",
+                         "selectedVariable",
+                         "LSdescCT",
+                         "LSdescS",
+                         "LSdescHistBar",
+                         "LSdescHistCountOrDens",
+                         "LSdescHistBarRugs"))
   
   if (stats == "ct")
     allCTs <- options[["LSdescCT"]] == "LSdescMMM"
@@ -500,6 +520,19 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   height <- 400 + (length(data$x) / 50) * 25
   dp <- createJaspPlot(title = gettext("Dotplot"), width = 700, height = height)
   dp$position <- 3
+  dp$dependOn(options = c("LSdescCentralOrSpread",
+                          "lstDescDataType",
+                          "lstDescSampleN",
+                          "lstDescSampleSeed",
+                          "lstDescSampleDistType",
+                          "LSdescDiscreteDistributions",
+                          "LSdescContinuousDistributions",
+                          "lstDescDataSequenceInput",
+                          "selectedVariable",
+                          "LSdescCT",
+                          "LSdescS",
+                          "LSdescDotPlot",
+                          "LSdescDotPlotRugs"))
   
   if (ready){
     dpPlotObjectList <- .lstDescCreateDotPlotObject(data, options, stats = stats)
@@ -643,8 +676,9 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   dotWidth <- pData[[1]]$width[1] * dotsize
   yLabels <- unique(as.integer(jaspGraphs::getPrettyAxisBreaks(c(0, max(pData[[1]]$countidx)))))
   yBreaks <- yLabels * dotWidth
-  yMax <- ifelse(max(yBreaks) < (10 * dotWidth), (10 * dotWidth), max(yBreaks))
-  yLimits <-  c(0, yMax + (2 * dotWidth))
+  yStep <- yBreaks[2] - yBreaks[1]
+  yMax <- ifelse(max(yBreaks) < (10 * dotWidth), (10 * dotWidth), max(yBreaks) + yStep)
+  yLimits <-  c(0, yMax)
   
   p <- p + ggplot2::scale_y_continuous(name = "Counts", limits = yLimits, breaks = yBreaks, labels = yLabels) + 
     jaspGraphs::geom_rangeframe() +
@@ -691,6 +725,8 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       p <- .dotPlotVisualizeQuartiles(data, p, dotsize, labelSize, yLimits, labelText = gettext("3rd quar."), quartile = 3,
                                    labelsInCorner = TRUE, color = "dodgerblue")
       p <- .dotPlotIQRLine(data, p, yLimits)
+    } else if (options[["LSdescS"]] == "LSdescSD") {
+      p <- .drawSpreadVisualization(jaspResults, options, data, p, yMax = max(yLimits))
     }
   }
   return(list("p" = p, "yMax" = max(yLimits) * .95))
