@@ -651,7 +651,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     dotsize <- 1
   }
   
-  labelSize <- 6
+  labelSize <- .getLabelSize(n)
   
   if (stats == "ct") {
     allCTs <- options[["LSdescCT"]] == "LSdescMMM"
@@ -661,7 +661,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   
   xBreaks <- jaspGraphs::getPrettyAxisBreaks(data$x)
   xStep <- xBreaks[2] - xBreaks[1]
-  xBuffer <- ifelse(allCTs, xStep * 2, xStep/2)
+  xBuffer <- xStep * 2
   xLimits <- c(min(xBreaks) - xStep/2, max(xBreaks) + xBuffer)
   
   p <- ggplot2::ggplot(data = data, ggplot2::aes(x = x)) +
@@ -685,7 +685,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     jaspGraphs::themeJaspRaw()
   if (stats == "ct"){
     if (options[["LSdescCT"]] == "LSdescMedian"| options[["LSdescCT"]] == "LSdescMMM") {
-      p <- .dotPlotVisualizeQuartiles(data, p, dotsize, labelSize, yLimits, allCTs, labelText = gettext("Median"), quartile = 2,
+      p <- .dotPlotVisualizeQuartiles(data, p, dotsize, labelSize, yLimits, xLimits, allCTs, labelText = gettext("Median"), quartile = 2,
                                    color = "green")
     }
     if (options[["LSdescCT"]] == "LSdescMean" || options[["LSdescCT"]] == "LSdescMMM"){
@@ -718,13 +718,13 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     if (options[["LSdescS"]] == "LSdescRange") {
       p <- .dotPlotVisualizeRange(data, p, dotsize, yLimits)
     } else if (options[["LSdescS"]] == "LSdescQR"){
-      p <- .dotPlotVisualizeQuartiles(data, p, dotsize, labelSize, yLimits, labelText = gettext("2nd quar. / \n Median"),
+      p <- .dotPlotVisualizeQuartiles(data, p, dotsize, labelSize, yLimits, xLimits, labelText = gettext("2nd quar. / \n Median"),
                                    quartile = 2, labelsInCorner = TRUE, color = "green")
-      p <- .dotPlotVisualizeQuartiles(data, p, dotsize, labelSize, yLimits, labelText = gettext("1st quar."), quartile = 1,
+      p <- .dotPlotVisualizeQuartiles(data, p, dotsize, labelSize, yLimits, xLimits, labelText = gettext("1st quar."), quartile = 1,
                                    labelsInCorner = TRUE, color = "purple")
-      p <- .dotPlotVisualizeQuartiles(data, p, dotsize, labelSize, yLimits, labelText = gettext("3rd quar."), quartile = 3,
+      p <- .dotPlotVisualizeQuartiles(data, p, dotsize, labelSize, yLimits, xLimits, labelText = gettext("3rd quar."), quartile = 3,
                                    labelsInCorner = TRUE, color = "dodgerblue")
-      p <- .dotPlotIQRLine(data, p, yLimits)
+      p <- .dotPlotIQRLine(data, p, yLimits, labelSize)
     } else if (options[["LSdescS"]] == "LSdescSD") {
       p <- .drawSpreadVisualization(jaspResults, options, data, p, yMax = max(yLimits))
     }
@@ -763,7 +763,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   return(plotObject)
 }
 
-.dotPlotVisualizeQuartiles <- function(data, plotObject, dotsize, labelSize, yLimits, allCTs = FALSE, labelText, quartile,
+.dotPlotVisualizeQuartiles <- function(data, plotObject, dotsize, labelSize, yLimits, xLimits, allCTs = FALSE, labelText, quartile,
                                     labelsInCorner = FALSE, color = c("green", "purple", "dodgerblue")) {
   color2 <- switch(color, "green" = "springgreen4", "purple" = "pink", "dodgerblue" = "blue")
   n <- length(data$x)
@@ -773,7 +773,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   location <- as.integer(quantile(as.numeric(rownames(sortedDf)), type = 2) * 2) / 2 # round to nearest half
   location <- location[quartile + 1]
   quartileValue <- quantile(data$x, type = 2)[quartile + 1]
-  if(location == as.integer(location)){   # if median is a single datapoint
+  if(location == as.integer(location)){   # if quartile is a single datapoint
     halfwayDot <- pData[[1]][location,]
     y0 <- ifelse(halfwayDot$countidx == 1, dotWidth/2, dotWidth/2 + (halfwayDot$countidx - 1) * dotWidth)
     x0 <- halfwayDot$x
@@ -791,7 +791,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     if (!allCTs)
       plotObject <- plotObject + ggplot2::geom_path(data = lineData, mapping = ggplot2::aes(x = x, y = y), color = color,
                                                     size = 1)
-  } else {  # if median is the average of two points
+  } else {  # if quartile is the average of two points
     halfwayDots <- list("lowerDot" = pData[[1]][location - .5,],
                         "upperDot" = pData[[1]][location + .5,])
     y0lower <- ifelse(halfwayDots$lowerDot$countidx == 1, dotWidth / 2, dotWidth / 2 + (halfwayDots$lowerDot$countidx - 1) * dotWidth)
@@ -812,15 +812,15 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
                              r = rep(dotWidth/2, 2),
                              r0 = rep(0, 2),
                              start = start,
-                             end = end)
-    if(labelsInCorner){
-      lineYStart <- ifelse(halfwayDots$lowerDot$x == halfwayDots$upperDot$x, y0upper, 0)
-      lineData <- data.frame(x = rep(quartileValue, 2), y = c(lineYStart, max(yLimits) * .95))
-      if(!allCTs){
-        plotObject <- plotObject + 
-          ggplot2::geom_path(data = lineData, mapping = ggplot2::aes(x = x, y = y), color = color, size = 1)
-      }
-    }else {
+                              end = end)
+    # if(labelsInCorner){
+    #   lineYStart <- ifelse(halfwayDots$lowerDot$x == halfwayDots$upperDot$x, y0upper, 0)
+    #   lineData <- data.frame(x = rep(quartileValue, 2), y = c(lineYStart, max(yLimits) * .95))
+    #   if(!allCTs){
+    #     plotObject <- plotObject + 
+    #       ggplot2::geom_path(data = lineData, mapping = ggplot2::aes(x = x, y = y), color = color, size = 1)
+    #   }
+    # }else {
       lineData1 <- data.frame(x = c(halfwayDots$lowerDot$x, quartileValue),
                               y = c(y0lower, max(yLimits) * .95))
       lineData2 <- data.frame(x = c(halfwayDots$upperDot$x, quartileValue),
@@ -828,7 +828,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       plotObject <- plotObject + 
         ggplot2::geom_path(data = lineData1, mapping = ggplot2::aes(x = x, y = y), color = color, size = 1) +
         ggplot2::geom_path(data = lineData2, mapping = ggplot2::aes(x = x, y = y), color = color, size = 1)
-    }
+    #}
     
     plotObject <- plotObject + 
       ggforce::geom_arc_bar(data = circleData,
@@ -838,8 +838,8 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   label <- paste(labelText, "= %.2f")
   if(!allCTs){
     if(labelsInCorner){
-      labelXPos <- max(data$x)
-      labelYPos <- switch(quartile, max(yLimits) * .95, max(yLimits) * .85, max(yLimits) * .75)
+      labelXPos <- max(data$x) + (max(xLimits) - max(data$x))/2
+      labelYPos <- switch(quartile, max(yLimits) * .95, max(yLimits) * .75, max(yLimits) * .55)
     } else{
       labelXPos <- quartileValue
       labelYPos <- max(yLimits) * .95
@@ -850,14 +850,30 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   return(plotObject)
 }
 
-.dotPlotIQRLine <- function(data, plotObject, yLimits){
+.dotPlotIQRLine <- function(data, plotObject, yLimits, labelSize){
   quartiles <- quantile(data$x, type = 2, names = FALSE)
   iqr <- quartiles[4] - quartiles[2]
   lineData <- data.frame(x = c(quartiles[2], quartiles[4]), y = rep(max(yLimits)* .95, 2))
   labelXPos <- (quartiles[4] + quartiles[2]) / 2
-  labelData <- data.frame(x = labelXPos, y = max(yLimits)*.95, label = gettextf("IQR = %.2f", iqr))
+  labelData <- data.frame(x = labelXPos, y = max(yLimits), label = gettextf("IQR = %.2f", iqr))
   plotObject <- plotObject +
     ggplot2::geom_path(data = lineData, mapping = ggplot2::aes(x = x, y = y), color = "orange", size = 1) +
     ggplot2::geom_label(data = labelData, mapping = ggplot2::aes(x = x, y = y, label = label), color = "orange",
-                        size = 6)
+                        size = labelSize)
+}
+
+
+.getLabelSize <- function(n){
+  if(n <=  100){
+    labelSize <- 6
+  }else if(n > 100 && n <= 200){
+    labelSize <- 6 - 2 *((n - 100) / 100)
+  }else if(n > 200 && n <= 300){
+    labelSize <- 4 - ((n - 200) / 100)
+  }else if(n > 300 && n < 400){
+    labelSize <- 3 - ((n - 300) / 100)
+  }else{
+    labelSize <- 3
+  }
+  return(labelSize)
 }
