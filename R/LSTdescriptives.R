@@ -54,7 +54,6 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
                                                          "LSdescExplanationS"))
   
   plot <- createJaspPlot(title = gettext("Example distribution"), width = 700, height = 700)
-  plot$position <- 1
   
   set.seed(123)
   data <- data.frame(index = 1:21, x = rnorm(21, 10, 2.5))   #sample(0:20, 21)
@@ -128,21 +127,51 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks, limits = c(min(xBreaks), max(xBreaks) + 5))
   }else if (options[["LSdescS"]] == "LSdescVar") {
     meanPoint <- mean(data$x)
-    meanLineData <- data.frame(x = rep(meanPoint, 2), y = c(21, 1))
-    labelData <- data.frame(x = meanPoint, y = 21, label = gettext("Mean"))
-    
+    meanLineData <- data.frame(x = rep(meanPoint, 2), y = c(22, 0))
+    labelDataMean <- data.frame(x = meanPoint, y = 22, label = gettext("Mean"))
     plotObject <- ggplot2::ggplot(data = data, mapping = ggplot2::aes(x = x, y = index)) +
-      ggplot2::geom_point(size = 6, fill = "grey", color = "black", shape = 21) 
+      ggplot2::geom_point(size = 6, fill = "grey", color = "black", shape = 21) + 
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = meanLineData, size = 1, color = "red", alpha = .7) +
+      ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = labelDataMean, size = 6, color = "red") +
+      ggplot2::scale_y_continuous(name = "Observation No.", breaks = yBreaks, limits = c(-1, 22))
+    plotObject2 <- plotObject
     for (i in 1:length(data$x)) {
       devLineData <- data.frame(x = c(data$x[i], meanPoint), y = rep(data$index[i], 2))
       plotObject <- plotObject +
         ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = devLineData, size = 1, color = "dodgerblue")
     }
     plotObject <- plotObject +
-      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = meanLineData, size = 1, color = "red") +
-      ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = labelData, size = 6, color = "red") +
-      ggplot2::scale_y_continuous(name = "Observation No.", breaks = yBreaks, limits = c(0, 21)) +
       ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks, limits = range(xBreaks)) 
+    
+    
+    #plot with squared distances to mean
+    distances <- data$x - meanPoint
+    distancesSquared <- distances^2
+    
+    for (i in 1:length(distancesSquared)) {
+      devLineData <- data.frame(x = c(meanPoint, meanPoint + distancesSquared[i]), y = rep(i, 2))
+      plotObject2 <- plotObject2 +
+        ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = devLineData, size = 1, color = "dodgerblue")
+    }
+    varLineData <- data.frame(x = c(meanPoint, meanPoint + var(data$x)), y = rep(0, 2))
+    xBreaks2 <- jaspGraphs::getPrettyAxisBreaks(c(data$x, meanPoint + distancesSquared))
+    labelDataVar <- data.frame(x = meanPoint + var(data$x)/2, y = -1, label = gettext("Variance"))
+    plotObject2 <- plotObject2 +
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = varLineData, size = 2, color = "purple") +
+      ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = labelDataVar, size = 6, color = "purple") +
+      ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks2, limits = range(xBreaks2)) +
+      jaspGraphs::geom_rangeframe() +
+      jaspGraphs::themeJaspRaw()
+    
+    plot2 <- createJaspPlot(title = gettext("Example distribution"), width = 700, height = 700)
+    plot$position <- 3
+    
+    plot2$plotObject <- plotObject2
+    
+    jaspResults[["descExplanationS"]][["Plot2"]] <- plot2
+    jaspResults[["descExplanationS"]][["Plot2"]]$position <- 3
+    
+    
   }else if (options[["LSdescS"]] == "LSdescSD") {
     stdDev <- sd(data$x)
     meanPoint <- mean(data$x)
@@ -166,9 +195,6 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       ggplot2::scale_y_continuous(name = "Observation No.", breaks = yBreaks, limits = c(0, 21)) +
       ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks, limits = range(xBreaks))
   }
-  
-  
-  
   plotObject <- plotObject +
     jaspGraphs::geom_rangeframe() +
     jaspGraphs::themeJaspRaw()
@@ -181,7 +207,9 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   plot$plotObject <- plotObject
   
   jaspResults[["descExplanationS"]][["Plot"]] <- plot
+  jaspResults[["descExplanationS"]][["Plot"]]$position <- 1
   jaspResults[["descExplanationS"]][["Text"]] <- createJaspHtml(text, "p")
+  jaspResults[["descExplanationS"]][["Text"]]$position <- 2
 }
 
 .descExplanationCT <- function(jaspResults, options) {
@@ -396,8 +424,8 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     stdDev <- sd(data$x)
     meanPoint <- mean(data$x)
     meanLineData <- data.frame(x = rep(meanPoint, 2), y = c(0, yMax * .95))
-    minX <- min(data$x)
-    maxX <- max(data$x)
+    minX <- min(xBreaks)
+    maxX <- max(xBreaks)
     sdsMin <- round((abs(meanPoint - minX) / stdDev) + .5)
     sdsMax <- round((abs(meanPoint - maxX) / stdDev) + .5)
     colorPalette <- c("salmon4", "olivedrab4", "salmon2", "olivedrab2", "salmon", "olivedrab")
@@ -480,7 +508,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     if (discrete){
       xBreaks <- unique(as.integer(jaspGraphs::getPrettyAxisBreaks(data$x)))
       xStep <- xBreaks[2] - xBreaks[1]
-      xLimits <- c(min(xBreaks) - xStep/2, max(xBreaks) + xStep * 2.5)
+      xLimits <- c(min(xBreaks) - xStep/2, max(xBreaks) + xStep * 3)
       yBreaks <- unique(round(jaspGraphs::getPrettyAxisBreaks(c(0, table(data$x)))))
       yLimits <- range(yBreaks) * 1.3
       yMax <- max(yLimits)
@@ -496,7 +524,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       displayDensity <- options[["LSdescHistCountOrDens"]] == "LSdescHistDens"
       xBreaks <- jaspGraphs::getPrettyAxisBreaks(data$x)
       xStep <- xBreaks[2] - xBreaks[1]
-      xLimits <- c(min(xBreaks) - xStep/2, max(xBreaks) + xStep * 2.5)
+      xLimits <- c(min(xBreaks) - xStep/2, max(xBreaks) + xStep * 3)
       plotObject <- jaspDescriptives:::.plotMarginal(data$x, variableName = "Observations", displayDensity = displayDensity,
                                                      binWidthType = "sturges", rugs = options[["LSdescHistBarRugs"]]) 
       yMax <- max(ggplot2::ggplot_build(plotObject)$data[[1]]$y) * 1.3
@@ -659,7 +687,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     xBreaks <- jaspGraphs::getPrettyAxisBreaks(data$x)
   }
   xStep <- xBreaks[2] - xBreaks[1]
-  xLimits <- c(min(xBreaks) - xStep/2, max(xBreaks) + xStep * 2.5)
+  xLimits <- c(min(xBreaks) - xStep/2, max(xBreaks) + xStep * 3)
   
   p <- ggplot2::ggplot(data = data, ggplot2::aes(x = x)) +
     ggplot2::geom_dotplot(binaxis = 'x', stackdir = 'up', dotsize = dotsize, fill = "grey") +
