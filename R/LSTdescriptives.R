@@ -352,7 +352,9 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   return(df)
 }
 
-.drawSpreadVisualization <- function(jaspResults, options, data, plotObject, yMax) {
+.drawSpreadVisualization <- function(jaspResults, options, data, plotObject, yMax, xLimits, xBreaks, labelSize) {
+  xLimitUpper <- max(xLimits)
+  xBreakLimit <- max(xBreaks)
   if (options[["LSdescS"]] == "LSdescRange") {
     minX <- min(data$x)
     maxX <- max(data$x)
@@ -367,18 +369,19 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = minLineData, size = 1, color = "blue") +
       ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = maxLineData, size = 1, color = "red") +
       ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = rangeLineData, size = 1, color = "orange") +
-      ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = labelData, size = 6, 
+      ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = labelData, size = labelSize, 
                           color = c("blue", "red", "orange"))
   } else if (options[["LSdescS"]] == "LSdescQR") {
     quartiles <- quantile(data$x, type = 2)
     iqr <- quartiles[4] - quartiles[2]
     maxX <- max(data$x)
-    q1LineData <- data.frame(x = rep(quartiles[2], 2), y = c(0, yMax))
+    q1LineData <- data.frame(x = rep(quartiles[2], 2), y = c(0, yMax * .95))
     q2LineData <- data.frame(x = rep(quartiles[3], 2), y = c(0, yMax * .95))
-    q3LineData <- data.frame(x = rep(quartiles[4], 2), y = c(0, yMax))
+    q3LineData <- data.frame(x = rep(quartiles[4], 2), y = c(0, yMax * .95))
     iqrLineData <- data.frame(x = c(quartiles[2], quartiles[4]), y = rep(yMax * .95, 2))
-    labelData <- data.frame(x = c(rep(maxX, 3), sum(quartiles[2], quartiles[4])/2),
-                            y = c(yMax * c(.95, .85, .75), yMax * .95),
+    xPosQuarLabels <- xBreakLimit + (xLimitUpper - xBreakLimit)/2
+    labelData <- data.frame(x = c(rep(xPosQuarLabels, 3), sum(quartiles[2], quartiles[4])/2),
+                            y = yMax * c(.95, .75, .55, 1),
                             label = c(gettextf("1st quar. = %.2f", quartiles[2]), gettextf("2nd quar. / \n Median = %.2f", quartiles[3]),
                                       gettextf("3rd quar. = %.2f", quartiles[4]), gettextf("IQR = %.2f", iqr)))
     
@@ -388,14 +391,11 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = q3LineData, color = "dodgerblue", size = 1) +
       ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = iqrLineData, color = "orange", size = 1) +
       ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = labelData,
-                          color = c("purple", "green", "dodgerblue", "orange"), size = 6)
+                          color = c("purple", "green", "dodgerblue", "orange"), size = labelSize)
   }else if (options[["LSdescS"]] == "LSdescSD") {
     stdDev <- sd(data$x)
     meanPoint <- mean(data$x)
     meanLineData <- data.frame(x = rep(meanPoint, 2), y = c(0, yMax * .95))
-    labelData <- data.frame(x = rep(meanPoint, 2), y = yMax * c(.95, .85),
-                            label = c(gettextf("Mean = %.2f", meanPoint), gettextf("SD = %.2f", stdDev)))
-    
     minX <- min(data$x)
     maxX <- max(data$x)
     sdsMin <- round((abs(meanPoint - minX) / stdDev) + .5)
@@ -407,39 +407,50 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
         sdLineMin <- meanPoint - stdDev * (i)
         sdLineData <- data.frame(x = c(sdLineMax, sdLineMin, sdLineMin),
                                  y = c(yMax * .85, yMax * .85, 0))
-        sdLabelData <- data.frame(x = sdLineMin, y = yMax * .88, label = gettextf("-%i SD", i))
-        plotObject <- plotObject +
-          ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = sdLabelData, size = 3,
-                              color = colorPalette[i])
       } else {
         sdLineMin <- minX
         sdLineData <- data.frame(x = c(sdLineMax, sdLineMin), 
                                  y = rep(yMax * .85, 2))
       }
-      plotObject <- plotObject +
-        ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = sdLineData, color = colorPalette[i], size = 1)
-    }
-    for(i in 1:sdsMax){
-      sdLineMin <- meanPoint + stdDev * (i-1)
-      if (i != max(sdsMax)){
-        sdLineMax <- meanPoint + stdDev * (i)
-        sdLineData <- data.frame(x = c(sdLineMin, sdLineMax, sdLineMax),
-                                 y = c(yMax * .85, yMax * .85, 0))
-        sdLabelData <- data.frame(x = sdLineMax, y = yMax * .88, label = gettextf("+%i SD", i))
+      sdLineLength <- sdLineMax - sdLineMin
+      if (sdLineLength >= stdDev/2){
+        xPosSdLabel <- sdLineMax - (sdLineMax - sdLineMin)/2
+        sdLabelData <- data.frame(x = xPosSdLabel, y = yMax * .88, label = gettextf("-%i SD", i))
         plotObject <- plotObject +
-          ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = sdLabelData, size = 3,
-                              color = colorPalette[i])
-      } else {
-        sdLineMin <- maxX
-        sdLineData <- data.frame(x = c(sdLineMax, sdLineMin), 
-                                 y = rep(yMax * .85, 2))
+          ggplot2::geom_text(mapping = ggplot2::aes(x = x, y = y, label = label), data = sdLabelData, size = labelSize - .5,
+                             color = colorPalette[i])
       }
       plotObject <- plotObject +
         ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = sdLineData, color = colorPalette[i], size = 1)
     }
+    for(i in 1:sdsMax){
+      sdLineMin <- meanPoint + stdDev * (i - 1)
+      if (i != max(sdsMax)){
+        sdLineMax <- meanPoint + stdDev * (i)
+        sdLineData <- data.frame(x = c(sdLineMin, sdLineMax, sdLineMax),
+                                 y = c(yMax * .85, yMax * .85, 0))
+      } else {
+        sdLineMax <- maxX
+        sdLineData <- data.frame(x = c(sdLineMax, sdLineMin), 
+                                 y = rep(yMax * .85, 2))
+      }
+      sdLineLength <- sdLineMax - sdLineMin
+      if (sdLineLength >= stdDev/2){
+        xPosSdLabel <- sdLineMin + (sdLineMax - sdLineMin)/2
+        sdLabelData <- data.frame(x = xPosSdLabel, y = yMax * .88, label = gettextf("+%i SD", i))
+        plotObject <- plotObject +
+          ggplot2::geom_text(mapping = ggplot2::aes(x = x, y = y, label = label), data = sdLabelData, size = labelSize - .5,
+                             color = colorPalette[i])
+      }
+      plotObject <- plotObject +
+        ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = sdLineData, color = colorPalette[i], size = 1)
+    }
+    xPosLabels <- xBreakLimit + (xLimitUpper - xBreakLimit)/2
+    labelData <- data.frame(x = rep(xPosLabels, 2), y = yMax * c(.95, .75),
+                            label = c(gettextf("Mean = %.2f", meanPoint), gettextf("Std. Dev. = %.2f", stdDev)))
     plotObject <- plotObject +
       ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = meanLineData, size = 1, color = "red") +
-      ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = labelData, size = 4,
+      ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = labelData, size = labelSize,
                           color = c("red", "dodgerblue"))
   }
   return(plotObject)
@@ -469,7 +480,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     if (discrete){
       xBreaks <- unique(as.integer(jaspGraphs::getPrettyAxisBreaks(data$x)))
       xStep <- xBreaks[2] - xBreaks[1]
-      xLimits <- c(min(xBreaks) - xStep/2, max(xBreaks) + xStep*2)
+      xLimits <- c(min(xBreaks) - xStep/2, max(xBreaks) + xStep * 2.5)
       yBreaks <- unique(round(jaspGraphs::getPrettyAxisBreaks(c(0, table(data$x)))))
       yLimits <- range(yBreaks) * 1.3
       yMax <- max(yLimits)
@@ -485,7 +496,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       displayDensity <- options[["LSdescHistCountOrDens"]] == "LSdescHistDens"
       xBreaks <- jaspGraphs::getPrettyAxisBreaks(data$x)
       xStep <- xBreaks[2] - xBreaks[1]
-      xLimits <- c(min(xBreaks) - xStep/2, max(xBreaks) + xStep*2)
+      xLimits <- c(min(xBreaks) - xStep/2, max(xBreaks) + xStep * 2.5)
       plotObject <- jaspDescriptives:::.plotMarginal(data$x, variableName = "Observations", displayDensity = displayDensity,
                                                      binWidthType = "sturges", rugs = options[["LSdescHistBarRugs"]]) 
       yMax <- max(ggplot2::ggplot_build(plotObject)$data[[1]]$y) * 1.3
@@ -495,9 +506,11 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
         ggplot2::scale_x_continuous(name = "Observations", breaks = xBreaks, limits = xLimits) 
     }
     if (stats == "ct") {
-      plotObject <- .drawMeanMedianOrModeLine(jaspResults, options, data, plotObject, yMax = yMax, xMax = max(xLimits), discrete = discrete)
+      plotObject <- .drawMeanMedianOrModeLine(jaspResults, options, data, plotObject, yMax = yMax, xMax = max(xLimits),
+                                              xBreaks, discrete = discrete)
     } else if (stats == "spread") {
-      plotObject <- .drawSpreadVisualization(jaspResults, options, data, plotObject, yMax = yMax)
+      plotObject <- .drawSpreadVisualization(jaspResults, options, data, plotObject, yMax = yMax, xLimits, xBreaks,
+                                             labelSize = 6)
     }
     p$plotObject <- plotObject
   }
@@ -531,8 +544,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   
 }
 
-.drawMeanMedianOrModeLine <- function(jaspResults, options, data, plot, yMax, xMax, lines = TRUE, discrete){
-  xBreaks <- pretty(data$x)
+.drawMeanMedianOrModeLine <- function(jaspResults, options, data, plot, yMax, xMax, xBreaks, lines = TRUE, discrete){
   n <- length(data$x)
   labelSize <- .getLabelSize(n)
   if(options[["LSdescCT"]] == "LSdescMode"| options[["LSdescCT"]] == "LSdescMMM"){
@@ -587,7 +599,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       plot <- plot + ggplot2::geom_label(data = modeLabelData, 
                                          mapping = ggplot2::aes(x = x, y = y, label = label), color = "blue", size = labelSize)
     } else if (options[["LSdescCT"]] == "LSdescMMM") {
-      modeLabelData$x <- max(data$x) + (xMax - max(data$x)) / 2
+      modeLabelData$x <- max(xBreaks) + (xMax - max(xBreaks)) / 2
       modeLabelData$y <- yMax * .55
       plot <- plot + ggplot2::geom_label(data = modeLabelData, 
                                          mapping = ggplot2::aes(x = x, y = y, label = label), color = "blue", size = labelSize)
@@ -602,7 +614,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       plot <- plot + ggplot2::geom_label(data = data.frame(x = mean, y = yMax, label = gettextf("Mean = %.2f", mean)), 
                                          mapping = ggplot2::aes(x = x, y = y, label = label), color = "red", size = labelSize)
     } else if (options[["LSdescCT"]] == "LSdescMMM") {
-      plot <- plot + ggplot2::geom_label(data = data.frame(x = max(data$x) + (xMax - max(data$x)) / 2, y = yMax * .95, label = gettextf("Mean = %.2f", mean)), 
+      plot <- plot + ggplot2::geom_label(data = data.frame(x = max(xBreaks) + (xMax - max(xBreaks)) / 2, y = yMax * .95, label = gettextf("Mean = %.2f", mean)), 
                                          mapping = ggplot2::aes(x = x, y = y, label = label), color = "red", size = labelSize)
     }
   }
@@ -615,7 +627,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       plot <- plot +  ggplot2::geom_label(data = data.frame(x = median, y = yMax, label = gettextf("Median = %.2f", median)), 
                                           mapping = ggplot2::aes(x = x, y = y, label = label), color = "green", size = labelSize)
     } else if (options[["LSdescCT"]] == "LSdescMMM") {
-      plot <- plot + ggplot2::geom_label(data = data.frame(x = max(data$x) + (xMax - max(data$x)) / 2, y = yMax * .75, label = gettextf("Median = %.2f", median)), 
+      plot <- plot + ggplot2::geom_label(data = data.frame(x = max(xBreaks) + (xMax - max(xBreaks)) / 2, y = yMax * .75, label = gettextf("Median = %.2f", median)), 
                                          mapping = ggplot2::aes(x = x, y = y, label = label), color = "green", size = labelSize)
     }
   }
@@ -641,10 +653,13 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     allCTs <- FALSE
   }
   
-  xBreaks <- jaspGraphs::getPrettyAxisBreaks(data$x)
+  if (discrete) {
+    xBreaks <- unique(as.integer(jaspGraphs::getPrettyAxisBreaks(data$x)))
+  } else {
+    xBreaks <- jaspGraphs::getPrettyAxisBreaks(data$x)
+  }
   xStep <- xBreaks[2] - xBreaks[1]
-  xBuffer <- xStep * 2
-  xLimits <- c(min(xBreaks) - xStep/2, max(xBreaks) + xBuffer)
+  xLimits <- c(min(xBreaks) - xStep/2, max(xBreaks) + xStep * 2.5)
   
   p <- ggplot2::ggplot(data = data, ggplot2::aes(x = x)) +
     ggplot2::geom_dotplot(binaxis = 'x', stackdir = 'up', dotsize = dotsize, fill = "grey") +
@@ -667,7 +682,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     jaspGraphs::themeJaspRaw()
   if (stats == "ct"){
     if (options[["LSdescCT"]] == "LSdescMedian" || allCTs) {
-      p <- .dotPlotVisualizeQuartiles(data, p, dotsize, labelSize, yLimits, xLimits, labels = !allCTs, labelText = gettext("Median"), quartile = 2,
+      p <- .dotPlotVisualizeQuartiles(data, p, dotsize, labelSize, yLimits, xLimits, xBreaks, labels = !allCTs, labelText = gettext("Median"), quartile = 2,
                                       lines = !allCTs, color = "green")
     }
     if (options[["LSdescCT"]] == "LSdescMean" || allCTs){
@@ -682,7 +697,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
                                     inherit.aes = FALSE, fill = "red", alpha = .3, color = "red", n = 4)
       if (!allCTs)
         p <- p + ggplot2::geom_path(data = meanLineData, mapping = ggplot2::aes(x = x, y = y), color = "red", size = 1)
-      p <- .drawMeanMedianOrModeLine(jaspResults, options, data, p, yMax = max(yLimits), xMax = max(xLimits),
+      p <- .drawMeanMedianOrModeLine(jaspResults, options, data, p, yMax = max(yLimits), xMax = max(xLimits), xBreaks,
                                      lines = FALSE, discrete = discrete)
     }
     if (options[["LSdescCT"]] == "LSdescMode" || allCTs){
@@ -697,22 +712,22 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
         }
         p <- p + ggplot2::geom_hline(yintercept = modeLineYPos, color = "blue", size = 1)
       }
-      p <- .drawMeanMedianOrModeLine(jaspResults, options, data, p, yMax = max(yLimits), xMax = max(xLimits),
+      p <- .drawMeanMedianOrModeLine(jaspResults, options, data, p, yMax = max(yLimits), xMax = max(xLimits), xBreaks,
                                      lines = FALSE, discrete = discrete)
     }
   } else if (stats == "spread"){
     if (options[["LSdescS"]] == "LSdescRange") {
       p <- .dotPlotVisualizeRange(data, p, dotsize, yLimits)
     } else if (options[["LSdescS"]] == "LSdescQR"){
-      p <- .dotPlotVisualizeQuartiles(data, p, dotsize, labelSize, yLimits, xLimits, labelText = gettext("2nd quar. / \n Median"),
+      p <- .dotPlotVisualizeQuartiles(data, p, dotsize, labelSize, yLimits, xLimits, xBreaks, labelText = gettext("2nd quar. / \n Median"),
                                       quartile = 2, labelsInCorner = TRUE, color = "green")
-      p <- .dotPlotVisualizeQuartiles(data, p, dotsize, labelSize, yLimits, xLimits, labelText = gettext("1st quar."), quartile = 1,
+      p <- .dotPlotVisualizeQuartiles(data, p, dotsize, labelSize, yLimits, xLimits, xBreaks, labelText = gettext("1st quar."), quartile = 1,
                                       labelsInCorner = TRUE, color = "purple")
-      p <- .dotPlotVisualizeQuartiles(data, p, dotsize, labelSize, yLimits, xLimits, labelText = gettext("3rd quar."), quartile = 3,
+      p <- .dotPlotVisualizeQuartiles(data, p, dotsize, labelSize, yLimits, xLimits, xBreaks, labelText = gettext("3rd quar."), quartile = 3,
                                       labelsInCorner = TRUE, color = "dodgerblue")
       p <- .dotPlotIQRLine(data, p, yLimits, labelSize)
     } else if (options[["LSdescS"]] == "LSdescSD") {
-      p <- .drawSpreadVisualization(jaspResults, options, data, p, yMax = max(yLimits))
+      p <- .drawSpreadVisualization(jaspResults, options, data, p, yMax = max(yLimits), xLimits, xBreaks, labelSize)
     }
   }
   return(p)
@@ -749,7 +764,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   return(plotObject)
 }
 
-.dotPlotVisualizeQuartiles <- function(data, plotObject, dotsize, labelSize, yLimits, xLimits, labels = TRUE, labelText,
+.dotPlotVisualizeQuartiles <- function(data, plotObject, dotsize, labelSize, yLimits, xLimits, xBreaks, labels = TRUE, labelText,
                                        quartile, lines = TRUE, labelsInCorner = FALSE, color = c("green", "purple", "dodgerblue")) {
   color2 <- switch(color, "green" = "springgreen4", "purple" = "pink", "dodgerblue" = "blue")
   n <- length(data$x)
@@ -817,7 +832,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   if(labels){
     label <- paste(labelText, "= %.2f")
     if(labelsInCorner){
-      labelXPos <- max(data$x) + (max(xLimits) - max(data$x))/2
+      labelXPos <- max(xBreaks) + (max(xLimits) - max(xBreaks))/2
       labelYPos <- switch(quartile, max(yLimits) * .95, max(yLimits) * .75, max(yLimits) * .55)
     } else{
       labelXPos <- quartileValue
