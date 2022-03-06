@@ -235,8 +235,8 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     xBreaks <- jaspGraphs::getPrettyAxisBreaks(c(mean - 3 * sd, mean + 3 * sd))
     xLimits <- range(xBreaks)
     pdPlotObject <-  ggplot2::ggplot(data.frame(x = xBreaks), ggplot2::aes(x = x)) +
-      ggplot2::stat_function(fun = dnorm, n = 100, args = list(mean = mean, sd = sd), geom = "area", fill = fillColor) +
-      ggplot2::stat_function(fun = dnorm, n = 100, args = list(mean = mean, sd = sd))
+      ggplot2::stat_function(fun = dnorm, n = 10000, args = list(mean = mean, sd = sd), geom = "area", fill = fillColor,
+                             color = "black")
     if (returnData)
       df <- data.frame(x = rnorm(n = 100000, mean = mean, sd = sd))
   } else if (distribution == "uniform") {
