@@ -259,6 +259,12 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   xBreaks2 <- -4:4
   yBreaks2 <- seq(0, .5, .1)
   yLabels2 <- rep("", length(yBreaks2))
+  percentLabelData <- data.frame(x = c(-2.3, -1.5, -.5, .5, 1.5, 2.3), y = c(.01, .05, .2, .2, .05, .01),
+                                 label = c("2.1%", "13.6%", "34.1%", "34.1%", "13.6%", "2.1%"))
+  sdLabelsData2 <- data.frame(x = c(-3.3, -2.3, -1.4, 0,  1.4,  2.3,  3.3), y = c(.02, .07, .25, .41, .25, .07, .02),
+                              label = c(paste(-3:-1, "SD"), "Mean", paste("+", 1:3, " SD", sep = "")))
+  colorPalette <- c("salmon4", "olivedrab4", "salmon2", "red", "salmon2", "olivedrab4", "salmon4")
+  sdLabelsColors <- colorPalette
   
   plotObject3 <- ggplot2::ggplot(data = data.frame(x = xBreaks2), mapping = ggplot2::aes(x = x)) +
     ggplot2::stat_function(fun = dnorm, n = 10000, args = list(mean = 0, sd = 1), geom = "area",
@@ -266,7 +272,10 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     ggplot2::geom_area(stat = "function", fun = dnorm, fill = "gray60", color = "black", xlim = c(-3, 3)) +
     ggplot2::geom_area(stat = "function", fun = dnorm, fill = "gray40", color = "black", xlim = c(-2, 2)) +
     ggplot2::geom_area(stat = "function", fun = dnorm, fill = "gray90", color = "black", xlim = c(-1, 1)) +
-    ggplot2::scale_x_continuous(breaks = xBreaks2, limits = range(xBreaks2)) +
+    ggplot2::geom_text(mapping = ggplot2::aes(x = x, y = y, label = label), data = percentLabelData, size = 6) +
+    ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = sdLabelsData2, size = 6,
+                        color = sdLabelsColors) +
+    ggplot2::scale_x_continuous(breaks = xBreaks2, limits = range(xBreaks2), name = "Value") +
     ggplot2::scale_y_continuous(breaks = yBreaks2, limits = range(yBreaks2), labels = yLabels2, name = "") +
     jaspGraphs::themeJaspRaw() +
     ggplot2::theme(axis.ticks.y = ggplot2::element_blank(), axis.line.x = ggplot2::element_line(color = "black", size = .5))
@@ -274,7 +283,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   # plot lines
   plotData <- ggplot2::ggplot_build(plotObject3)$data[[1]]
   xPosLines <- -3:3
-  colors <- c("salmon4", "olivedrab4", "salmon2", "red", "salmon2", "olivedrab4", "salmon4")
+  colors <- colorPalette
   for (i in 1:length(xPosLines)){
     indexOfyMax <- .indexOfNearestValue(xPosLines[i], plotData$x)
     lineData <- data.frame(x = rep(xPosLines[i], 2), y = c(0, plotData$ymax[indexOfyMax]))
