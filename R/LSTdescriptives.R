@@ -62,13 +62,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     plot1$plotObject <- .visualExplanationRange(data)
   } else if (options[["LSdescS"]] == "LSdescQR") {
     plot1$plotObject <- .visualExplanationQuartiles(data)
-  }else if (options[["LSdescS"]] == "LSdescVar") {
-    plot1$plotObject <- .visualExplanationVariance(data)$plot1
-    plot2 <- createJaspPlot(title = gettext("Visual Explanation 2"), width = 700, height = 700)
-    plot2$plotObject <- .visualExplanationVariance(data)$plot2
-    jaspResults[["descExplanationS"]][["Plot2"]] <- plot2
-    jaspResults[["descExplanationS"]][["Plot2"]]$position <- 3
-  }else if (options[["LSdescS"]] == "LSdescSD") {
+  } else if (options[["LSdescS"]] == "LSdescSD") {
     plot1$plotObject <- .visualExplanationStdDev(data)$plot1
     plot2 <- createJaspPlot(title = gettext("Visual Explanation 2"), width = 700, height = 700)
     plot2$plotObject <- .visualExplanationStdDev(data)$plot2
@@ -78,6 +72,10 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     plot3$plotObject <- .visualExplanationStdDev(data)$plot3
     jaspResults[["descExplanationS"]][["Plot3"]] <- plot3
     jaspResults[["descExplanationS"]][["Plot3"]]$position <- 4
+    plot4 <- createJaspPlot(title = gettext("Visual Explanation 4"), width = 700, height = 700)
+    plot4$plotObject <- .visualExplanationStdDev(data)$plot4
+    jaspResults[["descExplanationS"]][["Plot4"]] <- plot4
+    jaspResults[["descExplanationS"]][["Plot4"]]$position <- 5
   }
   
   text <- gettext("Text for comparison:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
@@ -219,6 +217,10 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
 }
 
 .visualExplanationStdDev <- function(data){
+  # plot 1
+  plotObject1 <- .visualExplanationVariance(data)$plot1
+  
+  
   xBreaks <- jaspGraphs::getPrettyAxisBreaks(data$x)
   yBreaks <- c(1, 6, 11, 16, 21)
   stdDev <- sd(data$x)
@@ -229,19 +231,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
                                sum(meanPoint, meanPoint - stdDev)/2, sum(meanPoint, meanPoint + stdDev)/2, 
                                sum(meanPoint + stdDev, meanPoint + 2*stdDev)/2, sum(meanPoint + 2*stdDev, meanPoint + 3*stdDev)/2),
                          y = rep(11, 6), label = gettext("-3 SD", "-2 SD", "-1 SD", "+1 SD", "+2 SD", "+3 SD"))
-  plotObject1 <- ggplot2::ggplot(data = data, mapping = ggplot2::aes(x = x, y = index)) +
-    ggplot2::geom_ribbon(mapping = ggplot2::aes(xmin = min(xBreaks), xmax = max(xBreaks)), fill = "gray60") +
-    ggplot2::geom_ribbon(mapping = ggplot2::aes(xmin = meanPoint - 2 * stdDev, xmax = meanPoint + 2 * stdDev),
-                         fill = "gray40") +
-    ggplot2::geom_ribbon(mapping = ggplot2::aes(xmin = meanPoint - stdDev, xmax = meanPoint + stdDev), fill = "gray90") +
-    ggplot2::geom_text(mapping = ggplot2::aes(x = x, y = y, label = label), data = sdLabels, size = 6) +
-    ggplot2::geom_point(size = 6, fill = "grey", color = "black", shape = 21) +
-    ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = meanLineData, size = 1, color = "red", alpha = .7) +
-    ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = labelData, size = 6, color = "red") +
-    ggplot2::scale_y_continuous(name = "Observation No.", breaks = yBreaks, limits = c(0, 21)) +
-    ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks, limits = range(xBreaks)) +
-    jaspGraphs::geom_rangeframe() +
-    jaspGraphs::themeJaspRaw()
+  
   
   #Plot 2
   plotObject2 <- .visualExplanationVariance(data, plotVarLabel = FALSE)$plot2
@@ -256,6 +246,23 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = meanLineExtensionData, size = 1, color = "red", alpha = .7)
   
   #Plot 3
+  
+  plotObject3 <- ggplot2::ggplot(data = data, mapping = ggplot2::aes(x = x, y = index)) +
+    ggplot2::geom_ribbon(mapping = ggplot2::aes(xmin = min(xBreaks), xmax = max(xBreaks)), fill = "gray60") +
+    ggplot2::geom_ribbon(mapping = ggplot2::aes(xmin = meanPoint - 2 * stdDev, xmax = meanPoint + 2 * stdDev),
+                         fill = "gray40") +
+    ggplot2::geom_ribbon(mapping = ggplot2::aes(xmin = meanPoint - stdDev, xmax = meanPoint + stdDev), fill = "gray90") +
+    ggplot2::geom_text(mapping = ggplot2::aes(x = x, y = y, label = label), data = sdLabels, size = 6) +
+    ggplot2::geom_point(size = 6, fill = "grey", color = "black", shape = 21) +
+    ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = meanLineData, size = 1, color = "red", alpha = .7) +
+    ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = labelData, size = 6, color = "red") +
+    ggplot2::scale_y_continuous(name = "Observation No.", breaks = yBreaks, limits = c(0, 21)) +
+    ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks, limits = range(xBreaks)) +
+    jaspGraphs::geom_rangeframe() +
+    jaspGraphs::themeJaspRaw()
+  
+  
+  #plot 4
   xBreaks2 <- -4:4
   yBreaks2 <- seq(0, .5, .1)
   yLabels2 <- rep("", length(yBreaks2))
@@ -266,7 +273,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   colorPalette <- c("salmon4", "olivedrab4", "salmon2", "red", "salmon2", "olivedrab4", "salmon4")
   sdLabelsColors <- colorPalette
   
-  plotObject3 <- ggplot2::ggplot(data = data.frame(x = xBreaks2), mapping = ggplot2::aes(x = x)) +
+  plotObject4 <- ggplot2::ggplot(data = data.frame(x = xBreaks2), mapping = ggplot2::aes(x = x)) +
     ggplot2::stat_function(fun = dnorm, n = 10000, args = list(mean = 0, sd = 1), geom = "area",
                            color = "black", fill = "white") +
     ggplot2::geom_area(stat = "function", fun = dnorm, fill = "gray60", color = "black", xlim = c(-3, 3)) +
@@ -275,19 +282,19 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     ggplot2::geom_text(mapping = ggplot2::aes(x = x, y = y, label = label), data = percentLabelData, size = 6) +
     ggplot2::geom_label(mapping = ggplot2::aes(x = x, y = y, label = label), data = sdLabelsData2, size = 6,
                         color = sdLabelsColors) +
-    ggplot2::scale_x_continuous(breaks = xBreaks2, limits = range(xBreaks2), name = "Value") +
+    ggplot2::scale_x_continuous(breaks = xBreaks2, limits = range(xBreaks2), name =) +
     ggplot2::scale_y_continuous(breaks = yBreaks2, limits = range(yBreaks2), labels = yLabels2, name = "") +
     jaspGraphs::themeJaspRaw() +
     ggplot2::theme(axis.ticks.y = ggplot2::element_blank(), axis.line.x = ggplot2::element_line(color = "black", size = .5))
   
   # plot lines
-  plotData <- ggplot2::ggplot_build(plotObject3)$data[[1]]
+  plotData <- ggplot2::ggplot_build(plotObject4)$data[[1]]
   xPosLines <- -3:3
   colors <- colorPalette
   for (i in 1:length(xPosLines)){
     indexOfyMax <- .indexOfNearestValue(xPosLines[i], plotData$x)
     lineData <- data.frame(x = rep(xPosLines[i], 2), y = c(0, plotData$ymax[indexOfyMax]))
-    plotObject3 <- plotObject3 + 
+    plotObject4 <- plotObject4 + 
     ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = lineData, size = 1, color = colors[i], alpha = .7)
   }
   
@@ -295,7 +302,8 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   
   return(list("plot1" = plotObject1,
               "plot2" = plotObject2,
-              "plot3" = plotObject3))
+              "plot3" = plotObject3,
+              "plot4" = plotObject4))
 }
 
 .indexOfNearestValue <- function(targetValue, valueSet){

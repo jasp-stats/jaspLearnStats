@@ -249,26 +249,20 @@ Form
 			RadioButton
 			{
 				name:		"LSdescRange"
-				label:		qsTr("Show range")
+				label:		qsTr("Range")
 				checked:	true
 			}
 			
 			RadioButton
 			{
 				name:	"LSdescQR"
-				label:	qsTr("Show quartiles")
-			}
-		
-			RadioButton
-			{
-				name:	"LSdescVar"
-				label:	qsTr("Show variance")
+				label:	qsTr("Quartiles")
 			}
 		
 			RadioButton
 			{
 				name:	"LSdescSD"
-				label:	qsTr("Show standard deviation")
+				label:	qsTr("Std. dev. and variance")
 			}
 		}
 		
