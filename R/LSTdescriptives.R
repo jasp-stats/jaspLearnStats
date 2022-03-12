@@ -287,7 +287,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     indexOfyMax <- .indexOfNearestValue(xPosLines[i], plotData$x)
     lineData <- data.frame(x = rep(xPosLines[i], 2), y = c(0, plotData$ymax[indexOfyMax]))
     plotObject4 <- plotObject4 + 
-    ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = lineData, size = 1, color = colors[i], alpha = .7)
+      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = lineData, size = 1, color = colors[i], alpha = .7)
   }
   
   
@@ -585,19 +585,18 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
                          "LSdescHistBar",
                          "LSdescHistCountOrDens",
                          "LSdescHistBarRugs"))
-  
-  if (ready) {
+  errors <- .plotErrors(p, data, options, stats)$errors
+
+  if (ready && !errors) {
     if (discrete) {
       xBreaks <- unique(as.integer(jaspGraphs::getPrettyAxisBreaks(data$x)))
       xStep <- xBreaks[2] - xBreaks[1]
-      xLimits <- c(min(xBreaks) - xStep/2, max(xBreaks) + xStep * 3)
+      xLimits <- c(min(xBreaks) - xStep, max(xBreaks) + xStep * 3)
       yBreaks <- unique(round(jaspGraphs::getPrettyAxisBreaks(c(0, table(data$x)))))
       yLimits <- range(yBreaks) * 1.3
       yMax <- max(yLimits)
       plotObject <- ggplot2::ggplot(data, ggplot2::aes(x = x)) + ggplot2::geom_bar(fill = "grey",
                                                                                    col = "black", size = .3)
-      if (options[["LSdescHistBarRugs"]])
-        plotObject <- plotObject + ggplot2::geom_rug(data = data, mapping = ggplot2::aes(x = x), sides = "b")
       plotObject <- plotObject + 
         ggplot2::scale_y_continuous(name = "Counts", breaks = yBreaks, limits = yLimits) + 
         ggplot2::scale_x_continuous(name = "Observations", breaks = xBreaks, limits = xLimits) + 
@@ -623,9 +622,12 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
                                              labelSize = 6)
     }
     p$plotObject <- plotObject
+  } else if (errors){
+    p <- .plotErrors(p, data, options, stats)$errorMessage
   }
   jaspResults[["descHistogramOrBarplot"]] <- p
 }
+
 
 .lstDescCreateDotplot <- function(jaspResults, options, data, ready, discrete, stats = c("ct", "spread")) {
   jaspResults[["descDotplot"]] <- createJaspContainer(gettext("Dotplot"))
@@ -645,11 +647,27 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
                           "LSdescS",
                           "LSdescDotPlot",
                           "LSdescDotPlotRugs"))
-  
-  if (ready) {
+  errors <- .plotErrors(dp, data, options, stats)$errors
+  if (ready && !errors) {
     dp$plotObject <- .lstDescCreateDotPlotObject(data, options, stats = stats, discrete)
+  }else if (errors) {
+    dp <- .plotErrors(dp, data, options, stats)$errorMessage
   }
   jaspResults[["descDotplot"]] <- dp
+}
+
+.plotErrors <- function(plot, data, options, stats) {
+  errors <- FALSE
+  if (stats == "spread"){
+    if (options[["LSdescS"]] == "LSdescSD") {
+      if (sd(data$x) == 0 || is.na(sd(data$x))){
+        plot$setError(gettext("No variance: All values are equal."))
+        errors <- TRUE
+      }
+    }
+  }
+  return(list("errorMessage" = plot,
+              "errors" = errors))
 }
 
 .drawMeanMedianOrModeLine <- function(jaspResults, options, data, plot, yMax, xMax, xBreaks, lines = TRUE, discrete) {
@@ -773,7 +791,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks, limits = xLimits) +
     ggplot2::coord_fixed() 
   
-  if (options[["LSdescDotPlotRugs"]])
+  if (options[["LSdescDotPlotRugs"]] && !discrete)
     p <- p + ggplot2::geom_rug(data = data, mapping = ggplot2::aes(x = x), sides = "b")
   
   pData <- ggplot2::ggplot_build(p)$data
