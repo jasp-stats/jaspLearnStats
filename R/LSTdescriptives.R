@@ -763,9 +763,8 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
 
 .lstDescCreateDotPlotObject <- function(data, options, stats = c("ct", "spread"), discrete) {
   n <- length(data$x)
-  if (length(unique(data$x)) == 1) { 
-    dotsize <- .0333
-  } else if (n > 50){
+  
+  if (n > 50){
     dotsize <- 1 - (log(n)) / 30
   } else {
     dotsize <- 1
