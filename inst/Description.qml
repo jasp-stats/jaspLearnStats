@@ -28,6 +28,13 @@ Description
 		qml:	"LSTdescriptives.qml"
 		func:	"LSTdescriptives"
 	}
+	
+		Analysis
+	{
+		title:	qsTr("Sample Variability")
+		qml:	"LSTsampleVariability.qml"
+		func:	"LSTsampleVariability"
+	}
 
 
 }

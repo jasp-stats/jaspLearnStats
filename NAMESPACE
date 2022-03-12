@@ -1,2 +1,3 @@
 export(LSTcentralLimitTheorem)
 export(LSTdescriptives)
+export(LSTsampleVariability)
