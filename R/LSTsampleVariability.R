@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
+LSTsampleVariability <- function(jaspResults, dataset, options) {
   set.seed(options[["cltSampleSeed"]])
   parentData <- .generateParentData(options)
   samples <- .cltTakeSamples(jaspResults, options = options, data = parentData)
