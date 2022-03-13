@@ -46,6 +46,14 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     skew <- 50
   }
   
+  if (distribution == "binomial") {
+    prob <- options[["binomProb"]]
+    showMean <- FALSE
+  } else {
+    showMean <- TRUE
+    prob <- NA
+  }
+  
   pdPlot <- createJaspPlot(title = gettext("Parent Distribution"), width = 700, height = 400)
   pdPlot$position <- 1
   pdPlot$dependOn(options = c("cltParentDistribution",
@@ -56,7 +64,8 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
                               "cltSkewDirection",
                               "cltSkewIntensity"))
   pdPlot$plotObject <- .distributionPlotFunction(distribution = distribution, mean = mean, sd = sd, range = range,
-                                                 skew = skew, skewDirection = skewDirection, fillColor = "coral")
+                                                 skew = skew, prob = prob, skewDirection = skewDirection,
+                                                 fillColor = "coral", showMean = showMean)
   return(pdPlot)
 }
 
@@ -161,6 +170,10 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
       skew <- skew * -1
     }
     data <- .scaledSkewedNormal(100000, xi = mean, omega = sd,  alpha = skew)
+  } else if (distribution == "binomial") {
+    trials <- options[["binomTrials"]]
+    prob <- options[["binomProb"]]
+    data <- rbinom(100000, trials, prob)
   }
   df <- data.frame(x = data)
   return(df)
@@ -229,7 +242,8 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
 }
 
 
-.distributionPlotFunction <- function(distribution = c("normal", "uniform", "skewed"), mean, sd = NA, range = NA, skew = NA, skewDirection = "right", fillColor,
+.distributionPlotFunction <- function(distribution = c("normal", "uniform", "skewed"), mean, sd = NA, range = NA, skew = NA, prob = NA,
+                                      skewDirection = "right", fillColor,
                                       showMean = TRUE, returnData = FALSE) {
   if (distribution == "normal") {
     xBreaks <- jaspGraphs::getPrettyAxisBreaks(c(mean - 3 * sd, mean + 3 * sd))
@@ -257,9 +271,23 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     df <- data.frame(x = .scaledSkewedNormal(100000, xi = mean, omega = sd, alpha = skew))
     pdPlotObject <-  ggplot2::ggplot(df, ggplot2::aes(x = x)) + ggplot2::geom_density(mapping = ggplot2::aes(y = ..density..),
                                                                                       n = 2^7, bw = sd/3, fill = fillColor)
+  } else if (distribution == "binomial") {
+    
+    df <- data.frame(x = c(rep(1, 100 * prob), rep(2, 100 * (1 - prob))))
+    xBreaks <- c(1, 2)
+    xLimits <- c(.5, 2.5)
+    pdPlotObject <- ggplot2::ggplot(df, ggplot2::aes(x = x)) + ggplot2::geom_bar(fill = fillColor,
+                                                                                   col = "black", size = .3)
   }
-  yBreaks <- jaspGraphs::getPrettyAxisBreaks(ggplot2::ggplot_build(pdPlotObject)$data[[1]]$y)
+  yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(0, ggplot2::ggplot_build(pdPlotObject)$data[[1]]$y))
   yLimits <- range(yBreaks)
+  if (distribution == "binomial") {
+    yLabels <- yBreaks / 100
+    yName <- "Probability"
+  } else {
+    yLabels <- yBreaks
+    yName <- "Density"
+  }
   if (showMean) {
     yPos <- max(ggplot2::ggplot_build(pdPlotObject)$data[[1]]$y) * 1.1
     pdPlotObject <- pdPlotObject + ggplot2::geom_vline(xintercept = mean, color = "darkmagenta", size = 1) + 
@@ -268,7 +296,7 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     yLimits <- range(c(yLimits, yPos))
   }
   pdPlotObject <- pdPlotObject + ggplot2::scale_x_continuous(breaks = xBreaks, limits = xLimits, name = "") +
-    ggplot2::scale_y_continuous(breaks = yBreaks, limits = yLimits, name = "Density") + 
+    ggplot2::scale_y_continuous(breaks = yBreaks, limits = yLimits, label = yLabels, name = yName) + 
     jaspGraphs::themeJaspRaw() + jaspGraphs::geom_rangeframe()
   
   if (!returnData){

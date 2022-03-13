@@ -33,17 +33,50 @@ Form
 		Group
 		{
 		
+		
+			RadioButtonGroup
+			{
+				columns:	2
+				name:		"svParentSizeType"
+				title:		qsTr("Parent Distribution Size")
+				id:			lstDescDataType
+			
+				RadioButton
+				{
+					value:		"svParentInfinite"
+					label:		qsTr("Infinite")
+					checked:	true
+				}
+			
+				RadioButton
+				{
+					value:		"svParentFinite"
+					label:		qsTr("Finite")
+				
+					DoubleField
+					{
+						name:			"svParentSize"
+						label:			qsTr("Size")
+						fieldWidth:		60
+						defaultValue:	100
+						min: 1
+						decimals:		0
+					}
+				}
+			}
+		
 			DropDown
 			{
 				name:				"cltParentDistribution"
-				label:				qsTr("Parent Distribution")
+				label:				qsTr("Parent Distribution Shape")
 				indexDefaultValue:	0
 				id:					cltParentDistribution
 				values:
 				[
 					{label: qsTr("Normal"),		value: "normal"},
 					{label: qsTr("Uniform"),	value: "uniform"},
-					{label: qsTr("Skewed"),		value: "skewed"}
+					{label: qsTr("Skewed"),		value: "skewed"},
+					{label: qsTr("Binomial"),		value: "binomial"}
 				]
 			}
 			
@@ -64,6 +97,8 @@ Form
 				fieldWidth:		60
 				defaultValue:	0
 				decimals:		2
+				visible:		cltParentDistribution.currentValue != "binomial"
+
 			}
 	
 			DoubleField
@@ -74,7 +109,7 @@ Form
 				defaultValue:	1
 				decimals:		2
 				min:			0.01
-				visible:		cltParentDistribution.currentValue != "uniform"
+				visible:		cltParentDistribution.currentValue != "uniform" & cltParentDistribution.currentValue != "binomial"
 			}
 			
 			DoubleField
@@ -115,6 +150,18 @@ Form
 					{label: qsTr("Medium skew"),		value: "medium"},
 					{label: qsTr("High skew"),		value: "high"}
 				]
+			}
+			
+			DoubleField
+			{
+				name:			"binomProb"
+				label:			qsTr("Probability")
+				fieldWidth:		60
+				defaultValue:	.5
+				decimals:		2
+				min:			0.01
+				max:			1
+				visible:		cltParentDistribution.currentValue == "binomial"
 			}
 		}
 	}
@@ -169,32 +216,6 @@ Form
 				fieldWidth:		60
 				defaultValue:	1
 				decimals:		0
-			}
-		}
-	}
-	
-	Section
-	{
-		title: qsTr("Sampling Distribution Options")
-	
-		CheckBox
-		{
-			name:		"samplingDistShow";
-			label:		qsTr("Show sampling distribution");
-			checked:	true
-	
-			CheckBox
-			{
-				name:		"samplingDistShowNormal";
-				label:		qsTr("Superimpose normal distribution");
-				checked:	true
-			}
-			
-			CheckBox
-			{
-				name: "samplingDistShowRugs"
-				label: qsTr("Show rug marks")
-				checked: true
 			}
 		}
 	}
