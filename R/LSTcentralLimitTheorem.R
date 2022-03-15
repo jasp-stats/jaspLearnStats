@@ -96,11 +96,16 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
   
   yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(0, max(allCounts)))
   yLimits <- range(yBreaks)
-  binWidthType2 <- .getBinWidth(unlist(samples), options)
-  h2 <- hist(unlist(samples), plot = FALSE, right = FALSE, breaks = binWidthType2)
-  xBreaks <- jaspGraphs::getPrettyAxisBreaks(c(h2$breaks))
-  xLimits <- range(xBreaks)
-  binWidth <- (h2$breaks[2] - h2$breaks[1])
+  if (options[["cltParentDistribution"]] == "binomial") {
+    xBreaks <- c(0 , 1)
+    xLimits <- c(-.5, 1.5)
+  } else {
+    binWidthType2 <- .getBinWidth(unlist(samples), options)
+    h2 <- hist(unlist(samples), plot = FALSE, right = FALSE, breaks = binWidthType2)
+    xBreaks <- jaspGraphs::getPrettyAxisBreaks(c(h2$breaks))
+    xLimits <- range(xBreaks)
+    binWidth <- (h2$breaks[2] - h2$breaks[1])
+  }
   
   index <- 0
   for (i in 1:4) {
@@ -111,17 +116,27 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
           ggplot2::annotate(geom = "text", x = 0, y = 0, label = gettextf("... until Sample Nr. %i",
                                                                           options[["cltSampleAmount"]]), size = 10)
       } else {
-        mean <- mean(samples[[index]])
-        samplePlot <- ggplot2::ggplot(data.frame(x = samples[[index]]), ggplot2::aes(x = x)) + 
-          ggplot2::geom_histogram(mapping = ggplot2::aes(y =..count..),closed = "left", fill = "coral", col = "black",
-                                  size = .7, binwidth = binWidth, center = binWidth/2)
-        if (options[["samplesShowRugs"]])
-          samplePlot <- samplePlot + ggplot2::geom_rug()
+        if (options[["cltParentDistribution"]] == "binomial") {
+          data <- factor(samples[[index]], level = c(0, 1))
+          countTable <- table(data)
+          df <- data.frame("biValues" = c(0, 1), "counts" = as.vector(countTable), colors = c("c1", "c2"))
+          samplePlot <- ggplot2::ggplot() +
+            ggplot2::geom_bar(data = df, mapping = ggplot2::aes(x = biValues, y = counts, fill = colors),
+                              size = .3, stat = "identity", color = "black") + 
+            ggplot2::scale_fill_manual(values = c("grey20", "grey90"))
+        } else {
+          mean <- mean(samples[[index]])
+          samplePlot <- ggplot2::ggplot(data.frame(x = samples[[index]]), ggplot2::aes(x = x)) + 
+            ggplot2::geom_histogram(mapping = ggplot2::aes(y =..count..),closed = "left", fill = "coral", col = "black",
+                                    size = .7, binwidth = binWidth, center = binWidth/2) +
+            ggplot2::geom_vline(xintercept = mean, color = "cornflowerblue", size = 1) +
+            ggplot2::geom_label(data = data.frame(x = mean, y = max(yLimits)*0.95, label = gettextf("Mean: %.2f", mean)), 
+                                mapping = ggplot2::aes(x = x, y = y, label = label), color = "cornflowerblue", size = 6)
+          if (options[["samplesShowRugs"]])
+            samplePlot <- samplePlot + ggplot2::geom_rug()
+        }
         samplePlot <- samplePlot + ggplot2::scale_y_continuous(breaks = yBreaks, limits = yLimits, name = "Count") +
           ggplot2::scale_x_continuous(breaks = xBreaks, limits = xLimits, name = "") +
-          ggplot2::geom_vline(xintercept = mean, color = "cornflowerblue", size = 1) +
-          ggplot2::geom_label(data = data.frame(x = mean, y = max(yLimits)*0.95, label = gettextf("Mean: %.2f", mean)), 
-                              mapping = ggplot2::aes(x = x, y = y, label = label), color = "cornflowerblue", size = 6) +
           ggplot2::ggtitle(gettextf("Sample Nr. %i", index)) +
           jaspGraphs::themeJaspRaw() + jaspGraphs::geom_rangeframe()
       }
@@ -171,9 +186,8 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     }
     data <- .scaledSkewedNormal(100000, xi = mean, omega = sd,  alpha = skew)
   } else if (distribution == "binomial") {
-    trials <- options[["binomTrials"]]
     prob <- options[["binomProb"]]
-    data <- rbinom(100000, trials, prob)
+    data <- c(rep(0, 100000 * prob), rep(1, 100000 * (1 - prob)))
   }
   df <- data.frame(x = data)
   return(df)
@@ -272,20 +286,18 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     pdPlotObject <-  ggplot2::ggplot(df, ggplot2::aes(x = x)) + ggplot2::geom_density(mapping = ggplot2::aes(y = ..density..),
                                                                                       n = 2^7, bw = sd/3, fill = fillColor)
   } else if (distribution == "binomial") {
-    
-    df <- data.frame(x = c(rep(1, 100 * prob), rep(2, 100 * (1 - prob))))
-    xBreaks <- c(1, 2)
-    xLimits <- c(.5, 2.5)
-    pdPlotObject <- ggplot2::ggplot(df, ggplot2::aes(x = x)) + ggplot2::geom_bar(fill = fillColor,
-                                                                                   col = "black", size = .3)
+    df <- data.frame("biValues" = 0:1, "counts" = c(prob, 1 - prob), "colors" = c("c1", "c2"))
+    xBreaks <- c(0, 1)
+    xLimits <- c(-.5, 1.5)
+    pdPlotObject <- ggplot2::ggplot() + ggplot2::geom_bar(data = df, mapping = ggplot2::aes(x = biValues, y = counts, fill = colors),
+                                                          size = .3, stat = "identity", color = "black") + 
+      ggplot2::scale_fill_manual(values = c("grey20", "grey90"))
   }
   yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(0, ggplot2::ggplot_build(pdPlotObject)$data[[1]]$y))
   yLimits <- range(yBreaks)
   if (distribution == "binomial") {
-    yLabels <- yBreaks / 100
     yName <- "Probability"
   } else {
-    yLabels <- yBreaks
     yName <- "Density"
   }
   if (showMean) {
@@ -296,7 +308,7 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     yLimits <- range(c(yLimits, yPos))
   }
   pdPlotObject <- pdPlotObject + ggplot2::scale_x_continuous(breaks = xBreaks, limits = xLimits, name = "") +
-    ggplot2::scale_y_continuous(breaks = yBreaks, limits = yLimits, label = yLabels, name = yName) + 
+    ggplot2::scale_y_continuous(breaks = yBreaks, limits = yLimits, name = yName) + 
     jaspGraphs::themeJaspRaw() + jaspGraphs::geom_rangeframe()
   
   if (!returnData){
