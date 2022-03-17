@@ -39,7 +39,7 @@ Form
 				columns:	2
 				name:		"svParentSizeType"
 				title:		qsTr("Parent Distribution Size")
-				id:			lstDescDataType
+				id:			svParentSizeType
 			
 				RadioButton
 				{
@@ -180,6 +180,7 @@ Form
 				fieldWidth:		60
 				defaultValue:	30
 				decimals:		0
+				max: 			100000
 			}
 		
 			DoubleField

@@ -70,12 +70,22 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
 }
 
 
-.cltTakeSamples <- function(jaspResults, options, data) {
+.cltTakeSamples <- function(jaspResults, options, data, replace = TRUE) {
   n <- options[["cltSampleSize"]]
   k <- options[["cltSampleAmount"]]
   sampleList <- list()
-  for (i in 1:k) {
-    sampleList[[i]] <- sample(x = data[["x"]], size = n, replace = TRUE)
+  if (replace) {
+    for (i in 1:k) {
+      sampleList[[i]] <- sample(x = data[["x"]], size = n, replace = TRUE)
+    }
+  } else {
+    for(i in 1:k){
+      indices <- 1:length(data[["x"]])
+      sampleIndices <- sample(indices, size = n, replace = FALSE)
+      sampleList[[i]] <- data[["x"]][sampleIndices]
+      dataWitoutSamples <- data[["x"]][-sampleIndices]
+      data <- data.frame(x = dataWitoutSamples)
+    }
   }
   return(sampleList)
 }
@@ -161,18 +171,23 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
   return(sampleMatrixPlot)
 }
 
-.generateParentData <- function(options) {
+.generateParentData <- function(options, finite = FALSE) {
+  if (finite) {
+    n <- finite
+  } else {
+    n <- 100000
+  }
   distribution <- options[["cltParentDistribution"]]
   mean <- options[["cltMean"]]
   sd <- options[["cltStdDev"]]
   range <- options[["cltRange"]]
   
   if (distribution == "normal") {
-    data <- rnorm(100000, mean, sd)
+    data <- rnorm(n, mean, sd)
   } else if (distribution == "uniform") {
     min <- mean - range / 2
     max <- mean + range / 2
-    data <- runif(n = 100000, min = min, max = max)
+    data <- runif(n = n, min = min, max = max)
   } else if (distribution == "skewed") {
     if (options[["cltSkewIntensity"]] == "low") {
       skew <- 1.5
@@ -184,10 +199,10 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     if (options[["cltSkewDirection"]] == "left") {
       skew <- skew * -1
     }
-    data <- .scaledSkewedNormal(100000, xi = mean, omega = sd,  alpha = skew)
+    data <- .scaledSkewedNormal(n, xi = mean, omega = sd,  alpha = skew)
   } else if (distribution == "binomial") {
     prob <- options[["binomProb"]]
-    data <- c(rep(0, 100000 * prob), rep(1, 100000 * (1 - prob)))
+    data <- c(rep(0, as.integer(n * prob)), rep(1, as.integer(n * (1 - prob))))
   }
   df <- data.frame(x = data)
   return(df)

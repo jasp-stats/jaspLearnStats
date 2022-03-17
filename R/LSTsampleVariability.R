@@ -17,11 +17,21 @@
 
 LSTsampleVariability <- function(jaspResults, dataset, options) {
   set.seed(options[["cltSampleSeed"]])
-  parentData <- .generateParentData(options)
-  samples <- .cltTakeSamples(jaspResults, options = options, data = parentData)
+  if(options[["svParentSizeType"]] == "svParentInfinite"){
+    parentData <- .generateParentData(options)
+    samples <- .cltTakeSamples(jaspResults, options = options, data = parentData)
+  } else {
+    parentData <- .generateParentData(options, finite = options[["svParentSize"]])
+    samples <- .cltTakeSamples(jaspResults, options = options, data = parentData, replace = FALSE)
+  }
+
   
   if (options[["parentShow"]])
-    jaspResults[["cltParentDistribution"]] <- .cltParentDistribution(jaspResults, options = options)
+    if(options[["svParentSizeType"]] == "svParentInfinite"){
+      jaspResults[["cltParentDistribution"]] <- .cltParentDistribution(jaspResults, options = options)
+    } else {
+      jaspResults[["cltParentDistribution"]]
+    }
   
   if (options[["samplesShow"]])
     jaspResults[["cltSamples"]] <- .cltPlotSamples(jaspResults, options = options, samples = samples)
