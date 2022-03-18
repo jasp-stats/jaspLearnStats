@@ -22,18 +22,25 @@ Description
 		func:	"LSTcentralLimitTheorem"
 	}
 	
-		Analysis
+	Analysis
 	{
 		title:	qsTr("Descriptive Statistics")
 		qml:	"LSTdescriptives.qml"
 		func:	"LSTdescriptives"
 	}
 	
-		Analysis
+	Analysis
 	{
 		title:	qsTr("Sample Variability")
 		qml:	"LSTsampleVariability.qml"
 		func:	"LSTsampleVariability"
+	}
+
+	Analysis
+	{
+		title:	qsTr("Effect Sizes")
+		qml:	"LSeffectSizes.qml"
+		func:	"LSeffectSizes"
 	}
 
 
