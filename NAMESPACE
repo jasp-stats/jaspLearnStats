@@ -1,3 +1,4 @@
 export(LSTcentralLimitTheorem)
 export(LSTdescriptives)
 export(LSTsampleVariability)
+export(LSeffectSizes)
