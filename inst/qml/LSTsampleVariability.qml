@@ -45,6 +45,7 @@ Form
 				{
 					value:		"svParentInfinite"
 					label:		qsTr("Infinite")
+					id:			sizeInfinite
 					checked:	true
 				}
 			
@@ -52,10 +53,12 @@ Form
 				{
 					value:		"svParentFinite"
 					label:		qsTr("Finite")
+					id:			sizeFinite
 				
 					DoubleField
 					{
 						name:			"svParentSize"
+						id:				svParentSize
 						label:			qsTr("Size")
 						fieldWidth:		60
 						defaultValue:	100
@@ -76,7 +79,7 @@ Form
 					{label: qsTr("Normal"),		value: "normal"},
 					{label: qsTr("Uniform"),	value: "uniform"},
 					{label: qsTr("Skewed"),		value: "skewed"},
-					{label: qsTr("Binomial"),		value: "binomial"}
+					{label: qsTr("Binomial"),	value: "binomial"}
 				]
 			}
 			
@@ -166,6 +169,17 @@ Form
 		}
 	}
 	
+	
+	function getMaxSamples()
+	{
+		var max = 99999
+		if(sizeFinite.checked)
+		{
+			max = svParentSize.value
+		}
+		return max
+	}
+	
 	Section
 	{
 		title: qsTr("Sample Options")
@@ -178,9 +192,9 @@ Form
 				name:			"cltSampleSize"
 				label:			qsTr("Number of observations per sample")
 				fieldWidth:		60
-				defaultValue:	30
+				defaultValue:	10
 				decimals:		0
-				max: 			100000
+				max: 			99999
 			}
 		
 			DoubleField
@@ -188,8 +202,9 @@ Form
 				name:			"cltSampleAmount"
 				label:			qsTr("Number of total samples")
 				fieldWidth:		60
-				defaultValue:	100
+				defaultValue:	10
 				decimals:		0
+				max:			getMaxSamples()
 			}
 		}
 		
