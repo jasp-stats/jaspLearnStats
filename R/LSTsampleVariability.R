@@ -72,29 +72,30 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
     dotPlotData <- data.frame(x = dummyData, group = as.factor(data$x))
     dotSize <- .getDotSize(n)
     xBreaks <- jaspGraphs::getPrettyAxisBreaks(dummyData)
-    plotObject <- ggplot2::ggplot() +
-      ggplot2::geom_dotplot(data = dotPlotData, mapping = ggplot2::aes(x = x, group = group, fill = group), binaxis = 'x',
-                            stackdir = 'up', dotsize = dotSize) +
-      ggplot2::scale_fill_manual(values = c("grey20", "grey90")) +
-      ggplot2::scale_x_continuous(name = "", breaks = xBreaks, labels = rep("", length(xBreaks))) #+
-    #ggplot2::coord_fixed() 
-    
-    pData <- ggplot2::ggplot_build(plotObject)$data
-    dotWidth <- pData[[1]]$width[1] * dotSize
-    yLabels <- unique(as.integer(jaspGraphs::getPrettyAxisBreaks(c(0, max(pData[[1]]$countidx)))))
-    yBreaks <- yLabels * dotWidth
-    yLimits <-  range(yBreaks)
-    
-    plotObject <- plotObject + ggplot2::scale_y_continuous(name = "", limits = yLimits, breaks = yBreaks, labels = yLabels) + 
-      jaspGraphs::geom_rangeframe() +
-      jaspGraphs::themeJaspRaw() +
-      ggplot2::theme(axis.ticks = ggplot2::element_blank(), axis.text.y = ggplot2::element_blank(),
-                     axis.title.y = ggplot2::element_blank()) 
+    plotObject <- .dotPlotWithGroups(dotPlotData, options, groupColors = c("grey20", "grey90"))
   } else {
     dotPlotData <- data
-    plotObject <- .lstDescCreateDotPlotObject(dotPlotData, options, stats = "none", discrete = FALSE, rugs = FALSE)
+    dotSize <- .getDotSize(n)
+    xBreaks <- jaspGraphs::getPrettyAxisBreaks(dotPlotData$x)
+    xLimits <- range(xBreaks)
+    plotObject <- ggplot2::ggplot() +
+      ggplot2::geom_dotplot(data = dotPlotData, mapping = ggplot2::aes(x = x), binaxis = 'x',
+                            stackdir = 'up', dotsize = dotSize, fill = "grey") +
+      ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks, limits = xLimits)
   }
+  pData <- ggplot2::ggplot_build(plotObject)$data
+  dotWidth <- pData[[1]]$width[1] * dotSize
+  yLabels <- unique(as.integer(jaspGraphs::getPrettyAxisBreaks(c(0, max(pData[[1]]$countidx)))))
+  yBreaks <- yLabels * dotWidth
+  yLimits <-  range(yBreaks)
+  plotObject <- plotObject + ggplot2::scale_y_continuous(name = "", limits = yLimits, breaks = yBreaks, labels = yLabels) + 
+    jaspGraphs::geom_rangeframe() +
+    jaspGraphs::themeJaspRaw() +
+    ggplot2::theme(axis.ticks = ggplot2::element_blank(), axis.text.y = ggplot2::element_blank(),
+                   axis.title.y = ggplot2::element_blank()) 
+  
   plot$plotObject <- plotObject
+  
   return(plot)
 }
 
@@ -127,4 +128,23 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
   sampleMatrixPlot$plotObject <- jaspGraphs::ggMatrixPlot(plotMat)
   
   return(sampleMatrixPlot)
+}
+
+.dotPlotWithGroups <- function(data, options, groupColors, groups = FALSE, samples = FALSE){
+  n <- length(data$x)
+  dotSize <- .getDotSize(n)
+  xBreaks <- jaspGraphs::getPrettyAxisBreaks(data)
+  
+  if (groups) {
+  plotObject <- ggplot2::ggplot() +
+    ggplot2::geom_dotplot(data = data, mapping = ggplot2::aes(x = x, group = group, fill = group), binaxis = 'x',
+                          stackdir = 'up', dotsize = dotSize) +
+    ggplot2::scale_fill_manual(values = groupColors) +
+    ggplot2::scale_x_continuous(name = "", breaks = xBreaks, labels = rep("", length(xBreaks)))
+  } else {
+    
+  }
+  
+  return(plotObject)
+  
 }
