@@ -22,24 +22,21 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
     if(options[["svParentSizeType"]] == "svParentInfinite"){
       parentData <- .generateParentData(options)
       samples <- .cltTakeSamples(jaspResults, options = options, data = parentData)
+      if (options[["parentShow"]])
+        jaspResults[["cltParentDistribution"]] <- .cltParentDistribution(jaspResults, options = options)
+      if (options[["samplesShow"]])
+        jaspResults[["cltSamples"]] <- .cltPlotSamples(jaspResults, options = options, samples = samples)
     } else {
       parentData <- .generateParentData(options, finite = options[["svParentSize"]])
-      samples <- .cltTakeSamples(jaspResults, options = options, data = parentData, replace = FALSE)
-    }
-    
-    
-    if (options[["parentShow"]])
-      if(options[["svParentSizeType"]] == "svParentInfinite") {
-        jaspResults[["cltParentDistribution"]] <- .cltParentDistribution(jaspResults, options = options)
-      } else {
+      samplesAndIndices <- .cltTakeSamples(jaspResults, options = options, data = parentData, replace = FALSE)
+      if (options[["parentShow"]])
         jaspResults[["cltParentDistribution"]] <- .svPlotFinitePopulation(jaspResults, options, parentData)
-      }
-    
-    if (options[["samplesShow"]])
-      jaspResults[["cltSamples"]] <- .cltPlotSamples(jaspResults, options = options, samples = samples)
+      if (options[["samplesShow"]])
+        jaspResults[["cltSamples"]] <- .svPlotFiniteSamples(jaspResults, options, samples = samplesAndIndices$samples,
+                                                            indices = samplesAndIndices$indices, parentData)
+    }
   }
-  
-  return()
+  return() 
 }
 
 
@@ -70,6 +67,7 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
   plot$position <- 1
   
   if (options[["cltParentDistribution"]] == "binomial") {
+    set.seed(123)
     dummyData <- sort(runif(n = n, min = -3, max = 3))
     dotPlotData <- data.frame(x = dummyData, group = as.factor(data$x))
     dotSize <- .getDotSize(n)
@@ -78,27 +76,55 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
       ggplot2::geom_dotplot(data = dotPlotData, mapping = ggplot2::aes(x = x, group = group, fill = group), binaxis = 'x',
                             stackdir = 'up', dotsize = dotSize) +
       ggplot2::scale_fill_manual(values = c("grey20", "grey90")) +
-      ggplot2::scale_x_continuous(name = "", breaks = xBreaks, labels = rep("", length(xBreaks))) +
-      ggplot2::coord_fixed() 
+      ggplot2::scale_x_continuous(name = "", breaks = xBreaks, labels = rep("", length(xBreaks))) #+
+    #ggplot2::coord_fixed() 
     
     pData <- ggplot2::ggplot_build(plotObject)$data
     dotWidth <- pData[[1]]$width[1] * dotSize
     yLabels <- unique(as.integer(jaspGraphs::getPrettyAxisBreaks(c(0, max(pData[[1]]$countidx)))))
     yBreaks <- yLabels * dotWidth
-    yStep <- yBreaks[2] - yBreaks[1]
-    yMax <- ifelse(max(yBreaks) < (10 * dotWidth), (10 * dotWidth) + yStep*2, max(yBreaks) + yStep*2)
-    yLimits <-  c(0, yMax)
+    yLimits <-  range(yBreaks)
     
     plotObject <- plotObject + ggplot2::scale_y_continuous(name = "", limits = yLimits, breaks = yBreaks, labels = yLabels) + 
       jaspGraphs::geom_rangeframe() +
       jaspGraphs::themeJaspRaw() +
       ggplot2::theme(axis.ticks = ggplot2::element_blank(), axis.text.y = ggplot2::element_blank(),
-                     axis.title.y = ggplot2::element_blank())
+                     axis.title.y = ggplot2::element_blank()) 
   } else {
     dotPlotData <- data
     plotObject <- .lstDescCreateDotPlotObject(dotPlotData, options, stats = "none", discrete = FALSE, rugs = FALSE)
   }
-  
   plot$plotObject <- plotObject
   return(plot)
+}
+
+
+.svPlotFiniteSamples <- function(jaspResults, options, samples, indices, parentData) {
+  samples <- samples[1:7]
+  indices <- indices[1:7]
+  plotMat <- matrix(list(), 4, 2)
+  
+  parentPopulationPlot <- .svPlotFinitePopulation(jaspResults, options, parentData)
+  
+  index <- 0
+  for (i in 1:4) {
+    for (j in 1:2) {
+      index <-  index + 1
+      if (index == 8) {
+        samplePlot <- ggplot2::ggplot() + ggplot2::theme_void() + 
+          ggplot2::annotate(geom = "text", x = 0, y = 0, label = gettextf("... until Sample Nr. %i",
+                                                                          options[["cltSampleAmount"]]), size = 10)
+      } else {
+        samplePlot <- parentPopulationPlot$plotObject
+      }
+      plotMat[[i,j]] <- samplePlot
+    }
+  }
+  sampleMatrixPlot <- createJaspPlot(title = gettext("Samples"), width = 1200, height = 1400)
+  sampleMatrixPlot$position <- 2
+  #sampleMatrixPlot$dependOn(options = c())
+  
+  sampleMatrixPlot$plotObject <- jaspGraphs::ggMatrixPlot(plotMat)
+  
+  return(sampleMatrixPlot)
 }

@@ -78,16 +78,20 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     for (i in 1:k) {
       sampleList[[i]] <- sample(x = data[["x"]], size = n, replace = TRUE)
     }
+    return(sampleList)
   } else {
+    sampleIndiceList <- list()
     for(i in 1:k){
       indices <- 1:length(data[["x"]])
       sampleIndices <- sample(indices, size = n, replace = FALSE)
+      sampleIndiceList[[i]] <- sampleIndices
       sampleList[[i]] <- data[["x"]][sampleIndices]
       dataWitoutSamples <- data[["x"]][-sampleIndices]
       data <- data.frame(x = dataWitoutSamples)
     }
+    return(list("samples" = sampleList,
+                  "indices" = sampleIndiceList))
   }
-  return(sampleList)
 }
 
 
