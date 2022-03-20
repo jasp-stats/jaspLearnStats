@@ -17,7 +17,7 @@
 
 LSTsampleVariability <- function(jaspResults, dataset, options) {
   errors <- .svCheckErrors(options, jaspResults)
-  if (!errors){
+  if (!errors) {
     set.seed(options[["cltSampleSeed"]])
     if(options[["svParentSizeType"]] == "svParentInfinite"){
       parentData <- .generateParentData(options)
@@ -56,16 +56,14 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
     jaspResults[["cltSamples"]] <- errorMessage
   }
   return(errors)
-  
-  
 }
 
-.svPlotFinitePopulation <- function(jaspResults, options, data){
+.svPlotFinitePopulation <- function(jaspResults, options, data) {
   n <- length(data$x)
   plotSize <- 700 + (n / 50) * 25
   plot <- createJaspPlot(title = gettext("Parent Distribution"), width = plotSize, height = plotSize)
   plot$position <- 1
-  
+
   if (options[["cltParentDistribution"]] == "binomial") {
     set.seed(123)
     dummyData <- sort(runif(n = n, min = -3, max = 3))
@@ -85,13 +83,13 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
   indices <- indices[1:7]
   plotMat <- matrix(list(), 4, 2)
   n <- length(parentData$x)
-  
+
   index <- 0
   for (i in 1:4) {
     for (j in 1:2) {
       index <-  index + 1
       if (index == 8) {
-        samplePlot <- ggplot2::ggplot() + ggplot2::theme_void() + 
+        samplePlot <- ggplot2::ggplot() + ggplot2::theme_void() +
           ggplot2::annotate(geom = "text", x = 0, y = 0, label = gettextf("... until Sample Nr. %i",
                                                                           options[["cltSampleAmount"]]), size = 10)
       } else {
@@ -104,10 +102,8 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
           samplePlot <- .dotPlotWithGroups(dotPlotData, options, groupColors = c("orange", "dodgerblue", "red", "darkblue"),
                                            groups = TRUE)
         } else {
-          dotPlotData <- data.frame(x = parentData, group = rep(0, n))
-          dotPlotData$group[unlist(indices[index])] <- 1
-          dotPlotData$group <- as.factor(dotPlotData$group)
-          samplePlot <- .dotPlotWithGroups(dotPlotData, options, groupColors = c("orange", "dodgerblue"), groups = TRUE)
+          dotPlotData <- parentData
+          samplePlot <- .dotPlotWithGroups(dotPlotData, options, samples = indices[index])
         }
       }
       plotMat[[i,j]] <- samplePlot
@@ -116,13 +112,13 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
   sampleMatrixPlot <- createJaspPlot(title = gettext("Samples"), width = 1200, height = 1500)
   sampleMatrixPlot$position <- 2
   #sampleMatrixPlot$dependOn(options = c())
-  
+
   sampleMatrixPlot$plotObject <- jaspGraphs::ggMatrixPlot(plotMat)
-  
+
   return(sampleMatrixPlot)
 }
 
-.dotPlotWithGroups <- function(data, options, groupColors = "", groups = FALSE){
+.dotPlotWithGroups <- function(data, options, groupColors = "", groups = FALSE, samples = "") {
   n <- length(data$x)
   dotSize <- .getDotSize(n)
   xBreaks <- jaspGraphs::getPrettyAxisBreaks(data$x)
@@ -135,7 +131,8 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
   } else {
     plotObject <- ggplot2::ggplot() +
       ggplot2::geom_dotplot(data = data, mapping = ggplot2::aes(x = x), binaxis = 'x',
-                            stackdir = 'up', dotsize = dotSize, fill = "orange", binpositions = "all")
+                            stackdir = 'up', dotsize = dotSize, fill = "orange", binpositions = "all") +
+      ggplot2::coord_fixed()
   }
   pData <- ggplot2::ggplot_build(plotObject)$data
   dotWidth <- pData[[1]]$width[1] * dotSize
@@ -145,14 +142,28 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
   plotObject <- plotObject + ggplot2::scale_y_continuous(name = "", limits = yLimits, breaks = yBreaks, labels = yLabels) +
     jaspGraphs::geom_rangeframe() +
     jaspGraphs::themeJaspRaw()
-  
+
+
+  if (samples != "") {
+    for (i in samples){
+    sampleDot <- pData[[1]][i,]
+    y0 <- ifelse(sampleDot$countidx == 1, dotWidth/2, dotWidth/2 + (sampleDot$countidx - 1) * dotWidth)
+    x0 <- sampleDot$x
+    circleData <- data.frame(x0 = x0,
+                             y0 = y0,
+                             r = dotWidth / 2)
+    plotObject <- plotObject + ggforce::geom_circle(data = circleData, mapping = ggplot2::aes(x0 = x0, y0 = y0, r = r),
+                                                    inherit.aes = FALSE, fill = "red")
+    }
+  }
+
   if (options[["cltParentDistribution"]] == "binomial") {
-    plotObject <- plotObject + 
+    plotObject <- plotObject +
       ggplot2::scale_x_continuous(name = "", breaks = xBreaks, labels = rep("", length(xBreaks))) +
       ggplot2::theme(axis.ticks = ggplot2::element_blank(), axis.text.y = ggplot2::element_blank(),
                      axis.title.y = ggplot2::element_blank())
   } else {
-    plotObject <- plotObject + 
+    plotObject <- plotObject +
       ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks, limits = xLimits) +
       ggplot2::theme(axis.ticks.y = ggplot2::element_blank(), axis.text.y = ggplot2::element_blank(),
                      axis.title.y = ggplot2::element_blank())
