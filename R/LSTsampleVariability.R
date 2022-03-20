@@ -97,10 +97,9 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
           set.seed(123)
           dummyData <- sort(runif(n = n, min = -3, max = 3))
           dotPlotData <- data.frame(x = dummyData, group = parentData$x)
-          dotPlotData$group[unlist(indices[index])] <- dotPlotData$group[unlist(indices[index])] + 2
           dotPlotData$group <- as.factor(dotPlotData$group)
-          samplePlot <- .dotPlotWithGroups(dotPlotData, options, groupColors = c("orange", "dodgerblue", "red", "darkblue"),
-                                           groups = TRUE)
+          samplePlot <- .dotPlotWithGroups(dotPlotData, options, groupColors = c("orange", "dodgerblue"),
+                                           groups = TRUE, samples = indices[index])
         } else {
           dotPlotData <- parentData
           samplePlot <- .dotPlotWithGroups(dotPlotData, options, samples = indices[index])
@@ -127,7 +126,8 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
     plotObject <- ggplot2::ggplot() +
       ggplot2::geom_dotplot(data = data, mapping = ggplot2::aes(x = x, group = group, fill = group), binaxis = 'x',
                             stackdir = 'up', dotsize = dotSize, binpositions = "all", stackgroups = TRUE) +
-      ggplot2::scale_fill_manual(values = groupColors)
+      ggplot2::scale_fill_manual(values = groupColors) +
+      ggplot2::coord_fixed()
   } else {
     plotObject <- ggplot2::ggplot() +
       ggplot2::geom_dotplot(data = data, mapping = ggplot2::aes(x = x), binaxis = 'x',

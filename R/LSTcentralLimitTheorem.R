@@ -81,6 +81,17 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     return(sampleList)
   } else {
     population <- data
+    if (options[["cltParentDistribution"]] == "binomial") {
+      sampleIndiceList <- list()
+      indices <- 1:length(population[["x"]])
+      for(i in 1:k){
+        sampleIndices <- sample(indices, size = n, replace = FALSE)
+        sampleIndiceList[[i]] <- sampleIndices
+        indicesWithoutSamples <- indices[-.getIndices(sampleIndices, indices)]
+        indices <- indicesWithoutSamples
+      }
+      sampleList <- .getSampleValuesFromIndices(sampleIndiceList, population)
+    } else {
     for(i in 1:k){
       indices <- 1:length(population[["x"]])
       sampleIndices <- sample(indices, size = n, replace = FALSE)
@@ -90,6 +101,7 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     }
     orderedData <- data.frame(x = sort(data$x))
     sampleIndiceList <- lapply(sampleList, .getIndices, population = orderedData)
+    }
     return(list("samples" = sampleList,
                 "indices" = sampleIndiceList))
   }
@@ -101,6 +113,14 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     sampleIndices <- c(sampleIndices, which(sampleVector[i] == population))
   }
   return(sampleIndices)
+}
+
+.getSampleValuesFromIndices <- function(sampleIndiceList, population){
+  sampleList <- list()
+  for (i in 1:length(sampleIndiceList)) {
+    sampleList[[i]] <- population$x[sampleIndiceList[[i]]]
+  }
+  return(sampleList)
 }
 
 
