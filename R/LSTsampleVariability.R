@@ -99,11 +99,13 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
           dotPlotData <- data.frame(x = dummyData, group = parentData$x)
           dotPlotData$group <- as.factor(dotPlotData$group)
           samplePlot <- .dotPlotWithGroups(dotPlotData, options, groupColors = c("orange", "dodgerblue"),
-                                           groups = TRUE, samples = indices[index])
+                                           groups = TRUE, samples = indices[index], alpha = .5,
+                                           sampleColors = c("orange", "dodgerblue"))
         } else {
           dotPlotData <- parentData
-          samplePlot <- .dotPlotWithGroups(dotPlotData, options, samples = indices[index])
+          samplePlot <- .dotPlotWithGroups(dotPlotData, options, samples = indices[index], alpha = .5, sampleColors = "orange")
         }
+       samplePlot <- samplePlot + ggplot2::ggtitle(gettextf("Sample Nr. %i", index)) 
       }
       plotMat[[i,j]] <- samplePlot
     }
@@ -117,7 +119,7 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
   return(sampleMatrixPlot)
 }
 
-.dotPlotWithGroups <- function(data, options, groupColors = "", groups = FALSE, samples = "") {
+.dotPlotWithGroups <- function(data, options, groupColors = "", groups = FALSE, samples = "", alpha = 1, sampleColors) {
   n <- length(data$x)
   dotSize <- .getDotSize(n)
   xBreaks <- jaspGraphs::getPrettyAxisBreaks(data$x)
@@ -125,48 +127,55 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
   if (groups) {
     plotObject <- ggplot2::ggplot() +
       ggplot2::geom_dotplot(data = data, mapping = ggplot2::aes(x = x, group = group, fill = group), binaxis = 'x',
-                            stackdir = 'up', dotsize = dotSize, binpositions = "all", stackgroups = TRUE) +
+                            stackdir = 'up', dotsize = dotSize, binpositions = "all", stackgroups = TRUE, alpha = alpha) +
       ggplot2::scale_fill_manual(values = groupColors) +
       ggplot2::coord_fixed()
   } else {
     plotObject <- ggplot2::ggplot() +
       ggplot2::geom_dotplot(data = data, mapping = ggplot2::aes(x = x), binaxis = 'x',
-                            stackdir = 'up', dotsize = dotSize, fill = "orange", binpositions = "all") +
+                            stackdir = 'up', dotsize = dotSize, fill = "orange", binpositions = "all", alpha = alpha) +
       ggplot2::coord_fixed()
   }
   pData <- ggplot2::ggplot_build(plotObject)$data
   dotWidth <- pData[[1]]$width[1] * dotSize
   yLabels <- unique(as.integer(jaspGraphs::getPrettyAxisBreaks(c(0, max(pData[[1]]$countidx)))))
   yBreaks <- yLabels * dotWidth
+  yStep <- yBreaks[2] - yBreaks[1] 
   yLimits <-  range(yBreaks)
-  plotObject <- plotObject + ggplot2::scale_y_continuous(name = "", limits = yLimits, breaks = yBreaks, labels = yLabels) +
+  plotObject <- plotObject + ggplot2::scale_y_continuous(name = "Count", limits = yLimits, breaks = yBreaks, labels = yLabels) +
     jaspGraphs::geom_rangeframe() +
     jaspGraphs::themeJaspRaw()
-
 
   if (samples != "") {
     for (i in samples){
     sampleDot <- pData[[1]][i,]
+    if(length(sampleColors) > 1) {
+      colorIndex <- sample(1:5, 1)
+      fillColor <- .getColor(colorIndex, rainbow(5))
+    } else {
+      fillColor <- "green" #sampleColors
+    }
     y0 <- ifelse(sampleDot$countidx == 1, dotWidth/2, dotWidth/2 + (sampleDot$countidx - 1) * dotWidth)
     x0 <- sampleDot$x
     circleData <- data.frame(x0 = x0,
                              y0 = y0,
                              r = dotWidth / 2)
     plotObject <- plotObject + ggforce::geom_circle(data = circleData, mapping = ggplot2::aes(x0 = x0, y0 = y0, r = r),
-                                                    inherit.aes = FALSE, fill = "red")
+                                                    inherit.aes = FALSE, fill = fillColor)
     }
   }
 
   if (options[["cltParentDistribution"]] == "binomial") {
     plotObject <- plotObject +
-      ggplot2::scale_x_continuous(name = "", breaks = xBreaks, labels = rep("", length(xBreaks))) +
-      ggplot2::theme(axis.ticks = ggplot2::element_blank(), axis.text.y = ggplot2::element_blank(),
-                     axis.title.y = ggplot2::element_blank())
+      ggplot2::scale_x_continuous(name = "", breaks = xBreaks, labels = rep("", length(xBreaks))) 
   } else {
     plotObject <- plotObject +
-      ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks, limits = xLimits) +
-      ggplot2::theme(axis.ticks.y = ggplot2::element_blank(), axis.text.y = ggplot2::element_blank(),
-                     axis.title.y = ggplot2::element_blank())
+      ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks, limits = xLimits)
   }
   return(plotObject)
+}
+
+.getColor <- function(index, colors){
+  color <- colors[index]
+  return(color)
 }

@@ -235,7 +235,7 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     data <- .scaledSkewedNormal(n, xi = mean, omega = sd,  alpha = skew)
   } else if (distribution == "binomial") {
     prob <- options[["binomProb"]]
-    data <- c(rep(0, as.integer(n * prob)), rep(1, as.integer(n * (1 - prob))))
+    data <- c(rep(1, as.integer(n * prob)), rep(2, as.integer(n * (1 - prob))))
   }
   df <- data.frame(x = data)
   return(df)
