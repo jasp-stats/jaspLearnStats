@@ -200,6 +200,7 @@ Form
 			DoubleField
 			{
 				name:			"cltSampleAmount"
+				id:				svSampleAmount
 				label:			qsTr("Number of total samples")
 				fieldWidth:		60
 				defaultValue:	10
@@ -233,6 +234,61 @@ Form
 				defaultValue:	1
 				decimals:		0
 			}
+		}
+		
+		Group
+		{
+		
+		columns:	3
+		
+		DropDown
+			{
+				name:				"svSampleShowType"
+				label:				qsTr("Show Samples")
+				id:					svSampleShowType
+				indexDefaultValue:	0
+				values:
+				[
+					{ label: qsTr("First"),		value: "first"},
+					{ label: qsTr("Last"),		value: "last"	},
+					{ label: qsTr("Range"),			value: "range"		},
+					{ label: qsTr("All"),			value: "all"		}
+				]
+			}
+
+			DoubleField
+				{
+					name:			"svFirstOrLastSamples"
+					label:			qsTr("")
+					fieldWidth:		60
+					defaultValue:	7
+					decimals:		0
+					visible:		svSampleShowType.currentValue == "first" | svSampleShowType.currentValue == "last"
+					max:			999
+				}
+				
+				
+				DoubleField
+				{
+					name:			"svFromSample"
+					label:			qsTr("From")
+					fieldWidth:		60
+					defaultValue:	1
+					decimals:		0
+					visible:		svSampleShowType.currentValue == "range"
+					min: 			1
+				}
+				
+				DoubleField
+				{
+					name:			"svToSample"
+					label:			qsTr("To")
+					fieldWidth:		60
+					defaultValue:	7
+					decimals:		0
+					visible:		svSampleShowType.currentValue == "range"
+					max:			999
+				}
 		}
 	}
 	
