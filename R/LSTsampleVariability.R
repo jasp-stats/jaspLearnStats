@@ -24,8 +24,14 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
       samples <- .cltTakeSamples(jaspResults, options = options, data = parentData)
       if (options[["parentShow"]])
         jaspResults[["cltParentDistribution"]] <- .cltParentDistribution(jaspResults, options = options)
-      if (options[["samplesShow"]])
-        jaspResults[["cltSamples"]] <- .cltPlotSamples(jaspResults, options = options, samples = samples)
+      if (options[["samplesShow"]]){
+        maxSamples <- length(samples)
+        fromTo <- .getFromToSampleShow(type = options[["svSampleShowType"]], maxSamples, singleValue = options[["svFirstOrLastSamples"]],
+                                       start = options[["svFromSample"]], stop = options[["svToSample"]])
+        from <- fromTo[1]
+        to <- fromTo[2]
+        jaspResults[["cltSamples"]] <- .cltPlotSamples(jaspResults, options = options, samples = samples, from = from, to = to)
+      }
     } else {
       parentData <- .generateParentData(options, finite = options[["svParentSize"]])
       samplesAndIndices <-  .cltTakeSamples(jaspResults, options = options, data = parentData, replace = FALSE)
@@ -80,30 +86,20 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
 
 .svPlotFiniteSamples <- function(jaspResults, options, samples, indices, parentData) {
   maxSamples <- length(samples)
-  if (options[["svSampleShowType"]] == "first") {
-    from <- 1
-    to <- options[["svFirstOrLastSamples"]]
-  } else if (options[["svSampleShowType"]] == "last") {
-    from <- maxSamples - options[["svFirstOrLastSamples"]]
-    to <- maxSamples
-  } else if (options[["svSampleShowType"]] == "range") {
-    from <- options[["svFromSample"]]
-    to <- options[["svToSample"]]
-  } else if (options[["svSampleShowType"]] == "all") {
-    from <- 1
-    to <- maxSamples
-  }
+  fromTo <- .getFromToSampleShow(type = options[["svSampleShowType"]], maxSamples, singleValue = options[["svFirstOrLastSamples"]],
+                                 start = options[["svFromSample"]], stop = options[["svToSample"]])
+  from <- fromTo[1]
+  to <- fromTo[2]
   visibleSamples <- from:to
-  samples <- samples[from:to]
-  indices <- indices[from:to]
+  samples <- samples[visibleSamples]
+  indices <- indices[visibleSamples]
   
-  ####### testing to make modular
   removedDots <- c()
   plotList <- list()
   for (i in 1:length(visibleSamples)) {
     if (options[["cltParentDistribution"]] == "binomial") {
       set.seed(123)
-      dummyData <- sort(runif(n = n, min = -3, max = 3))
+      dummyData <- sort(runif(n = length(parentData$x), min = -3, max = 3))
       dotPlotData <- data.frame(x = dummyData, group = parentData$x)
       dotPlotData$group <- as.factor(dotPlotData$group)
       currentSample <- indices[[i]]
@@ -119,50 +115,9 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
     samplePlot <- samplePlot + ggplot2::ggtitle(gettextf("Sample Nr. %i", visibleSamples[i])) 
     plotList[[i]] <- samplePlot
   }
-  tbcString <- gettextf("... until Sample Nr. %i", options[["cltSampleAmount"]])
+  tbcString <- ifelse(to == maxSamples, "", gettextf("... until Sample Nr. %i", maxSamples))
   plotMat <- .arrangePlotMat(plotList, tbc = tbcString)
   
-  
-  
-  
-  
-  ##################3
-  
-  
-  
-  
-  
-  
-  # 
-  # removedDots <- c()
-  # for (i in 1:4) {
-  #   for (j in 1:2) {
-  #     index <-  index + 1
-  #     if (index == 8) {
-  #       samplePlot <- ggplot2::ggplot() + ggplot2::theme_void() +
-  #         ggplot2::annotate(geom = "text", x = 0, y = 0, label = gettextf("... until Sample Nr. %i",
-  #                                                                         options[["cltSampleAmount"]]), size = 10)
-  #     } else {
-  #       if (options[["cltParentDistribution"]] == "binomial") {
-  #         set.seed(123)
-  #         dummyData <- sort(runif(n = n, min = -3, max = 3))
-  #         dotPlotData <- data.frame(x = dummyData, group = parentData$x)
-  #         dotPlotData$group <- as.factor(dotPlotData$group)
-  #         currentSample <- indices[[index]]
-  #         samplePlot <- .dotPlotWithGroups(dotPlotData, options, groupColors = c("orange", "dodgerblue", "white"),
-  #                                          groups = TRUE, samples = currentSample, alpha = .4,
-  #                                          sampleColors = c("orange", "dodgerblue"), removedDots = removedDots)
-  #       } else {
-  #         dotPlotData <- parentData
-  #         samplePlot <- .dotPlotWithGroups(dotPlotData, options, samples = indices[index], alpha = .4, sampleColors = "orange",
-  #                                          removedDots = removedDots)
-  #       }
-  #       removedDots <- unlist(indices[1:index])
-  #       samplePlot <- samplePlot + ggplot2::ggtitle(gettextf("Sample Nr. %i", index)) 
-  #     }
-  #     plotMat[[i,j]] <- samplePlot
-  #   }
-  # }
   sampleMatrixPlot <- createJaspPlot(title = gettext("Samples"), width = 1200, height = 1500)
   sampleMatrixPlot$position <- 2
   #sampleMatrixPlot$dependOn(options = c())
@@ -280,4 +235,21 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
     }
   }
   return(plotMat)
+}
+
+.getFromToSampleShow <- function(type = c("first", "last", "range", "all"), maxSamples, singleValue = "", start ="", stop = ""){
+  if (type == "first") {
+    from <- 1
+    to <- singleValue
+  } else if (type == "last") {
+    from <- maxSamples - (singleValue - 1)
+    to <- maxSamples
+  } else if (type == "range") {
+    from <- start
+    to <- stop
+  } else if (type == "all") {
+    from <- 1
+    to <- maxSamples
+  }
+  return(c(from, to))
 }

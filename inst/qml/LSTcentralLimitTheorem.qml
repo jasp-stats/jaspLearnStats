@@ -171,6 +171,61 @@ Form
 				decimals:		0
 			}
 		}
+		
+		Group
+		{
+		
+			columns:	3
+		
+			DropDown
+			{
+				name:				"cltSampleShowType"
+				label:				qsTr("Show Samples")
+				id:					cltSampleShowType
+				indexDefaultValue:	0
+				values:
+				[
+					{ label: qsTr("First"),		value: "first"},
+					{ label: qsTr("Last"),		value: "last"	},
+					{ label: qsTr("Range"),			value: "range"		},
+					{ label: qsTr("All"),			value: "all"		}
+				]
+			}
+
+			DoubleField
+			{
+				name:			"cltFirstOrLastSamples"
+				label:			qsTr("")
+				fieldWidth:		60
+				defaultValue:	7
+				decimals:		0
+				visible:		cltSampleShowType.currentValue == "first" | cltSampleShowType.currentValue == "last"
+				max:			999
+				}
+				
+				
+			DoubleField
+			{
+				name:			"cltFromSample"
+				label:			qsTr("From")
+				fieldWidth:		60
+				defaultValue:	1
+				decimals:		0
+				visible:		cltSampleShowType.currentValue == "range"
+				min: 			1
+			}
+				
+			DoubleField
+			{
+				name:			"cltToSample"
+				label:			qsTr("To")
+				fieldWidth:		60
+				defaultValue:	7
+				decimals:		0
+				visible:		cltSampleShowType.currentValue == "range"
+				max:			999
+			}
+		}
 	}
 	
 	Section
