@@ -103,7 +103,7 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
       dotPlotData <- data.frame(x = dummyData, group = parentData$x)
       dotPlotData$group <- as.factor(dotPlotData$group)
       currentSample <- indices[[i]]
-      samplePlot <- .dotPlotWithGroups(dotPlotData, options, groupColors = c("orange", "dodgerblue", "white"),
+      samplePlot <- .dotPlotWithGroups(dotPlotData, options, groupColors = c("orange", "dodgerblue"),
                                        groups = TRUE, samples = currentSample, alpha = .4,
                                        sampleColors = c("orange", "dodgerblue"), removedDots = removedDots)
     } else {
@@ -150,7 +150,7 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
   yLabels <- unique(as.integer(jaspGraphs::getPrettyAxisBreaks(c(0, max(pData[[1]]$countidx)))))
   yBreaks <- yLabels * dotWidth
   yStep <- yBreaks[2] - yBreaks[1] 
-  yLimits <-  range(yBreaks)
+  yLimits <-  c(min(yBreaks), max(yBreaks) + yStep)
   plotObject <- plotObject + ggplot2::scale_y_continuous(name = "Count", limits = yLimits, breaks = yBreaks, labels = yLabels) +
     jaspGraphs::geom_rangeframe() +
     jaspGraphs::themeJaspRaw()
@@ -184,6 +184,39 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
                                r = dotWidth / 2)
       plotObject <- plotObject + ggforce::geom_circle(data = circleData, mapping = ggplot2::aes(x0 = x0, y0 = y0, r = r),
                                                       inherit.aes = FALSE, fill = fillColor)
+    }
+    if (options[["cltParentDistribution"]] == "binomial") {
+      sampleCounts <- table(data$group[samples], dnn = FALSE)
+      countLabelData <- data.frame(x = c(xBreaks[2], rev(xBreaks)[2]), y = rep(max(yBreaks) + yStep/2, 2),
+                                   label = c(gettextf("Count: %i", sampleCounts[1]), gettextf("Count: %i", sampleCounts[2])))
+      plotObject <- plotObject + 
+        ggplot2::geom_label(data = countLabelData, mapping = ggplot2::aes(x = x, y = y, label = label), color = groupColors,
+                            size = 6)
+      
+    } else {
+      sampleMean <- mean(data$x[samples])
+      meanLineData <- data.frame(x = rep(sampleMean, 2), y = c(0, max(yBreaks) + yStep/2))
+      meanLabelData <- data.frame(x = sampleMean, y = max(yBreaks) + yStep/2, label = gettextf("Mean: %.2f", sampleMean))
+      plotObject <- plotObject +
+        ggplot2::geom_path(data = meanLineData, mapping = ggplot2::aes(x = x, y = y), size = 1, color = "cornflowerblue", alpha = .7) +
+        ggplot2::geom_label(data = meanLabelData,  mapping = ggplot2::aes(x = x, y = y, label = label), size = 6, color = "cornflowerblue")
+    }
+  } else {
+    if (options[["cltParentDistribution"]] == "binomial") {
+      counts <- table(data$group, dnn = FALSE)
+      countLabelData <- data.frame(x = c(xBreaks[2], rev(xBreaks)[2]), y = rep(max(yBreaks) + yStep/2, 2),
+                                   label = c(gettextf("Count: %i", counts[1]), gettextf("Count: %i", counts[2])))
+      plotObject <- plotObject + 
+        ggplot2::geom_label(data = countLabelData, mapping = ggplot2::aes(x = x, y = y, label = label), color = groupColors,
+                            size = 6)
+      
+    } else {
+      dataMean <- mean(data$x)
+      meanLineData <- data.frame(x = rep(dataMean, 2), y = c(0, max(yBreaks) + yStep/2))
+      meanLabelData <- data.frame(x = dataMean, y = max(yBreaks) + yStep/2, label = gettextf("Mean: %.2f", dataMean))
+      plotObject <- plotObject +
+        ggplot2::geom_path(data = meanLineData, mapping = ggplot2::aes(x = x, y = y), size = 1, color = "purple", alpha = .7) +
+        ggplot2::geom_label(data = meanLabelData,  mapping = ggplot2::aes(x = x, y = y, label = label), size = 6, color = "purple")
     }
   }
   

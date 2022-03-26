@@ -145,7 +145,10 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
   }
   
   yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(0, max(allCounts)))
-  yLimits <- range(yBreaks)
+  yStep <- yBreaks[2] - yBreaks[1]
+  yLimits <- c(min(yBreaks), max(yBreaks) + yStep)
+  
+  
   if (options[["cltParentDistribution"]] == "binomial") {
     xBreaks <- c(1 , 2)
     xLimits <- c(.5, 2.5)
@@ -157,17 +160,20 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     binWidth <- (h2$breaks[2] - h2$breaks[1])
   }
   
-  
   plotList <- list()
   for (i in 1:length(visibleSamples)) {
     if (options[["cltParentDistribution"]] == "binomial") {
       data <- factor(samples[[i]], level = c(1, 2))
       countTable <- table(data)
       df <- data.frame("biValues" = c(1, 2), "counts" = as.vector(countTable), colors = c("c1", "c2"))
+      countLabelData <- data.frame(x = c(1, 2), y = rep(max(yBreaks) + yStep/2, 2),
+                                   label = c(gettextf("Count: %i", df$counts[1]), gettextf("Count: %i", df$counts[2])))
       samplePlot <- ggplot2::ggplot() +
         ggplot2::geom_bar(data = df, mapping = ggplot2::aes(x = biValues, y = counts, fill = colors),
                           size = .3, stat = "identity", color = "black") +
-        ggplot2::scale_fill_manual(values = c("grey20", "grey90"))
+        ggplot2::scale_fill_manual(values = c("grey20", "grey90")) +
+        ggplot2::geom_label(data = countLabelData, mapping = ggplot2::aes(x = x, y = y, label = label),
+                            color = c("grey20", "grey70"), size = 6)
     } else {
       mean <- mean(samples[[i]])
       samplePlot <- ggplot2::ggplot(data.frame(x = samples[[i]]), ggplot2::aes(x = x)) +
@@ -219,10 +225,12 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
   
   if (distribution == "normal") {
     data <- rnorm(n, mean, sd)
+    data <- mean + sd * scale(data)
   } else if (distribution == "uniform") {
     min <- mean - range / 2
     max <- mean + range / 2
     data <- runif(n = n, min = min, max = max)
+    data <- mean + scale(data, scale = FALSE)
   } else if (distribution == "skewed") {
     if (options[["cltSkewIntensity"]] == "low") {
       skew <- 1.5
@@ -237,7 +245,7 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     data <- .scaledSkewedNormal(n, xi = mean, omega = sd,  alpha = skew)
   } else if (distribution == "binomial") {
     prob <- options[["binomProb"]]
-    data <- c(rep(1, as.integer(n * prob)), rep(2, as.integer(n * (1 - prob))))
+    data <- c(rep(1, round(n * prob)), rep(2, round(n * (1 - prob))))
   }
   df <- data.frame(x = data)
   return(df)
