@@ -136,7 +136,7 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
   samples <- samples[visibleSamples]
   
   allCounts <- vector()
-  for (i in 1:7) {
+  for (i in 1:length(visibleSamples)) {
     sample <- samples[[i]]
     binWidthType1 <- .getBinWidth(variable = sample, options = options)
     h1 <- hist(x = sample, plot = FALSE, right = FALSE, breaks = binWidthType1)
@@ -144,10 +144,9 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     allCounts <- c(allCounts, counts)
   }
   
-  yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(0, max(allCounts)))
+  yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(0, allCounts))
   yStep <- yBreaks[2] - yBreaks[1]
   yLimits <- c(min(yBreaks), max(yBreaks) + yStep)
-  
   
   if (options[["cltParentDistribution"]] == "binomial") {
     xBreaks <- c(1 , 2)
@@ -175,26 +174,33 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
         ggplot2::geom_label(data = countLabelData, mapping = ggplot2::aes(x = x, y = y, label = label),
                             color = c("grey20", "grey70"), size = 6)
     } else {
-      mean <- mean(samples[[i]])
+      sampleMean <- mean(samples[[i]])
+      meanLineData <- data.frame(x = rep(sampleMean, 2), y = c(0, max(yBreaks) + yStep / 2))
+      meanLabelData <- data.frame(x = sampleMean, y = max(yBreaks) + yStep/2, label = gettextf("Mean: %.2f", sampleMean))
       samplePlot <- ggplot2::ggplot(data.frame(x = samples[[i]]), ggplot2::aes(x = x)) +
         ggplot2::geom_histogram(mapping = ggplot2::aes(y =..count..),closed = "left", fill = "coral", col = "black",
                                 size = .7, binwidth = binWidth, center = binWidth/2) +
-        ggplot2::geom_vline(xintercept = mean, color = "cornflowerblue", size = 1) +
-        ggplot2::geom_label(data = data.frame(x = mean, y = max(yLimits)*0.95, label = gettextf("Mean: %.2f", mean)),
-                            mapping = ggplot2::aes(x = x, y = y, label = label), color = "cornflowerblue", size = 6)
+        ggplot2::geom_path(data = meanLineData, mapping = ggplot2::aes(x = x, y = y), color = "cornflowerblue", size = 1,
+                           alpha = .7) +
+        ggplot2::geom_label(data = meanLabelData, mapping = ggplot2::aes(x = x, y = y, label = label),
+                            color = "cornflowerblue", size = 6)
       if (options[["samplesShowRugs"]])
         samplePlot <- samplePlot + ggplot2::geom_rug()
     }
-    samplePlot <- samplePlot + ggplot2::scale_y_continuous(breaks = yBreaks, limits = yLimits, name = "Count") +
+    samplePlot <- samplePlot +
+      ggplot2::scale_y_continuous(breaks = yBreaks, limits = yLimits, name = "Count") +
       ggplot2::scale_x_continuous(breaks = xBreaks, limits = xLimits, name = "") +
       ggplot2::ggtitle(gettextf("Sample Nr. %i", visibleSamples[i])) +
-      jaspGraphs::themeJaspRaw() + jaspGraphs::geom_rangeframe()
+      jaspGraphs::themeJaspRaw() +
+      jaspGraphs::geom_rangeframe()
     plotList[[i]] <- samplePlot
   }
   tbcString <- ifelse(to == maxSamples, "", gettextf("... until Sample Nr. %i", maxSamples))
   plotMat <- .arrangePlotMat(plotList, tbc = tbcString)
+  rows <- .getPlotMatDetails(length(visibleSamples))$rows
+  plotHeight <- rows * 200
   
-  sampleMatrixPlot <- createJaspPlot(title = gettext("Samples"), width = 1200, height = 1000)
+  sampleMatrixPlot <- createJaspPlot(title = gettext("Samples"), width = 1200, height = plotHeight)
   sampleMatrixPlot$position <- 2
   sampleMatrixPlot$dependOn(options = c("cltParentDistribution",
                                         "cltMean",
@@ -206,7 +212,6 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
                                         "cltSampleAmount",
                                         "samplesShow",
                                         "samplesShowRugs"))
-  
   sampleMatrixPlot$plotObject <- jaspGraphs::ggMatrixPlot(plotMat)
   
   return(sampleMatrixPlot)
@@ -262,7 +267,9 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
   binWidthType <- .getBinWidth(variable = meanDf[["x"]], options = options)
   h <- hist(meanDf[["x"]], plot = FALSE, breaks = binWidthType)
   counts <- h$counts
-  yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(0, max(counts)*1.1))
+  yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(0, max(counts)))
+  yStep <- yBreaks[2] - yBreaks[1]
+  yLimits <- c(min(yBreaks), max(yBreaks) + yStep)
   xBreaks <- jaspGraphs::getPrettyAxisBreaks(c(h$breaks), min.n = 4)
   xLimits <- range(xBreaks)
   binWidth <- (h$breaks[2] - h$breaks[1])
@@ -271,21 +278,23 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     ggplot2::geom_histogram(mapping = ggplot2::aes(y =..count..),
                             closed = "left", fill = "cornflowerblue", col = "black", size = .7,
                             binwidth = binWidth, center = binWidth/2)
+  
   if (options[["samplingDistShowRugs"]])
     sdPlotObject <- sdPlotObject + ggplot2::geom_rug()
+  
+  meanLineData <- data.frame(x = rep(meanOfMeans, 2), y = c(0, max(yBreaks) + yStep / 2))
   sdPlotObject <- sdPlotObject +
     ggplot2::scale_x_continuous(breaks = xBreaks, limits = xLimits, name = "") +
-    ggplot2::geom_vline(xintercept = meanOfMeans, color = "darkgoldenrod1", size = 1)
-  if (options[["samplingDistShowNormal"]]) {
-    sdPlotObject <- sdPlotObject +
-      ggplot2::stat_function(fun = function(x)dnorm(x, mean = meanOfMeans, sd = sdOfMeans) * binWidth * n, size = 1)
-  }
-  yPos <- max(ggplot2::ggplot_build(sdPlotObject)$data[[1]]$y) * 1.1
-  yLimits <- range(c(yBreaks, yPos))
-  sdPlotObject <- sdPlotObject + ggplot2::geom_label(data = data.frame(x = meanOfMeans, y = yPos,
-                                                                       label = gettextf("Mean: %.2f", meanOfMeans)),
-                                                     mapping = ggplot2::aes(x = x, y = y, label = label),
-                                                     color = "darkgoldenrod1", size = 6) +
+    ggplot2::geom_path(data = meanLineData, mapping = ggplot2::aes(x = x, y = y), color = "darkgoldenrod1", size = 1,
+                       alpha = .7)
+  
+  if (options[["samplingDistShowNormal"]])
+    sdPlotObject <- sdPlotObject + ggplot2::stat_function(fun = function(x)dnorm(x, mean = meanOfMeans, sd = sdOfMeans) * binWidth * n,
+                                                          size = 1)
+  
+  meanLabelData <- data.frame(x = meanOfMeans, y = max(yBreaks) + yStep/2, label = gettextf("Mean: %.2f", meanOfMeans))
+  sdPlotObject <- sdPlotObject +
+    ggplot2::geom_label(data = meanLabelData, mapping = ggplot2::aes(x = x, y = y, label = label), color = "darkgoldenrod1", size = 6) +
     ggplot2::scale_y_continuous(breaks = yBreaks, limits = yLimits, name = "Count") +
     jaspGraphs::themeJaspRaw() + jaspGraphs::geom_rangeframe()
   
@@ -314,17 +323,14 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
 }
 
 
-.distributionPlotFunction <- function(distribution = c("normal", "uniform", "skewed"), mean, sd = NA, range = NA, skew = NA, prob = NA,
-                                      skewDirection = "right", fillColor,
-                                      showMean = TRUE, returnData = FALSE) {
+.distributionPlotFunction <- function(distribution = c("normal", "uniform", "skewed", "binomial"), mean, sd = NA, range = NA,
+                                      skew = NA, prob = NA, skewDirection = "right", fillColor, showMean = TRUE) {
   if (distribution == "normal") {
     xBreaks <- jaspGraphs::getPrettyAxisBreaks(c(mean - 3 * sd, mean + 3 * sd))
     xLimits <- range(xBreaks)
     pdPlotObject <-  ggplot2::ggplot(data.frame(x = xBreaks), ggplot2::aes(x = x)) +
       ggplot2::stat_function(fun = dnorm, n = 10000, args = list(mean = mean, sd = sd), geom = "area", fill = fillColor,
                              color = "black")
-    if (returnData)
-      df <- data.frame(x = rnorm(n = 100000, mean = mean, sd = sd))
   } else if (distribution == "uniform") {
     min <- mean - range / 2
     max <- mean + range / 2
@@ -333,8 +339,6 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     pdPlotObject <-  ggplot2::ggplot(data.frame(x = xBreaks), ggplot2::aes(x = x)) +
       ggplot2::stat_function(fun = dunif, n = 100, args = list(min = min, max = max), geom = "area", fill = fillColor) +
       ggplot2::stat_function(fun = dunif, n = 100, args = list(min = min, max = max))
-    if (returnData)
-      df <- data.frame(x = runif(n = 100000, min = min, max = max))
   } else if (distribution == "skewed") {
     if (skewDirection == "left")
       skew <- skew * -1
@@ -351,29 +355,33 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
                                                           size = .3, stat = "identity", color = "black") +
       ggplot2::scale_fill_manual(values = c("grey20", "grey90"))
   }
-  yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(0, ggplot2::ggplot_build(pdPlotObject)$data[[1]]$y))
+  plotData <- ggplot2::ggplot_build(pdPlotObject)$data[[1]]
+  yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(0, plotData$y))
   yLimits <- range(yBreaks)
+  
   if (distribution == "binomial") {
     yName <- "Probability"
   } else {
     yName <- "Density"
   }
-  if (showMean) {
-    yPos <- max(ggplot2::ggplot_build(pdPlotObject)$data[[1]]$y) * 1.1
-    pdPlotObject <- pdPlotObject + ggplot2::geom_vline(xintercept = mean, color = "darkmagenta", size = 1) +
-      ggplot2::geom_label(data = data.frame(x = mean, y = yPos, label = gettextf("Mean: %.2f", mean)),
-                          mapping = ggplot2::aes(x = x, y = y, label = label), color = "darkmagenta", size = 6)
-    yLimits <- range(c(yLimits, yPos))
-  }
-  pdPlotObject <- pdPlotObject + ggplot2::scale_x_continuous(breaks = xBreaks, limits = xLimits, name = "") +
-    ggplot2::scale_y_continuous(breaks = yBreaks, limits = yLimits, name = yName) +
-    jaspGraphs::themeJaspRaw() + jaspGraphs::geom_rangeframe()
   
-  if (!returnData){
-    return(pdPlotObject)
-  } else {
-    return(list(plotobject = pdPlotObject, data = df))
+  if (showMean) {
+    yPosMean <- plotData$y[which.min(abs(mean - plotData$x))]
+    meanLineData <- data.frame(x = rep(mean, 2), y = c(0, yPosMean))
+    meanLabelData <- data.frame(x = mean, y = yPosMean/2, label = gettextf("Mean: %.2f", mean))
+    pdPlotObject <- pdPlotObject +
+      ggplot2::geom_path(data = meanLineData, mapping = ggplot2::aes(x = x, y = y), color = "darkmagenta", size = 1,
+                         alpha = .7) +
+      ggplot2::geom_label(meanLabelData, mapping = ggplot2::aes(x = x, y = y, label = label), color = "darkmagenta", size = 6)
   }
+  
+  pdPlotObject <- pdPlotObject +
+    ggplot2::scale_x_continuous(breaks = xBreaks, limits = xLimits, name = "") +
+    ggplot2::scale_y_continuous(breaks = yBreaks, limits = yLimits, name = yName) +
+    jaspGraphs::themeJaspRaw() +
+    jaspGraphs::geom_rangeframe()
+  
+    return(pdPlotObject)
 }
 
 .getBinWidth <- function(variable, options) {

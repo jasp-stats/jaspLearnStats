@@ -229,7 +229,7 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
       ggplot2::scale_x_continuous(name = "", breaks = xBreaks, labels = rep("", length(xBreaks))) 
   } else {
     plotObject <- plotObject +
-      ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks, limits = xLimits)
+      ggplot2::scale_x_continuous(name = "", breaks = xBreaks, limits = xLimits)
   }
   return(plotObject)
 }
