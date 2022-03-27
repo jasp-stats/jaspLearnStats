@@ -66,8 +66,9 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
 
 .svPlotFinitePopulation <- function(jaspResults, options, data) {
   n <- length(data$x)
-  plotSize <- 700 + (n / 50) * 25
-  plot <- createJaspPlot(title = gettext("Parent Distribution"), width = plotSize, height = plotSize)
+  plotWidth <- 700
+  plotHeight <- 200 + 2 * n
+  plot <- createJaspPlot(title = gettext("Parent Distribution"), width = plotWidth, height = plotHeight)
   plot$position <- 1
   
   if (options[["cltParentDistribution"]] == "binomial") {
@@ -117,8 +118,9 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
   }
   tbcString <- ifelse(to == maxSamples, "", gettextf("... until Sample Nr. %i", maxSamples))
   plotMat <- .arrangePlotMat(plotList, tbc = tbcString)
-  
-  sampleMatrixPlot <- createJaspPlot(title = gettext("Samples"), width = 1200, height = 1500)
+  plotMatRows <- .getPlotMatDetails(length(visibleSamples))$rows
+  plotHeight <- (200 + 1.5 * length(parentData$x)) * plotMatRows
+  sampleMatrixPlot <- createJaspPlot(title = gettext("Samples"), width = 1200, height = plotHeight)
   sampleMatrixPlot$position <- 2
   #sampleMatrixPlot$dependOn(options = c())
   
@@ -194,7 +196,8 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
                             size = 6)
       
     } else {
-      sampleMean <- mean(data$x[samples])
+      orderedData <- data.frame(x = sort(data$x))  #indices refer to ordered data, because histogram order the data
+      sampleMean <- mean(orderedData$x[samples])
       meanLineData <- data.frame(x = rep(sampleMean, 2), y = c(0, max(yBreaks) + yStep/2))
       meanLabelData <- data.frame(x = sampleMean, y = max(yBreaks) + yStep/2, label = gettextf("Mean: %.2f", sampleMean))
       plotObject <- plotObject +
@@ -234,22 +237,10 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
 
 .arrangePlotMat <- function(plotList, col = 2, tbc = ""){
   nPlots <- length(plotList)
-  if (nPlots %% 2 == 0) {
-    if (tbc != "") {
-      nCanvas <- nPlots + 2
-      tbcIndex <- nCanvas - 1
-      emptyIndex <- nCanvas
-    } else {
-      nCanvas <- nPlots
-      emptyIndex <- 0
-    }
-  } else {
-    nCanvas <- nPlots + 1
-    emptyIndex <- nCanvas
-    if (tbc != "")
-      tbcIndex <- nCanvas
-  }
-  rows <- nCanvas / col
+  plotMatDetails <- .getPlotMatDetails(nPlots, col, tbc)
+  rows <- plotMatDetails$rows
+  tbcIndex <- plotMatDetails$tbcIndex
+  emptyIndex <- plotMatDetails$emptyIndex
   plotMat <- matrix(list(), rows, col)
   index <- 0
   
@@ -285,4 +276,28 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
     to <- maxSamples
   }
   return(c(from, to))
+}
+
+.getPlotMatDetails <- function(nPlots, col = 2, tbc = ""){
+  tbcIndex <- c()
+  emptyIndex <- c()
+  if (nPlots %% 2 == 0) {
+    if (tbc != "") {
+      nCanvas <- nPlots + 2
+      tbcIndex <- nCanvas - 1
+      emptyIndex <- nCanvas
+    } else {
+      nCanvas <- nPlots
+      emptyIndex <- 0
+    }
+  } else {
+    nCanvas <- nPlots + 1
+    emptyIndex <- nCanvas
+    if (tbc != "")
+      tbcIndex <- nCanvas
+  }
+  output <- list("rows" = nCanvas / col,
+                 "tbcIndex" = tbcIndex,
+                 "emptyIndex" = emptyIndex)
+  return(output)
 }
