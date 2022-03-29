@@ -649,7 +649,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
                           "LSdescDotPlotRugs"))
   errors <- .plotErrors(dp, data, options, stats)$errors
   if (ready && !errors) {
-    dp$plotObject <- .lstDescCreateDotPlotObject(data, options, stats = stats, discrete)
+    dp$plotObject <- .lstDescCreateDotPlotObject(data, options, stats = stats, discrete, rugs = options[["LSdescDotPlotRugs"]])
   }else if (errors) {
     dp <- .plotErrors(dp, data, options, stats)$errorMessage
   }
@@ -761,21 +761,11 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
 }
 
 
-.lstDescCreateDotPlotObject <- function(data, options, stats = c("ct", "spread"), discrete) {
+.lstDescCreateDotPlotObject <- function(data, options, stats = c("ct", "spread", "none"), discrete, rugs) {
   n <- length(data$x)
   
-  if (n > 50){
-    dotsize <- 1 - (log(n)) / 30
-  } else {
-    dotsize <- 1
-  }
+  dotsize <- .getDotSize(n)
   labelSize <- .getLabelSize(n)
-  
-  if (stats == "ct") {
-    allCTs <- options[["LSdescCT"]] == "LSdescMMM"
-  } else {
-    allCTs <- FALSE
-  }
   
   if (discrete) {
     xBreaks <- unique(as.integer(jaspGraphs::getPrettyAxisBreaks(data$x)))
@@ -790,7 +780,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     ggplot2::scale_x_continuous(name = "Value", breaks = xBreaks, limits = xLimits) +
     ggplot2::coord_fixed() 
   
-  if (options[["LSdescDotPlotRugs"]] && !discrete)
+  if (rugs && !discrete)
     p <- p + ggplot2::geom_rug(data = data, mapping = ggplot2::aes(x = x), sides = "b")
   
   pData <- ggplot2::ggplot_build(p)$data
@@ -804,7 +794,9 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   p <- p + ggplot2::scale_y_continuous(name = "Counts", limits = yLimits, breaks = yBreaks, labels = yLabels) + 
     jaspGraphs::geom_rangeframe() +
     jaspGraphs::themeJaspRaw()
+  
   if (stats == "ct") {
+    allCTs <- options[["LSdescCT"]] == "LSdescMMM"
     if (options[["LSdescCT"]] == "LSdescMedian" || allCTs) {
       p <- .dotPlotVisualizeQuartiles(data, p, dotsize, labelSize, yLimits, xLimits, xBreaks, labels = !allCTs, labelText = gettext("Median"), quartile = 2,
                                       lines = !allCTs, color = "green")
@@ -871,7 +863,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   minLineData <- data.frame(x = rep(minDot$x, 2), y = c(0, max(yLimits)))
   maxLineData <-  data.frame(x = rep(maxDot$x, 2), y = c(0, max(yLimits)))
   rangeLineData <- data.frame(x = c(minDot$x, maxDot$x), y = rep(max(yLimits) * .95, 2))
-  labelData <- data.frame(x = c(minDot$x, maxDot$x, range/2),
+  labelData <- data.frame(x = c(minDot$x, maxDot$x, (minDot$x + maxDot$x) /2),
                           y = c(max(yLimits) * .9, max(yLimits) * .9, max(yLimits) * .95),
                           label = c(gettextf("Min: %.2f", min(data$x)), gettextf("Max: %.2f", max(data$x)), 
                                     gettextf("Range: %.2f", range)))
@@ -994,4 +986,13 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     labelSize <- 3
   }
   return(labelSize)
+}
+
+.getDotSize <- function(n) {
+  if (n > 50){
+    dotsize <- 1 - (log(n)) / 30
+  } else {
+    dotsize <- 1
+  }
+  return(dotsize)
 }

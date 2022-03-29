@@ -33,17 +33,53 @@ Form
 		Group
 		{
 		
+		
+			RadioButtonGroup
+			{
+				columns:	2
+				name:		"svParentSizeType"
+				title:		qsTr("Parent Distribution Size")
+				id:			svParentSizeType
+			
+				RadioButton
+				{
+					value:		"svParentInfinite"
+					label:		qsTr("Infinite")
+					id:			sizeInfinite
+					checked:	true
+				}
+			
+				RadioButton
+				{
+					value:		"svParentFinite"
+					label:		qsTr("Finite")
+					id:			sizeFinite
+				
+					DoubleField
+					{
+						name:			"svParentSize"
+						id:				svParentSize
+						label:			qsTr("Size")
+						fieldWidth:		60
+						defaultValue:	100
+						min: 1
+						decimals:		0
+					}
+				}
+			}
+		
 			DropDown
 			{
 				name:				"cltParentDistribution"
-				label:				qsTr("Parent Distribution")
+				label:				qsTr("Parent Distribution Shape")
 				indexDefaultValue:	0
 				id:					cltParentDistribution
 				values:
 				[
 					{label: qsTr("Normal"),		value: "normal"},
 					{label: qsTr("Uniform"),	value: "uniform"},
-					{label: qsTr("Skewed"),		value: "skewed"}
+					{label: qsTr("Skewed"),		value: "skewed"},
+					{label: qsTr("Binomial"),	value: "binomial"}
 				]
 			}
 			
@@ -64,6 +100,8 @@ Form
 				fieldWidth:		60
 				defaultValue:	0
 				decimals:		2
+				visible:		cltParentDistribution.currentValue != "binomial"
+
 			}
 	
 			DoubleField
@@ -74,7 +112,7 @@ Form
 				defaultValue:	1
 				decimals:		2
 				min:			0.01
-				visible:		cltParentDistribution.currentValue != "uniform"
+				visible:		cltParentDistribution.currentValue != "uniform" & cltParentDistribution.currentValue != "binomial"
 			}
 			
 			DoubleField
@@ -116,7 +154,30 @@ Form
 					{label: qsTr("High skew"),		value: "high"}
 				]
 			}
+			
+			DoubleField
+			{
+				name:			"binomProb"
+				label:			qsTr("Probability")
+				fieldWidth:		60
+				defaultValue:	.5
+				decimals:		2
+				min:			0.01
+				max:			1
+				visible:		cltParentDistribution.currentValue == "binomial"
+			}
 		}
+	}
+	
+	
+	function getMaxSamples()
+	{
+		var max = 99999
+		if(sizeFinite.checked)
+		{
+			max = svParentSize.value
+		}
+		return max
 	}
 	
 	Section
@@ -131,17 +192,20 @@ Form
 				name:			"cltSampleSize"
 				label:			qsTr("Number of observations per sample")
 				fieldWidth:		60
-				defaultValue:	30
+				defaultValue:	10
 				decimals:		0
+				max: 			99999
 			}
 		
 			DoubleField
 			{
 				name:			"cltSampleAmount"
+				id:				svSampleAmount
 				label:			qsTr("Number of total samples")
 				fieldWidth:		60
-				defaultValue:	100
+				defaultValue:	10
 				decimals:		0
+				max:			getMaxSamples()
 			}
 		}
 		
@@ -171,31 +235,60 @@ Form
 				decimals:		0
 			}
 		}
-	}
-	
-	Section
-	{
-		title: qsTr("Sampling Distribution Options")
-	
-		CheckBox
+		
+		Group
 		{
-			name:		"samplingDistShow";
-			label:		qsTr("Show sampling distribution");
-			checked:	true
-	
-			CheckBox
+		
+		columns:	3
+		
+		DropDown
 			{
-				name:		"samplingDistShowNormal";
-				label:		qsTr("Superimpose normal distribution");
-				checked:	true
+				name:				"svSampleShowType"
+				label:				qsTr("Show Samples")
+				id:					svSampleShowType
+				indexDefaultValue:	0
+				values:
+				[
+					{ label: qsTr("First"),		value: "first"},
+					{ label: qsTr("Last"),		value: "last"	},
+					{ label: qsTr("Range"),			value: "range"		},
+					{ label: qsTr("All"),			value: "all"		}
+				]
 			}
-			
-			CheckBox
-			{
-				name: "samplingDistShowRugs"
-				label: qsTr("Show rug marks")
-				checked: true
-			}
+
+			DoubleField
+				{
+					name:			"svFirstOrLastSamples"
+					label:			qsTr("")
+					fieldWidth:		60
+					defaultValue:	7
+					decimals:		0
+					visible:		svSampleShowType.currentValue == "first" | svSampleShowType.currentValue == "last"
+					max:			999
+				}
+				
+				
+				DoubleField
+				{
+					name:			"svFromSample"
+					label:			qsTr("From")
+					fieldWidth:		60
+					defaultValue:	1
+					decimals:		0
+					visible:		svSampleShowType.currentValue == "range"
+					min: 			1
+				}
+				
+				DoubleField
+				{
+					name:			"svToSample"
+					label:			qsTr("To")
+					fieldWidth:		60
+					defaultValue:	7
+					decimals:		0
+					visible:		svSampleShowType.currentValue == "range"
+					max:			999
+				}
 		}
 	}
 	
