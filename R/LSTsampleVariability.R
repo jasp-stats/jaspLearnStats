@@ -262,6 +262,7 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
 }
 
 .getFromToSampleShow <- function(type = c("first", "last", "range", "all"), maxSamples, singleValue = "", start ="", stop = ""){
+  type <- match.arg(type)
   if (type == "first") {
     from <- 1
     to <- singleValue
