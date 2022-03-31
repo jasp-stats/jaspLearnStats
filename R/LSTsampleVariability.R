@@ -19,6 +19,7 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
   errors <- .svCheckErrors(options, jaspResults)
   if (!errors) {
     set.seed(options[["cltSampleSeed"]])
+    colors <- .getColors(options[["cltColorPalette"]])
     if(options[["svParentSizeType"]] == "svParentInfinite") {
       parentData <- .generateParentData(options)
       samples <- .cltTakeSamples(jaspResults, options = options, data = parentData)
@@ -36,10 +37,10 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
       parentData <- .generateParentData(options, finite = options[["svParentSize"]])
       samplesAndIndices <-  .cltTakeSamples(jaspResults, options = options, data = parentData, replace = FALSE)
       if (options[["parentShow"]])
-        jaspResults[["cltParentDistribution"]] <- .svPlotFinitePopulation(jaspResults, options, parentData)
+        jaspResults[["cltParentDistribution"]] <- .svPlotFinitePopulation(jaspResults, options, parentData, colors)
       if (options[["samplesShow"]])
         jaspResults[["cltSamples"]] <- .svPlotFiniteSamples(jaspResults, options, samples = samplesAndIndices$samples,
-                                                            indices = samplesAndIndices$indices, parentData)
+                                                            indices = samplesAndIndices$indices, parentData, colors)
     }
   }
   return() 
@@ -64,7 +65,7 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
   return(errors)
 }
 
-.svPlotFinitePopulation <- function(jaspResults, options, data) {
+.svPlotFinitePopulation <- function(jaspResults, options, data, colors) {
   n <- length(data$x)
   plotWidth <- 700
   plotHeight <- 200 + 2 * n
@@ -75,7 +76,7 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
     set.seed(123)
     dummyData <- sort(runif(n = n, min = -3, max = 3))
     dotPlotData <- data.frame(x = dummyData, group = as.factor(data$x))
-    plotObject <- .dotPlotWithGroups(dotPlotData, options, groupColors = c("orange", "dodgerblue"), groups = TRUE)
+    plotObject <- .dotPlotWithGroups(dotPlotData, options, groupColors = colors[1:2], groups = TRUE)
   } else {
     dotPlotData <- data
     plotObject <- .dotPlotWithGroups(dotPlotData, options)
@@ -85,7 +86,7 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
 }
 
 
-.svPlotFiniteSamples <- function(jaspResults, options, samples, indices, parentData) {
+.svPlotFiniteSamples <- function(jaspResults, options, samples, indices, parentData, colors) {
   maxSamples <- length(samples)
   fromTo <- .getFromToSampleShow(type = options[["svSampleShowType"]], maxSamples, singleValue = options[["svFirstOrLastSamples"]],
                                  start = options[["svFromSample"]], stop = options[["svToSample"]])
@@ -97,26 +98,26 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
   
   removedDots <- c()
   plotList <- list()
-  for (i in 1:length(visibleSamples)) {
+  for (i in seq_along(visibleSamples)) {
     if (options[["cltParentDistribution"]] == "binomial") {
       set.seed(123)
       dummyData <- sort(runif(n = length(parentData$x), min = -3, max = 3))
       dotPlotData <- data.frame(x = dummyData, group = parentData$x)
       dotPlotData$group <- as.factor(dotPlotData$group)
       currentSample <- indices[[i]]
-      samplePlot <- .dotPlotWithGroups(dotPlotData, options, groupColors = c("orange", "dodgerblue"),
+      samplePlot <- .dotPlotWithGroups(dotPlotData, options, groupColors = colors[1:2],
                                        groups = TRUE, samples = currentSample, alpha = .4,
-                                       sampleColors = c("orange", "dodgerblue"), removedDots = removedDots)
+                                       sampleColors = colors[1:2], removedDots = removedDots)
     } else {
       dotPlotData <- parentData
-      samplePlot <- .dotPlotWithGroups(dotPlotData, options, samples = indices[[i]], alpha = .4, sampleColors = "orange",
+      samplePlot <- .dotPlotWithGroups(dotPlotData, options, samples = indices[[i]], alpha = .4, sampleColors = colors[1],
                                        removedDots = removedDots)
     }
     removedDots <- unlist(indices[1:i])
     samplePlot <- samplePlot + ggplot2::ggtitle(gettextf("Sample Nr. %i", visibleSamples[i])) 
     plotList[[i]] <- samplePlot
   }
-  tbcString <- ifelse(to == maxSamples, "", gettextf("... until Sample Nr. %i", maxSamples))
+  tbcString <- ifelse(to == maxSamples, "", gettextf("... until Sample Nr. %i", maxSamples)) #tbc = to be continued, i.e. the last figure of the matrix plot
   plotMat <- .arrangePlotMat(plotList, tbc = tbcString)
   plotMatRows <- .getPlotMatDetails(length(visibleSamples))$rows
   plotHeight <- (200 + 1.5 * length(parentData$x)) * plotMatRows
@@ -235,7 +236,7 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
 }
 
 
-.arrangePlotMat <- function(plotList, col = 2, tbc = ""){
+.arrangePlotMat <- function(plotList, col = 2, tbc = ""){  #tbc stands for "to be continued", i.e. whether the matrix plot has a last plot images that states "... until"
   nPlots <- length(plotList)
   plotMatDetails <- .getPlotMatDetails(nPlots, col, tbc)
   rows <- plotMatDetails$rows
@@ -244,8 +245,8 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
   plotMat <- matrix(list(), rows, col)
   index <- 0
   
-  for (r in 1:rows) {
-    for (c in 1:col) {
+  for (r in seq_len(rows)) {
+    for (c in seq_len(col)) {
       index <-  index + 1
       if (tbc != "" && index == tbcIndex) {
         plot <- ggplot2::ggplot() + ggplot2::theme_void() +
@@ -262,7 +263,6 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
 }
 
 .getFromToSampleShow <- function(type = c("first", "last", "range", "all"), maxSamples, singleValue = "", start ="", stop = ""){
-  type <- match.arg(type)
   if (type == "first") {
     from <- 1
     to <- singleValue
@@ -301,4 +301,10 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
                  "tbcIndex" = tbcIndex,
                  "emptyIndex" = emptyIndex)
   return(output)
+}
+
+.getColors <- function(palette){
+  colorVector <- jaspGraphs::JASPcolors(palette)
+  colorVector[seq(2, length(colorVector), 2)] <- colorVector[seq(length(colorVector), 1, -2)] # puts contrasting colors alternating
+  return(colorVector)
 }
