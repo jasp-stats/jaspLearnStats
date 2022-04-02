@@ -24,14 +24,14 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
       parentData <- .generateParentData(options)
       samples <- .cltTakeSamples(jaspResults, options = options, data = parentData)
       if (options[["parentShow"]])
-        jaspResults[["cltParentDistribution"]] <- .cltParentDistribution(jaspResults, options = options)
+        jaspResults[["cltParentDistribution"]] <- .cltParentDistribution(jaspResults, options = options, colors)
       if (options[["samplesShow"]]){
         maxSamples <- length(samples)
         fromTo <- .getFromToSampleShow(type = options[["svSampleShowType"]], maxSamples, singleValue = options[["svFirstOrLastSamples"]],
                                        start = options[["svFromSample"]], stop = options[["svToSample"]])
         from <- fromTo[1]
         to <- fromTo[2]
-        jaspResults[["cltSamples"]] <- .cltPlotSamples(jaspResults, options = options, samples = samples, from = from, to = to)
+        jaspResults[["cltSamples"]] <- .cltPlotSamples(jaspResults, options = options, samples = samples, from = from, to = to, colors)
       }
     } else {
       parentData <- .generateParentData(options, finite = options[["svParentSize"]])
@@ -79,7 +79,7 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
     plotObject <- .dotPlotWithGroups(dotPlotData, options, groupColors = colors[1:2], groups = TRUE)
   } else {
     dotPlotData <- data
-    plotObject <- .dotPlotWithGroups(dotPlotData, options)
+    plotObject <- .dotPlotWithGroups(dotPlotData, options, groupColors = colors[1])
   }
   plot$plotObject <- plotObject
   return(plot)
@@ -110,8 +110,8 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
                                        sampleColors = colors[1:2], removedDots = removedDots)
     } else {
       dotPlotData <- parentData
-      samplePlot <- .dotPlotWithGroups(dotPlotData, options, samples = indices[[i]], alpha = .4, sampleColors = colors[1],
-                                       removedDots = removedDots)
+      samplePlot <- .dotPlotWithGroups(dotPlotData, options, samples = indices[[i]], alpha = .4, groupColors = colors[1],
+                                       sampleColors = colors[1], removedDots = removedDots)
     }
     removedDots <- unlist(indices[1:i])
     samplePlot <- samplePlot + ggplot2::ggtitle(gettextf("Sample Nr. %i", visibleSamples[i])) 
@@ -145,7 +145,7 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
   } else {
     plotObject <- ggplot2::ggplot() +
       ggplot2::geom_dotplot(data = data, mapping = ggplot2::aes(x = x), binaxis = 'x',
-                            stackdir = 'up', dotsize = dotSize, fill = "orange", binpositions = "all", alpha = alpha) +
+                            stackdir = 'up', dotsize = dotSize, fill = groupColors, binpositions = "all", alpha = alpha) +
       ggplot2::coord_fixed()
   }
   pData <- ggplot2::ggplot_build(plotObject)$data
@@ -305,6 +305,37 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
 
 .getColors <- function(palette){
   colorVector <- jaspGraphs::JASPcolors(palette)
-  colorVector[seq(2, length(colorVector), 2)] <- colorVector[seq(length(colorVector), 1, -2)] # puts contrasting colors alternating
+  if (palette == "colorblind") {
+    colorVector <- colorVector[c(1, 3, 2, 6, 7, 4, 5, 8)]
+  } else if (palette == "colorblind3") {
+    colorVector <- colorVector[c(4, 6, 7, 2, 8, 3, 1, 5)]
+  } else if (palette == "viridis") {
+    colorVector <- colorVector[c(200, 65, 235, 250, 5, 100, 150, 35)]
+  } else if (palette == "ggplot2") {
+    colorVector <- colorVector[c(4, 6, 8, 2, 1, 7, 3, 5)]
+  }
   return(colorVector)
 }
+
+
+# 
+# palettes <- c("colorblind", "colorblind3", "viridis", "ggplot2", "gray")
+# 
+# testColors <- .getColors(palettes[4])
+# 
+# colorPlot <- ggplot2::ggplot(data = data.frame(x = 1:10, y = 1:2), mapping = ggplot2::aes(x = x, y = y))
+# 
+# for (i in seq_along(testColors)){
+#   colorPlot <- colorPlot + 
+#     ggplot2::geom_text(data = data.frame(x = i, y = 1.5, label = i), mapping = ggplot2::aes(x = x, y = y, label = label),
+#                        color = testColors[i], size = 20)
+# }
+# colorPlot
+# 
+# 
+# 
+# c = 35
+# ggplot2::ggplot(data = data.frame(x = 1:10, y = 1:2), mapping = ggplot2::aes(x = x, y = y)) + 
+#   ggplot2::geom_text(data = data.frame(x = 5, y = 1.5, label = c), mapping = ggplot2::aes(x = x, y = y, label = label),
+#                      color = testColors[c], size = 20)
+# 
