@@ -76,10 +76,10 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
     set.seed(123)
     dummyData <- sort(runif(n = n, min = -3, max = 3))
     dotPlotData <- data.frame(x = dummyData, group = as.factor(data$x))
-    plotObject <- .dotPlotWithGroups(dotPlotData, options, groupColors = colors[1:2], groups = TRUE)
+    plotObject <- .dotPlotWithGroups(dotPlotData, options, colors = colors, groups = TRUE)
   } else {
     dotPlotData <- data
-    plotObject <- .dotPlotWithGroups(dotPlotData, options, groupColors = colors[1])
+    plotObject <- .dotPlotWithGroups(dotPlotData, options, colors = colors)
   }
   plot$plotObject <- plotObject
   return(plot)
@@ -105,13 +105,12 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
       dotPlotData <- data.frame(x = dummyData, group = parentData$x)
       dotPlotData$group <- as.factor(dotPlotData$group)
       currentSample <- indices[[i]]
-      samplePlot <- .dotPlotWithGroups(dotPlotData, options, groupColors = colors[1:2],
-                                       groups = TRUE, samples = currentSample, alpha = .4,
-                                       sampleColors = colors[1:2], removedDots = removedDots)
+      samplePlot <- .dotPlotWithGroups(dotPlotData, options, colors = colors,
+                                       groups = TRUE, samples = currentSample, alpha = .4, removedDots = removedDots)
     } else {
       dotPlotData <- parentData
-      samplePlot <- .dotPlotWithGroups(dotPlotData, options, samples = indices[[i]], alpha = .4, groupColors = colors[1],
-                                       sampleColors = colors[1], removedDots = removedDots)
+      samplePlot <- .dotPlotWithGroups(dotPlotData, options, samples = indices[[i]], alpha = .4, colors = colors,
+                                       removedDots = removedDots)
     }
     removedDots <- unlist(indices[1:i])
     samplePlot <- samplePlot + ggplot2::ggtitle(gettextf("Sample Nr. %i", visibleSamples[i])) 
@@ -130,8 +129,7 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
   return(sampleMatrixPlot)
 }
 
-.dotPlotWithGroups <- function(data, options, groupColors = "", groups = FALSE, samples = "", alpha = 1, sampleColors,
-                               removedDots = c()) {
+.dotPlotWithGroups <- function(data, options, colors, groups = FALSE, samples = "", alpha = 1, removedDots = c()) {
   n <- length(data$x)
   dotSize <- .getDotSize(n)
   xBreaks <- jaspGraphs::getPrettyAxisBreaks(data$x)
@@ -140,24 +138,24 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
     plotObject <- ggplot2::ggplot() +
       ggplot2::geom_dotplot(data = data, mapping = ggplot2::aes(x = x, group = group, fill = group), binaxis = 'x',
                             stackdir = 'up', dotsize = dotSize, binpositions = "all", stackgroups = TRUE, alpha = alpha) +
-      ggplot2::scale_fill_manual(values = groupColors) +
+      ggplot2::scale_fill_manual(values = colors[1:2]) +
       ggplot2::coord_fixed()
   } else {
     plotObject <- ggplot2::ggplot() +
       ggplot2::geom_dotplot(data = data, mapping = ggplot2::aes(x = x), binaxis = 'x',
-                            stackdir = 'up', dotsize = dotSize, fill = groupColors, binpositions = "all", alpha = alpha) +
+                            stackdir = 'up', dotsize = dotSize, fill = colors[1], binpositions = "all", alpha = alpha) +
       ggplot2::coord_fixed()
   }
   pData <- ggplot2::ggplot_build(plotObject)$data
   dotWidth <- pData[[1]]$width[1] * dotSize
   yLabels <- unique(as.integer(jaspGraphs::getPrettyAxisBreaks(c(0, max(pData[[1]]$countidx)))))
   yBreaks <- yLabels * dotWidth
-  yStep <- yBreaks[2] - yBreaks[1] 
+  yStep <- yBreaks[2] - yBreaks[1]
   yLimits <-  c(min(yBreaks), max(yBreaks) + yStep)
   plotObject <- plotObject + ggplot2::scale_y_continuous(name = "Count", limits = yLimits, breaks = yBreaks, labels = yLabels) +
     jaspGraphs::geom_rangeframe() +
     jaspGraphs::themeJaspRaw()
-  
+
   if (length(removedDots != 0)) {
     for (rd in removedDots) {
       sampleDot <- pData[[1]][rd,]
@@ -170,15 +168,15 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
                                                       inherit.aes = FALSE, fill = "white", color = "grey90")
     }
   }
-  
+
   if (samples != "") {
     for (s in samples) {
       sampleDot <- pData[[1]][s,]
-      if(length(sampleColors) > 1) {
+      if (options[["cltParentDistribution"]] == "binomial") {
         colorIndex <- data$group[s]
-        fillColor <- sampleColors[colorIndex]
+        fillColor <- colors[colorIndex]
       } else {
-        fillColor <- sampleColors
+        fillColor <- colors[1]
       }
       y0 <- ifelse(sampleDot$countidx == 1, dotWidth/2, dotWidth/2 + (sampleDot$countidx - 1) * dotWidth)
       x0 <- sampleDot$x
@@ -192,42 +190,42 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
       sampleCounts <- table(data$group[samples], dnn = FALSE)
       countLabelData <- data.frame(x = c(xBreaks[2], rev(xBreaks)[2]), y = rep(max(yBreaks) + yStep/2, 2),
                                    label = c(gettextf("Count: %i", sampleCounts[1]), gettextf("Count: %i", sampleCounts[2])))
-      plotObject <- plotObject + 
-        ggplot2::geom_label(data = countLabelData, mapping = ggplot2::aes(x = x, y = y, label = label), color = groupColors,
+      plotObject <- plotObject +
+        ggplot2::geom_label(data = countLabelData, mapping = ggplot2::aes(x = x, y = y, label = label), color = colors[1:2],
                             size = 6)
-      
+
     } else {
       orderedData <- data.frame(x = sort(data$x))  #indices refer to ordered data, because histogram order the data
       sampleMean <- mean(orderedData$x[samples])
       meanLineData <- data.frame(x = rep(sampleMean, 2), y = c(0, max(yBreaks) + yStep/2))
       meanLabelData <- data.frame(x = sampleMean, y = max(yBreaks) + yStep/2, label = gettextf("Mean: %.2f", sampleMean))
       plotObject <- plotObject +
-        ggplot2::geom_path(data = meanLineData, mapping = ggplot2::aes(x = x, y = y), size = 1, color = "cornflowerblue", alpha = .7) +
-        ggplot2::geom_label(data = meanLabelData,  mapping = ggplot2::aes(x = x, y = y, label = label), size = 6, color = "cornflowerblue")
+        ggplot2::geom_path(data = meanLineData, mapping = ggplot2::aes(x = x, y = y), size = 1, color = colors[4], alpha = .7) +
+        ggplot2::geom_label(data = meanLabelData,  mapping = ggplot2::aes(x = x, y = y, label = label), size = 6, color = colors[4])
     }
   } else {
     if (options[["cltParentDistribution"]] == "binomial") {
       counts <- table(data$group, dnn = FALSE)
       countLabelData <- data.frame(x = c(xBreaks[2], rev(xBreaks)[2]), y = rep(max(yBreaks) + yStep/2, 2),
                                    label = c(gettextf("Count: %i", counts[1]), gettextf("Count: %i", counts[2])))
-      plotObject <- plotObject + 
-        ggplot2::geom_label(data = countLabelData, mapping = ggplot2::aes(x = x, y = y, label = label), color = groupColors,
+      plotObject <- plotObject +
+        ggplot2::geom_label(data = countLabelData, mapping = ggplot2::aes(x = x, y = y, label = label), color = colors[1:2],
                             size = 6)
-      
+
     } else {
       dataMean <- mean(data$x)
       meanLineData <- data.frame(x = rep(dataMean, 2), y = c(0, max(yBreaks) + yStep/2))
       meanLabelData <- data.frame(x = dataMean, y = max(yBreaks) + yStep/2, label = gettextf("Mean: %.2f", dataMean))
       plotObject <- plotObject +
-        ggplot2::geom_path(data = meanLineData, mapping = ggplot2::aes(x = x, y = y), size = 1, color = "purple", alpha = .7) +
-        ggplot2::geom_label(data = meanLabelData,  mapping = ggplot2::aes(x = x, y = y, label = label), size = 6, color = "purple")
+        ggplot2::geom_path(data = meanLineData, mapping = ggplot2::aes(x = x, y = y), size = 1, color = colors[3], alpha = .7) +
+        ggplot2::geom_label(data = meanLabelData,  mapping = ggplot2::aes(x = x, y = y, label = label), size = 6, color = colors[3])
     }
   }
-  
-  
+
+
   if (options[["cltParentDistribution"]] == "binomial") {
     plotObject <- plotObject +
-      ggplot2::scale_x_continuous(name = "", breaks = xBreaks, labels = rep("", length(xBreaks))) 
+      ggplot2::scale_x_continuous(name = "", breaks = xBreaks, labels = rep("", length(xBreaks)))
   } else {
     plotObject <- plotObject +
       ggplot2::scale_x_continuous(name = "", breaks = xBreaks, limits = xLimits)
@@ -316,26 +314,3 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
   }
   return(colorVector)
 }
-
-
-# 
-# palettes <- c("colorblind", "colorblind3", "viridis", "ggplot2", "gray")
-# 
-# testColors <- .getColors(palettes[4])
-# 
-# colorPlot <- ggplot2::ggplot(data = data.frame(x = 1:10, y = 1:2), mapping = ggplot2::aes(x = x, y = y))
-# 
-# for (i in seq_along(testColors)){
-#   colorPlot <- colorPlot + 
-#     ggplot2::geom_text(data = data.frame(x = i, y = 1.5, label = i), mapping = ggplot2::aes(x = x, y = y, label = label),
-#                        color = testColors[i], size = 20)
-# }
-# colorPlot
-# 
-# 
-# 
-# c = 35
-# ggplot2::ggplot(data = data.frame(x = 1:10, y = 1:2), mapping = ggplot2::aes(x = x, y = y)) + 
-#   ggplot2::geom_text(data = data.frame(x = 5, y = 1.5, label = c), mapping = ggplot2::aes(x = x, y = y, label = label),
-#                      color = testColors[c], size = 20)
-# 

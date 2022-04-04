@@ -371,9 +371,9 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     meanLineData <- data.frame(x = rep(mean, 2), y = c(0, yPosMean))
     meanLabelData <- data.frame(x = mean, y = yPosMean/2, label = gettextf("Mean: %.2f", mean))
     pdPlotObject <- pdPlotObject +
-      ggplot2::geom_path(data = meanLineData, mapping = ggplot2::aes(x = x, y = y), color = colors[2], size = 1,
+      ggplot2::geom_path(data = meanLineData, mapping = ggplot2::aes(x = x, y = y), color = colors[3], size = 1,
                          alpha = .7) +
-      ggplot2::geom_label(meanLabelData, mapping = ggplot2::aes(x = x, y = y, label = label), color = colors[2], size = 6)
+      ggplot2::geom_label(meanLabelData, mapping = ggplot2::aes(x = x, y = y, label = label), color = colors[3], size = 6)
   }
   
   pdPlotObject <- pdPlotObject +
