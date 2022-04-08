@@ -216,7 +216,6 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   # plot 1
   plotObject1 <- .visualExplanationVariance(data, colors)$plot1
   
-  
   #Plot 2
   xBreaks <- jaspGraphs::getPrettyAxisBreaks(data$x)
   yBreaks <- c(1, 6, 11, 16, 21)
@@ -240,7 +239,6 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = meanLineExtensionData, size = 1, color = colors[3], alpha = .7)
   
   #Plot 3
-  
   plotObject3 <- ggplot2::ggplot(data = data, mapping = ggplot2::aes(x = x, y = index)) +
     ggplot2::geom_ribbon(mapping = ggplot2::aes(xmin = min(xBreaks), xmax = max(xBreaks)), fill = colors[6]) +
     ggplot2::geom_ribbon(mapping = ggplot2::aes(xmin = meanPoint - 2 * stdDev, xmax = meanPoint + 2 * stdDev),
@@ -302,6 +300,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   nearestPointIndex <- which.min(abs(valueSet - targetValue))
   return(nearestPointIndex)
 }
+
 .descExplanationCT <- function(jaspResults, options, colors) {
   jaspResults[["descExplanationCT"]] <- createJaspContainer(gettext("Explanation"))
   jaspResults[["descExplanationCT"]]$position <- 1
@@ -309,24 +308,55 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
                                                           "LSdescCT",
                                                           "LSdescExplanationC"))
   
-  mean <- 0
-  sd <- 1
-  skew <- 1000
-  
   pdPlot <- createJaspPlot(title = gettext("Theoretical example distribution"), width = 700, height = 400)
   pdPlot$position <- 1
   
+  mean <- 0
+  sd <- 1
+  skew <- 1000
+  distLimits <- c(mean - 4 * sd, mean + 4 * sd)
+
+  data <- data.frame(x = .scaledSkewedNormal(100000, xi = mean, omega = sd, alpha = skew))
+  data <- subset(data, data$x > distLimits[1] & data$x < distLimits[2]) # remove values outside limits
+
+  pdPlotObject <- .plotCTexampleDistribution(data)
+  
+  allCTs <- options[["LSdescCT"]] == "LSdescMMM"
+  
+  if (options[["LSdescCT"]] == "LSdescMedian"| allCTs) {
+    pdPlotObject <- .visualExplanationMedian(pdPlotObject, data, options, colors)
+    text <- gettext("Text for Median:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+  }
+  if (options[["LSdescCT"]] == "LSdescMode"| allCTs) {
+    pdPlotObject <- .visualExplanationMode(pdPlotObject, data, options, colors)
+    text <- gettext("Text for Mode:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+  }
+  if (options[["LSdescCT"]] == "LSdescMean" | allCTs) {
+    pdPlotObject <- .visualExplanationMean(pdPlotObject, data, options, colors)
+    text <- gettext("Text for Mean : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+  }
+  if (allCTs) {
+    text <- gettext("Text for comparison:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+  }
+  
+  pdPlot$plotObject <- pdPlotObject
+  jaspResults[["descExplanationCT"]][["Plot"]] <- pdPlot
+  jaspResults[["descExplanationCT"]][["Text"]] <- createJaspHtml(text, "p")
+}
+
+.plotCTexampleDistribution <- function(data) {
+  mean <- mean(data$x)
+  sd <- sd(data$x)
   
   xLimits <- c(mean - 5 * sd, mean + 5 * sd)
   yLimits <- c(-.1 , .5)
   distLimits <- c(mean - 4 * sd, mean + 4 * sd)
-  hLineData <- data.frame(x = distLimits, y = rep(0, 2))
   
-  df <- data.frame(x = .scaledSkewedNormal(100000, xi = mean, omega = sd, alpha = skew))
-  df <- subset(df, df$x > distLimits[1] & df$x < distLimits[2]) # remove values outside limits
-  pdPlotObject <-  ggplot2::ggplot(df, ggplot2::aes(x = x)) +
+  xAxisData <- data.frame(x = distLimits, y = rep(0, 2))
+  
+  pdPlotObject <-  ggplot2::ggplot(data, ggplot2::aes(x = x)) +
     ggplot2::geom_density(mapping = ggplot2::aes(y = ..density..), n = 2^10, bw = sd/3, size = 1) +
-    ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = hLineData, size = 1) +
+    ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = xAxisData, size = 1) +
     ggplot2::ylim(yLimits) +
     ggplot2::xlim(xLimits) +
     jaspGraphs::themeJaspRaw() +
@@ -337,79 +367,95 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   #to make density line stop a dist limits
   densityOverlayData1 <- data.frame(x = c(xLimits[1], distLimits[1]), y = rep(0, 2))
   densityOverlayData2 <- data.frame(x = c(xLimits[2], distLimits[2]), y = rep(0, 2))
-  
   pdPlotObject <- pdPlotObject +
     ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = densityOverlayData1, color = "white", size = 4) +
     ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = densityOverlayData2, color = "white", size = 4)
   
-  plotData <- ggplot2::ggplot_build(pdPlotObject)$data[[1]]
+  return(pdPlotObject)
+}
+
+.visualExplanationMedian <- function(plotObject, data, options, colors) {
+  median <- median(data$x)
+  mean <- mean(data$x)
+  sd <- sd(data$x)
+  xLimits <- c(mean - 5 * sd, mean + 5 * sd)
+  yLimits <- c(-.1 , .5)
   
-  allCTs <- options[["LSdescCT"]] == "LSdescMMM"
-  if (options[["LSdescCT"]] == "LSdescMedian"| allCTs) {
-    median <- median(df$x)
-    medianLineHeight <- plotData$y[which.min(abs(plotData$x - median))]
-    medianLineData <- data.frame(x = c(rep(median, 2)), y = c(0, medianLineHeight))
-    fiftyPercentLabels <- data.frame(x = c(median + .85, median - .85), y = rep(.1, 2), label = rep("50%", 2))
-    labelXPos <- ifelse(allCTs, 4, median)
-    labelYPos <- ifelse(allCTs, max(yLimits) * .85, max(yLimits) * .55)
-    
-    pdPlotObject <- pdPlotObject +
-      ggplot2::geom_ribbon(mapping = ggplot2::aes(ymin = 0, ymax = y), data = subset(plotData, plotData$x > median),
-                           fill = "grey") +
-      ggplot2::geom_ribbon(mapping = ggplot2::aes(ymin = 0, ymax = y), data = subset(plotData, plotData$x < median),
-                           fill = "grey", alpha = .5) +
-      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = medianLineData, size = 1, color = colors[1]) +
-      ggplot2::geom_label(data = data.frame(x = labelXPos, y = labelYPos, label = gettext("Median")), 
-                          mapping = ggplot2::aes(x = x, y = y, label = label), color = colors[1], size = 6) +
-      ggplot2::geom_text(data = fiftyPercentLabels, mapping = ggplot2::aes(x = x, y = y, label = label), size = 7)
-    text <- gettext("Text for Median:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
-  }
-  if (options[["LSdescCT"]] == "LSdescMode"| allCTs) {
-    mode <- plotData$x[plotData$y == max(plotData$y)]
-    modeVLineData <- data.frame(x = c(rep(mode, 2)), y = c(0, max(plotData$y)))
-    modeHLineData <- data.frame(x = c(mode - .7, mode + .7), y = rep(max(plotData$y) + 0.003, 2))
-    labelXPos <- ifelse(allCTs, 4, mode)
-    labelYPos <- ifelse(allCTs, max(yLimits) * .75, max(yLimits) * .45)
-    pdPlotObject <- pdPlotObject +
-      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = modeVLineData, size = 1, color = colors[2]) +
-      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = modeHLineData, size = 1, color = colors[2]) +
-      ggplot2::geom_label(data = data.frame(x = labelXPos, y = labelYPos, label = gettext("Mode")), 
-                          mapping = ggplot2::aes(x = x, y = y, label = label), color = colors[2], size = 6)
-    text <- gettext("Text for Mode:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
-  }
-  if (options[["LSdescCT"]] == "LSdescMean" | allCTs) {
-    meanLineHeight <- plotData$y[which.min(abs(plotData$x - mean))]
-    meanLineData <- data.frame(x = c(rep(mean, 2)), y = c(0, meanLineHeight))
-    triangleData <- data.frame(x = c(mean, mean + .4, mean - .4), y = c(0, -.05, -.05))
-    balanceBaseData <- data.frame(x = rep(c(-2, 2), each = 2), y = c(-.05, -.1, -.1, -.05))
-    balanceBaseLineData <- data.frame(x = c(-2, 2), y = rep(-.05, 2))
-    balanceLineData1 <- data.frame(x = c(seq(-3.8, -4.2, length.out = 40), seq(-4.2, -4.1, length.out = 60)),
-                                   y = seq(-.04, .04, length.out = 100))
-    balanceLineData2 <- data.frame(x = c(seq(-4, -4.3, length.out = 40), seq(-4.3, -4.25, length.out = 60)),
-                                   y = seq(-.04, .02, length.out = 100))
-    balanceLineData3 <- data.frame(x = balanceLineData1$x * -1, y = balanceLineData1$y)
-    balanceLineData4 <- data.frame(x = balanceLineData2$x * -1, y = balanceLineData2$y)
-    labelXPos <- ifelse(allCTs, 4, mean)
-    labelYPos <- ifelse(allCTs, max(yLimits) * .95, max(yLimits) * .2)
-    pdPlotObject <- pdPlotObject + 
-      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = meanLineData, size = 1, color = colors[3]) +
-      ggplot2::geom_polygon(mapping = ggplot2::aes(x = x, y = y), data = triangleData, fill = colors[3]) +
-      ggplot2::geom_polygon(mapping = ggplot2::aes(x = x, y = y), data = balanceBaseData, fill = colors[3], alpha = .3) +
-      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = balanceBaseLineData, size = 1.2, color = colors[3], alpha = .3) +
-      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = balanceLineData1, size = 1.2, color = colors[3], alpha = .3) +
-      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = balanceLineData2, size = 1, color = colors[3], alpha = .3) +
-      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = balanceLineData3, size = 1.2, color = colors[3], alpha = .3) +
-      ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = balanceLineData4, size = 1, color = colors[3], alpha = .3) +
-      ggplot2::geom_label(data = data.frame(x = labelXPos, y = labelYPos, label = gettext("Mean")), 
-                          mapping = ggplot2::aes(x = x, y = y, label = label), color = colors[3], size = 6)
-    text <- gettext("Text for Mean : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
-  }
-  if (options[["LSdescCT"]] == "LSdescMMM") {
-    text <- gettext("Text for comparison:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
-  }
-  pdPlot$plotObject <- pdPlotObject
-  jaspResults[["descExplanationCT"]][["Plot"]] <- pdPlot
-  jaspResults[["descExplanationCT"]][["Text"]] <- createJaspHtml(text, "p")
+  plotData <- ggplot2::ggplot_build(plotObject)$data[[1]]
+  
+  medianLineHeight <- plotData$y[.indexOfNearestValue(median, plotData$x)]
+  medianLineData <- data.frame(x = c(rep(median, 2)), y = c(0, medianLineHeight))
+  fiftyPercentLabels <- data.frame(x = c(median + .85, median - .85), y = rep(.1, 2), label = rep("50%", 2))
+  labelXPos <- ifelse(options[["LSdescCT"]] == "LSdescMMM", 4, median)
+  labelYPos <- ifelse(options[["LSdescCT"]] == "LSdescMMM", max(yLimits) * .85, max(yLimits) * .55)
+  
+  plotObject <- plotObject +
+    ggplot2::geom_ribbon(mapping = ggplot2::aes(ymin = 0, ymax = y), data = subset(plotData, plotData$x > median),
+                         fill = "grey") +
+    ggplot2::geom_ribbon(mapping = ggplot2::aes(ymin = 0, ymax = y), data = subset(plotData, plotData$x < median),
+                         fill = "grey", alpha = .5) +
+    ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = medianLineData, size = 1, color = colors[1]) +
+    ggplot2::geom_label(data = data.frame(x = labelXPos, y = labelYPos, label = gettext("Median")), 
+                        mapping = ggplot2::aes(x = x, y = y, label = label), color = colors[1], size = 6) +
+    ggplot2::geom_text(data = fiftyPercentLabels, mapping = ggplot2::aes(x = x, y = y, label = label), size = 7)
+  
+  return(plotObject)
+}
+
+.visualExplanationMode <- function(plotObject, data, options, colors) {
+  mean <- mean(data$x)
+  sd <- sd(data$x)
+  xLimits <- c(mean - 5 * sd, mean + 5 * sd)
+  yLimits <- c(-.1 , .5)
+  plotData <- ggplot2::ggplot_build(plotObject)$data[[1]]
+  mode <- plotData$x[plotData$y == max(plotData$y)]
+  
+  modeVLineData <- data.frame(x = c(rep(mode, 2)), y = c(0, max(plotData$y)))
+  modeHLineData <- data.frame(x = c(mode - .7, mode + .7), y = rep(max(plotData$y) + 0.003, 2))
+  labelXPos <- ifelse(options[["LSdescCT"]] == "LSdescMMM", 4, mode)
+  labelYPos <- ifelse(options[["LSdescCT"]] == "LSdescMMM", max(yLimits) * .75, max(yLimits) * .45)
+  plotObject <- plotObject +
+    ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = modeVLineData, size = 1, color = colors[2]) +
+    ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = modeHLineData, size = 1, color = colors[2]) +
+    ggplot2::geom_label(data = data.frame(x = labelXPos, y = labelYPos, label = gettext("Mode")), 
+                        mapping = ggplot2::aes(x = x, y = y, label = label), color = colors[2], size = 6)
+  
+  return(plotObject)
+}
+
+.visualExplanationMean <- function(plotObject, data, options, colors) {
+  mean <- mean(data$x)
+  sd <- sd(data$x)
+  xLimits <- c(mean - 5 * sd, mean + 5 * sd)
+  yLimits <- c(-.1 , .5)
+  plotData <- ggplot2::ggplot_build(plotObject)$data[[1]]
+  
+  meanLineHeight <- plotData$y[.indexOfNearestValue(mean, plotData$x)]
+  meanLineData <- data.frame(x = c(rep(mean, 2)), y = c(0, meanLineHeight))
+  triangleData <- data.frame(x = c(mean, mean + .4, mean - .4), y = c(0, -.05, -.05))
+  balanceBaseData <- data.frame(x = rep(c(-2, 2), each = 2), y = c(-.05, -.1, -.1, -.05))
+  balanceBaseLineData <- data.frame(x = c(-2, 2), y = rep(-.05, 2))
+  balanceLineData1 <- data.frame(x = c(seq(-3.8, -4.2, length.out = 40), seq(-4.2, -4.1, length.out = 60)),
+                                 y = seq(-.04, .04, length.out = 100))
+  balanceLineData2 <- data.frame(x = c(seq(-4, -4.3, length.out = 40), seq(-4.3, -4.25, length.out = 60)),
+                                 y = seq(-.04, .02, length.out = 100))
+  balanceLineData3 <- data.frame(x = balanceLineData1$x * -1, y = balanceLineData1$y)
+  balanceLineData4 <- data.frame(x = balanceLineData2$x * -1, y = balanceLineData2$y)
+  labelXPos <- ifelse(options[["LSdescCT"]] == "LSdescMMM", 4, mean)
+  labelYPos <- ifelse(options[["LSdescCT"]] == "LSdescMMM", max(yLimits) * .95, max(yLimits) * .2)
+  plotObject <- plotObject + 
+    ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = meanLineData, size = 1, color = colors[3]) +
+    ggplot2::geom_polygon(mapping = ggplot2::aes(x = x, y = y), data = triangleData, fill = colors[3]) +
+    ggplot2::geom_polygon(mapping = ggplot2::aes(x = x, y = y), data = balanceBaseData, fill = colors[3], alpha = .3) +
+    ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = balanceBaseLineData, size = 1.2, color = colors[3], alpha = .3) +
+    ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = balanceLineData1, size = 1.2, color = colors[3], alpha = .3) +
+    ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = balanceLineData2, size = 1, color = colors[3], alpha = .3) +
+    ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = balanceLineData3, size = 1.2, color = colors[3], alpha = .3) +
+    ggplot2::geom_path(mapping = ggplot2::aes(x = x, y = y), data = balanceLineData4, size = 1, color = colors[3], alpha = .3) +
+    ggplot2::geom_label(data = data.frame(x = labelXPos, y = labelYPos, label = gettext("Mean")), 
+                        mapping = ggplot2::aes(x = x, y = y, label = label), color = colors[3], size = 6)
+  
+  return(plotObject)
 }
 
 .getDataLSTdesc <- function(jaspResults, options, inputType) {
@@ -444,7 +490,6 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   df <- data.frame(x = data)
   return(df)
 }
-
 
 .readInputSequenceForLSTdesc <- function(jaspResults, options) {
   inputSequence <- options[["lstDescDataSequenceInput"]]
