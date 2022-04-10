@@ -315,10 +315,10 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   sd <- 1
   skew <- 1000
   distLimits <- c(mean - 4 * sd, mean + 4 * sd)
-
+  
   data <- data.frame(x = .scaledSkewedNormal(100000, xi = mean, omega = sd, alpha = skew))
   data <- subset(data, data$x > distLimits[1] & data$x < distLimits[2]) # remove values outside limits
-
+  
   pdPlotObject <- .plotCTexampleDistribution(data)
   
   allCTs <- options[["LSdescCT"]] == "LSdescMMM"
@@ -631,7 +631,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
                          "LSdescHistCountOrDens",
                          "LSdescHistBarRugs"))
   errors <- .plotErrors(p, data, options, stats)$errors
-
+  
   if (ready && !errors) {
     if (discrete) {
       xBreaks <- unique(as.integer(jaspGraphs::getPrettyAxisBreaks(data$x)))
@@ -853,12 +853,13 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       circleData <- data.frame(x0 = mean, 
                                y0 = y0,
                                r = dotWidth / 2)
-      meanLineData <- data.frame(x = c(mean, mean),
-                                 y = c(y0 + dotWidth / 2,  max(yLimits)))
       p <- p + ggforce::geom_circle(data = circleData, mapping = ggplot2::aes(x0 = x0, y0 = y0, r = r),
                                     inherit.aes = FALSE, fill = colors[3], alpha = .3, color = colors[3], n = 4)
-      if (!allCTs)
+      if (!allCTs) {
+        meanLineData <- data.frame(x = c(mean, mean),
+                                   y = c(y0 + dotWidth / 2,  max(yLimits)))
         p <- p + ggplot2::geom_path(data = meanLineData, mapping = ggplot2::aes(x = x, y = y), color = colors[3], size = 1)
+      }
       p <- .drawMeanMedianOrModeLine(jaspResults, options, data, p, yMax = max(yLimits), xMax = max(xLimits), xBreaks,
                                      lines = FALSE, discrete = discrete, colors = colors)
     }
