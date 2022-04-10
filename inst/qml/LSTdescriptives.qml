@@ -20,7 +20,6 @@ import QtQuick.Layouts 1.3
 import JASP.Controls 1.0
 import JASP.Widgets 1.0
 import JASP.Theme 1.0
-import "../qml/qml_components" as LS
 
 Form 
 {
