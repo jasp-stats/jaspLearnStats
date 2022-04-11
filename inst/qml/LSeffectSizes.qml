@@ -81,12 +81,6 @@ Form {
 				defaultValue:	1
 				inclusive: 		JASP.None
 			}
-
-			PercentField
-			{
-				name:			"eventRate"
-				label:			qsTr("Event rate")
-			}
 		}
 
 		Group
@@ -193,6 +187,7 @@ Form {
 		CheckBox
 		{
 			name:		"simulateData"
+			id:			simulateData
 			label:		qsTr("Simulate data")
 			checked:	false
 
@@ -204,6 +199,112 @@ Form {
 				fieldWidth:		60
 			}
 		}
+	}
+
+	Section
+	{
+		title:		qsTr("Advanced")
+
+		Group
+		{
+			title:			qsTr("Additional Statistics")
+			visible:		effectSize.value == "delta"
+
+			CheckBox
+			{
+				name:			"deltaCohensU3"
+				label:			qsTr("Cohen's U3")
+				checked:		false
+			}
+
+			CheckBox
+			{
+				name:			"deltaOverlap"
+				label:			qsTr("Overlap")
+				checked:		false
+			}
+
+			CheckBox
+			{
+				name:			"deltaProbabilityOfSuperiority"
+				label:			qsTr("Probability of superiority")
+				checked:		false
+			}
+
+			CheckBox
+			{
+				name:			"deltaNumberNeededToTreat"
+				label:			qsTr("Number needed to treat")
+				checked:		false
+
+				PercentField
+				{
+					name:			"eventRate"
+					label:			qsTr("Event rate")
+				}
+			}
+		}
+
+		Group
+		{
+			title:			qsTr("Additional Statistics")
+			visible:		effectSize.value == "rho"
+				
+			CheckBox
+			{
+				name:			"rhoSharedVariance"
+				label:			qsTr("Shared variance (R²)")
+				checked:		false
+			}
+		}
+
+		Group
+		{
+			title:			qsTr("Plot Options")
+				
+			CheckBox
+			{
+				name:			"plotCombine"
+				enabled:		simulateData.checked
+				label:			qsTr("Combine population and distribution")
+				checked:		false
+			}
+
+			CheckBox
+			{
+				name:			"plotDeltaDensities"
+				visible:		effectSize.value == "delta"
+				label:			qsTr("Show as densities")
+				checked:		false
+			}
+
+			CheckBox
+			{
+				name:			"plotRhoRegression"
+				visible:		effectSize.value == "rho"
+				label:			qsTr("Show as regression line")
+				checked:		false
+			}
+			
+			CheckBox
+			{
+				name:			"plotPhiPercentages"
+				visible:		effectSize.value == "phi"
+				label:			qsTr("Add percentages")
+				checked:		true
+			}
+
+			CheckBox
+			{
+				name:			"plotPhiCrosshair"
+				visible:		effectSize.value == "phi"
+				label:			qsTr("Show as crosshair plot")
+				checked:		true
+			}
+		}
+
+		SetSeed {}
+
 	}
 
 }
