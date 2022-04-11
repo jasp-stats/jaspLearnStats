@@ -78,7 +78,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     jaspResults[["descExplanationS"]][["Plot4"]] <- plot4
     jaspResults[["descExplanationS"]][["Plot4"]]$position <- 5
   }
-  text <- gettext("Text for comparison:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+  text <- "Text for comparison:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   
   jaspResults[["descExplanationS"]][["Plot"]] <- plot1
   jaspResults[["descExplanationS"]][["Plot"]]$position <- 1
@@ -323,20 +323,20 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   
   allCTs <- options[["LSdescCT"]] == "LSdescMMM"
   
-  if (options[["LSdescCT"]] == "LSdescMedian"| allCTs) {
+  if (options[["LSdescCT"]] == "LSdescMedian" | allCTs) {
     pdPlotObject <- .visualExplanationMedian(pdPlotObject, data, options, colors)
-    text <- gettext("Text for Median:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+    text <- "Text for Median:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   }
-  if (options[["LSdescCT"]] == "LSdescMode"| allCTs) {
+  if (options[["LSdescCT"]] == "LSdescMode" | allCTs) {
     pdPlotObject <- .visualExplanationMode(pdPlotObject, data, options, colors)
-    text <- gettext("Text for Mode:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+    text <- "Text for Mode:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   }
   if (options[["LSdescCT"]] == "LSdescMean" | allCTs) {
     pdPlotObject <- .visualExplanationMean(pdPlotObject, data, options, colors)
-    text <- gettext("Text for Mean : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+    text <- "Text for Mean : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   }
   if (allCTs) {
-    text <- gettext("Text for comparison:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+    text <- "Text for comparison:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   }
   
   pdPlot$plotObject <- pdPlotObject
@@ -706,7 +706,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   errors <- FALSE
   if (stats == "spread"){
     if (options[["LSdescS"]] == "LSdescSD") {
-      if (sd(data$x) == 0 || is.na(sd(data$x))){
+      if (sd(data$x) == 0 | is.na(sd(data$x))){
         plot$setError(gettext("No variance: All values are equal."))
         errors <- TRUE
       }
@@ -843,11 +843,11 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   
   if (stats == "ct") {
     allCTs <- options[["LSdescCT"]] == "LSdescMMM"
-    if (options[["LSdescCT"]] == "LSdescMedian" || allCTs) {
+    if (options[["LSdescCT"]] == "LSdescMedian" | allCTs) {
       p <- .dotPlotVisualizeQuartiles(data, p, dotsize, labelSize, yLimits, xLimits, xBreaks, labels = !allCTs, labelText = gettext("Median"), quartile = 2,
                                       lines = !allCTs, color = colors[1])
     }
-    if (options[["LSdescCT"]] == "LSdescMean" || allCTs) {
+    if (options[["LSdescCT"]] == "LSdescMean" | allCTs) {
       mean <- mean(data$x)
       y0 <- dotWidth / 2
       circleData <- data.frame(x0 = mean, 
@@ -863,7 +863,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       p <- .drawMeanMedianOrModeLine(jaspResults, options, data, p, yMax = max(yLimits), xMax = max(xLimits), xBreaks,
                                      lines = FALSE, discrete = discrete, colors = colors)
     }
-    if (options[["LSdescCT"]] == "LSdescMode" || allCTs) {
+    if (options[["LSdescCT"]] == "LSdescMode" | allCTs) {
       if (length(unique(data$x)) != n) {
         modeTable <- table(data$x)
         mode <- as.numeric(names(modeTable[modeTable == max(modeTable)]))
