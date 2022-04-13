@@ -13,7 +13,21 @@ Description
 	maintainer:		"JASP Team <info@jasp-stats.org>"
 	website:		"www.jasp-stats.org"
 	license:		"GPL (>= 2)"
-
+	
+	
+	Analysis
+	{
+		title:	qsTr("Normal Distribution")
+		qml:	"LSTnormDist.qml"
+		func:	"LSTnormDist"
+	}
+	
+	Analysis
+	{
+		title:	qsTr("Binomial Distribution")
+		qml:	"LSTbinomDist.qml"
+		func:	"LSTbinomDist"
+	}
 
 	Analysis
 	{
