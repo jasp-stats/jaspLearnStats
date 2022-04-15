@@ -36,6 +36,13 @@ Description
 		func:	"LSTcentralLimitTheorem"
 	}
 	
+		Analysis
+	{
+		title:	qsTr("Standard Error")
+		qml:	"LSTstandardError.qml"
+		func:	"LSTstandardError"
+	}
+	
 	Analysis
 	{
 		title:	qsTr("Descriptive Statistics")
