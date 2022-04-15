@@ -260,13 +260,40 @@ Form {
 
 		Group
 		{
+			title:			qsTr("Additional Statistics")
+			visible:		effectSize.value == "phi"
+				
+			CheckBox
+			{
+				name:			"phiOR"
+				label:			qsTr("Odds Ratio")
+				checked:		false
+			}
+
+			CheckBox
+			{
+				name:			"phiRR"
+				label:			qsTr("Risk Ratio")
+				checked:		false
+			}
+
+			CheckBox
+			{
+				name:			"phiRD"
+				label:			qsTr("Risk Difference")
+				checked:		false
+			}
+		}
+
+		Group
+		{
 			title:			qsTr("Plot Options")
 				
 			CheckBox
 			{
 				name:			"plotCombine"
 				enabled:		simulateData.checked
-				label:			qsTr("Combine population and distribution")
+				label:			qsTr("Combine population and simulation")
 				checked:		false
 			}
 
@@ -282,25 +309,28 @@ Form {
 			{
 				name:			"plotRhoRegression"
 				visible:		effectSize.value == "rho"
-				label:			qsTr("Show as regression line")
+				label:			qsTr("Show regression line")
 				checked:		false
 			}
 			
+
 			CheckBox
 			{
-				name:			"plotPhiPercentages"
+				name:			"plotPhiMosaic"
 				visible:		effectSize.value == "phi"
-				label:			qsTr("Add percentages")
-				checked:		true
+				label:			qsTr("Show as mosiac plot")
+				checked:		false
 			}
 
 			CheckBox
 			{
-				name:			"plotPhiCrosshair"
+				name:			"plotPhiProportions"
 				visible:		effectSize.value == "phi"
-				label:			qsTr("Show as crosshair plot")
-				checked:		true
+				label:			qsTr("Show proportions")
+				checked:		false
 			}
+
+
 		}
 
 		SetSeed {}
