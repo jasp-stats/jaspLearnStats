@@ -42,13 +42,8 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
     if (options[["simulateData"]])
       .tsPhiSimulateData(jaspResults, options)
 
+    .tsPhiPlot(jaspResults, options)
     .tsPhiTable(jaspResults, options)
-
-    .tsPhiPopulationPlot(jaspResults, options)
-    if (options[["simulateData"]]) {
-      .tsPhiSimulationPlot(jaspResults, options)
-    }
-
 
   }
 
@@ -175,12 +170,12 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
       geom  = "area",
       xlim  = xlim,
       alpha = .2,
-      fill  = "blue") +
+      fill  = jaspGraphs::JASPcolors("colorblind")[1]) +
     ggplot2::stat_function(
       fun   = dens1,
       geom  = "line",
       xlim  = xlim,
-      color = "blue",
+      color = jaspGraphs::JASPcolors("colorblind")[1],
       size  = 1) +
     ggplot2::geom_line(
       mapping  = ggplot2::aes(
@@ -199,12 +194,12 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
       geom  = "area",
       xlim  = xlim,
       alpha = .2,
-      fill  = "red") +
+      fill  = jaspGraphs::JASPcolors("colorblind")[2]) +
     ggplot2::stat_function(
       fun   = dens2,
       geom  = "line",
       xlim  = xlim,
-      color = "red",
+      color = jaspGraphs::JASPcolors("colorblind")[2],
       size  = 1) +
     ggplot2::geom_text(
       mapping = ggplot2::aes(
@@ -245,8 +240,8 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
       mapping  = ggplot2::aes(x = x, fill = Group, color = Group),
       alpha    = 0.5,
       position = "identity") +
-    ggplot2::scale_color_manual(values = c("Control" = "blue", "Experimental" = "red")) +
-    ggplot2::scale_fill_manual(values = c("Control" = "blue", "Experimental" = "red")) +
+    ggplot2::scale_color_manual(values = c("Control" = jaspGraphs::JASPcolors("colorblind")[1], "Experimental" = jaspGraphs::JASPcolors("colorblind")[2])) +
+    ggplot2::scale_fill_manual(values = c("Control" = jaspGraphs::JASPcolors("colorblind")[1], "Experimental" = jaspGraphs::JASPcolors("colorblind")[2])) +
     ggplot2::scale_x_continuous(expression(X), breaks = xTicks, limits = range(xTicks)) +
     ggplot2::scale_y_continuous(gettext("Count")) +
     jaspGraphs::geom_rangeframe() +
@@ -276,19 +271,19 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
       mapping  = ggplot2::aes(x = x, fill = Group, color = Group, y = ..density..),
       alpha    = 0.5,
       position = "identity") +
-    ggplot2::scale_color_manual(values = c("Control" = "blue", "Experimental" = "red")) +
-    ggplot2::scale_fill_manual(values = c("Control" = "blue", "Experimental" = "red")) +
+    ggplot2::scale_color_manual(values = c("Control" = jaspGraphs::JASPcolors("colorblind")[1], "Experimental" = jaspGraphs::JASPcolors("colorblind")[2])) +
+    ggplot2::scale_fill_manual(values = c("Control" = jaspGraphs::JASPcolors("colorblind")[1], "Experimental" = jaspGraphs::JASPcolors("colorblind")[2])) +
     ggplot2::stat_function(
       fun   = dens1,
       geom  = "area",
       xlim  = xlim,
       alpha = .2,
-      fill  = "blue") +
+      fill  = jaspGraphs::JASPcolors("colorblind")[1]) +
     ggplot2::stat_function(
       fun   = dens1,
       geom  = "line",
       xlim  = xlim,
-      color = "blue",
+      color = jaspGraphs::JASPcolors("colorblind")[1],
       size  = 1) +
     ggplot2::geom_line(
       mapping  = ggplot2::aes(
@@ -307,12 +302,12 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
       geom  = "area",
       xlim  = xlim,
       alpha = .2,
-      fill  = "red") +
+      fill  = jaspGraphs::JASPcolors("colorblind")[2]) +
     ggplot2::stat_function(
       fun   = dens2,
       geom  = "line",
       xlim  = xlim,
-      color = "red",
+      color = jaspGraphs::JASPcolors("colorblind")[2],
       size  = 1) +
     ggplot2::geom_text(
       mapping = ggplot2::aes(
@@ -470,7 +465,7 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
 
   rhoPlot <-  createJaspContainer()
   rhoPlot$position <- 1
-  rhoPlot$dependOn(c("effectSize", "effectSizeValueRho", "simulateData", "simulateDataN", "mu1", "mu2", "sigma1", "sigma2", "plotCombine", "plotRhoRegression"))
+  rhoPlot$dependOn(c("effectSize", "effectSizeValueRho", "simulateData", "simulateDataN", "mu1", "mu2", "sigma1", "sigma2", "plotCombine", "plotRhoRegression", "plotRhoRegression"))
   jaspResults[["rhoPlot"]] <- rhoPlot
 
 
@@ -481,12 +476,13 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
     rhoPlot[["rhoCombinedPlot"]] <- rhoCombinedPlot
 
     rhoCombinedPlot$plotObject <- .tsRhoMakeCombinedPlot(
-      rho    = options[["effectSizeValueRho"]],
-      mu1    = options[["mu1"]],
-      mu2    = options[["mu2"]],
-      sigma1 = options[["sigma1"]],
-      sigma2 = options[["sigma2"]],
-      data   = jaspResults[["simulatedData"]]$object)
+      rho     = options[["effectSizeValueRho"]],
+      mu1     = options[["mu1"]],
+      mu2     = options[["mu2"]],
+      sigma1  = options[["sigma1"]],
+      sigma2  = options[["sigma2"]],
+      data    = jaspResults[["simulatedData"]]$object,
+      options = options)
 
   } else {
 
@@ -495,11 +491,12 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
     rhoPlot[["rhoPopulationPlot"]] <- rhoPopulationPlot
 
     rhoPopulationPlot$plotObject <- .tsRhoMakePopulationPlot(
-      rho    = options[["effectSizeValueRho"]],
-      mu1    = options[["mu1"]],
-      mu2    = options[["mu2"]],
-      sigma1 = options[["sigma1"]],
-      sigma2 = options[["sigma2"]])
+      rho     = options[["effectSizeValueRho"]],
+      mu1     = options[["mu1"]],
+      mu2     = options[["mu2"]],
+      sigma1  = options[["sigma1"]],
+      sigma2  = options[["sigma2"]],
+      options = options)
 
     if (options[["simulateData"]]) {
 
@@ -507,7 +504,7 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
       rhoSimulationPlot$position <- 2
       rhoPlot[["rhoSimulationPlot"]] <- rhoSimulationPlot
 
-      rhoSimulationPlot$plotObject <- .tsRhoMakeSimulationPlot(jaspResults[["simulatedData"]]$object)
+      rhoSimulationPlot$plotObject <- .tsRhoMakeSimulationPlot(jaspResults[["simulatedData"]]$object, options)
     }
   }
 
@@ -539,7 +536,7 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
   return()
 
 }
-.tsRhoMakePopulationPlot <- function(rho, mu1, mu2, sigma1, sigma2, nPoints = 100) {
+.tsRhoMakePopulationPlot <- function(rho, mu1, mu2, sigma1, sigma2, options, nPoints = 100) {
 
   if (isTRUE(all.equal(abs(rho), 1))) {
 
@@ -615,9 +612,17 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
     jaspGraphs::geom_rangeframe() +
     jaspGraphs::themeJaspRaw()
 
+
+  if (options[["plotRhoRegression"]]) {
+    plot <- plot + ggplot2::geom_abline(
+      intercept = mu2,
+      slope     = rho * (sigma2/sigma1)
+    )
+  }
+
   return(plot)
 }
-.tsRhoMakeSimulationPlot <- function(data) {
+.tsRhoMakeSimulationPlot <- function(data, options) {
 
   xlab <- jaspGraphs::getPrettyAxisBreaks(range(data$x))
   ylab <- jaspGraphs::getPrettyAxisBreaks(range(data$y))
@@ -632,9 +637,18 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
     jaspGraphs::geom_rangeframe() +
     jaspGraphs::themeJaspRaw()
 
+  if (options[["plotRhoRegression"]]) {
+    plot <- plot + ggplot2::geom_smooth(
+      data    = data,
+      mapping = ggplot2::aes(x = x, y = y),
+      method  = "lm",
+      formula = y ~ x)
+  }
+
+
   return(plot)
 }
-.tsRhoMakeCombinedPlot   <- function(rho, mu1, mu2, sigma1, sigma2, data, nPoints = 100) {
+.tsRhoMakeCombinedPlot   <- function(rho, mu1, mu2, sigma1, sigma2, data, options, nPoints = 100) {
 
   plot <- ggplot2::ggplot()
 
@@ -716,6 +730,17 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
     jaspGraphs::geom_rangeframe() +
     jaspGraphs::themeJaspRaw()
 
+  if (options[["plotRhoRegression"]]) {
+    plot <- plot  + ggplot2::geom_smooth(
+      data    = data,
+      mapping = ggplot2::aes(x = x, y = y),
+      method  = "lm",
+      formula = y ~ x) +
+    ggplot2::geom_abline(
+      intercept = mu2,
+      slope     = rho * (sigma2/sigma1)
+    )
+  }
 
   return(plot)
 }
@@ -829,7 +854,7 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
   ### Characteristics table
   phiTable2 <- createJaspTable(title = gettext("Statistics Summary"))
   phiTable2$position <- 3
-  phiTable2$dependOn(c("effectSize", "effectSizeValuePhi", "pX", "pY"))
+  phiTable2$dependOn(c("effectSize", "effectSizeValuePhi", "pX", "pY", "phiOR", "phiRR", "phiRD"))
 
   phi <- list(matrix(c(options[["pX"]], options[["pY"]], options[["effectSizeValuePhi"]]), ncol = 1, nrow = 3))
 
@@ -854,99 +879,74 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
     phi[[2]] <- phiSim
   }
 
-  jaspResults[["phiTable2"]] <- .tsPhiFillTable(phiTable2, phi)
-
-
-  return()
-}
-.tsPhiSimulationTable     <- function(jaspResults, options) {
-
-  if (!is.null(jaspResults[["phiSimulationTable"]]))
-    return()
-
-  phiTable <- createJaspTable(title = gettext("Simulation Frequencies"))
-  phiTable$position <- 5
-  phiTable$dependOn(c("effectSize", "effectSizeValuePhi", "pX", "pY", "simulateData", "simulateDataN"))
-
-  data        <- jaspResults[["simulatedData"]]$object
-  frequencies <- as.list(data / sum(data))
-
-  jaspResults[["phiSimulationTable"]] <- .tsPhiFillFrequencies(phiTable, frequencies)
-
-  phiTable2 <- createJaspTable(title = gettext("Simulation Characteristics"))
-  phiTable2$position <- 6
-  phiTable2$dependOn(c("effectSize", "effectSizeValuePhi", "pX", "pY", "simulateData", "simulateDataN"))
-
-  phi <- c((data["A"] + data["B"]) / sum(data), (data["A"] + data["C"]) / sum(data), psych::phi(rbind(data[c("A", "B")], data[c("C", "D")])))
-  phi <- unname(rbind(
-    c(phi[1], phi[1] - 1.96 * sqrt(phi[1]*(1-phi[1])/sum(data)), phi[1] + 1.96 * sqrt(phi[1]*(1-phi[1])/sum(data))),
-    c(phi[2], phi[2] - 1.96 * sqrt(phi[2]*(1-phi[2])/sum(data)), phi[2] + 1.96 * sqrt(phi[2]*(1-phi[2])/sum(data))),
-    .tsPhiCi(data["A"], data["B"], data["C"], data["D"])
+  frequencies <- list(.tsPhi2Frequencies(
+    phi = options[["effectSizeValuePhi"]],
+    pX  = options[["pX"]],
+    pY  = options[["pY"]]
   ))
 
-  # fix CIs
-  phi[1:2,][phi[1:2,] < 0] <- 0
-  phi[1:2,][phi[1:2,] > 1] <- 1
-  phi[3,][phi[3,] < -1] <- -1
-  phi[3,][phi[3,] >  1] <-  1
+  # add simulation characteristics
+  if (options[["simulateData"]]){
 
-  jaspResults[["phiSimulationTable2"]] <- .tsPhiFillTable(phiTable2, phi)
+    data <- jaspResults[["simulatedData"]]$object
+
+    frequencies[[2]] <- as.list(data)
+  }
+
+
+  jaspResults[["phiTable2"]] <- .tsPhiFillTable(phiTable2, phi, frequencies, options)
+
 
   return()
 }
-.tsPhiPopulationPlot      <- function(jaspResults, options) {
+.tsPhiPlot                <- function(jaspResults, options) {
 
-  if (!is.null(jaspResults[["phiPopulationPlots"]]))
+  if (!is.null(jaspResults[["phiPlot"]]))
     return()
 
-  phiPopulationPlots <- createJaspContainer(title = gettext("Population distributibution"))
-  phiPopulationPlots$position <- 1
-  phiPopulationPlots$dependOn(c("effectSize", "effectSizeValuePhi", "pX", "pY"))
-  jaspResults[["phiPopulationPlots"]] <- phiPopulationPlots
+  phiPlot <-  createJaspContainer()
+  phiPlot$position <- 1
+  phiPlot$dependOn(c("effectSize", "effectSizeValuePhi", "pX", "pY", "simulateData", "simulateDataN", "plotCombine", "plotPhiMosaic", "plotPhiProportions"))
+  jaspResults[["phiPlot"]] <- phiPlot
 
 
-  phiPopulationPlot   <- createJaspPlot(title = gettext(""), width = 650, height = 350)
-  phiPopulationPlot$position <- 1
-  phiPopulationPlots[["phiPopulationPlot"]] <- phiPopulationPlot
+  if (options[["plotCombine"]] && options[["simulateData"]]){
 
-  phiMosaicPlot   <- createJaspPlot(title = gettext(""), width = 650, height = 450)
-  phiMosaicPlot$position <- 2
-  phiPopulationPlots[["phiMosaicPlot"]] <- phiMosaicPlot
+    phiCombinedPlot <- createJaspPlot(title = gettext("Population and simulation distributibution"), height = 500, aspectRatio = 1)
+    phiCombinedPlot$position <- 1
+    phiPlot[["phiCombinedPlot"]] <- phiCombinedPlot
 
-  phiPopulationPlot$plotObject <- .tsPhiMakePopulationDPlot(
-    phi = options[["effectSizeValuePhi"]],
-    pX  = options[["pX"]],
-    pY  = options[["pY"]])
+    phiCombinedPlot$plotObject <- .tsPhiMakeCombinedPlot(
+      phi     = options[["effectSizeValuePhi"]],
+      pX      = options[["pX"]],
+      pY      = options[["pY"]],
+      data    = jaspResults[["simulatedData"]]$object,
+      options = options)
 
-  phiMosaicPlot$plotObject <- .tsPhiMakePopulationMPlot(
-    phi = options[["effectSizeValuePhi"]],
-    pX  = options[["pX"]],
-    pY  = options[["pY"]])
+  } else {
 
-  return()
-}
-.tsPhiSimulationPlot      <- function(jaspResults, options) {
+    phiPopulationPlot   <- createJaspPlot(title = gettext("Population distributibution"), height = 500, aspectRatio = 1)
+    phiPopulationPlot$position <- 1
+    phiPlot[["phiPopulationPlot"]] <- phiPopulationPlot
 
-  if (!is.null(jaspResults[["phiSimulationPlots"]]))
-    return()
+    phiPopulationPlot$plotObject <- .tsPhiMakePopulationPlot(
+      phi     = options[["effectSizeValuePhi"]],
+      pX      = options[["pX"]],
+      pY      = options[["pY"]],
+      options = options)
 
-  phiSimulationPlots <- createJaspContainer(title = gettext("Simulation distributibution"))
-  phiSimulationPlots$position <- 4
-  phiSimulationPlots$dependOn(c("effectSize", "effectSizeValuePhi", "simulateData", "simulateDataN", "pX", "pY"))
-  jaspResults[["phiSimulationPlots"]] <- phiSimulationPlots
+    if (options[["simulateData"]]) {
 
+      phiSimulationPlot   <- createJaspPlot(title = gettext("Simulation distributibution"), height = 500, aspectRatio = 1)
+      phiSimulationPlot$position <- 2
+      phiPlot[["phiSimulationPlot"]] <- phiSimulationPlot
 
-  phiPopulationPlot   <- createJaspPlot(title = gettext(""), width = 650, height = 350)
-  phiPopulationPlot$position <- 1
-  phiSimulationPlots[["phiPopulationPlot"]] <- phiPopulationPlot
-
-  phiMosaicPlot   <- createJaspPlot(title = gettext(""), width = 650, height = 450)
-  phiMosaicPlot$position <- 2
-  phiSimulationPlots[["phiMosaicPlot"]] <- phiMosaicPlot
-
-  phiPopulationPlot$plotObject <- .tsPhiMakeSimulationDPlot(jaspResults[["simulatedData"]]$object)
-
-  phiMosaicPlot$plotObject <- .tsPhiMakeSimulationMPlot(jaspResults[["simulatedData"]]$object)
+      phiSimulationPlot$plotObject <- .tsPhiMakeSimulationPlot(
+        frequencies = jaspResults[["simulatedData"]]$object,
+        options     = options
+      )
+    }
+  }
 
   return()
 }
@@ -961,7 +961,7 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
 
     frequencies <- .tsPhi2Frequencies(phi = options[["effectSizeValuePhi"]], pX = options[["pX"]], pY = options[["pY"]])
     data        <- sample(names(frequencies), options[["simulateDataN"]], replace = TRUE, prob = unlist(frequencies))
-    data        <- factor(data, levels = names(frequencies))
+    data        <- factor(data, levels = c("A", "B", "C", "D"))
     data        <- table(data)
 
     simulatedData$object <- data
@@ -972,41 +972,41 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
   return()
 
 }
-.tsPhiMakePopulationDPlot <- function(phi, pX, pY) {
+.tsPhiMakePopulationPlot  <- function(phi, pX, pY, options) {
 
   frequencies <- .tsPhi2Frequencies(phi = phi, pX = pX, pY = pY)
-  yTicks      <- jaspGraphs::getPrettyAxisBreaks(range(c(0, unlist(frequencies))))
 
-  plot <- ggplot2::ggplot(
-    data    = data.frame(
-      X = factor(c(1, 1, 0, 0)),
-      Y = factor(c(1, 0, 1, 0)),
-      p = c(frequencies[["A"]], frequencies[["C"]], frequencies[["B"]], frequencies[["D"]])
-    ),
-    mapping = ggplot2::aes(fill = Y, y = p, x = X)) +
-    ggplot2::geom_bar(position = "dodge", stat = "identity") +
-    ggplot2::scale_y_continuous(
-      expression(P(X,Y)),
-      breaks = yTicks,
-      limits = range(yTicks)
-      ) +
-    jaspGraphs::geom_rangeframe() +
-    jaspGraphs::themeJaspRaw(legend.position = "right")
+  if (options[["plotPhiMosaic"]]){
+    ticks <- jaspGraphs::getPrettyAxisBreaks(range(c(0, 1)))
+    data  <- with(frequencies, data.frame(
+      x_start = c(     0,        0,       pX,       pX),
+      x_stop  = c(    pX,       pX,        1,        1),
+      y_start = c(     0,   C/(pX),        0, D/(1-pX)),
+      y_stop  = c(C/(pX),        1, D/(1-pX),        1),
+      Outcome = c("P(X=1,Y=0)", "P(X=1,Y=1)", "P(X=0,Y=0)", "P(X=0,Y=1)")
+    ))
+    lab   <- with(frequencies, data.frame(
+      x     = c(      pX/2,           pX/2,     (pX+1)/2,       (pX+1)/2),
+      y     = c((C/(pX))/2, (C/(pX) + 1)/2, (D/(1-pX)/2), (D/(1-pX)+1)/2),
+      label = round(c(C, A, D, B), 2)
+    ))
+  } else {
+    data  <- with(frequencies, data.frame(
+      x_start = c(-sqrt(A),       0, -sqrt(C),        0),
+      x_stop  = c(       0, sqrt(B),        0,  sqrt(D)),
+      y_start = c(       0,       0, -sqrt(C), -sqrt(D)),
+      y_stop  = c( sqrt(A), sqrt(B),        0,        0),
+      Outcome = c("P(X=1,Y=1)", "P(X=1,Y=0)", "P(X=0,Y=1)", "P(X=0,Y=0)")
+    ))
+    lab   <- with(frequencies, data.frame(
+      x     = c(-sqrt(A)/2, sqrt(B)/2, -sqrt(C)/2,  sqrt(D)/2),
+      y     = c( sqrt(A)/2, sqrt(B)/2, -sqrt(C)/2, -sqrt(D)/2),
+      label = round(c(A, B, C, D), 2)
+    ))
+    ticks <- jaspGraphs::getPrettyAxisBreaks(range(data[,-5]))
+  }
 
-  return(plot)
-}
-.tsPhiMakePopulationMPlot <- function(phi, pX, pY) {
-
-  frequencies <- .tsPhi2Frequencies(phi = phi, pX = pX, pY = pY)
-  ticks       <- jaspGraphs::getPrettyAxisBreaks(range(c(0, 1)))
-
-  plot <- ggplot2::ggplot(data = data.frame(
-    x_start = c(0,    0,    1-pX, 1-pX),
-    x_stop  = c(1-pX, 1-pX, 1,    1),
-    y_start = c(0,                    frequencies$C/(1-pX), 0,                    1-frequencies$B/(pX)),
-    y_stop  = c(frequencies$C/(1-pX), 1,                    1-frequencies$B/(pX), 1),
-    Outcome = c("P(X=0,Y=0)", "P(X=0,Y=1)", "P(X=1,Y=0)", "P(X=1,Y=1)")
-  )) +
+  plot <- ggplot2::ggplot(data = data) +
     ggplot2::scale_x_continuous(name = "", breaks = ticks, limits = range(ticks)) +
     ggplot2::scale_y_continuous(name = "", breaks = ticks, limits = range(ticks)) +
     ggplot2::geom_rect(
@@ -1016,47 +1016,58 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
         ymin = y_start,
         ymax = y_stop,
         fill = Outcome),
-      color="black", alpha = 0.5)  +
+      color = "black", alpha = 0.5)  +
+    ggplot2::scale_fill_discrete(type = jaspGraphs::JASPcolors("colorblind")) +
     jaspGraphs::geom_rangeframe() +
     jaspGraphs::themeJaspRaw(legend.position = "right")
 
-  return(plot)
-}
-.tsPhiMakeSimulationDPlot <- function(data) {
-
-  yTicks      <- jaspGraphs::getPrettyAxisBreaks(c(0, range(unlist(data))))
-
-  plot <- ggplot2::ggplot(
-    data    = data.frame(
-      X = factor(c(1, 1, 0, 0)),
-      Y = factor(c(1, 0, 1, 0)),
-      p = c(data[["A"]], data[["C"]], data[["B"]], data[["D"]])
-    ),
-    mapping = ggplot2::aes(fill = Y, y = p, x = X)) +
-    ggplot2::geom_bar(position = "dodge", stat = "identity") +
-    ggplot2::scale_y_continuous(
-      "Counts",
-      breaks = yTicks,
-      limits = range(yTicks)
-    ) +
-    jaspGraphs::geom_rangeframe() +
-    jaspGraphs::themeJaspRaw(legend.position = "right")
+  if (options[["plotPhiProportions"]]) {
+    plot <- plot + ggplot2::geom_text(
+      data    = lab,
+      mapping = ggplot2::aes(
+        x     = x,
+        y     = y,
+        label = label),
+      hjust = 0.5,
+      vjust = 0.5
+    )
+  }
 
   return(plot)
 }
-.tsPhiMakeSimulationMPlot <- function(data) {
+.tsPhiMakeSimulationPlot  <- function(frequencies, options) {
 
-  data  <- data / sum(data)
-  pX    <- data[["A"]] + data[["B"]]
-  ticks <- jaspGraphs::getPrettyAxisBreaks(range(c(0, 1)))
+  if (options[["plotPhiMosaic"]]){
+    ticks <- jaspGraphs::getPrettyAxisBreaks(range(c(0, 1)))
+    data   <- with(as.list(frequencies/sum(frequencies)), data.frame(
+      x_start = c(     0,        0,      A+B,      A+B),
+      x_stop  = c(   A+B,      A+B,        1,        1),
+      y_start = c(     0,  C/(A+B),        0,  D/(C+D)),
+      y_stop  = c(C/(A+B),        1, D/(C+D),        1),
+      Outcome = c("P(X=1,Y=0)", "P(X=1,Y=1)", "P(X=0,Y=0)", "P(X=0,Y=1)")
+    ))
+    lab   <- with(as.list(frequencies/sum(frequencies)), data.frame(
+      x     = c(    (A+B)/2,       (A+B)/2,   (A+B+1)/2,     (A+B+1)/2),
+      y     = c((C/(A+B))/2, (C/(A+B)+1)/2, (D/(C+D))/2, (D/(C+D)+1)/2),
+      label = round(c(C, A, D, B), 2)
+    ))
+  } else {
+    data  <- with(as.list(frequencies/sum(frequencies)), data.frame(
+      x_start = c(-sqrt(A),       0, -sqrt(C),        0),
+      x_stop  = c(       0, sqrt(B),        0,  sqrt(D)),
+      y_start = c(       0,       0, -sqrt(C), -sqrt(D)),
+      y_stop  = c( sqrt(A), sqrt(B),        0,        0),
+      Outcome = c("P(X=1,Y=1)", "P(X=1,Y=0)", "P(X=0,Y=1)", "P(X=0,Y=0)")
+    ))
+    lab   <- with(as.list(frequencies/sum(frequencies)), data.frame(
+      x     = c(-sqrt(A)/2, sqrt(B)/2, -sqrt(C)/2,  sqrt(D)/2),
+      y     = c( sqrt(A)/2, sqrt(B)/2, -sqrt(C)/2, -sqrt(D)/2),
+      label = round(c(A, B, C, D), 2)
+    ))
+    ticks <- jaspGraphs::getPrettyAxisBreaks(range(data[,-5]))
+  }
 
-  plot <- ggplot2::ggplot(data = data.frame(
-    x_start = c(0,    0,    1-pX, 1-pX),
-    x_stop  = c(1-pX, 1-pX, 1,    1),
-    y_start = c(0,             data[["C"]]/(1-pX), 0,              1-data[["B"]]/(pX)),
-    y_stop  = c(data[["C"]]/(1-pX), 1,              1-data[["B"]]/(pX), 1),
-    Outcome = c("P(X=0,Y=0)", "P(X=0,Y=1)", "P(X=1,Y=0)", "P(X=1,Y=1)")
-  )) +
+  plot <- ggplot2::ggplot(data = data) +
     ggplot2::scale_x_continuous(name = "", breaks = ticks, limits = range(ticks)) +
     ggplot2::scale_y_continuous(name = "", breaks = ticks, limits = range(ticks)) +
     ggplot2::geom_rect(
@@ -1066,11 +1077,87 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
         ymin = y_start,
         ymax = y_stop,
         fill = Outcome),
-      color="black", alpha = 0.5)  +
+      color = "black", alpha = 0.5) +
+    ggplot2::scale_fill_discrete(type = jaspGraphs::JASPcolors("colorblind")) +
     jaspGraphs::geom_rangeframe() +
     jaspGraphs::themeJaspRaw(legend.position = "right")
 
+  if (options[["plotPhiProportions"]]) {
+    plot <- plot + ggplot2::geom_text(
+      data    = lab,
+      mapping = ggplot2::aes(
+        x     = x,
+        y     = y,
+        label = label),
+      hjust = 0.5,
+      vjust = 0.5
+    )
+  }
+
   return(plot)
+}
+.tsPhiMakeCombinedPlot    <- function(phi, pX, pY, data, options) {
+
+  frequencies <- .tsPhi2Frequencies(phi = phi, pX = pX, pY = pY)
+
+  if (options[["plotPhiMosaic"]]){
+    ticks <- jaspGraphs::getPrettyAxisBreaks(range(c(0, 1)))
+    dataP   <- with(frequencies, data.frame(
+      x_start = c(     0,        0,       pX,       pX),
+      x_stop  = c(    pX,       pX,        1,        1),
+      y_start = c(     0,   C/(pX),        0, D/(1-pX)),
+      y_stop  = c(C/(pX),        1, D/(1-pX),        1),
+      Outcome = c("P(X=1,Y=0)", "P(X=1,Y=1)", "P(X=0,Y=0)", "P(X=0,Y=1)")
+    ))
+    dataS   <- with(as.list(data/sum(data)), data.frame(
+      x_start = c(      0,        0,     A+B,     A+B),
+      x_stop  = c(    A+B,      A+B,       1,       1),
+      y_start = c(      0,  C/(A+B),       0, D/(C+D)),
+      y_stop  = c(C/(A+B),        1, D/(C+D),       1),
+      Outcome = c("P(X=1,Y=0)", "P(X=1,Y=1)", "P(X=0,Y=0)", "P(X=0,Y=1)")
+    ))
+  } else {
+    dataP  <- with(frequencies, data.frame(
+      x_start = c(-sqrt(A),       0, -sqrt(C),        0),
+      x_stop  = c(       0, sqrt(B),        0,  sqrt(D)),
+      y_start = c(       0,       0, -sqrt(C), -sqrt(D)),
+      y_stop  = c( sqrt(A), sqrt(B),        0,        0),
+      Outcome = c("P(X=1,Y=1)", "P(X=1,Y=0)", "P(X=0,Y=1)", "P(X=0,Y=0)")
+    ))
+    dataS  <- with(as.list(data/sum(data)), data.frame(
+      x_start = c(-sqrt(A),       0, -sqrt(C),        0),
+      x_stop  = c(       0, sqrt(B),        0,  sqrt(D)),
+      y_start = c(       0,       0, -sqrt(C), -sqrt(D)),
+      y_stop  = c( sqrt(A), sqrt(B),        0,        0),
+      Outcome = c("P(X=1,Y=1)", "P(X=1,Y=0)", "P(X=0,Y=1)", "P(X=0,Y=0)")
+    ))
+    ticks <- jaspGraphs::getPrettyAxisBreaks(range(rbind(dataP[,-5], dataS[,-5])))
+  }
+
+  plot <- ggplot2::ggplot() +
+    ggplot2::scale_x_continuous(name = "", breaks = ticks, limits = range(ticks)) +
+    ggplot2::scale_y_continuous(name = "", breaks = ticks, limits = range(ticks)) +
+    ggplot2::geom_rect(
+      data    = dataS,
+      mapping = ggplot2::aes(
+        xmin = x_start,
+        xmax = x_stop,
+        ymin = y_start,
+        ymax = y_stop,
+        fill = Outcome),
+      color = "black", alpha = 0.25, linetype = 2)  +
+    ggplot2::geom_rect(
+      data    = dataP,
+      mapping = ggplot2::aes(
+        xmin = x_start,
+        xmax = x_stop,
+        ymin = y_start,
+        ymax = y_stop,
+        fill = Outcome),
+      color = "black", alpha = 0.50)  +
+    ggplot2::scale_fill_discrete(type = jaspGraphs::JASPcolors("colorblind")) +
+    jaspGraphs::geom_rangeframe() +
+    jaspGraphs::themeJaspRaw(legend.position = "right")
 
   return(plot)
 }
@@ -1110,7 +1197,7 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
 
   return(phiTable)
 }
-.tsPhiFillTable           <- function(phiTable2, phi) {
+.tsPhiFillTable           <- function(phiTable2, phi, frequencies, options) {
 
   # add columns
   phiTable2$addColumnInfo(name = "variable",    title = "",  type = "string")
@@ -1131,6 +1218,23 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
     variable   = gettext("Phi coefficient"),
     population = phi[[1]][3,1])
 
+  if (options[["phiOR"]])
+    row4 <- list(
+      variable   = gettext("Odds ratio"),
+      population = (frequencies[[1]][["A"]] * frequencies[[1]][["D"]]) / (frequencies[[1]][["B"]] * frequencies[[1]][["C"]]))
+
+  if (options[["phiRR"]])
+    row5 <- list(
+      variable   = gettext("Risk ratio"),
+      population = (frequencies[[1]][["A"]] / (frequencies[[1]][["A"]] + frequencies[[1]][["B"]])) /
+        (frequencies[[1]][["C"]] / (frequencies[[1]][["C"]] + frequencies[[1]][["D"]])))
+
+  if (options[["phiRD"]])
+    row6 <- list(
+      variable   = gettext("Risk difference"),
+      population = (frequencies[[1]][["A"]] / (frequencies[[1]][["A"]] + frequencies[[1]][["B"]])) -
+        (frequencies[[1]][["C"]] / (frequencies[[1]][["C"]] + frequencies[[1]][["D"]])))
+
   if (length(phi) > 1) {
     row1 <- c(row1, c(
       simulation = phi[[2]][1, 1],
@@ -1147,11 +1251,112 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
       lower      = phi[[2]][3, 2],
       upper      = phi[[2]][3, 3]
     ))
+
+    if (options[["phiOR"]]){
+      tempOR <- metafor::escalc(
+        measure = "OR",
+        ai      = frequencies[[2]][["A"]],
+        bi      = frequencies[[2]][["B"]],
+        ci      = frequencies[[2]][["C"]],
+        di      = frequencies[[2]][["D"]])
+      tempOR <- exp(c(tempOR[["yi"]], tempOR[["yi"]] - 1.96*sqrt(tempOR[["vi"]]), tempOR[["yi"]] + 1.96*sqrt(tempOR[["vi"]])))
+      row4 <- c(row4, c(
+        simulation = tempOR[1],
+        lower      = tempOR[2],
+        upper      = tempOR[3]
+      ))
+    }
+
+    if (options[["phiRR"]]){
+      tempRR <- metafor::escalc(
+        measure = "RR",
+        ai      = frequencies[[2]][["A"]],
+        bi      = frequencies[[2]][["B"]],
+        ci      = frequencies[[2]][["C"]],
+        di      = frequencies[[2]][["D"]])
+      tempRR <- exp(c(tempRR[["yi"]], tempRR[["yi"]] - 1.96*sqrt(tempRR[["vi"]]), tempRR[["yi"]] + 1.96*sqrt(tempRR[["vi"]])))
+      row5 <- c(row5, c(
+        simulation = tempRR[1],
+        lower      = tempRR[2],
+        upper      = tempRR[3]
+      ))
+    }
+
+    if (options[["phiRD"]]){
+      tempRD <- metafor::escalc(
+        measure = "RD",
+        ai      = frequencies[[2]][["A"]],
+        bi      = frequencies[[2]][["B"]],
+        ci      = frequencies[[2]][["C"]],
+        di      = frequencies[[2]][["D"]])
+      tempRD <- c(tempRD[["yi"]], tempRD[["yi"]] - 1.96*sqrt(tempRD[["vi"]]), tempRD[["yi"]] + 1.96*sqrt(tempRD[["vi"]]))
+      row6 <- c(row6, c(
+        simulation = tempRD[1],
+        lower      = tempRD[2],
+        upper      = tempRD[3]
+      ))
+    }
   }
 
   phiTable2$addRows(row1)
   phiTable2$addRows(row2)
   phiTable2$addRows(row3)
 
+  if (options[["phiOR"]])
+    phiTable2$addRows(row4)
+
+  if (options[["phiRR"]])
+    phiTable2$addRows(row5)
+
+  if (options[["phiRD"]])
+    phiTable2$addRows(row6)
+
   return(phiTable2)
 }
+
+# to be deleted once deemed useless
+# .tsPhiMakePopulationDPlot <- function(phi, pX, pY) {
+#
+#   frequencies <- .tsPhi2Frequencies(phi = phi, pX = pX, pY = pY)
+#   yTicks      <- jaspGraphs::getPrettyAxisBreaks(range(c(0, unlist(frequencies))))
+#
+#   plot <- ggplot2::ggplot(
+#     data    = data.frame(
+#       X = factor(c(1, 1, 0, 0)),
+#       Y = factor(c(1, 0, 1, 0)),
+#       p = c(frequencies[["A"]], frequencies[["C"]], frequencies[["B"]], frequencies[["D"]])
+#     ),
+#     mapping = ggplot2::aes(fill = Y, y = p, x = X)) +
+#     ggplot2::geom_bar(position = "dodge", stat = "identity") +
+#     ggplot2::scale_y_continuous(
+#       expression(P(X,Y)),
+#       breaks = yTicks,
+#       limits = range(yTicks)
+#       ) +
+#     jaspGraphs::geom_rangeframe() +
+#     jaspGraphs::themeJaspRaw(legend.position = "right")
+#
+#   return(plot)
+# }
+# .tsPhiMakeSimulationDPlot <- function(data) {
+#
+#   yTicks      <- jaspGraphs::getPrettyAxisBreaks(c(0, range(unlist(data))))
+#
+#   plot <- ggplot2::ggplot(
+#     data    = data.frame(
+#       X = factor(c(1, 1, 0, 0)),
+#       Y = factor(c(1, 0, 1, 0)),
+#       p = c(data[["A"]], data[["C"]], data[["B"]], data[["D"]])
+#     ),
+#     mapping = ggplot2::aes(fill = Y, y = p, x = X)) +
+#     ggplot2::geom_bar(position = "dodge", stat = "identity") +
+#     ggplot2::scale_y_continuous(
+#       "Counts",
+#       breaks = yTicks,
+#       limits = range(yTicks)
+#     ) +
+#     jaspGraphs::geom_rangeframe() +
+#     jaspGraphs::themeJaspRaw(legend.position = "right")
+#
+#   return(plot)
+# }
