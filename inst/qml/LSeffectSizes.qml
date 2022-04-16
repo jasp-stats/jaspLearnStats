@@ -64,13 +64,21 @@ Form {
 			{
 				name:			"effectSizeValueDelta"
 				label:			"δ"
+				visible:		!inputPopulation.checked
 				defaultValue:	0
 			}
 
 			DoubleField
 			{
-				name:			"mu"
-				label:			"μ"
+				name:			"muC"
+				label:			"μ<sub>c</sub>"
+			}
+
+			DoubleField
+			{
+				name:			"muE"
+				visible:		inputPopulation.checked
+				label:			"μ<sub>e</sub>"
 			}
 
 			DoubleField
@@ -96,19 +104,6 @@ Form {
 				min: 			-1
 				max:			1
 			}
-			
-/*
-			Slider
-			{
-				name:			"effectSizeValueRho"
-				visible:		effectSize.value == "rho"
-				label:			"ρ"
-				vertical:		false
-				value:			0.3
-				min:			-1
-				max:			 1
-			}
-*/
 
 			DoubleField
 			{
@@ -148,6 +143,7 @@ Form {
 			DoubleField
 			{
 				name:			"effectSizeValuePhi"
+				visible:		!inputPopulation.checked
 				label:			"φ"
 				defaultValue:	0
 				min: 			-1
@@ -158,6 +154,7 @@ Form {
 			DoubleField
 			{
 				name:			"pX"
+				visible:		!inputPopulation.checked
 				label:			"P(X=1)"
 				min:			0
 				max:			1
@@ -168,12 +165,58 @@ Form {
 			DoubleField
 			{
 				name:			"pY"
+				visible:		!inputPopulation.checked
 				label:			"P(Y=1)"
 				min:			0
 				max:			1
 				defaultValue:	.5
 				inclusive: 		JASP.None
 			}
+
+			DoubleField
+			{
+				name:			"pX1Y1"
+				id:				pX1Y1
+				visible:		inputPopulation.checked
+				label:			"P(X=1,Y=1)"
+				min:			0
+				inclusive: 		JASP.None
+				defaultValue:	.25
+			}
+
+			DoubleField
+			{
+				name:			"pX1Y0"
+				id:				pX1Y0
+				visible:		inputPopulation.checked
+				label:			"P(X=1,Y=0)"
+				min:			0
+				inclusive: 		JASP.None
+				defaultValue:	.25
+			}
+
+			DoubleField
+			{
+				name:			"pX0Y1"
+				id:				pX0Y1
+				visible:		inputPopulation.checked
+				label:			"P(X=0,Y=1)"
+				min:			0
+				inclusive: 		JASP.None
+				defaultValue:	.25
+			}
+
+			DoubleField
+			{
+				name:			"pX0Y0"
+				id:				pX0Y0
+				visible:		inputPopulation.checked
+				label:			"P(X=0,Y=0)"
+				min:			0
+				inclusive: 		JASP.None
+				defaultValue:	.25
+			}
+
 		}
 
 
@@ -335,6 +378,14 @@ Form {
 
 		SetSeed {}
 
+		CheckBox
+		{
+			name:			"inputPopulation"
+			id:				inputPopulation
+			visible:		effectSize.value == "phi" || effectSize.value == "delta"
+			label:			qsTr("Specify populational characteristics")
+			checked:		false
+		}
 	}
 
 }

@@ -21,6 +21,8 @@
 
 LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
 
+  options <- switchOptions(options)
+
   if (options[["effectSize"]] == "delta") {
 
     if (options[["simulateData"]])
@@ -50,6 +52,30 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
   return()
 }
 
+switchOptions <- function(options) {
+
+  if (options[["inputPopulation"]]) {
+    if (options[["effectSize"]] == "delta") {
+      # recompute effect size
+      options[["effectSizeValueDelta"]] <- (options[["muE"]] - options[["muC"]])/options[["sigma"]]
+    } else if (options[["effectSize"]] == "phi") {
+      # standardize input
+      sumP <- options[["pX1Y1"]] + options[["pX1Y0"]] + options[["pX0Y1"]] + options[["pX0Y0"]]
+      options[["pX1Y1"]] <- options[["pX1Y1"]] / sumP
+      options[["pX1Y0"]] <- options[["pX1Y0"]] / sumP
+      options[["pX0Y1"]] <- options[["pX0Y1"]] / sumP
+      options[["pX0Y0"]] <- options[["pX0Y0"]] / sumP
+      # recompute effect size
+      options[["effectSizeValuePhi"]] <- (options[["pX1Y1"]]*options[["pX0Y0"]] - options[["pX1Y0"]]*options[["pX0Y1"]]) /
+        sqrt( (options[["pX1Y1"]]+options[["pX1Y0"]]) * (options[["pX0Y1"]]+options[["pX0Y0"]]) * (options[["pX1Y1"]]+options[["pX0Y1"]]) * (options[["pX1Y0"]]+options[["pX0Y0"]]))
+      options[["pX"]] <- options[["pX1Y1"]] + options[["pX1Y0"]]
+      options[["pY"]] <- options[["pX1Y1"]] + options[["pX0Y1"]]
+    }
+  }
+
+  return(options)
+}
+
 .tsDeltaTable              <- function(jaspResults, options) {
 
   if (!is.null(jaspResults[["deltaTable"]]))
@@ -57,8 +83,8 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
 
   deltaTable <- createJaspTable(title = gettext("Statistics Summary"))
   deltaTable$position <- 3
-  deltaTable$dependOn(c("effectSize", "effectSizeValueDelta", "simulateData", "simulateDataN", "eventRate", "mu", "sigma", "n",
-                        "deltaCohensU3", "deltaOverlap", "deltaProbabilityOfSuperiority", "deltaNumberNeededToTreat"))
+  deltaTable$dependOn(c("effectSize", "effectSizeValueDelta", "simulateData", "simulateDataN", "eventRate", "muC", "muE", "inputPopulation", "sigma", "n",
+                        "deltaCohensU3", "deltaOverlap", "deltaProbabilityOfSuperiority", "deltaNumberNeededToTreat", "setSeed", "seed"))
 
   # get population characteristics
   delta <- options[["effectSizeValueDelta"]]
@@ -85,7 +111,7 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
 
   deltaPlot <-  createJaspContainer()
   deltaPlot$position <- 1
-  deltaPlot$dependOn(c("effectSize", "effectSizeValueDelta", "mu", "sigma", "simulateData", "simulateDataN", "plotCombine"))
+  deltaPlot$dependOn(c("effectSize", "effectSizeValueDelta", "muC", "muE", "inputPopulation", "sigma", "simulateData", "simulateDataN", "plotCombine", "setSeed", "seed"))
   jaspResults[["deltaPlot"]] <- deltaPlot
 
 
@@ -97,7 +123,7 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
 
     deltaCombinedPlot$plotObject <- .tsDeltaMakeCombinedPlot(
       delta = options[["effectSizeValueDelta"]],
-      mu    = options[["mu"]],
+      mu    = options[["muC"]],
       sigma = options[["sigma"]],
       data  = jaspResults[["simulatedData"]]$object)
 
@@ -109,7 +135,7 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
 
     deltaPopulationPlot$plotObject <- .tsDeltaMakePopulationPlot(
       delta = options[["effectSizeValueDelta"]],
-      mu    = options[["mu"]],
+      mu    = options[["muC"]],
       sigma = options[["sigma"]])
 
     if (options[["simulateData"]]) {
@@ -131,11 +157,11 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
   if (is.null(jaspResults[["simulatedData"]])) {
 
     simulatedData <- createJaspState()
-    simulatedData$dependOn(c("effectSize", "effectSizeValueDelta", "simulateDataN", "mu", "sigma"))
+    simulatedData$dependOn(c("effectSize", "effectSizeValueDelta", "simulateDataN", "muC", "muE", "inputPopulation", "sigma", "setSeed", "seed"))
     simulatedData$object <- data.frame(
       x     = c(
-        stats::rnorm(options[["simulateDataN"]], options[["mu"]],  options[["sigma"]]),
-        stats::rnorm(options[["simulateDataN"]], options[["mu"]] + options[["effectSizeValueDelta"]] * options[["sigma"]], options[["sigma"]])
+        stats::rnorm(options[["simulateDataN"]], options[["muC"]],  options[["sigma"]]),
+        stats::rnorm(options[["simulateDataN"]], options[["muC"]] + options[["effectSizeValueDelta"]] * options[["sigma"]], options[["sigma"]])
       ),
       Group = c(
         rep("Control",      options[["simulateDataN"]]),
@@ -438,7 +464,7 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
   rhoTable <- createJaspTable(title = gettext("Statistics Summary"))
   rhoTable$position <- 2
   rhoTable$dependOn(c("effectSize", "effectSizeValueRho", "simulateData", "simulateDataN",
-                      "rhoSharedVariance"))
+                      "rhoSharedVariance", "setSeed", "seed"))
 
   # get population characteristics
   rho <- options[["effectSizeValueRho"]]
@@ -465,7 +491,7 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
 
   rhoPlot <-  createJaspContainer()
   rhoPlot$position <- 1
-  rhoPlot$dependOn(c("effectSize", "effectSizeValueRho", "simulateData", "simulateDataN", "mu1", "mu2", "sigma1", "sigma2", "plotCombine", "plotRhoRegression", "plotRhoRegression"))
+  rhoPlot$dependOn(c("effectSize", "effectSizeValueRho", "simulateData", "simulateDataN", "mu1", "mu2", "sigma1", "sigma2", "plotCombine", "plotRhoRegression", "plotRhoRegression", "setSeed", "seed"))
   jaspResults[["rhoPlot"]] <- rhoPlot
 
 
@@ -517,7 +543,7 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
   if (is.null(jaspResults[["simulatedData"]])) {
 
     simulatedData <- createJaspState()
-    simulatedData$dependOn(c("effectSize", "effectSizeValueDelta", "simulateDataN", "mu1", "mu2", "sigma1", "sigma1", "effectSizeValueRho"))
+    simulatedData$dependOn(c("effectSize", "effectSizeValueDelta", "simulateDataN", "mu1", "mu2", "sigma1", "sigma1", "effectSizeValueRho", "setSeed", "seed"))
 
     data <- data.frame(MASS::mvrnorm(
       options[["simulateDataN"]],
@@ -831,7 +857,7 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
   ### Frequencies table
   phiTable <- createJaspTable(title = gettext("Frequencies"))
   phiTable$position <- 2
-  phiTable$dependOn(c("effectSize", "effectSizeValuePhi", "simulateData", "simulateDataN", "pX", "pY"))
+  phiTable$dependOn(c("effectSize", "effectSizeValuePhi", "simulateData", "simulateDataN", "pX", "pY", "inputPopulation", "pX1Y1", "pX1Y0", "pX0Y1", "pX0Y0", "setSeed", "seed"))
 
   # based on https://en.wikipedia.org/wiki/Phi_coefficient and some math by Frantisek
   frequencies <- list(.tsPhi2Frequencies(
@@ -906,7 +932,7 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
 
   phiPlot <-  createJaspContainer()
   phiPlot$position <- 1
-  phiPlot$dependOn(c("effectSize", "effectSizeValuePhi", "pX", "pY", "simulateData", "simulateDataN", "plotCombine", "plotPhiMosaic", "plotPhiProportions"))
+  phiPlot$dependOn(c("effectSize", "effectSizeValuePhi", "pX", "pY", "simulateData", "simulateDataN", "plotCombine", "plotPhiMosaic", "plotPhiProportions", "inputPopulation", "pX1Y1", "pX1Y0", "pX0Y1", "pX0Y0", "setSeed", "seed"))
   jaspResults[["phiPlot"]] <- phiPlot
 
 
@@ -957,7 +983,7 @@ LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
   if (is.null(jaspResults[["simulatedData"]])) {
 
     simulatedData <- createJaspState()
-    simulatedData$dependOn(c("effectSize", "effectSizeValueDelta", "simulateDataN", "pX", "pY", "effectSizeValuePhi"))
+    simulatedData$dependOn(c("effectSize", "effectSizeValueDelta", "simulateDataN", "pX", "pY", "effectSizeValuePhi", "inputPopulation", "pX1Y1", "pX1Y0", "pX0Y1", "pX0Y0", "setSeed", "seed"))
 
     frequencies <- .tsPhi2Frequencies(phi = options[["effectSizeValuePhi"]], pX = options[["pX"]], pY = options[["pY"]])
     data        <- sample(names(frequencies), options[["simulateDataN"]], replace = TRUE, prob = unlist(frequencies))
