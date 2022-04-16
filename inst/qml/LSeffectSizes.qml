@@ -223,6 +223,14 @@ Form {
 
 	}
 
+	CheckBox
+	{
+		name:			"explanatoryTexts"
+		enabled:		simulateData.checked
+		label:			qsTr("Explanatory text")
+		checked:		false
+	}
+
 	Divider { }
 
 	Group
@@ -342,9 +350,10 @@ Form {
 
 			CheckBox
 			{
-				name:			"plotDeltaDensities"
+				name:			"plotDeltaRaincloud"
+				enabled:		simulateData.checked
 				visible:		effectSize.value == "delta"
-				label:			qsTr("Show as densities")
+				label:			qsTr("Raincloud plot")
 				checked:		false
 			}
 
