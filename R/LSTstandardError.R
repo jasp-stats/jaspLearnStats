@@ -16,9 +16,26 @@
 #
 
 LSTstandardError <- function(jaspResults, dataset, options) {
+  set.seed(options[["cltSampleSeed"]])
+  colors <- .getColors(options[["cltColorPalette"]])
+  parentData <- .generateParentData(options)
+  samples <- .cltTakeSamples(jaspResults, options = options, data = parentData)
   
+  if (options[["parentShow"]])
+    jaspResults[["seParentDistribution"]] <- .cltParentDistribution(jaspResults, options = options, colors, showMean = FALSE,
+                                                                    showSD = TRUE)
   
+  if (options[["samplesShow"]]){
+    maxSamples <- length(samples)
+    fromTo <- .getFromToSampleShow(options[["cltSampleShowType"]], maxSamples, singleValue = options[["cltFirstOrLastSamples"]],
+                                   start = options[["cltFromSample"]], stop = options[["cltToSample"]])
+    from <- fromTo[1]
+    to <- fromTo[2]
+    jaspResults[["seSamples"]] <- .cltPlotSamples(jaspResults, options, samples, from, to, colors, showMean = FALSE, showSE = TRUE)
+  }
   
+  if (options[["samplingDistShow"]])
+    jaspResults[["seSamplingDistribution"]] <- .cltSamplingDistribution(jaspResults, options, samples, colors)
   
   return()
 }
