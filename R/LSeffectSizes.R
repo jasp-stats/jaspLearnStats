@@ -81,10 +81,16 @@ switchOptions <- function(options) {
   if (!is.null(jaspResults[["deltaTable"]]))
     return()
 
-  deltaTable <- createJaspTable(title = gettext("Statistics Summary"))
+  deltaTable <-  createJaspContainer()
   deltaTable$position <- 3
   deltaTable$dependOn(c("effectSize", "effectSizeValueDelta", "simulateData", "simulateDataN", "eventRate", "muC", "muE", "inputPopulation", "sigma", "n",
-                        "deltaCohensU3", "deltaOverlap", "deltaProbabilityOfSuperiority", "deltaNumberNeededToTreat", "setSeed", "seed"))
+                       "deltaCohensU3", "deltaOverlap", "deltaProbabilityOfSuperiority", "deltaNumberNeededToTreat", "setSeed", "seed", "explanatoryTexts"))
+  jaspResults[["deltaTable"]] <- deltaTable
+
+
+  # summary statistics table
+  statisticsTable <- createJaspTable(title = gettext("Statistics Summary"))
+  statisticsTable$position <- 1
 
   # get population characteristics
   delta <- options[["effectSizeValueDelta"]]
@@ -100,7 +106,19 @@ switchOptions <- function(options) {
     delta <- c(delta, deltaSim)
   }
 
-  jaspResults[["deltaTable"]] <- .tsDeltaFillTable(deltaTable, options, delta, options[["eventRate"]])
+  deltaTable[["statisticsTable"]] <- .tsDeltaFillTable(statisticsTable, options, delta, options[["eventRate"]])
+
+
+  # explanatory texts
+  if (options[["explanatoryTexts"]]) {
+
+    explanatoryText <- createJaspHtml()
+    explanatoryText$position <- 2
+
+    explanatoryText[["text"]] <- .tsDeltaTableText(options)
+
+    deltaTable[["explanatoryText"]] <- explanatoryText
+  }
 
   return()
 }
@@ -111,7 +129,7 @@ switchOptions <- function(options) {
 
   deltaPlot <-  createJaspContainer()
   deltaPlot$position <- 1
-  deltaPlot$dependOn(c("effectSize", "effectSizeValueDelta", "muC", "muE", "inputPopulation", "sigma", "simulateData", "simulateDataN", "plotCombine", "setSeed", "seed"))
+  deltaPlot$dependOn(c("effectSize", "effectSizeValueDelta", "muC", "muE", "inputPopulation", "sigma", "simulateData", "simulateDataN", "plotCombine", "setSeed", "seed", "plotDeltaRaincloud"))
   jaspResults[["deltaPlot"]] <- deltaPlot
 
 
@@ -146,6 +164,22 @@ switchOptions <- function(options) {
 
       deltaSimulationPlot$plotObject <- .tsDeltaMakeSimulationPlot(jaspResults[["simulatedData"]]$object)
     }
+  }
+
+  if (options[["simulateData"]] && options[["plotDeltaRaincloud"]]) {
+    deltaRaincloudPlot <- createJaspPlot(title = gettext("Raincloud plot"), width = 660, height = 350)
+    deltaRaincloudPlot$position <- 3
+    deltaPlot[["deltaRaincloudPlot"]] <- deltaRaincloudPlot
+
+    deltaRaincloudPlot$plotObject <- jaspTTests::.descriptivesPlotsRainCloudFill(
+      dataset  = jaspResults[["simulatedData"]]$object,
+      variable = "x",
+      groups   = "Group",
+      yLabel   = "X",
+      xLabel   = gettext("Group"),
+      addLines = FALSE,
+      horiz    = FALSE
+    )
   }
 
   return()
@@ -381,7 +415,7 @@ switchOptions <- function(options) {
 
   if (options[["deltaCohensU3"]])
     row2 <- list(
-      variable   = gettext("Cohen's U3"),
+      variable   = gettextf("Cohen's U%1$s", "\u2083"),
       population = stats::pnorm(delta[1]))
 
   if (options[["deltaOverlap"]])
@@ -455,16 +489,41 @@ switchOptions <- function(options) {
 
   return(deltaTable)
 }
+.tsDeltaTableText          <- function(options) {
+
+  text <- gettextf("Cohen's %1$s is a measure of the standardized difference between two groups. The rules of thumbs for interpreting the measure are:<ul><li>Small: %1$s = 0.20 </li> <li>Medium: %1$s = 0.50</li><li>Large: %1$s = 0.80</li></ul>", "\u03B4")
+
+  if (options[["deltaCohensU3"]])
+    text <- paste0(text, gettextf("- Cohen's U%1$s corresponds to the proportion of the control group that is surpassed by the upper upper half of the experimental group.\n", "\u2083"))
+
+  if (options[["deltaOverlap"]])
+    text <- paste0(text, gettext("- Overlap corresponds to the common are of the control and experimental density.\n"))
+
+  if (options[["deltaProbabilityOfSuperiority"]])
+    text <- paste0(text, gettext("- Probability of superiority corresponds to the probability that a randomly chosen participant from the experimental group will have higher value than a randomly chosen participant from the control group.\n"))
+
+  if (options[["deltaNumberNeededToTreat"]])
+    text <- paste0(text, gettext("- Number needed to treat corresponds to the number of participants in the experimental group that would be required to observe one more successful outcome than in the control group.\n"))
+
+  return(text)
+}
 
 .tsRhoTable              <- function(jaspResults, options) {
 
   if (!is.null(jaspResults[["rhoTable"]]))
     return()
 
-  rhoTable <- createJaspTable(title = gettext("Statistics Summary"))
-  rhoTable$position <- 2
+
+  rhoTable <- createJaspContainer()
+  rhoTable$position <- 3
   rhoTable$dependOn(c("effectSize", "effectSizeValueRho", "simulateData", "simulateDataN",
                       "rhoSharedVariance", "setSeed", "seed"))
+  jaspResults[["rhoTable"]] <- rhoTable
+
+
+  # summary statistics table
+  statisticsTable <- createJaspTable(title = gettext("Statistics Summary"))
+  statisticsTable$position <- 1
 
   # get population characteristics
   rho <- options[["effectSizeValueRho"]]
@@ -480,7 +539,19 @@ switchOptions <- function(options) {
     rho <- c(rho, rhoSim)
   }
 
-  jaspResults[["rhoTable"]] <- .tsRhoFillTable(rhoTable, options, rho)
+  rhoTable[["statisticsTable"]] <- .tsRhoFillTable(statisticsTable, options, rho)
+
+
+  # explanatory texts
+  if (options[["explanatoryTexts"]]) {
+
+    explanatoryText <- createJaspHtml()
+    explanatoryText$position <- 2
+
+    explanatoryText[["text"]] <- .tsRhoTableText(options)
+
+    rhoTable[["explanatoryText"]] <- explanatoryText
+  }
 
   return()
 }
@@ -788,7 +859,7 @@ switchOptions <- function(options) {
 
   if (options[["rhoSharedVariance"]])
     row2 <- list(
-      variable   = gettext("Shared variance (R²)"),
+      variable   = gettextf("Shared variance (R%1$s)", "\u00B2"),
       population = rho[1]^2)
 
   if (length(rho) > 1) {
@@ -813,6 +884,15 @@ switchOptions <- function(options) {
     rhoTable$addRows(row2)
 
   return(rhoTable)
+}
+.tsRhoTableText          <- function(options) {
+
+  text <- gettextf("Pearson correlation coefficient %1$s is a measure of the relationship between two continuous variables. The rules of thumbs for interpreting the measure are:<ul><li>Small: %1$s = 0.10 </li> <li>Medium: %1$s = 0.30</li><li>Large: %1$s = 0.50</li></ul>", "\u03C1")
+
+  if (options[["rhoSharedVariance"]])
+    text <- paste0(text, gettextf("- Shared variance (R%1$s) corresponds to proportion of variance shared common between the variables.\n", "\u00B2"))
+
+  return(text)
 }
 
 .tsPhi2Frequencies        <- function(phi, pX, pY) {
@@ -854,10 +934,15 @@ switchOptions <- function(options) {
   if (!is.null(jaspResults[["phiPopulationTable"]]))
     return()
 
-  ### Frequencies table
-  phiTable <- createJaspTable(title = gettext("Frequencies"))
-  phiTable$position <- 2
-  phiTable$dependOn(c("effectSize", "effectSizeValuePhi", "simulateData", "simulateDataN", "pX", "pY", "inputPopulation", "pX1Y1", "pX1Y0", "pX0Y1", "pX0Y0", "setSeed", "seed"))
+  phiTable <-  createJaspContainer()
+  phiTable$position <- 3
+  phiTable$dependOn(c("effectSize", "effectSizeValuePhi", "simulateData", "simulateDataN", "pX", "pY", "inputPopulation", "pX1Y1", "pX1Y0", "pX0Y1", "pX0Y0", "setSeed", "seed", "phiOR", "phiRR", "phiRD"))
+  jaspResults[["phiTable"]] <- phiTable
+
+
+  # frequencies table
+  frequenciesTable <- createJaspTable(title = gettext("Frequencies"))
+  frequenciesTable$position <- 1
 
   # based on https://en.wikipedia.org/wiki/Phi_coefficient and some math by Frantisek
   frequencies <- list(.tsPhi2Frequencies(
@@ -874,13 +959,12 @@ switchOptions <- function(options) {
     frequencies[[2]] <- as.list(data / sum(data))
   }
 
-  jaspResults[["phiTable"]] <- .tsPhiFillFrequencies(phiTable, frequencies)
+  phiTable[["frequenciesTable"]] <- .tsPhiFillFrequencies(frequenciesTable, frequencies)
 
 
-  ### Characteristics table
-  phiTable2 <- createJaspTable(title = gettext("Statistics Summary"))
-  phiTable2$position <- 3
-  phiTable2$dependOn(c("effectSize", "effectSizeValuePhi", "pX", "pY", "phiOR", "phiRR", "phiRD"))
+  # summary statistics table
+  statisticsTable <- createJaspTable(title = gettext("Statistics Summary"))
+  statisticsTable$position <- 2
 
   phi <- list(matrix(c(options[["pX"]], options[["pY"]], options[["effectSizeValuePhi"]]), ncol = 1, nrow = 3))
 
@@ -919,9 +1003,19 @@ switchOptions <- function(options) {
     frequencies[[2]] <- as.list(data)
   }
 
+  phiTable[["statisticsTable"]] <- .tsPhiFillTable(statisticsTable, phi, frequencies, options)
 
-  jaspResults[["phiTable2"]] <- .tsPhiFillTable(phiTable2, phi, frequencies, options)
 
+  # explanatory texts
+  if (options[["explanatoryTexts"]]) {
+
+    explanatoryText <- createJaspHtml()
+    explanatoryText$position <- 3
+
+    explanatoryText[["text"]] <- .tsPhiTableText(options)
+
+    phiTable[["explanatoryText"]] <- explanatoryText
+  }
 
   return()
 }
@@ -1339,7 +1433,21 @@ switchOptions <- function(options) {
 
   return(phiTable2)
 }
+.tsPhiTableText           <- function(options) {
 
+  text <- gettextf("Contingency coefficient %1$s is a measure of the relationship between two nominal variables. The rules of thumbs for interpreting the measure are:<ul><li>Weak: %1$s = 0.20 </li> <li>Moderate: %1$s = 0.30</li><li>Strong: %1$s = 0.40</li><li>Very Strong: %1$s = 0.70</li></ul>", "\u03C6")
+
+  if (options[["phiOR"]])
+    text <- paste0(text, gettext("- Odds ratio corresponds to the ratio of the odds of an event occuring in the experimental and control groups.\n"))
+
+  if (options[["phiRR"]])
+    text <- paste0(text, gettext("- Risk ratio corresponds to the ratio of the risk of an event occuring in the experimental and control groups.\n"))
+
+  if (options[["phiRD"]])
+    text <- paste0(text, gettext("- Risk difference corresponds to the difference in the risk of the event occuring between the experimental and control groups.\n"))
+
+  return(text)
+}
 # to be deleted once deemed useless
 # .tsPhiMakePopulationDPlot <- function(phi, pX, pY) {
 #
