@@ -39,7 +39,7 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
   return()
 }
 
-.cltParentDistribution <- function(jaspResults, options, colors) {
+.cltParentDistribution <- function(jaspResults, options, colors, showMean = TRUE, showSD = FALSE) {
   distribution <- options[["cltParentDistribution"]]
   mean <- options[["cltMean"]]
   sd <- options[["cltStdDev"]]
@@ -57,7 +57,7 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     prob <- options[["binomProb"]]
     showMean <- FALSE
   } else {
-    showMean <- TRUE
+    showMean <- showMean
     prob <- NA
   }
   
@@ -72,7 +72,7 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
                               "cltSkewIntensity"))
   pdPlot$plotObject <- .distributionPlotFunction(distribution = distribution, mean = mean, sd = sd, range = range,
                                                  skew = skew, prob = prob, skewDirection = skewDirection,
-                                                 colors, showMean = showMean)
+                                                 colors, showMean = showMean, showSD = showSD)
   return(pdPlot)
 }
 
@@ -131,7 +131,7 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
 }
 
 
-.cltPlotSamples <- function(jaspResults, options, samples, from, to, colors) {
+.cltPlotSamples <- function(jaspResults, options, samples, from, to, colors, showMean = TRUE, showSE = FALSE) {
   maxSamples <- length(samples)
   visibleSamples <- from:to
   samples <- samples[visibleSamples]
@@ -175,16 +175,29 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
         ggplot2::geom_label(data = countLabelData, mapping = ggplot2::aes(x = x, y = y, label = label),
                             color = colors[1:2], size = 6)
     } else {
-      sampleMean <- mean(samples[[i]])
-      meanLineData <- data.frame(x = rep(sampleMean, 2), y = c(0, max(yBreaks) + yStep / 2))
-      meanLabelData <- data.frame(x = sampleMean, y = max(yBreaks) + yStep/2, label = gettextf("Mean: %.2f", sampleMean))
       samplePlot <- ggplot2::ggplot(data.frame(x = samples[[i]]), ggplot2::aes(x = x)) +
         ggplot2::geom_histogram(mapping = ggplot2::aes(y =..count..),closed = "left", fill = colors[1], col = "black",
-                                size = .7, binwidth = binWidth, center = binWidth/2) +
-        ggplot2::geom_path(data = meanLineData, mapping = ggplot2::aes(x = x, y = y), color = colors[4], size = 1,
-                           alpha = .7) +
-        ggplot2::geom_label(data = meanLabelData, mapping = ggplot2::aes(x = x, y = y, label = label),
-                            color = colors[4], size = 6)
+                                size = .7, binwidth = binWidth, center = binWidth/2)
+      sampleMean <- mean(samples[[i]])
+      if (showMean) {
+        meanLineData <- data.frame(x = rep(sampleMean, 2), y = c(0, max(yBreaks) + yStep / 2))
+        meanLabelData <- data.frame(x = sampleMean, y = max(yBreaks) + yStep/2, label = gettextf("Mean: %.2f", sampleMean))
+        samplePlot <- samplePlot +
+          ggplot2::geom_path(data = meanLineData, mapping = ggplot2::aes(x = x, y = y), color = colors[4], size = 1,
+                             alpha = .7) +
+          ggplot2::geom_label(data = meanLabelData, mapping = ggplot2::aes(x = x, y = y, label = label),
+                              color = colors[4], size = 6)
+      }
+      if (showSE) {
+        SE <- sd(samples[[i]]) / sqrt(length(samples[[i]]))
+        SElineData <- data.frame(x = c(sampleMean - SE, sampleMean + SE), y = rep(max(yBreaks) - yStep/2, 2))
+        SElabelData <- data.frame(x = sampleMean, y = max(yBreaks) + yStep/2, label = gettextf("Std. Error: %.2f", SE))
+        samplePlot <- samplePlot +
+          ggplot2::geom_path(data = SElineData, mapping = ggplot2::aes(x = x, y = y), color = colors[4], size = 2,
+                             alpha = 1) +
+          ggplot2::geom_label(data = SElabelData, mapping = ggplot2::aes(x = x, y = y, label = label),
+                              color = colors[4], size = 6)
+      }
       if (options[["samplesShowRugs"]])
         samplePlot <- samplePlot + ggplot2::geom_rug()
     }
@@ -325,7 +338,7 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
 
 
 .distributionPlotFunction <- function(distribution = c("normal", "uniform", "skewed", "binomial"), mean, sd = NA, range = NA,
-                                      skew = NA, prob = NA, skewDirection = "right", colors, showMean = TRUE) {
+                                      skew = NA, prob = NA, skewDirection = "right", colors, showMean = TRUE, showSD) {
   if (distribution == "normal") {
     xBreaks <- jaspGraphs::getPrettyAxisBreaks(c(mean - 3 * sd, mean + 3 * sd))
     xLimits <- range(xBreaks)
@@ -335,6 +348,7 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
   } else if (distribution == "uniform") {
     min <- mean - range / 2
     max <- mean + range / 2
+    sd <- (max - min)/sqrt(12)
     xBreaks <- jaspGraphs::getPrettyAxisBreaks(c(min - range / 4, max + range / 4))
     xLimits <- range(xBreaks)
     pdPlotObject <-  ggplot2::ggplot(data.frame(x = xBreaks), ggplot2::aes(x = x)) +
@@ -376,13 +390,21 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
       ggplot2::geom_label(meanLabelData, mapping = ggplot2::aes(x = x, y = y, label = label), color = colors[3], size = 6)
   }
   
+  if (showSD) {
+    sdLineData <- data.frame(x = c(mean - sd, mean + sd), y = rep(0.1, 2))
+    sdLabelData <- data.frame(x = mean, y = 0.15, label = gettextf("Std. Dev: %.2f", sd))
+    pdPlotObject <- pdPlotObject +
+      ggplot2::geom_path(data = sdLineData, mapping = ggplot2::aes(x = x, y = y), size = 2, color = colors[3]) +
+      ggplot2::geom_label(sdLabelData, mapping = ggplot2::aes(x = x, y = y, label = label), color = colors[3], size = 6)
+  }
+  
   pdPlotObject <- pdPlotObject +
     ggplot2::scale_x_continuous(breaks = xBreaks, limits = xLimits, name = "") +
     ggplot2::scale_y_continuous(breaks = yBreaks, limits = yLimits, name = yName) +
     jaspGraphs::themeJaspRaw() +
     jaspGraphs::geom_rangeframe()
   
-    return(pdPlotObject)
+  return(pdPlotObject)
 }
 
 .getBinWidth <- function(variable, options) {
