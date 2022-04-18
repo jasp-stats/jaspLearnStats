@@ -22,8 +22,8 @@ LSTstandardError <- function(jaspResults, dataset, options) {
   samples <- .cltTakeSamples(jaspResults, options = options, data = parentData)
   
   if (options[["parentShow"]])
-    jaspResults[["seParentDistribution"]] <- .cltParentDistribution(jaspResults, options = options, colors, showMean = FALSE,
-                                                                    showSD = TRUE)
+    jaspResults[["seParentDistribution"]] <- .cltParentDistribution(jaspResults, options = options, colors, showMean = TRUE,
+                                                                    showSD = TRUE, labelsInCorner = TRUE)
   
   if (options[["samplesShow"]]){
     maxSamples <- length(samples)
@@ -31,11 +31,12 @@ LSTstandardError <- function(jaspResults, dataset, options) {
                                    start = options[["cltFromSample"]], stop = options[["cltToSample"]])
     from <- fromTo[1]
     to <- fromTo[2]
-    jaspResults[["seSamples"]] <- .cltPlotSamples(jaspResults, options, samples, from, to, colors, showMean = FALSE, showSE = TRUE)
+    jaspResults[["seSamples"]] <- .cltPlotSamples(jaspResults, options, samples, from, to, colors, showMean = TRUE, showSE = TRUE, 
+                                                  showSD = TRUE, labelsInCorner = TRUE)
   }
   
   if (options[["samplingDistShow"]])
-    jaspResults[["seSamplingDistribution"]] <- .cltSamplingDistribution(jaspResults, options, samples, colors)
+    jaspResults[["seSamplingDistribution"]] <- .cltSamplingDistribution(jaspResults, options, samples, colors, showSD = TRUE)
   
   return()
 }
