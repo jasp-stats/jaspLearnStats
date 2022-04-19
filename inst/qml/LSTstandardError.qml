@@ -52,6 +52,13 @@ Form
 				label:		qsTr("Show parent distribution")
 				checked:	true
 			}
+			
+			CheckBox
+			{
+				name:		"parentExplain"
+				label:		qsTr("Show explanatory text")
+				checked:	true
+			}
 		}
 		
 		Group
@@ -160,6 +167,13 @@ Form
 					checked:	true
 				}
 			}
+			
+			CheckBox
+			{
+				name:		"samplesExplain"
+				label:		qsTr("Show explanatory text")
+				checked:	true
+			}
 		
 			DoubleField
 			{
@@ -250,6 +264,13 @@ Form
 				label: qsTr("Show rug marks")
 				checked: true
 			}
+		}
+		
+		CheckBox
+		{
+			name:		"samplingDistExplain"
+			label:		qsTr("Show explanatory text")
+			checked:	true
 		}
 	}
 	
