@@ -36,7 +36,8 @@ LSTstandardError <- function(jaspResults, dataset, options) {
   }
   
   if (options[["samplingDistShow"]])
-    jaspResults[["seSamplingDistribution"]] <- .cltSamplingDistribution(jaspResults, options, samples, colors, showSD = TRUE)
+    jaspResults[["seSamplingDistribution"]] <- .cltSamplingDistribution(jaspResults, options, samples, colors, showSD = TRUE,
+                                                                         labelsInCorner = TRUE, xAxisToScale = TRUE)
   
   return()
 }

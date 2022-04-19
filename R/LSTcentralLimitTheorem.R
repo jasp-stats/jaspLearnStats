@@ -285,22 +285,36 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
 }
 
 
-.cltSamplingDistribution <- function(jaspResults, options, samples, colors, showSD = FALSE) {
+.cltSamplingDistribution <- function(jaspResults, options, samples, colors, showSD = FALSE, labelsInCorner = FALSE, 
+                                     xAxisToScale = FALSE) {
   means <- lapply(X = samples, FUN = mean)
   meanDf <- data.frame(x = unlist(means))
   n <- length(samples)
   meanOfMeans <- mean(meanDf[["x"]])
   sdOfMeans <- sd(meanDf[["x"]])
-  #sdParent <- jaspGraphs::getPrettyAxisBreaks(c(mean - 3 * sd, mean + 3 * sd))
-  
   binWidthType <- .getBinWidth(variable = meanDf[["x"]], options = options)
   h <- hist(meanDf[["x"]], plot = FALSE, breaks = binWidthType)
+  if(xAxisToScale) {
+    meanParent <- options[["cltMean"]]
+    if (options[["cltParentDistribution"]] != "uniform") {
+      sdParent <- options[["cltStdDev"]]
+    } else {
+      rangeParent <- options[["cltRange"]]
+      minParent <- meanParent - rangeParent / 2
+      maxParent <- meanParent + rangeParent / 2
+      sdParent <- (maxParent - minParent)/sqrt(12)
+    }
+    xBreaks <- jaspGraphs::getPrettyAxisBreaks(c(meanParent - 3 * sdParent, meanParent + 3 * sdParent))
+  } else {
+    xBreaks <- jaspGraphs::getPrettyAxisBreaks(c(h$breaks), min.n = 4)
+  }
+  xStep <- xBreaks[2] - xBreaks[1]
+  xLimits <- c(min(xBreaks) - xStep, max(xBreaks) + xStep)
   counts <- h$counts
   yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(0, max(counts)))
   yStep <- yBreaks[2] - yBreaks[1]
   yLimits <- c(min(yBreaks), max(yBreaks) + yStep)
-  xBreaks <- jaspGraphs::getPrettyAxisBreaks(c(h$breaks), min.n = 4)
-  xLimits <- range(xBreaks)
+
   binWidth <- (h$breaks[2] - h$breaks[1])
   
   sdPlotObject <- ggplot2::ggplot(meanDf, ggplot2::aes(x = x)) +
@@ -321,14 +335,16 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     sdPlotObject <- sdPlotObject + ggplot2::stat_function(fun = function(x)dnorm(x, mean = meanOfMeans, sd = sdOfMeans) * binWidth * n,
                                                           size = 1)
   if (showSD) {
-    SDLine <- data.frame(x = c(meanOfMeans - sdOfMeans, meanOfMeans + sdOfMeans), y = rep(max(yBreaks) - yStep, 2))
-    SDLabel <- data.frame(x = max(xBreaks), y = max(yBreaks), label = gettextf("Std. Dev.: %.2f", sdOfMeans))
+    SDLine <- data.frame(x = c(meanOfMeans - sdOfMeans, meanOfMeans + sdOfMeans), y = rep(max(yBreaks) + yStep/2, 2))
+    SDLabel <- data.frame(x = max(xBreaks), y = max(yBreaks) + yStep/2, label = gettextf("Std. Dev.: %.2f", sdOfMeans))
     sdPlotObject <- sdPlotObject +
-      ggplot2::geom_label(data = SDLabel, mapping = ggplot2::aes(x = x, y = y, label = label), color = colors[2], size = 6) +
-      ggplot2::geom_path(data = SDLine, mapping = ggplot2::aes(x = x, y = y), color = colors[2], size = 2)
+      ggplot2::geom_label(data = SDLabel, mapping = ggplot2::aes(x = x, y = y, label = label), color = colors[6], size = 6) +
+      ggplot2::geom_path(data = SDLine, mapping = ggplot2::aes(x = x, y = y), color = colors[6], size = 2)
   }
   
-  meanLabelData <- data.frame(x = meanOfMeans, y = max(yBreaks) + yStep/2, label = gettextf("Mean: %.2f", meanOfMeans))
+  meanLabelyPos <- ifelse(labelsInCorner, max(yBreaks) - yStep/2, max(yBreaks) + yStep/2)
+  meanLabelxPos <- ifelse(labelsInCorner, max(xBreaks), meanOfMeans)
+  meanLabelData <- data.frame(x = meanLabelxPos, y = meanLabelyPos, label = gettextf("Mean: %.2f", meanOfMeans))
   sdPlotObject <- sdPlotObject +
     ggplot2::geom_label(data = meanLabelData, mapping = ggplot2::aes(x = x, y = y, label = label), color = colors[5], size = 6) +
     ggplot2::scale_y_continuous(breaks = yBreaks, limits = yLimits, name = "Count") +
@@ -372,7 +388,7 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     min <- mean - range / 2
     max <- mean + range / 2
     sd <- (max - min)/sqrt(12)
-    xBreaks <- jaspGraphs::getPrettyAxisBreaks(c(min - range / 4, max + range / 4))
+    xBreaks <- jaspGraphs::getPrettyAxisBreaks(c(mean - 3 * sd, mean + 3 * sd ))#jaspGraphs::getPrettyAxisBreaks(c(min - range / 4, max + range / 4))
     xStep <- xBreaks[2] - xBreaks[1]
     xLimits <- c(min(xBreaks) - xStep, max(xBreaks) + xStep)
     pdPlotObject <-  ggplot2::ggplot(data.frame(x = xBreaks), ggplot2::aes(x = x)) +
@@ -409,7 +425,7 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
   if (showMean) {
     yPosMean <- ifelse(labelsInCorner, max(yBreaks) + yStep/2, plotData$y[which.min(abs(mean - plotData$x))])
     meanLineData <- data.frame(x = rep(mean, 2), y = c(0, yPosMean))
-    yPosLabel <- ifelse(labelsInCorner, max(yBreaks), yPosMean/2)
+    yPosLabel <- ifelse(labelsInCorner, max(yBreaks) - yStep/2, yPosMean/2)
     xPosLabel <- ifelse(labelsInCorner, max(xBreaks), mean)
     meanLabelData <- data.frame(x = xPosLabel, y = yPosLabel, label = gettextf("Mean: %.2f", mean))
     pdPlotObject <- pdPlotObject +
