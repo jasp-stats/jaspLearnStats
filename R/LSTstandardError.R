@@ -21,9 +21,16 @@ LSTstandardError <- function(jaspResults, dataset, options) {
   parentData <- .generateParentData(options)
   samples <- .cltTakeSamples(jaspResults, options = options, data = parentData)
   
-  if (options[["parentShow"]])
+  if (options[["parentShow"]]){
     jaspResults[["seParentDistribution"]] <- .cltParentDistribution(jaspResults, options = options, colors, showMean = TRUE,
                                                                     showSD = TRUE, labelsInCorner = TRUE)
+    jaspResults[["seParentDistribution"]]$position <- 1 
+  }
+  if (options[["parentExplain"]]){
+    jaspResults[["seParentDistributionExplanation"]] <- createJaspHtml("This is the placeholder text for the Standard Error parent distribution explanation.", "p")
+    jaspResults[["seParentDistributionExplanation"]]$position <- 2
+    jaspResults[["seParentDistributionExplanation"]]$dependOn("parentExplain")
+  }
   
   if (options[["samplesShow"]]){
     maxSamples <- length(samples)
@@ -33,11 +40,24 @@ LSTstandardError <- function(jaspResults, dataset, options) {
     to <- fromTo[2]
     jaspResults[["seSamples"]] <- .cltPlotSamples(jaspResults, options, samples, from, to, colors, showMean = TRUE, showSE = TRUE, 
                                                   showSD = TRUE, labelsInCorner = TRUE)
+    jaspResults[["seSamples"]]$position <- 3
+  }
+  if (options[["samplesExplain"]]){
+    jaspResults[["seSamplesExplanation"]] <- createJaspHtml("This is the placeholder text for the Standard Error samples explanation.", "p")
+    jaspResults[["seSamplesExplanation"]]$position <- 4
+    jaspResults[["seSamplesExplanation"]]$dependOn("samplesExplain")
   }
   
-  if (options[["samplingDistShow"]])
+  if (options[["samplingDistShow"]]){
     jaspResults[["seSamplingDistribution"]] <- .cltSamplingDistribution(jaspResults, options, samples, colors, showSD = TRUE,
-                                                                         labelsInCorner = TRUE, xAxisToScale = TRUE)
+                                                                        labelsInCorner = TRUE, xAxisToScale = TRUE)
+    jaspResults[["seSamplingDistribution"]]$position <- 5
+  }
+  if (options[["samplingDistExplain"]]){
+    jaspResults[["seSamplingDistExplanation"]] <- createJaspHtml("This is the placeholder text for the Standard Error sampling dist. explanation.", "p")
+    jaspResults[["seSamplingDistExplanation"]]$position <- 6
+    jaspResults[["seSamplingDistExplanation"]]$dependOn("samplingDistExplain")
+  }
   
   return()
 }

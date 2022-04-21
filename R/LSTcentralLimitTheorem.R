@@ -21,8 +21,15 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
   parentData <- .generateParentData(options)
   samples <- .cltTakeSamples(jaspResults, options = options, data = parentData)
   
-  if (options[["parentShow"]])
+  if (options[["parentShow"]]){
     jaspResults[["cltParentDistribution"]] <- .cltParentDistribution(jaspResults, options = options, colors)
+    jaspResults[["cltParentDistribution"]]$position <- 1
+  }
+  if (options[["parentExplain"]]){
+    jaspResults[["cltParentDistributionExplanation"]] <- createJaspHtml("This is the placeholder text for the CLT parent distribution explanation.", "p")
+    jaspResults[["cltParentDistributionExplanation"]]$position <- 2
+    jaspResults[["cltParentDistributionExplanation"]]$dependOn("parentExplain")
+  }
   
   if (options[["samplesShow"]]){
     maxSamples <- length(samples)
@@ -31,10 +38,23 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     from <- fromTo[1]
     to <- fromTo[2]
     jaspResults[["cltSamples"]] <- .cltPlotSamples(jaspResults, options, samples, from, to, colors)
+    jaspResults[["cltSamples"]]$position <- 3
+  }
+  if (options[["samplesExplain"]]){
+    jaspResults[["cltSamplesExplanation"]] <- createJaspHtml("This is the placeholder text for the CLT samples explanation.", "p")
+    jaspResults[["cltSamplesExplanation"]]$position <- 4
+    jaspResults[["cltSamplesExplanation"]]$dependOn("samplesExplain")
   }
   
-  if (options[["samplingDistShow"]])
+  if (options[["samplingDistShow"]]){
     jaspResults[["cltSamplingDistribution"]] <- .cltSamplingDistribution(jaspResults, options, samples, colors)
+    jaspResults[["cltSamplingDistribution"]]$position <- 5
+  }
+  if (options[["samplingDistExplain"]]){
+    jaspResults[["cltSamplingDistExplanation"]] <- createJaspHtml("This is the placeholder text for the CLT sampling dist. explanation.", "p")
+    jaspResults[["cltSamplingDistExplanation"]]$position <- 6
+    jaspResults[["cltSamplingDistExplanation"]]$dependOn("samplingDistExplain")
+  }
   
   return()
 }
@@ -314,7 +334,7 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
   yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(0, max(counts)))
   yStep <- yBreaks[2] - yBreaks[1]
   yLimits <- c(min(yBreaks), max(yBreaks) + yStep)
-
+  
   binWidth <- (h$breaks[2] - h$breaks[1])
   
   sdPlotObject <- ggplot2::ggplot(meanDf, ggplot2::aes(x = x)) +
