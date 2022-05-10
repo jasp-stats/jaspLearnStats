@@ -46,7 +46,10 @@ Description
 		func:	"LSTstandardError"
 	}
 	
+<<<<<<< HEAD
 >>>>>>> ff650c3 (Initalize standard error analysis)
+=======
+>>>>>>> a107228ef4c687b5f9a3cc0fcaae291cd7d0cf80
 	Analysis
 	{
 		title:	qsTr("Descriptive Statistics")
