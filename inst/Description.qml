@@ -35,10 +35,7 @@ Description
 		qml:	"LSTcentralLimitTheorem.qml"
 		func:	"LSTcentralLimitTheorem"
 	}
-<<<<<<< HEAD
 
-=======
-	
 		Analysis
 	{
 		title:	qsTr("Standard Error")
@@ -46,11 +43,6 @@ Description
 		func:	"LSTstandardError"
 	}
 	
-<<<<<<< HEAD
->>>>>>> ff650c3 (Initalize standard error analysis)
-=======
->>>>>>> a107228ef4c687b5f9a3cc0fcaae291cd7d0cf80
-	Analysis
 	{
 		title:	qsTr("Descriptive Statistics")
 		qml:	"LSTdescriptives.qml"
@@ -77,6 +69,4 @@ Description
 		qml:	"LSeffectSizes.qml"
 		func:	"LSeffectSizes"
 	}
-
-
 }
