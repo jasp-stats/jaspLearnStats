@@ -16,7 +16,7 @@
 #
 
 pValues <- function(jaspResults, dataset = NULL, options) {
-  save(options, file = "~/Downloads/opts.Rdata")
+  #save(options, file = "~/Downloads/opts.Rdata")
   if(options[["introText"]])
     .pvIntroText(jaspResults, options, position = 1)
 
@@ -24,8 +24,8 @@ pValues <- function(jaspResults, dataset = NULL, options) {
   .pvTheoreticalDistribution (jaspResults, nullDistribution, options, position = 2)
   .pvNullHypothesisSimulation(jaspResults, nullDistribution, options, position = 3)
 
-  #altDistribution <- .pvDistribution(options, null = FALSE)
-  #.pvAlternativeHypothesisSimulation(jaspResults, nullDistribution, altDistribution, options, position = 4)
+  altDistribution <- .pvDistribution(options, null = FALSE)
+  .pvAlternativeHypothesisSimulation(jaspResults, nullDistribution, altDistribution, options, position = 4)
 }
 
 # jaspResults helpers ----
@@ -144,8 +144,8 @@ pValues <- function(jaspResults, dataset = NULL, options) {
   }
 
   # Simulate data and add them to a state
-  if(!is.null(container[["data"]])) {
-    data <- container[["data"]]$object
+  if(!is.null(container[["nullHypothesisData"]])) {
+    data <- container[["nullHypothesisData"]]$object
   } else {
     data <- numeric(0)
     #simulate <- FALSE
@@ -154,30 +154,44 @@ pValues <- function(jaspResults, dataset = NULL, options) {
   if(simulate) {
     data <- c(data, distribution$rng(options[["nullHypothesisStudiesToSimulate"]]))
   }
-  container[["data"]] <- createJaspState(object = data)
+  container[["nullHypothesisData"]] <- createJaspState(object = data)
 
   # Output
   .pvIntroText         (container,                     options, position = 1)
-  .pvPlotTestStatistics(container, data, distribution, options, position = 2)
-  .pvPlotPValues       (container, data, distribution, options, position = 3)
-  .pvFrequencyTable    (container, data, distribution, options, position = 4)
+  if (options[["nullHypothesisPlotTestStatistics"]])
+    .pvPlotTestStatistics(container, data, distribution, options = options, position = 2,
+                          plotNullCurve = options[["nullHypothesisPlotTestStatisticsOverlayTheoretical"]])
+  if (options[["nullHypothesisPlotPValues"]])
+    .pvPlotPValues       (container, data, distribution, options, position = 3,
+                          plotUniform = options[["nullHypothesisPlotPValuesOverlayUniform"]])
+  if (options[["nullHypothesisFrequencyTable"]])
+    .pvFrequencyTable(container, data, distribution, options, position = 4)
 }
 
-.pvPlotTestStatistics <- function(container, data, distribution, options, position) {
-  if(!is.null(container[["plotTestStatistics"]]) || !options[["nullHypothesisPlotTestStatistics"]]) return()
+.pvPlotTestStatistics <- function(container, data, nullDistribution, altDistribution = NULL, options, position,
+                                  plotNullCurve = FALSE, plotAltCurve = FALSE) {
+  if(!is.null(container[["plotTestStatistics"]])) return()
 
   plot <- createJaspPlot(
     title    = gettext("Observed test statistics"),
     position = position,
     width    = 500,
-    dependencies = c("nullHypothesisSimulate", "nullHypothesisPlotTestStatistics", "nullHypothesisPlotTestStatisticsOverlayTheoretical")
+    dependencies = c("nullHypothesisSimulate", "alternativeHypothesisSimulate", "nullHypothesisPlotTestStatistics",
+                     "alternativeHypothesisPlotTestStatistics", "nullHypothesisPlotTestStatisticsOverlayTheoretical",
+                     "alternativeHypothesisPlotTestStatisticsOverlayNull", "alternativeHypothesisPlotTestStatisticsOverlayAlternative")
     )
   container[["plotTestStatistics"]] <- plot
 
   if(length(data) == 0) return()
+  dataForLowerLimits <- c(data, nullDistribution$limits["lower"])
+  dataForUpperLimits <- c(data, nullDistribution$limits["upper"])
+  if (!is.null(altDistribution)) {
+    dataForLowerLimits <- c(dataForLowerLimits, altDistribution$limits["lower"])
+    dataForUpperLimits <- c(dataForUpperLimits, altDistribution$limits["upper"]) 
+  }
   xlim <- c(
-    min(c(data, distribution$limits["lower"])),
-    max(c(data, distribution$limits["upper"]))
+    min(dataForLowerLimits),
+    max(dataForUpperLimits)
     )
   df   <- data.frame(data = data)
 
@@ -190,15 +204,18 @@ pValues <- function(jaspResults, dataset = NULL, options) {
     ggplot2::ylab(gettext("Density")) +
     jaspGraphs::themeJaspRaw()
 
-  if(options[["nullHypothesisPlotTestStatisticsOverlayTheoretical"]]) {
-    pp <- .pvAddCurveToPlot(pp, fun = distribution$pdf, xlim = xlim)
+  if(plotNullCurve) {
+    pp <- .pvAddCurveToPlot(pp, fun = nullDistribution$pdf, xlim = xlim)
+  }
+  if(plotAltCurve) {
+    pp <- .pvAddCurveToPlot(pp, fun = altDistribution$pdf, xlim = xlim)
   }
 
   plot$plotObject <- pp
 }
 
-.pvPlotPValues <- function(container, data, distribution, options, position) {
-  if(!is.null(container[["plotPValues"]]) || !options[["nullHypothesisPlotPValues"]]) return()
+.pvPlotPValues <- function(container, data, distribution, options, position, plotUniform = FALSE) {
+  if(!is.null(container[["plotPValues"]])) return()
 
   plot <- createJaspPlot(
     title        = gettext("Observed p-values"),
@@ -220,7 +237,7 @@ pValues <- function(jaspResults, dataset = NULL, options) {
     ggplot2::ylab(gettext("Density")) +
     jaspGraphs::themeJaspRaw()
 
-  if(options[["nullHypothesisPlotPValuesOverlayUniform"]]) {
+  if(plotUniform) {
     pp <- pp + ggplot2::geom_segment(ggplot2::aes(x = 0, y = 1, xend = 1, yend = 1), size = 1.5)
   }
 
@@ -228,12 +245,13 @@ pValues <- function(jaspResults, dataset = NULL, options) {
 }
 
 .pvFrequencyTable <- function(container, data, distribution, options, position) {
-  if(!is.null(container[["frequencyTable"]]) || !options[["nullHypothesisFrequencyTable"]]) return()
+  if(!is.null(container[["frequencyTable"]])) return()
 
   table <- createJaspTable(
     title        = gettext("Frequency Table"),
     position     = position,
-    dependencies = c("nullHypothesisSimulate", "nullHypothesisFrequencyTable")
+    dependencies = c("nullHypothesisSimulate", "nullHypothesisFrequencyTable",
+                     "alternativeHypothesisSimulate","alternativeHypothesisFrequencyTable")
     )
 
   table$addColumnInfo(name = "label",   title = "",                 type = "string")
@@ -274,9 +292,47 @@ pValues <- function(jaspResults, dataset = NULL, options) {
 
 # Dance under the alternative ----
 .pvAlternativeHypothesisSimulation <- function(jaspResults, nullDistribution, altDistribution, options, position = 4) {
-
+  container <- .pvGetContainer(
+    jaspContainer = jaspResults,
+    name          = "alternativeHypothesisSimulation",
+    title         = gettext("Simulation under H<sub>a</sub>"),
+    dependencies  = c(.pvDistributionDependencies,
+                      "alternative", "alpha", "alternativeHypothesisReset")
+  )
+  
+  
+  # Determine whether or not to draw samples (workaround for mimicking an action button with a checkbox)
+  if(!is.null(container[["simulate"]])) {
+    simulate <- FALSE
+  } else {
+    simulate <- TRUE
+    container[["simulate"]] <- createJaspState(object = options[["alternativeHypothesisSimulate"]], dependencies = "alternativeHypothesisSimulate")
+  }
+  
+  # Simulate data and add them to a state
+  if(!is.null(container[["alternativeHypothesisData"]])) {
+    data <- container[["alternativeHypothesisData"]]$object
+  } else {
+    data <- numeric(0)
+    #simulate <- FALSE
+  }
+  
+  if(simulate) {
+    data <- c(data, altDistribution$rng(options[["alternativeHypothesisStudiesToSimulate"]]))
+  }
+  container[["alternativeHypothesisData"]] <- createJaspState(object = data)
+  
+  # Output
+  .pvIntroText         (container,                     options, position = 5)
+  if (options[["alternativeHypothesisPlotTestStatistics"]])
+    .pvPlotTestStatistics(container, data, nullDistribution, altDistribution, options, position = 6,
+                          plotNullCurve = options[["alternativeHypothesisPlotTestStatisticsOverlayNull"]],
+                          plotAltCurve = options[["alternativeHypothesisPlotTestStatisticsOverlayAlternative"]])
+  if (options[["alternativeHypothesisPlotPValues"]])
+    .pvPlotPValues       (container, data, nullDistribution, options, position = 7)
+  if (options[["alternativeHypothesisFrequencyTable"]])
+    .pvFrequencyTable(container, data, nullDistribution, options, position = 8)
 }
-
 
 # Helpers ----
 ## Distributions ----
@@ -295,7 +351,7 @@ pValues <- function(jaspResults, dataset = NULL, options) {
     cdf = function(q, lower.tail = TRUE) pt(q, df = df, ncp = ncp, lower.tail = lower.tail),
     qf  = function(p, lower.tail = TRUE) qt(p, df = df, ncp = ncp, lower.tail = lower.tail),
     rng = function(n)                    rt(n, df = df, ncp = ncp),
-    limits = c(lower = -5, upper = 5)
+    limits = c(lower = ncp - 5, upper = ncp + 5)
   )
 
   return(output)
@@ -307,7 +363,7 @@ pValues <- function(jaspResults, dataset = NULL, options) {
     cdf = function(q, lower.tail = TRUE) pnorm(q, mean = mean, sd = sd, lower.tail = lower.tail),
     qf  = function(p, lower.tail = TRUE) qnorm(p, mean = mean, sd = sd, lower.tail = lower.tail),
     rng = function(n)                    rnorm(n, mean = mean, sd = sd),
-    limits = c(lower = -5, upper = 5)
+    limits = c(lower = mean - 5 * sd, upper = mean + 5 * sd)
   )
 
   return(output)

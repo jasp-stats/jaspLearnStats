@@ -39,7 +39,7 @@ Form
 				{ value: "tDistribution",	label: qsTr("T distribution") }
 			]
 		}
-		DoubleField { name: "tDf"; label: qsTr("df"); visible: distribution.currentValue === "tDistribution"; defaultValue: 1; negativeValues: false; inclusive: JASP.None	}
+		DoubleField { name: "tDf"; label: qsTr("df"); visible: distribution.currentValue === "tDistribution"; defaultValue: 30; negativeValues: false; inclusive: JASP.None	}
 	}
 
 	Group
