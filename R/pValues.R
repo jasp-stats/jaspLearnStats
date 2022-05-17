@@ -115,11 +115,13 @@ pValues <- function(jaspResults, dataset = NULL, options) {
 
   plot <- .pvAddCurveToPlot(plot, fun = distribution$pdf, xlim = distribution$limits)
 
+  xBreaks <- jaspGraphs::getPrettyAxisBreaks(distribution$limits)
   plot <- plot +
     ggplot2::xlab(gettext("Test statistic")) +
     ggplot2::ylab(gettext("Density")) +
-    ggplot2::scale_x_continuous(breaks = jaspGraphs::getPrettyAxisBreaks(distribution$limits)) +
+    ggplot2::scale_x_continuous(breaks = xBreaks) +
     jaspGraphs::scale_y_continuous() +
+    jaspGraphs::geom_rangeframe() +
     jaspGraphs::themeJaspRaw()
 
   return(plot)
@@ -189,26 +191,37 @@ pValues <- function(jaspResults, dataset = NULL, options) {
     dataForLowerLimits <- c(dataForLowerLimits, altDistribution$limits["lower"])
     dataForUpperLimits <- c(dataForUpperLimits, altDistribution$limits["upper"]) 
   }
-  xlim <- c(
-    min(dataForLowerLimits),
-    max(dataForUpperLimits)
-    )
-  df   <- data.frame(data = data)
 
+  n <- length(data)
+  helperHist <- hist(data, plot = FALSE)
+  binWidth <- helperHist$breaks[2] - helperHist$breaks[1]
+  counts <- helperHist$counts
+  yLabels <- as.integer(jaspGraphs::getPrettyAxisBreaks(c(0, counts)))
+  yBreaks <- yLabels / (n * binWidth)
+  yStep <- yBreaks[2] - yBreaks[1]
+  yLimits <- c(min(yBreaks), max(yBreaks) + 2 * yStep)
+  xBreaks <- as.integer(jaspGraphs::getPrettyAxisBreaks(c(dataForLowerLimits, dataForUpperLimits, helperHist$breaks)))
+  xStep <- xBreaks[2] - xBreaks[1]
+  xLimits <- c(min(dataForLowerLimits), max(dataForUpperLimits) + 2 * xStep)
+  
+  df   <- data.frame(data = data)
   pp <- ggplot2::ggplot(df, ggplot2::aes(x = data)) +
-    ggplot2::geom_histogram(ggplot2::aes(y=..density..), col = "black", fill = "gray") +
+    ggplot2::geom_histogram(ggplot2::aes(y = ..density..), col = "black", fill = "gray", binwidth = binWidth, center = binWidth/2) +
     ggplot2::geom_rug() +
-    jaspGraphs::scale_x_continuous(limits = xlim) +
-    jaspGraphs::scale_y_continuous() +
-    ggplot2::xlab(gettext("Test statistic")) +
-    ggplot2::ylab(gettext("Density")) +
+    jaspGraphs::scale_x_continuous(breaks = xBreaks, limits = xLimits, name = gettext("Test statistic")) +
+    jaspGraphs::scale_y_continuous(breaks = yBreaks, labels = yLabels, name = gettext("Count")) +
+    jaspGraphs::geom_rangeframe() +
     jaspGraphs::themeJaspRaw()
 
   if(plotNullCurve) {
-    pp <- .pvAddCurveToPlot(pp, fun = nullDistribution$pdf, xlim = xlim)
+    pp <- .pvAddCurveToPlot(pp, fun = nullDistribution$pdf, xlim = xLimits, lineColor = "blue") +
+      ggplot2::geom_label(data = data.frame(x = max(xBreaks) + xStep / 2, y = max(yBreaks), label = gettext("Null dist.")),
+                          mapping = ggplot2::aes(x = x, y = y, label = label), color = "blue", size = 6)
   }
   if(plotAltCurve) {
-    pp <- .pvAddCurveToPlot(pp, fun = altDistribution$pdf, xlim = xlim)
+    pp <- .pvAddCurveToPlot(pp, fun = altDistribution$pdf, xlim = xLimits, lineColor = "orange") +
+      ggplot2::geom_label(data = data.frame(x = max(xBreaks) + xStep / 2, y = max(yBreaks) / 2, label = gettext("Alt dist.")),
+                          mapping = ggplot2::aes(x = x, y = y, label = label), color = "orange", size = 6)
   }
 
   plot$plotObject <- pp
@@ -221,20 +234,34 @@ pValues <- function(jaspResults, dataset = NULL, options) {
     title        = gettext("Observed p-values"),
     position     = position,
     width        = 500,
-    dependencies = c("nullHypothesisSimulate", "nullHypothesisPlotPValues", "nullHypothesisPlotPValuesOverlayUniform"))
+    dependencies = c("nullHypothesisSimulate", "nullHypothesisPlotPValues", "nullHypothesisPlotPValuesOverlayUniform",
+                     "alternativeHypothesisSimulate", "alternativeHypothesisPlotPValues"))
   container[["plotPValues"]] <- plot
 
   if(length(data) == 0) return()
-
+  
+  alpha <- options[["alpha"]]
   df <- data.frame(data = vapply(data, function(x) .pvGetPValue(distribution, options[["alternative"]], x), numeric(1)))
+  df$significance <- as.numeric(df$data < alpha)
+
+  
+  n <- length(df$data)
+  helperHist <- hist(df$data, plot = FALSE, breaks = seq(0, 1, by = 0.05))
+  binWidth <- helperHist$breaks[2] - helperHist$breaks[1]
+  counts <- helperHist$counts
+  yLabels <- as.integer(jaspGraphs::getPrettyAxisBreaks(c(0, counts)))
+  yBreaks <- yLabels / (n * binWidth)
+  yLimits <- range(yBreaks)
+  xBreaks <- seq(0, 1, by = 0.1)
+  xLimits <- range(xBreaks)
 
   pp <- ggplot2::ggplot(df, ggplot2::aes(x = data)) +
-    ggplot2::geom_histogram(ggplot2::aes(y=..density..), col = "black", fill = "gray", breaks = seq(0, 1, by = 0.05)) +
-    ggplot2::geom_rug() +
-    ggplot2::scale_x_continuous(breaks = seq(0, 1, by = 0.1), minor_breaks = seq(0, 1, by = 0.05)) +
-    jaspGraphs::scale_y_continuous() +
-    ggplot2::xlab(gettext("p-values"))+
-    ggplot2::ylab(gettext("Density")) +
+    ggplot2::geom_histogram(ggplot2::aes(y = ..density..), col = "black", fill = "gray", binwidth = binWidth, center = binWidth / 2) +
+    ggplot2::geom_rug(mapping = ggplot2::aes(color = factor(significance))) +
+    ggplot2::scale_color_manual(values = c("blue", "orange")) +
+    ggplot2::scale_x_continuous(breaks = xBreaks, minor_breaks = seq(0, 1, by = 0.05), limits = xLimits, name = gettext("p-values")) +
+    jaspGraphs::scale_y_continuous(breaks = yBreaks, labels = yLabels, limits = yLimits, name = gettext("Count")) +
+    jaspGraphs::geom_rangeframe() +
     jaspGraphs::themeJaspRaw()
 
   if(plotUniform) {

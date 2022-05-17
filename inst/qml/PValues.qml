@@ -54,7 +54,7 @@ Form
 
 		DropDown
 		{
-			label:	qsTr("Alt. Hypothesis")
+			label:	qsTr("Alt. hypothesis")
 			name:	"alternative"
 			values:
 			[
