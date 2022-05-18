@@ -155,6 +155,12 @@ Form
 					name: "nullHypothesisPlotPValuesOverlayUniform"
 					label: qsTr("Overlay uniform distribution")
 				}
+				
+				CheckBox
+				{
+					label:	qsTr("Highlight critical region")
+					name:	"nullHypothesisPlotCriticalRegion"
+				}
 			}
 
 			CheckBox
@@ -235,6 +241,12 @@ Form
 			{
 				name: "alternativeHypothesisPlotPValues"
 				label: qsTr("Plot p-values")
+				
+				CheckBox
+				{
+				label:	qsTr("Highlight critical region")
+				name:	"alternativeHypothesisPlotCriticalRegion"
+				}
 			}
 
 			CheckBox

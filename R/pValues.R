@@ -162,10 +162,11 @@ pValues <- function(jaspResults, dataset = NULL, options) {
   .pvIntroText         (container,                     options, position = 1)
   if (options[["nullHypothesisPlotTestStatistics"]])
     .pvPlotTestStatistics(container, data, distribution, options = options, position = 2,
-                          plotNullCurve = options[["nullHypothesisPlotTestStatisticsOverlayTheoretical"]])
+                          plotNullCurve = options[["nullHypothesisPlotCriticalRegion"]])
   if (options[["nullHypothesisPlotPValues"]])
     .pvPlotPValues       (container, data, distribution, options, position = 3,
-                          plotUniform = options[["nullHypothesisPlotPValuesOverlayUniform"]])
+                          plotUniform = options[["nullHypothesisPlotPValuesOverlayUniform"]],
+                          plotAlpha = options[["nullHypothesisPlotCriticalRegion"]])
   if (options[["nullHypothesisFrequencyTable"]])
     .pvFrequencyTable(container, data, distribution, options, position = 4)
 }
@@ -227,7 +228,7 @@ pValues <- function(jaspResults, dataset = NULL, options) {
   plot$plotObject <- pp
 }
 
-.pvPlotPValues <- function(container, data, distribution, options, position, plotUniform = FALSE) {
+.pvPlotPValues <- function(container, data, distribution, options, position, plotUniform = FALSE, plotAlpha = FALSE) {
   if(!is.null(container[["plotPValues"]])) return()
 
   plot <- createJaspPlot(
@@ -235,37 +236,44 @@ pValues <- function(jaspResults, dataset = NULL, options) {
     position     = position,
     width        = 500,
     dependencies = c("nullHypothesisSimulate", "nullHypothesisPlotPValues", "nullHypothesisPlotPValuesOverlayUniform",
-                     "alternativeHypothesisSimulate", "alternativeHypothesisPlotPValues"))
+                     "alternativeHypothesisSimulate", "alternativeHypothesisPlotPValues", "nullHypothesisPlotCriticalRegion",
+                     "alternativeHypothesisPlotCriticalRegion"))
   container[["plotPValues"]] <- plot
 
   if(length(data) == 0) return()
   
   alpha <- options[["alpha"]]
   df <- data.frame(data = vapply(data, function(x) .pvGetPValue(distribution, options[["alternative"]], x), numeric(1)))
-  df$significance <- as.numeric(df$data < alpha)
+  df$significance <- factor(as.numeric(df$data < alpha), levels = 0:1)
 
   
   n <- length(df$data)
+  xBreaks <- seq(0, 1, by = .1)
+  xLimits <- range(xBreaks)
   helperHist <- hist(df$data, plot = FALSE, breaks = seq(0, 1, by = 0.05))
   binWidth <- helperHist$breaks[2] - helperHist$breaks[1]
   counts <- helperHist$counts
-  yLabels <- as.integer(jaspGraphs::getPrettyAxisBreaks(c(0, counts)))
+  yLabels <- as.integer(jaspGraphs::getPrettyAxisBreaks(c(0, counts, max(counts) + 1)))
   yBreaks <- yLabels / (n * binWidth)
   yLimits <- range(yBreaks)
-  xBreaks <- seq(0, 1, by = 0.1)
-  xLimits <- range(xBreaks)
+
 
   pp <- ggplot2::ggplot(df, ggplot2::aes(x = data)) +
     ggplot2::geom_histogram(ggplot2::aes(y = ..density..), col = "black", fill = "gray", binwidth = binWidth, center = binWidth / 2) +
     ggplot2::geom_rug(mapping = ggplot2::aes(color = factor(significance))) +
     ggplot2::scale_color_manual(values = c("blue", "orange")) +
-    ggplot2::scale_x_continuous(breaks = xBreaks, minor_breaks = seq(0, 1, by = 0.05), limits = xLimits, name = gettext("p-values")) +
+    ggplot2::scale_x_continuous(breaks = xBreaks, limits = xLimits, name = gettext("p-values")) +
     jaspGraphs::scale_y_continuous(breaks = yBreaks, labels = yLabels, limits = yLimits, name = gettext("Count")) +
     jaspGraphs::geom_rangeframe() +
     jaspGraphs::themeJaspRaw()
 
   if(plotUniform) {
-    pp <- pp + ggplot2::geom_segment(ggplot2::aes(x = 0, y = 1, xend = 1, yend = 1), size = 1.5)
+    pp <- pp +
+      ggplot2::geom_segment(ggplot2::aes(x = 0, y = 1, xend = 1, yend = 1), size = 1.5)
+  }
+  if(plotAlpha) {
+    pp <- pp +
+      ggplot2::geom_vline(xintercept = alpha, color = "orange", size = 1)
   }
 
   plot$plotObject <- pp
@@ -356,7 +364,8 @@ pValues <- function(jaspResults, dataset = NULL, options) {
                           plotNullCurve = options[["alternativeHypothesisPlotTestStatisticsOverlayNull"]],
                           plotAltCurve = options[["alternativeHypothesisPlotTestStatisticsOverlayAlternative"]])
   if (options[["alternativeHypothesisPlotPValues"]])
-    .pvPlotPValues       (container, data, nullDistribution, options, position = 7)
+    .pvPlotPValues       (container, data, nullDistribution, options, position = 7, 
+                          plotAlpha = options[["alternativeHypothesisPlotCriticalRegion"]])
   if (options[["alternativeHypothesisFrequencyTable"]])
     .pvFrequencyTable(container, data, nullDistribution, options, position = 8)
 }
