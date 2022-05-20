@@ -79,8 +79,9 @@ pValues <- function(jaspResults, dataset = NULL, options) {
                      "alternative", "alpha",
                      "plotTheoretical", "plotTheoreticalCriticalRegion",
                      "plotTheoreticalStatistic", "plotTheoreticalTestStatistic",
-                     "introText"),
-    width        = 500,
+                     "introText", "plotTheoreticalPValue", "testStatisticSpecificationType"),
+    width        = 700,
+    height       = 500,
     position     = position
   )
   container[["plot"]] <- plotContainer
@@ -97,27 +98,42 @@ pValues <- function(jaspResults, dataset = NULL, options) {
       if(is.null(criticalRegion)) next
       plot <- .pvAddCurveToPlot(plot, fun = distribution$pdf, xlim = criticalRegion,
                                 plotLine = FALSE, plotArea = TRUE,
-                                areaColor = "steelblue", areaAlpha = 0.5)
+                                areaColor = "orange", areaAlpha = 1)
     }
   }
-
+  
+  testStatistic <- ifelse(options[["distribution"]] == "normal", "z", "t") 
+  
   if(options[["plotTheoreticalStatistic"]]) {
-    pValue       <- .pvGetPValue(distribution, options[["alternative"]], options[["plotTheoreticalTestStatistic"]])
+    if(options[["testStatisticSpecificationType"]] == "testStatistic") {
+      testStatisticValue <- options[["plotTheoreticalTestStatistic"]]
+      pValue       <- round(.pvGetPValue(distribution, options[["alternative"]], testStatisticValue), 2)
+    } else if(options[["testStatisticSpecificationType"]] == "pValue") {
+      pValue <- options[["plotTheoreticalPValue"]]
+      testStatisticValue <- round(.pvGetTestStatistic(distribution, options[["alternative"]], pValue), 2)
+    }
+    testStatisticLabel <- data.frame(x = 4, y = .2, label = paste0(testStatistic, ": ", testStatisticValue))
+    pValueLabel <- data.frame(x = 4, y = .1, label = paste0("p: ", pValue))
+    plot <- plot +
+      ggplot2::geom_label(data = testStatisticLabel, mapping = ggplot2::aes(x = x, y = y, label = label), size = 6) +
+      ggplot2::geom_label(data = pValueLabel, mapping = ggplot2::aes(x = x, y = y, label = label), size = 6)
+    
     colorRegions <- .pvGetCriticalRegions(distribution, options[["alternative"]], pValue)
-
     for(region in colorRegions) {
       if(is.null(region)) next
       plot <- .pvAddCurveToPlot(plot, fun = distribution$pdf, xlim = region,
                                 plotLine = FALSE, plotArea = TRUE,
-                                areaColor = "red", areaAlpha = 0.5)
+                                areaColor = "blue", areaAlpha = .7)
     }
   }
 
   plot <- .pvAddCurveToPlot(plot, fun = distribution$pdf, xlim = distribution$limits)
 
   xBreaks <- jaspGraphs::getPrettyAxisBreaks(distribution$limits)
+  xLabTitle <- paste(gettext("Test statistic"), paste0("(", testStatistic, ")"))  
+  
   plot <- plot +
-    ggplot2::xlab(gettext("Test statistic")) +
+    ggplot2::xlab(xLabTitle) +
     ggplot2::ylab(gettext("Density")) +
     ggplot2::scale_x_continuous(breaks = xBreaks) +
     jaspGraphs::scale_y_continuous() +
@@ -162,7 +178,7 @@ pValues <- function(jaspResults, dataset = NULL, options) {
   .pvIntroText         (container,                     options, position = 1)
   if (options[["nullHypothesisPlotTestStatistics"]])
     .pvPlotTestStatistics(container, data, distribution, options = options, position = 2,
-                          plotNullCurve = options[["nullHypothesisPlotCriticalRegion"]])
+                          plotNullCurve = options[["nullHypothesisPlotTestStatisticsOverlayTheoretical"]])
   if (options[["nullHypothesisPlotPValues"]])
     .pvPlotPValues       (container, data, distribution, options, position = 3,
                           plotUniform = options[["nullHypothesisPlotPValuesOverlayUniform"]],
@@ -194,7 +210,7 @@ pValues <- function(jaspResults, dataset = NULL, options) {
   }
 
   n <- length(data)
-  helperHist <- hist(data, plot = FALSE)
+  helperHist <- hist(data, plot = FALSE, breaks = "Sturges")
   binWidth <- helperHist$breaks[2] - helperHist$breaks[1]
   counts <- helperHist$counts
   yLabels <- as.integer(jaspGraphs::getPrettyAxisBreaks(c(0, counts)))
@@ -204,12 +220,14 @@ pValues <- function(jaspResults, dataset = NULL, options) {
   xBreaks <- as.integer(jaspGraphs::getPrettyAxisBreaks(c(dataForLowerLimits, dataForUpperLimits, helperHist$breaks)))
   xStep <- xBreaks[2] - xBreaks[1]
   xLimits <- c(min(dataForLowerLimits), max(dataForUpperLimits) + 2 * xStep)
+  testStatistic <- ifelse(options[["distribution"]] == "normal", "z", "t") 
+  xLabTitle <- paste(gettext("Test statistic"), paste0("(", testStatistic, ")"))  
   
   df   <- data.frame(data = data)
   pp <- ggplot2::ggplot(df, ggplot2::aes(x = data)) +
     ggplot2::geom_histogram(ggplot2::aes(y = ..density..), col = "black", fill = "gray", binwidth = binWidth, center = binWidth/2) +
     ggplot2::geom_rug() +
-    jaspGraphs::scale_x_continuous(breaks = xBreaks, limits = xLimits, name = gettext("Test statistic")) +
+    jaspGraphs::scale_x_continuous(breaks = xBreaks, limits = xLimits, name = xLabTitle) +
     jaspGraphs::scale_y_continuous(breaks = yBreaks, labels = yLabels, name = gettext("Count")) +
     jaspGraphs::geom_rangeframe() +
     jaspGraphs::themeJaspRaw()
@@ -420,6 +438,19 @@ pValues <- function(jaspResults, dataset = NULL, options) {
   )
 
   return(pValue)
+}
+
+.pvGetTestStatistic <- function(distribution, hypothesis = c("twoSided", "greater", "less"), pValue) {
+  hypothesis <- match.arg(hypothesis)
+  
+  testStatistic <- switch(
+    hypothesis,
+    "twoSided" =  distribution$qf(p = pValue/2,                      lower.tail = FALSE),
+    "greater"  =   distribution$qf(p = pValue,                       lower.tail = FALSE),
+    "less"     =   distribution$qf(p = pValue,                       lower.tail = TRUE)
+  )
+  
+  return(testStatistic)
 }
 
 .pvGetCriticalRegions <- function(distribution, hypothesis = c("twoSided", "greater", "less"), alpha = 0.05) {
