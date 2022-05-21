@@ -91,14 +91,26 @@ pValues <- function(jaspResults, dataset = NULL, options) {
 
 .pvFillPlotTheoreticalDistribution <- function(distribution, options) {
   plot <- ggplot2::ggplot()
+  alphaLabel <- data.frame(x = 4, y = .4, label = paste("\U03B1:", options[["alpha"]]))
+  plot <- plot +
+    ggplot2::geom_label(data = alphaLabel, mapping = ggplot2::aes(x = x, y = y, label = label), size = 6, color = "orange")
+  alphaPercent <- ifelse(options[["alternative"]] == "twoSided", options[["alpha"]] / 2, options[["alpha"]])
 
   if(options[["plotTheoreticalCriticalRegion"]]) {
     criticalRegions <- .pvGetCriticalRegions(distribution, options[["alternative"]], options[["alpha"]])
     for(criticalRegion in criticalRegions) {
       if(is.null(criticalRegion)) next
+      percentageLineXStart <- ifelse(criticalRegion[1] < 0, criticalRegion[2], criticalRegion[1])
+      percentageLineXEnd <- ifelse(criticalRegion[1] < 0, -4, 4)
+      percentageLineData <- data.frame(x = c(percentageLineXStart, percentageLineXEnd), y = c(0, .1))
+      percentageLabelData <- data.frame(x = percentageLineXEnd, y = .1, label = paste0(alphaPercent * 100, "%"))
       plot <- .pvAddCurveToPlot(plot, fun = distribution$pdf, xlim = criticalRegion,
                                 plotLine = FALSE, plotArea = TRUE,
-                                areaColor = "orange", areaAlpha = 1)
+                                areaColor = "orange", areaAlpha = 1) +
+        ggplot2::geom_path(data = percentageLineData, mapping = ggplot2::aes(x = x, y = y),
+                           color = "orange", size = 1) +
+        ggplot2::geom_label(data = percentageLabelData, mapping = ggplot2::aes(x = x, y = y, label = label), size = 6,
+                            color = "orange")
     }
   }
   
@@ -107,23 +119,26 @@ pValues <- function(jaspResults, dataset = NULL, options) {
   if(options[["plotTheoreticalStatistic"]]) {
     if(options[["testStatisticSpecificationType"]] == "testStatistic") {
       testStatisticValue <- options[["plotTheoreticalTestStatistic"]]
-      pValue       <- round(.pvGetPValue(distribution, options[["alternative"]], testStatisticValue), 2)
+      pValue       <- .pvGetPValue(distribution, options[["alternative"]], testStatisticValue)
     } else if(options[["testStatisticSpecificationType"]] == "pValue") {
       pValue <- options[["plotTheoreticalPValue"]]
-      testStatisticValue <- round(.pvGetTestStatistic(distribution, options[["alternative"]], pValue), 2)
+      testStatisticValue <- .pvGetTestStatistic(distribution, options[["alternative"]], pValue)
     }
-    testStatisticLabel <- data.frame(x = 4, y = .2, label = paste0(testStatistic, ": ", testStatisticValue))
-    pValueLabel <- data.frame(x = 4, y = .1, label = paste0("p: ", pValue))
+    testStatisticLabel <- data.frame(x = 4, y = .35, label = paste0(testStatistic, ": ", round(testStatisticValue, 3)))
+    pValueLabel <- data.frame(x = 4, y = .3, label = paste0("p: ", round(pValue, 3)))
     plot <- plot +
-      ggplot2::geom_label(data = testStatisticLabel, mapping = ggplot2::aes(x = x, y = y, label = label), size = 6) +
-      ggplot2::geom_label(data = pValueLabel, mapping = ggplot2::aes(x = x, y = y, label = label), size = 6)
+      ggplot2::geom_label(data = testStatisticLabel, mapping = ggplot2::aes(x = x, y = y, label = label), size = 6, color = "blue") +
+      ggplot2::geom_label(data = pValueLabel, mapping = ggplot2::aes(x = x, y = y, label = label), size = 6, color = "blue")
     
+    significant <- pValue <= options[["alpha"]]
     colorRegions <- .pvGetCriticalRegions(distribution, options[["alternative"]], pValue)
     for(region in colorRegions) {
       if(is.null(region)) next
       plot <- .pvAddCurveToPlot(plot, fun = distribution$pdf, xlim = region,
                                 plotLine = FALSE, plotArea = TRUE,
-                                areaColor = "blue", areaAlpha = .7)
+                                areaColor = "blue", areaAlpha = 1, areaAtBottomLayer = !significant) +
+        ggplot2::geom_path(data = data.frame(x = c(-1.5, -3), y = c(.05, .2)), mapping = ggplot2::aes(x = x, y = y),
+                           color = "blue", size = 1)
     }
   }
 
@@ -476,20 +491,22 @@ pValues <- function(jaspResults, dataset = NULL, options) {
 .pvAddCurveToPlot <- function(plot, fun, xlim, n = 201,
                               plotLine = TRUE, plotArea = FALSE,
                               lineSize = 1.5, lineColor = "black", lineAlpha = 1,
-                              areaColor = "steelblue", areaAlpha = 0.5) {
+                              areaColor = "steelblue", areaAlpha = 0.5, areaAtBottomLayer = FALSE) {
   x <- seq(xlim[1], xlim[2], length.out = n)
   df <- data.frame(x = x, y = fun(x))
 
   if(plotArea) {
+    if (areaAtBottomLayer) {
+      plot$layers <- c(ggplot2::geom_area(data = df, mapping = ggplot2::aes(x = x, y = y), fill = areaColor, alpha = areaAlpha),
+                       plot$layers)
+    } else {
     plot <- plot +
       ggplot2::geom_area(data = df, mapping = ggplot2::aes(x = x, y = y), fill = areaColor, alpha = areaAlpha)
+    }
   }
-
   if(plotLine) {
     plot <- plot +
       ggplot2::geom_line(data = df, mapping = ggplot2::aes(x = x, y = y), color = lineColor, size = lineSize, alpha = lineAlpha)
   }
-
   return(plot)
 }
-
