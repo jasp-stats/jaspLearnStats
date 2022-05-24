@@ -94,19 +94,27 @@ pValues <- function(jaspResults, dataset = NULL, options) {
   alphaLabel <- data.frame(x = 4, y = .4, label = paste("\U03B1:", options[["alpha"]]))
   plot <- plot +
     ggplot2::geom_label(data = alphaLabel, mapping = ggplot2::aes(x = x, y = y, label = label), size = 6, color = "orange")
-  alphaPercent <- ifelse(options[["alternative"]] == "twoSided", options[["alpha"]] / 2, options[["alpha"]])
+  alphaPercent <- ifelse(options[["alternative"]] == "twoSided" & options[["alpha"]] < 1, options[["alpha"]] / 2, options[["alpha"]])
 
   if(options[["plotTheoreticalCriticalRegion"]]) {
     criticalRegions <- .pvGetCriticalRegions(distribution, options[["alternative"]], options[["alpha"]])
     for(criticalRegion in criticalRegions) {
       if(is.null(criticalRegion)) next
-      percentageLineXStart <- ifelse(criticalRegion[1] < 0, criticalRegion[2], criticalRegion[1])
-      percentageLineXEnd <- ifelse(criticalRegion[1] < 0, -4, 4)
-      percentageLineData <- data.frame(x = c(percentageLineXStart, percentageLineXEnd), y = c(0, .1))
-      percentageLabelData <- data.frame(x = percentageLineXEnd, y = .1, label = paste0(alphaPercent * 100, "%"))
+      if (alphaPercent < 1) {
+      percentageLineXStart <- ifelse(criticalRegion[1] < 0 & (alphaPercent < .5 | options[["alternative"]] == "less"), criticalRegion[2], criticalRegion[1])
+      percentageLineXEnd <- ifelse(criticalRegion[1] < 0 & (alphaPercent < .5 | options[["alternative"]] == "less"), -4, 4)
+      percentageLineYEnd <- .1
+      percentageLineData <- data.frame(x = c(percentageLineXStart, percentageLineXEnd), y = c(0, percentageLineYEnd))
+      } else {
+        percentageLineXStart <- 0
+        percentageLineXEnd <- 1
+        percentageLineYEnd <- .4
+        percentageLineData <- data.frame(x = c(percentageLineXStart, percentageLineXEnd), y = c(0, percentageLineYEnd))
+      }
+      percentageLabelData <- data.frame(x = percentageLineXEnd, y = percentageLineYEnd, label = paste0(alphaPercent * 100, "%"))
       plot <- .pvAddCurveToPlot(plot, fun = distribution$pdf, xlim = criticalRegion,
                                 plotLine = FALSE, plotArea = TRUE,
-                                areaColor = "orange", areaAlpha = 1) +
+                                areaColor = "orange", areaAlpha = .9) +
         ggplot2::geom_path(data = percentageLineData, mapping = ggplot2::aes(x = x, y = y),
                            color = "orange", size = 1) +
         ggplot2::geom_label(data = percentageLabelData, mapping = ggplot2::aes(x = x, y = y, label = label), size = 6,
@@ -125,20 +133,37 @@ pValues <- function(jaspResults, dataset = NULL, options) {
       testStatisticValue <- .pvGetTestStatistic(distribution, options[["alternative"]], pValue)
     }
     testStatisticLabel <- data.frame(x = 4, y = .35, label = paste0(testStatistic, ": ", round(testStatisticValue, 3)))
-    pValueLabel <- data.frame(x = 4, y = .3, label = paste0("p: ", round(pValue, 3)))
+    pValueLabel <- ifelse(pValue >= 0.001, paste0("p = ", round(pValue, 3)), "p < 0.001 ")
+    pValueLabelData <- data.frame(x = 4, y = .3, label = pValueLabel)
+    
     plot <- plot +
       ggplot2::geom_label(data = testStatisticLabel, mapping = ggplot2::aes(x = x, y = y, label = label), size = 6, color = "blue") +
-      ggplot2::geom_label(data = pValueLabel, mapping = ggplot2::aes(x = x, y = y, label = label), size = 6, color = "blue")
+      ggplot2::geom_label(data = pValueLabelData, mapping = ggplot2::aes(x = x, y = y, label = label), size = 6, color = "blue")
     
     significant <- pValue <= options[["alpha"]]
+    pValuePercent <- ifelse(options[["alternative"]] == "twoSided" & pValue < 1, pValue / 2, pValue)
     colorRegions <- .pvGetCriticalRegions(distribution, options[["alternative"]], pValue)
     for(region in colorRegions) {
       if(is.null(region)) next
+      if (pValuePercent < 1) {
+        percentageLineXStart <- ifelse(region[1] < 0 & (pValuePercent < .5 | options[["alternative"]] == "less"), region[2], region[1])
+        percentageLineXEnd <- ifelse(region[1] < 0 & (pValuePercent < .5 | options[["alternative"]] == "less"), -3, 3)
+        percentageLineYEnd <- .2
+        percentageLineData <- data.frame(x = c(percentageLineXStart, percentageLineXEnd), y = c(0, percentageLineYEnd))
+      } else {
+        percentageLineXStart <- 0
+        percentageLineXEnd <- -1
+        percentageLineYEnd <- .4
+        percentageLineData <- data.frame(x = c(percentageLineXStart, percentageLineXEnd), y = c(0, percentageLineYEnd))
+      }
+      percentageLabelData <- data.frame(x = percentageLineXEnd, y = percentageLineYEnd, label = paste0(round(pValuePercent * 100, 1), "%"))
       plot <- .pvAddCurveToPlot(plot, fun = distribution$pdf, xlim = region,
                                 plotLine = FALSE, plotArea = TRUE,
-                                areaColor = "blue", areaAlpha = 1, areaAtBottomLayer = !significant) +
-        ggplot2::geom_path(data = data.frame(x = c(-1.5, -3), y = c(.05, .2)), mapping = ggplot2::aes(x = x, y = y),
-                           color = "blue", size = 1)
+                                areaColor = "blue", areaAlpha = .9, areaAtBottomLayer = !significant) +
+        ggplot2::geom_path(data = percentageLineData, mapping = ggplot2::aes(x = x, y = y),
+                           color = "blue", size = 1) +
+        ggplot2::geom_label(data = percentageLabelData, mapping = ggplot2::aes(x = x, y = y, label = label), size = 6,
+                            color = "blue")
     }
   }
 
@@ -470,20 +495,27 @@ pValues <- function(jaspResults, dataset = NULL, options) {
 
 .pvGetCriticalRegions <- function(distribution, hypothesis = c("twoSided", "greater", "less"), alpha = 0.05) {
   hypothesis <- match.arg(hypothesis)
-
-  regions <- list(
-    lower = switch(hypothesis,
-                   "twoSided" = c(distribution$limits[["lower"]], distribution$qf(alpha/2)),
-                   "greater"  = NULL,
-                   "less"     = c(distribution$limits[["lower"]], distribution$qf(alpha))
-    ),
-    upper = switch(hypothesis,
-                   "twoSided" = c(distribution$qf(1-alpha/2), distribution$limits[["upper"]]),
-                   "greater"  = c(distribution$qf(1-alpha),   distribution$limits[["upper"]]),
-                   "less"     = NULL
+  
+  if(alpha == 1) {
+    regions <- list(lower = c(distribution$limits[["lower"]], distribution$limits[["upper"]]),
+                    upper = NULL)
+  } else if(alpha < 0.001){
+    regions <- list(lower = NULL,
+                    upper = NULL)
+  } else {
+    regions <- list(
+      lower = switch(hypothesis,
+                     "twoSided" = c(distribution$limits[["lower"]], distribution$qf(alpha/2)),
+                     "greater"  = NULL,
+                     "less"     = c(distribution$limits[["lower"]], distribution$qf(alpha))
+      ),
+      upper = switch(hypothesis,
+                     "twoSided" = c(distribution$qf(1-alpha/2), distribution$limits[["upper"]]),
+                     "greater"  = c(distribution$qf(1-alpha),   distribution$limits[["upper"]]),
+                     "less"     = NULL
+      )
     )
-  )
-
+  }
   return(regions)
 }
 
