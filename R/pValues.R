@@ -16,7 +16,6 @@
 #
 
 pValues <- function(jaspResults, dataset = NULL, options) {
-  #save(options, file = "~/Downloads/opts.Rdata")
   if(options[["introText"]])
     .pvIntroText(jaspResults, options, position = 1)
 
