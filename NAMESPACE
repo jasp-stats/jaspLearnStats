@@ -1,5 +1,8 @@
 export(LSTcentralLimitTheorem)
 export(LSTdescriptives)
 export(LSTsampleVariability)
+export(LSTnormDist)
+export(LSTbinomDist)
 export(LSeffectSizes)
 export(pValues)
+export(LSTstandardError)

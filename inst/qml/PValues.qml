@@ -39,7 +39,7 @@ Form
 				{ value: "tDistribution",	label: qsTr("T distribution") }
 			]
 		}
-		DoubleField { name: "tDf"; label: qsTr("df"); visible: distribution.currentValue === "tDistribution"; defaultValue: 1; negativeValues: false; inclusive: JASP.None	}
+		DoubleField { name: "tDf"; label: qsTr("df"); visible: distribution.currentValue === "tDistribution"; defaultValue: 30; negativeValues: false; inclusive: JASP.None	}
 	}
 
 	Group
@@ -54,7 +54,7 @@ Form
 
 		DropDown
 		{
-			label:	qsTr("Alt. Hypothesis")
+			label:	qsTr("Alt. hypothesis")
 			name:	"alternative"
 			values:
 			[
@@ -81,20 +81,54 @@ Form
 		{
 			label:	qsTr("Highlight specified test statistic")
 			name:	"plotTheoreticalStatistic"
-
-			DoubleField
+			
+			RadioButtonGroup
 			{
-				label:	qsTr("Test statistic")
-				name:	"plotTheoreticalTestStatistic"
-				defaultValue:	1
-				negativeValues: true
-			}
+				name:	"testStatisticSpecificationType"
+				id: 	testStatisticSpecificationType
+
+				RadioButton
+				{
+					name: 				"testStatistic"
+					id : 				testStatistic
+					label: 				qsTr("Specify test statistic")
+					checked: 			true
+					childrenOnSameRow:	true
+						
+					DoubleField
+					{
+						label:	qsTr("")
+						name:	"plotTheoreticalTestStatistic"
+						defaultValue:	1
+						negativeValues: true
+					}
+				}
+					
+				RadioButton
+				{
+					name: 				"pValue"
+					id : 				pValue
+					label: 				qsTr("Specify p-value")
+					checked: 			false
+					childrenOnSameRow:	true
+						
+					DoubleField
+					{
+						label:	qsTr("")
+						name:	"plotTheoreticalPValue"
+						defaultValue:	0.3
+						min: 0.0001
+						max: 1
+						negativeValues: false
+					}
+				}
+			}	
 		}
 	}
 
 	Section
 	{
-		title:	qsTr("Simulation under null hypothesis")
+		title:	qsTr("Simulation under the null hypothesis")
 		expanded: true
 
 		Group
@@ -155,6 +189,12 @@ Form
 					name: "nullHypothesisPlotPValuesOverlayUniform"
 					label: qsTr("Overlay uniform distribution")
 				}
+				
+				CheckBox
+				{
+					label:	qsTr("Highlight critical region")
+					name:	"nullHypothesisPlotCriticalRegion"
+				}
 			}
 
 			CheckBox
@@ -167,7 +207,7 @@ Form
 
 	Section
 	{
-		title:	qsTr("Simulation under alternative hypothesis")
+		title:	qsTr("Simulation under the alternative hypothesis")
 		Group
 		{
 			Layout.columnSpan:	2
@@ -235,6 +275,12 @@ Form
 			{
 				name: "alternativeHypothesisPlotPValues"
 				label: qsTr("Plot p-values")
+				
+				CheckBox
+				{
+				label:	qsTr("Highlight critical region")
+				name:	"alternativeHypothesisPlotCriticalRegion"
+				}
 			}
 
 			CheckBox

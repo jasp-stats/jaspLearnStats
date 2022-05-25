@@ -20,11 +20,21 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
   if (!errors) {
     set.seed(options[["cltSampleSeed"]])
     colors <- .getColors(options[["cltColorPalette"]])
+    
     if(options[["svParentSizeType"]] == "svParentInfinite") {
       parentData <- .generateParentData(options)
       samples <- .cltTakeSamples(jaspResults, options = options, data = parentData)
-      if (options[["parentShow"]])
+      
+      if (options[["parentShow"]]){
         jaspResults[["cltParentDistribution"]] <- .cltParentDistribution(jaspResults, options = options, colors)
+        jaspResults[["cltParentDistribution"]]$position <- 1
+      }
+      if (options[["parentExplain"]]){
+        jaspResults[["svParentDistributionExplanation"]] <- createJaspHtml("This is the placeholder text for the Sample Variability infinite parent distribution explanation.", "p")
+        jaspResults[["svParentDistributionExplanation"]]$position <- 2
+        jaspResults[["svParentDistributionExplanation"]]$dependOn("parentExplain")
+      }
+      
       if (options[["samplesShow"]]){
         maxSamples <- length(samples)
         fromTo <- .getFromToSampleShow(type = options[["svSampleShowType"]], maxSamples, singleValue = options[["svFirstOrLastSamples"]],
@@ -32,15 +42,37 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
         from <- fromTo[1]
         to <- fromTo[2]
         jaspResults[["cltSamples"]] <- .cltPlotSamples(jaspResults, options = options, samples = samples, from = from, to = to, colors)
+        jaspResults[["cltSamples"]]$position <- 3
+      }
+      if (options[["samplesExplain"]]){
+        jaspResults[["svSamplesExplanation"]] <- createJaspHtml("This is the placeholder text for the Standard Variability infinite samples explanation.", "p")
+        jaspResults[["svSamplesExplanation"]]$position <- 4
+        jaspResults[["svSamplesExplanation"]]$dependOn("samplesExplain")
       }
     } else {
       parentData <- .generateParentData(options, finite = options[["svParentSize"]])
       samplesAndIndices <-  .cltTakeSamples(jaspResults, options = options, data = parentData, replace = FALSE)
-      if (options[["parentShow"]])
+      
+      if (options[["parentShow"]]){
         jaspResults[["cltParentDistribution"]] <- .svPlotFinitePopulation(jaspResults, options, parentData, colors)
-      if (options[["samplesShow"]])
+        jaspResults[["cltParentDistribution"]]$position <- 1
+      }
+      if (options[["parentExplain"]]){
+        jaspResults[["svParentDistributionExplanation"]] <- createJaspHtml("This is the placeholder text for the Sample Variability finite parent distribution explanation.", "p")
+        jaspResults[["svParentDistributionExplanation"]]$position <- 2
+        jaspResults[["svParentDistributionExplanation"]]$dependOn("parentExplain")
+      }
+      
+      if (options[["samplesShow"]]){
         jaspResults[["cltSamples"]] <- .svPlotFiniteSamples(jaspResults, options, samples = samplesAndIndices$samples,
                                                             indices = samplesAndIndices$indices, parentData, colors)
+        jaspResults[["cltSamples"]]$position <- 3
+      }
+      if (options[["samplesExplain"]]){
+        jaspResults[["svSamplesExplanation"]] <- createJaspHtml("This is the placeholder text for the Standard Variability finite samples explanation.", "p")
+        jaspResults[["svSamplesExplanation"]]$position <- 4
+        jaspResults[["svSamplesExplanation"]]$dependOn("samplesExplain")
+      }
     }
   }
   return() 
@@ -155,7 +187,7 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
   plotObject <- plotObject + ggplot2::scale_y_continuous(name = "Count", limits = yLimits, breaks = yBreaks, labels = yLabels) +
     jaspGraphs::geom_rangeframe() +
     jaspGraphs::themeJaspRaw()
-
+  
   if (length(removedDots != 0)) {
     for (rd in removedDots) {
       sampleDot <- pData[[1]][rd,]
@@ -168,7 +200,7 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
                                                       inherit.aes = FALSE, fill = "white", color = "grey90")
     }
   }
-
+  
   if (samples != "") {
     for (s in samples) {
       sampleDot <- pData[[1]][s,]
@@ -193,7 +225,7 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
       plotObject <- plotObject +
         ggplot2::geom_label(data = countLabelData, mapping = ggplot2::aes(x = x, y = y, label = label), color = colors[1:2],
                             size = 6)
-
+      
     } else {
       orderedData <- data.frame(x = sort(data$x))  #indices refer to ordered data, because histogram order the data
       sampleMean <- mean(orderedData$x[samples])
@@ -211,7 +243,7 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
       plotObject <- plotObject +
         ggplot2::geom_label(data = countLabelData, mapping = ggplot2::aes(x = x, y = y, label = label), color = colors[1:2],
                             size = 6)
-
+      
     } else {
       dataMean <- mean(data$x)
       meanLineData <- data.frame(x = rep(dataMean, 2), y = c(0, max(yBreaks) + yStep/2))
@@ -221,8 +253,8 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
         ggplot2::geom_label(data = meanLabelData,  mapping = ggplot2::aes(x = x, y = y, label = label), size = 6, color = colors[3])
     }
   }
-
-
+  
+  
   if (options[["cltParentDistribution"]] == "binomial") {
     plotObject <- plotObject +
       ggplot2::scale_x_continuous(name = "", breaks = xBreaks, labels = rep("", length(xBreaks)))

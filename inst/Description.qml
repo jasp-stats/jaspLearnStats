@@ -13,7 +13,21 @@ Description
 	maintainer:		"JASP Team <info@jasp-stats.org>"
 	website:		"www.jasp-stats.org"
 	license:		"GPL (>= 2)"
-
+	
+	
+	Analysis
+	{
+		title:	qsTr("Normal Distribution")
+		qml:	"LSTnormDist.qml"
+		func:	"LSTnormDist"
+	}
+	
+	Analysis
+	{
+		title:	qsTr("Binomial Distribution")
+		qml:	"LSTbinomDist.qml"
+		func:	"LSTbinomDist"
+	}
 
 	Analysis
 	{
@@ -22,6 +36,13 @@ Description
 		func:	"LSTcentralLimitTheorem"
 	}
 
+	Analysis
+	{
+		title:	qsTr("Standard Error")
+		qml:	"LSTstandardError.qml"
+		func:	"LSTstandardError"
+	}
+	
 	Analysis
 	{
 		title:	qsTr("Descriptive Statistics")
@@ -49,6 +70,4 @@ Description
 		qml:	"LSeffectSizes.qml"
 		func:	"LSeffectSizes"
 	}
-
-
 }
