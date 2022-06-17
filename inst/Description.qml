@@ -5,7 +5,7 @@ Description
 {
 	title :			qsTr("Learn Stats")
 	name: 			"jaspLearnStats"
-	icon:			"learning-stats.png"
+	icon:			"learning-stats.svg"
 	description:	qsTr("Learn classical statistics with simple examples and supporting text")
 	version:		"0.15"
 	requiresData:	false
@@ -69,5 +69,12 @@ Description
 		title:	qsTr("Effect Sizes")
 		qml:	"LSeffectSizes.qml"
 		func:	"LSeffectSizes"
+	}
+	
+		Analysis
+	{
+		title:	qsTr("Decision Tree")
+		qml:	"LSTdecisionTree.qml"
+		func:	"LSTdecisionTree"
 	}
 }

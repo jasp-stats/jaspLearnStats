@@ -28,6 +28,7 @@ Form
 	Section
 	{
 		title: qsTr("Parent Distribution")
+		expanded: true
 
 		Group
 		{
@@ -193,7 +194,7 @@ Form
 			DropDown
 			{
 				name:				"cltSampleShowType"
-				label:				qsTr("Show Samples")
+				label:				qsTr("Show samples")
 				id:					cltSampleShowType
 				indexDefaultValue:	0
 				values:

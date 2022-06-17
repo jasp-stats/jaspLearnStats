@@ -26,7 +26,7 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     jaspResults[["cltParentDistribution"]]$position <- 1
   }
   if (options[["parentExplain"]]){
-    jaspResults[["cltParentDistributionExplanation"]] <- createJaspHtml("This is the placeholder text for the CLT parent distribution explanation.", "p")
+    jaspResults[["cltParentDistributionExplanation"]] <- createJaspHtml(gettext("The central limit theorem implies that if you continue to take samples from a given parent distribution and take the means of those samples the resulting distribution of means will approximate a normal distribution. This happens whether the parent distribution is normally distributed or not. Above, you can see the parent distribution the samples are taken from. In social science, this parent distribution is also sometimes referred to as the population distribution, as it contains the whole population of subject you are interested in. If you are interested in the IQ of Americans, the population distribution would be the distribution of all these IQ values. The population distribution of IQ is in fact already approximately normally distributed. But you could also imagine other parent distributions, which are not normally distributed. If you are for instance interested in the life expextancy of people in the Netherlands in the last 100 years, your parent distribution would consist of the ages at death of all people that died in the Netherlands in the last 100 years. This distribution would likely be very left-skewed, meaning that there the majority of values fall on the right side, as they died at an old age. However, there will be few people that died much earlier. The main point is: No matter the shape of the parent distribution, the distribution of means of samples taken from that distribution will approximate a normal distribution. However, there are some preconditions for this, about which you can read below."), "p")
     jaspResults[["cltParentDistributionExplanation"]]$position <- 2
     jaspResults[["cltParentDistributionExplanation"]]$dependOn("parentExplain")
   }
@@ -41,7 +41,7 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     jaspResults[["cltSamples"]]$position <- 3
   }
   if (options[["samplesExplain"]]){
-    jaspResults[["cltSamplesExplanation"]] <- createJaspHtml("This is the placeholder text for the CLT samples explanation.", "p")
+    jaspResults[["cltSamplesExplanation"]] <- createJaspHtml(gettext("These are the samples taken from the parent distribution. One requirement for the sampling distribution of the means to approximate a normal distribution is that the sample size is sufficiently large. Usually a sample size of larger than 30 is used as a rule of thumb for this. Then, the sampling distribution of the means will approximate a normal distribution more the more samples you take. It is also important to note that these samples are taken with replacement. If the parent distribution is very large, this is usually not important. But for smaller parent distributions you might otherwise not be able to draw anymore samples, while the sampling distribution of the mean does not yet look normally distributed.  If you look at the individual samples, you will see that they do not necessariley have normal shape. In fact, if you increase the sample size, they will start to approximate the shape of the parent distribution - whether this is a normal shape or not."), "p")
     jaspResults[["cltSamplesExplanation"]]$position <- 4
     jaspResults[["cltSamplesExplanation"]]$dependOn("samplesExplain")
   }
@@ -51,7 +51,7 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     jaspResults[["cltSamplingDistribution"]]$position <- 5
   }
   if (options[["samplingDistExplain"]]){
-    jaspResults[["cltSamplingDistExplanation"]] <- createJaspHtml("This is the placeholder text for the CLT sampling dist. explanation.", "p")
+    jaspResults[["cltSamplingDistExplanation"]] <- createJaspHtml("This is the sampling distribution of the means. Thus, one observation in this distribution is one mean of a sample taken from the parent distribution. As you can see, this distribution starts to approximate a normal distribution - altough the parent distribution might have a totally different shape. If not quite, increase the sample size and number of samples you take.", "p")
     jaspResults[["cltSamplingDistExplanation"]]$position <- 6
     jaspResults[["cltSamplingDistExplanation"]]$dependOn("samplingDistExplain")
   }
@@ -166,7 +166,7 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     allCounts <- c(allCounts, counts)
   }
   
-  yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(0, allCounts))
+  yBreaks <- unique(as.integer(jaspGraphs::getPrettyAxisBreaks(c(0, allCounts))))
   yStep <- yBreaks[2] - yBreaks[1]
   yLimits <- c(min(yBreaks), max(yBreaks) + 2 * yStep)
   
@@ -176,7 +176,7 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
   } else {
     binWidthType2 <- .getBinWidth(unlist(samples), options)
     h2 <- hist(unlist(samples), plot = FALSE, right = FALSE, breaks = binWidthType2)
-    xBreaks <- jaspGraphs::getPrettyAxisBreaks(c(h2$breaks))
+    xBreaks <- jaspGraphs::getPrettyAxisBreaks(h2$breaks)
     xStep <- xBreaks[2] - xBreaks[1]
     xLimits <- c(min(xBreaks) - xStep, max(xBreaks) + 1.5 * xStep)
     binWidth <- (h2$breaks[2] - h2$breaks[1])
@@ -246,7 +246,7 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
   tbcString <- ifelse(to == maxSamples, "", gettextf("... until Sample Nr. %i", maxSamples))
   plotMat <- .arrangePlotMat(plotList, tbc = tbcString)
   rows <- .getPlotMatDetails(length(visibleSamples))$rows
-  plotHeight <- rows * 200
+  plotHeight <- rows * 250
   
   sampleMatrixPlot <- createJaspPlot(title = gettext("Samples"), width = 1200, height = plotHeight)
   sampleMatrixPlot$position <- 2

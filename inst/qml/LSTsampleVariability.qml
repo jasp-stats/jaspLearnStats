@@ -28,6 +28,7 @@ Form
 	Section
 	{
 		title: qsTr("Parent Distribution")
+		expanded: true
 
 		Group
 		{
@@ -257,7 +258,7 @@ Form
 		DropDown
 			{
 				name:				"svSampleShowType"
-				label:				qsTr("Show Samples")
+				label:				qsTr("Show samples")
 				id:					svSampleShowType
 				indexDefaultValue:	0
 				values:
@@ -277,7 +278,8 @@ Form
 					defaultValue:	7
 					decimals:		0
 					visible:		svSampleShowType.currentValue == "first" | svSampleShowType.currentValue == "last"
-					max:			999
+					min: 			1
+					max:			svSampleAmount.value
 				}
 				
 				

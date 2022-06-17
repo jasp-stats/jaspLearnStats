@@ -151,7 +151,7 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
   tbcString <- ifelse(to == maxSamples, "", gettextf("... until Sample Nr. %i", maxSamples)) #tbc = to be continued, i.e. the last figure of the matrix plot
   plotMat <- .arrangePlotMat(plotList, tbc = tbcString)
   plotMatRows <- .getPlotMatDetails(length(visibleSamples))$rows
-  plotHeight <- (200 + 1.5 * length(parentData$x)) * plotMatRows
+  plotHeight <- (250 + 1.5 * length(parentData$x)) * plotMatRows
   sampleMatrixPlot <- createJaspPlot(title = gettext("Samples"), width = 1200, height = plotHeight)
   sampleMatrixPlot$position <- 2
   #sampleMatrixPlot$dependOn(options = c())
