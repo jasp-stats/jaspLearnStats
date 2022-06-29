@@ -20,14 +20,6 @@ import QtQuick.Layouts 1.3
 import JASP.Controls 1.0
 import JASP.Widgets 1.0
 import JASP.Theme 1.0
+import jaspDistributions 1.0
 
-Form 
-{
-	columns: 1
-	
-	Section
-	{
-		title: qsTr("Options")
-
-	}
-}
+NormalDistribution{}
