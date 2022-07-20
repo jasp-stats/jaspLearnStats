@@ -187,6 +187,19 @@ Form
 		return max
 	}
 	
+	function getMinSamples()
+	{
+		var min = 99999
+		if(svSampleShowType.currentValue == "first" | svSampleShowType.currentValue == "last")
+		{
+			min = svFirstOrLastSamples.value
+		} else
+		{
+			min = svToSample.value
+		}
+		return min
+	}
+	
 	Section
 	{
 		title: qsTr("Sample Options")
@@ -194,25 +207,24 @@ Form
 		Group
 		{
 	
-			DoubleField
+			IntegerField
 			{
 				name:			"cltSampleSize"
 				label:			qsTr("Number of observations per sample")
 				fieldWidth:		60
 				defaultValue:	10
-				decimals:		0
 				max: 			99999
 			}
 		
-			DoubleField
+			IntegerField
 			{
 				name:			"cltSampleAmount"
 				id:				svSampleAmount
 				label:			qsTr("Number of total samples")
 				fieldWidth:		60
 				defaultValue:	10
-				decimals:		0
 				max:			getMaxSamples()
+				min:			getMinSamples()
 			}
 		}
 		
@@ -270,39 +282,41 @@ Form
 				]
 			}
 
-			DoubleField
+				IntegerField
 				{
 					name:			"svFirstOrLastSamples"
+					id:				svFirstOrLastSamples
 					label:			qsTr("")
 					fieldWidth:		60
 					defaultValue:	7
-					decimals:		0
 					visible:		svSampleShowType.currentValue == "first" | svSampleShowType.currentValue == "last"
 					min: 			1
 					max:			svSampleAmount.value
 				}
 				
 				
-				DoubleField
+				IntegerField
 				{
 					name:			"svFromSample"
+					id:				svFromSample
 					label:			qsTr("From")
 					fieldWidth:		60
 					defaultValue:	1
-					decimals:		0
 					visible:		svSampleShowType.currentValue == "range"
-					min: 			1
+					max: 			svToSample.value
+					min:			1
 				}
 				
-				DoubleField
+				IntegerField
 				{
 					name:			"svToSample"
+					id:				svToSample
 					label:			qsTr("To")
 					fieldWidth:		60
 					defaultValue:	7
-					decimals:		0
 					visible:		svSampleShowType.currentValue == "range"
-					max:			999
+					max:			svSampleAmount.value
+					min:			svFromSample.value
 				}
 		}
 	}
