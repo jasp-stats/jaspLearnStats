@@ -187,7 +187,7 @@ Form
 		return max
 	}
 	
-	function getMinSamples()
+	function getMinSamplesSV()
 	{
 		var min = 99999
 		if(svSampleShowType.currentValue == "first" | svSampleShowType.currentValue == "last")
@@ -224,7 +224,7 @@ Form
 				fieldWidth:		60
 				defaultValue:	10
 				max:			getMaxSamples()
-				min:			getMinSamples()
+				min:			getMinSamplesSV()
 			}
 		}
 		
