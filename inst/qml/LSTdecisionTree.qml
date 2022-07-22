@@ -61,5 +61,111 @@ Form
 			name:                               "typeOutcomeCat"
 			label:                              qsTr("Categorical")
 		}
-	}	
+	}
+	
+	RadioButtonGroup
+	{
+		name:                                   "nPredictor"
+		title:			qsTr("How many predictor variables?")
+		id:				nPredictor
+		
+		RadioButton
+		{
+			name:                              "onePredictor"
+			label:                              qsTr("One")		
+			checked:                            true		
+		}
+
+		RadioButton
+		{
+			name:                               "twoPlusPredictors"
+			label:                              qsTr("Two or more")
+		}
+	}
+	
+	RadioButtonGroup
+	{
+		name:                                   "typePredictor"
+		id:										typePredictor
+		title:						qsTr("What type of predictor?")
+		
+		RadioButton
+		{
+			name:                              "typePredictorCont"
+			label:                              qsTr("Continuous")		
+			checked:                            true		
+		}
+
+		RadioButton
+		{
+			name:                               "typePredictorCat"
+			label:                              qsTr("Categorical")
+		}
+		
+		RadioButton
+		{
+			name:                               "typePredictorBoth"
+			label:                              qsTr("Both")
+			visible:							nPredictor.value == "twoPlusPredictors"
+		}
+	}
+	
+	RadioButtonGroup
+	{
+		name:                                   "nCatPredictor"
+		title:						qsTr("How many categories in predictor variable?")
+		visible:					typePredictor.value == "typePredictorCat"
+		
+		RadioButton
+		{
+			name:                              "nCatPredictorTwo"
+			label:                              qsTr("Two")		
+			checked:                            true		
+		}
+
+		RadioButton
+		{
+			name:                              "nCatPredictorTwoPlus"
+			label:                              qsTr("More than two")		
+		}
+	}
+	
+	RadioButtonGroup
+	{
+		name:                                   "repCatPredictor"
+		title:						qsTr("Same or different entities in categories of predictor?")
+		visible:					typePredictor.value == "typePredictorCat"
+		
+		RadioButton
+		{
+			name:                              "repCatPredictor"
+			label:                              qsTr("Same")		
+			checked:                            true		
+		}
+
+		RadioButton
+		{
+			name:                              "noRepCatPredictor"
+			label:                              qsTr("Different")		
+		}
+	}
+	
+	RadioButtonGroup
+	{
+		name:                                   "parametricTest"
+		title:						qsTr("Are the assumptions for a parametric test met?")
+		
+		RadioButton
+		{
+			name:                              "parametric"
+			label:                              qsTr("Assumptions met")		
+			checked:                            true		
+		}
+
+		RadioButton
+		{
+			name:                              "nonparametric"
+			label:                              qsTr("Assumptions not met")		
+		}
+	}
 }

@@ -73,7 +73,7 @@ Description
 	
 		Analysis
 	{
-		title:	qsTr("Decision Tree")
+		title:	qsTr("Statistical Test Decision Tree")
 		qml:	"LSTdecisionTree.qml"
 		func:	"LSTdecisionTree"
 	}
