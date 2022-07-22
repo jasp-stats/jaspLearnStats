@@ -16,6 +16,25 @@
 #
 
 LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
+
+  decisionDf <- data.frame(from = c("One", "One"), to = c("Continuous", "Categorical"))
+  graph <- igraph::graph_from_data_frame(decisionDf, directed = TRUE)
+  coords <- igraph::layout_as_tree(graph)
+  names <- igraph::vertex_attr(graph, "name")
+  
+  # data frame for nodes and box properties
+  nodesDf <- data.frame(x = coords[,1], y = coords[,2], label = names)
+  boxHeight <- 0.15
+  boxWidth <-  0.35
+  
+  # data frame for edges
+  tidyr::pivot_longer()
+  
+  ggplot2::ggplot() +
+    ggplot2::geom_rect(data = nodesDf, mapping = ggplot2::aes(xmin = x - boxWidth, ymin = y - boxHeight,
+                                                               xmax = x + boxWidth, ymax = y + boxHeight)) +
+    ggplot2::geom_text(data = nodesDf, mapping = ggplot2::aes(x = x, y = y, label = label)) +
+    ggplot2::theme_void()
   
   
 }
