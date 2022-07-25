@@ -56,11 +56,11 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
   names <- igraph::vertex_attr(graph, "name")
   
   # data frame for nodes and box size
-  boxHeight <- 0.4
+  boxHeight <- 0.45
   boxWidth <-  .3
-  nodesDf <- data.frame(label = names, x = coords[,1], y = coords[,2], 
-                        xmin = coords[,1] - boxWidth, ymin = coords[,2] - boxHeight,
-                        xmax = coords[,1] + boxWidth, ymax = coords[,2] + boxHeight)
+  nodesDf <- data.frame(label = names, x = coords[,2], y = coords[,1], 
+                        xmin = coords[,2] - boxWidth, ymin = coords[,1] - boxHeight,
+                        xmax = coords[,2] + boxWidth, ymax = coords[,1] + boxHeight)
   
   #remove NULL nodes from edgesDf and decision Df
   nodesDf <- subset(nodesDf, !grepl("NULL", nodesDf$label))
@@ -85,31 +85,63 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
   yCoord <- c()
   
   for(i in seq_len(nrow(edgesDf))){
-    xCoord <- c(xCoord, nodesDf$x[nodesDf$label == edgesDf$label[i]])
-    yDirection <- edgesDf$order[i]
-    newYCoord <- ifelse(yDirection == "from", nodesDf$ymin[nodesDf$label == edgesDf$label[i]], nodesDf$ymax[nodesDf$label == edgesDf$label[i]])
-    yCoord <- c(yCoord, newYCoord)
+    yCoord <- c(yCoord, nodesDf$y[nodesDf$label == edgesDf$label[i]])
+    xDirection <- edgesDf$order[i]
+    newXCoord <- ifelse(xDirection == "from", nodesDf$xmin[nodesDf$label == edgesDf$label[i]], nodesDf$xmax[nodesDf$label == edgesDf$label[i]])
+    xCoord <- c(xCoord, newXCoord)
   }
   edgesDf <- cbind(edgesDf, x = xCoord, y = yCoord)
   
+
+  
+  #set active nodes
+  nodesDf$active <- FALSE
+  if(options[["nOutcomeVariables"]] == "nOutcomeOne")
+    nodesDf$active[nodesDf$label == "One"] <- TRUE
+  if(options[["nOutcomeVariables"]] == "nOutcomeMany")
+    nodesDf$active[nodesDf$label == "Two or more"] <- TRUE
+    
+  
   
   #remove numbers from labels
-  # for(i in seq_along(nodesDf$label)){
-  #   nodesDf$label[i] <- gsub("[[:digit:]]", "", nodesDf$label[i])
-  # }
+  for(i in seq_along(nodesDf$label)){
+    nodesDf$label[i] <- gsub("[[:digit:]]", "", nodesDf$label[i])
+  }
   
-  plot <- createJaspPlot(title = gettext("Decision Tree"), width = 1700, height = 1200)
+  
+  #create Df for questions as headings
+  yPos <- min(nodesDf$y) - 2
+  xPos <- 7:0
+  questionsDf <- data.frame(x = xPos, y = yPos,
+                            label = c("How many outcome variables?",
+                                      "What type of outcome?",
+                                      "How many predictor variables?",
+                                      "What type of predictor?",
+                                      "How many categories \n in predictor variable?",
+                                      "Same or different entities \n in categories of predictor?",
+                                      "Parametric test",
+                                      "Non-parametric alternative"))
+  
+  #Divide nodes into answers to questions and tests to format them differently
+  answerNodesDf <- head(nodesDf, 36)
+  testNodesDf <- tail(nodesDf, 28)
+  
+  
+  plot <- createJaspPlot(title = gettext("Decision Tree"), width = 2000, height = 1200)
   
   plotObject <- ggplot2::ggplot() +
-    ggplot2::coord_flip() +
+    ggplot2::scale_x_reverse() +
     ggplot2::scale_y_reverse() +
     ggplot2::geom_rect(data = nodesDf, mapping = ggplot2::aes(xmin = xmin, ymin = ymin,
-                                                              xmax = xmax, ymax = ymax)) +
-    ggplot2::geom_text(data = nodesDf, mapping = ggplot2::aes(x = x, y = y, label = label), size = 4) +
+                                                              xmax = xmax, ymax = ymax, fill = active), color = "black") +
+    ggplot2::geom_text(data = answerNodesDf, mapping = ggplot2::aes(x = x, y = y, label = label), size = 6) +
+    ggplot2::geom_text(data = testNodesDf, mapping = ggplot2::aes(x = x, y = y, label = label), size = 5) +
+    ggplot2::geom_text(data = questionsDf, mapping = ggplot2::aes(x = x, y = y, label = label), size = 6) +
     ggplot2::geom_path(data = edgesDf, mapping = ggplot2::aes(x = x, y = y, group = id),
                        arrow = ggplot2::arrow(length = ggplot2::unit(0.3, "cm"), type = "closed"),
                        size = 1) +
-    ggplot2::theme_void()
+    ggplot2::theme_void() + 
+    ggplot2::theme(legend.position = "none")
   
   plot$plotObject <- plotObject
   
