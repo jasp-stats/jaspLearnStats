@@ -28,6 +28,7 @@ Form
 	RadioButtonGroup
 	{
 		name:                                   "nOutcomeVariables"
+		id:										nOutcomeVariables
 		title:			qsTr("How many outcome variables?")
 		
 		RadioButton
@@ -47,7 +48,8 @@ Form
 		RadioButtonGroup
 	{
 		name:                                   "typeOutcomeVariables"
-		title:			qsTr("What type of outcome?")
+		id:										typeOutcomeVariables
+		title:									qsTr("What type of outcome?")
 		
 		RadioButton
 		{
@@ -60,6 +62,7 @@ Form
 		{
 			name:                               "typeOutcomeCat"
 			label:                              qsTr("Categorical")
+			enabled:							nOutcomeVariables.value == "nOutcomeOne"
 		}
 	}
 	
@@ -93,20 +96,21 @@ Form
 		{
 			name:                              "typePredictorCont"
 			label:                              qsTr("Continuous")		
-			checked:                            true		
+			enabled:							nOutcomeVariables.value == "nOutcomeOne"
 		}
 
 		RadioButton
 		{
 			name:                               "typePredictorCat"
 			label:                              qsTr("Categorical")
+			checked:							true
 		}
 		
 		RadioButton
 		{
 			name:                               "typePredictorBoth"
 			label:                              qsTr("Both")
-			visible:							nPredictor.value == "twoPlusPredictors"
+			enabled:							nPredictor.value == "twoPlusPredictors"
 		}
 	}
 	
@@ -114,7 +118,7 @@ Form
 	{
 		name:                                   "nCatPredictor"
 		title:						qsTr("How many categories in predictor variable?")
-		visible:					typePredictor.value == "typePredictorCat"
+		enabled:					typePredictor.value == "typePredictorCat" && nPredictor.value == "onePredictor" && nOutcomeVariables.value == "nOutcomeOne" && typeOutcomeVariables.value == "typeOutcomeCont"
 		
 		RadioButton
 		{
@@ -134,19 +138,27 @@ Form
 	{
 		name:                                   "repCatPredictor"
 		title:						qsTr("Same or different entities in categories of predictor?")
-		visible:					typePredictor.value == "typePredictorCat"
+		enabled:					(typePredictor.value == "typePredictorCat" & nOutcomeVariables.value == "nOutcomeOne") | (typeOutcomeVariables.value == "typeOutcomeCat" & typePredictor.value == "typePredictorBoth")
 		
 		RadioButton
 		{
 			name:                              "repCatPredictor"
 			label:                              qsTr("Same")		
-			checked:                            true		
+			enabled:							typeOutcomeVariables.value == "typeOutcomeCont"
 		}
 
 		RadioButton
 		{
 			name:                              "noRepCatPredictor"
-			label:                              qsTr("Different")		
+			label:                              qsTr("Different")
+			checked:							true
+		}
+		
+		RadioButton
+		{
+			name:                              "mixedRepCatPredictor"
+			label:                              qsTr("Both")
+			enabled:							nPredictor.value == "twoPlusPredictors" & typeOutcomeVariables == "typeOutcomeCont"
 		}
 	}
 	

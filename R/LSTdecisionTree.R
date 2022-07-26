@@ -94,10 +94,97 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
   
 
   
-  #set active nodes
-  nodesDf$active <- FALSE
+  ### set active nodes ###
+  
+  ## create list with all paths to parametric tests
+  allTestNames <- tail(nodesDf, 28)$label
+  pathList <- igraph::all_shortest_paths(graph, "One", head(allTestNames, 15))$res
+  pathList <- append(pathList, igraph::all_shortest_paths(graph, "Two or more", allTestNames[c(16, 17, 18)])$res)
+  pathMatchList <- list()
+  #transform to characters, remove test outcome, numbers and NULLs to match
+  for(i in seq_along(pathList)){
+    pathList[[i]] <- igraph::as_ids(pathList[[i]])
+    pathList[[i]] <- pathList[[i]][!grepl("NULL", pathList[[i]])]
+    pathMatchList[[i]] <- head(pathList[[i]], -1)
+    pathMatchList[[i]] <- gsub("[[:digit:]]", "", pathMatchList[[i]])
+  }
+
+  
+  ## get selected options to match
+  selectedOptionsVector <- c()
+  
+  #Q1: "How many outcome variables?")
   if(options[["nOutcomeVariables"]] == "nOutcomeOne")
-    nodesDf$active[nodesDf$label == "One"] <- TRUE
+    selectedOptionsVector[1] <- "One"
+  if(options[["nOutcomeVariables"]] == "nOutcomeMany")
+    selectedOptionsVector[1] <- "Two or more"
+  
+  #Q2: "What type of outcome?"
+  if(options[["typeOutcomeVariables"]] == "typeOutcomeCont")
+    selectedOptionsVector[2] <- "Continuous"
+  if(options[["typeOutcomeVariables"]] == "typeOutcomeCat" & options[["nOutcomeVariables"]] == "nOutcomeOne")
+    selectedOptionsVector[2] <- "Categorical"
+  
+  #Q3: "How many predictor variables?"
+  if(options[["nPredictor"]] == "onePredictor")
+    selectedOptionsVector[3] <- "One"
+  if(options[["nPredictor"]] == "twoPlusPredictors")
+    selectedOptionsVector[3] <- "Two or more"
+  
+  #Q4: "What type of predictor?"
+  if(options[["typePredictor"]] == "typePredictorCont" & options[["nOutcomeVariables"]] == "nOutcomeOne")
+    selectedOptionsVector[4] <- "Continuous"
+  if(options[["typePredictor"]] == "typePredictorCat")
+    selectedOptionsVector[4] <- "Categorical"
+  if(options[["typePredictor"]] == "typePredictorBoth" & options[["nPredictor"]] == "twoPlusPredictors")
+    selectedOptionsVector[4] <- "Both"
+  
+  if (sum(!is.na(selectedOptionsVector)) < 4) {
+    plot <- createJaspPlot(title = gettext("Decision Tree"), width = 2000, height = 1200)
+    plot$setError("Not all required questions answered.")
+    jaspResults[["DecisionTree"]] <- plot
+    return()
+  }
+  
+  ## optional questions:
+  
+  #Q5: "How many categories in predictor variable?"
+  if(options[["typePredictor"]] == "typePredictorCat" & options[["nPredictor"]] == "onePredictor" &
+     options[["nOutcomeVariables"]] == "nOutcomeOne" & options[["typeOutcomeVariables"]] == "typeOutcomeCont") {
+    if(options[["nCatPredictor"]] == "nCatPredictorTwo")
+      selectedOptionsVector <- c(selectedOptionsVector, "Two")
+    if(options[["nCatPredictor"]] == "nCatPredictorTwoPlus")
+      selectedOptionsVector <- c(selectedOptionsVector, "More than two")
+  }
+  
+  #Q6: "Same or different entities in categories of predictor?"
+  if((options[["typePredictor"]] == "typePredictorCat" & options[["nOutcomeVariables"]] == "nOutcomeOne") |
+     (options[["typeOutcomeVariables"]] == "typeOutcomeCat" & options[["typePredictor"]] == "typePredictorBoth")) {
+    if(options[["repCatPredictor"]] == "repCatPredictor" & options[["typeOutcomeVariables"]] == "typeOutcomeCont")
+      selectedOptionsVector <- c(selectedOptionsVector, "Same")
+    if (options[["repCatPredictor"]] == "mixedRepCatPredictor" & options[["nPredictor"]] == "twoPlusPredictors" &
+        options[["typeOutcomeVariables"]] == "typeOutcomeCont")
+      selectedOptionsVector <- c(selectedOptionsVector, "Both")
+    if (options[["repCatPredictor"]] == "noRepCatPredictor")
+      selectedOptionsVector <- c(selectedOptionsVector, "Different")
+  }
+  
+  
+  # match selected options with paths
+  for(i in seq_along(pathMatchList)) {
+    if (all(pathMatchList[[i]] == selectedOptionsVector))
+      pathID <- i
+  }
+  
+  activeNodes <- pathList[[pathID]]
+  
+  #declare active nodes
+  nodesDf$active <- FALSE
+  for(i in seq_len(nrow(nodesDf))){
+    if(nodesDf[i,]$label %in% activeNodes)
+      nodesDf[i,]$active <- TRUE
+  }
+
   if(options[["nOutcomeVariables"]] == "nOutcomeMany")
     nodesDf$active[nodesDf$label == "Two or more"] <- TRUE
     
