@@ -267,7 +267,7 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
                                                                 xmax = xmax, ymax = ymax, fill = active), color = "black") +
       ggplot2::geom_text(data = answerNodesDf, mapping = ggplot2::aes(x = x, y = y, label = label), size = 6) +
       ggplot2::geom_text(data = testNodesDf, mapping = ggplot2::aes(x = x, y = y, label = label), size = 5) +
-      ggplot2::geom_text(data = questionsDf, mapping = ggplot2::aes(x = x, y = y, label = label), size = 7) +
+      ggplot2::geom_text(data = questionsDf, mapping = ggplot2::aes(x = x, y = y, label = label), size = 7, fontface = "bold") +
       ggplot2::geom_path(data = edgesDf, mapping = ggplot2::aes(x = x, y = y, group = id),
                          arrow = ggplot2::arrow(length = ggplot2::unit(0.3, "cm"), type = "closed"),
                          size = 1) +
