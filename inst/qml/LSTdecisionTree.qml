@@ -23,7 +23,10 @@ import JASP.Theme 1.0
 
 Form 
 {
-	columns: 1
+	columns: 2
+	
+	
+	Group{
 	
 	RadioButtonGroup
 	{
@@ -158,7 +161,7 @@ Form
 		{
 			name:                              "mixedRepCatPredictor"
 			label:                              qsTr("Both")
-			enabled:							nPredictor.value == "twoPlusPredictors" & typeOutcomeVariables == "typeOutcomeCont"
+			enabled:							nPredictor.value == "twoPlusPredictors" & typeOutcomeVariables.value == "typeOutcomeCont"
 		}
 	}
 	
@@ -180,4 +183,15 @@ Form
 			label:                              qsTr("Assumptions not met")		
 		}
 	}
+	
+	}
+	
+	
+	
+			CheckBox
+		{
+			name: "displayFullTree"
+			label: qsTr("Show full decision tree")
+			checked: true
+		}
 }

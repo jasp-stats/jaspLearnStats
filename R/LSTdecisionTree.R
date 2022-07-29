@@ -65,7 +65,7 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
   #remove NULL nodes from edgesDf and decision Df
   nodesDf <- subset(nodesDf, !grepl("NULL", nodesDf$label))
   decisionDf <- subset(decisionDf, !(grepl("NULL", decisionDf$from) | grepl("NULL", decisionDf$to)))
-
+  
   
   # add edges that skip rows
   extraEdges <- data.frame(from = c("Continuous3", "Continuous4", "Categorical3", "Categorical3", "Categorical3",
@@ -92,7 +92,7 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
   }
   edgesDf <- cbind(edgesDf, x = xCoord, y = yCoord)
   
-
+  
   
   ### set active nodes ###
   
@@ -108,7 +108,7 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
     pathMatchList[[i]] <- head(pathList[[i]], -1)
     pathMatchList[[i]] <- gsub("[[:digit:]]", "", pathMatchList[[i]])
   }
-
+  
   
   ## get selected options to match
   selectedOptionsVector <- c()
@@ -139,13 +139,6 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
   if(options[["typePredictor"]] == "typePredictorBoth" & options[["nPredictor"]] == "twoPlusPredictors")
     selectedOptionsVector[4] <- "Both"
   
-  if (sum(!is.na(selectedOptionsVector)) < 4) {
-    plot <- createJaspPlot(title = gettext("Decision Tree"), width = 2000, height = 1200)
-    plot$setError("Not all required questions answered.")
-    jaspResults[["DecisionTree"]] <- plot
-    return()
-  }
-  
   ## optional questions:
   
   #Q5: "How many categories in predictor variable?"
@@ -171,12 +164,48 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
   
   
   # match selected options with paths
+  pathID <- "No Match"   #default, if through QML bug an impossible combination is selected
+  
   for(i in seq_along(pathMatchList)) {
     if (all(pathMatchList[[i]] == selectedOptionsVector))
       pathID <- i
   }
   
+  # return error as workaround for QML bug
+  if (pathID == "No Match") {
+    plot <- createJaspPlot(title = gettext("Decision Tree"), width = 2000, height = 1200)
+    plot$setError("Not all required questions answered.")
+    jaspResults[["DecisionTree"]] <- plot
+    return()
+  }
+  
+  
   activeNodes <- pathList[[pathID]]
+  
+  # switch to non-parametric alternative if necessary
+  if (options[["parametricTest"]] == "nonparametric") {
+    parametricTest <- tail(activeNodes, 1)
+    if (parametricTest == "Pearson correlation \n or regression")
+      activeNodes <- c(activeNodes, "Bootstrap correlation/\nregression, Spearman \n correlation, Kendall's tau")
+    if (parametricTest == "Dependent t-test")
+      activeNodes <- c(activeNodes, "Bootstrapped t-test or \n Wilcoxon matched-pairs test")
+    if (parametricTest == "Independent t-test or \n Point-biserial correlation")
+      activeNodes <- c(activeNodes, "Bootstrapped t-test or Mann-\nWhitney Test")
+    if (parametricTest == "One-way repeated measures \n ANOVA")
+      activeNodes <- c(activeNodes, "Bootstrapped ANOVA or\nFriedman's ANOVA")
+    if (parametricTest == "One-way independent \n ANOVA")
+      activeNodes <- c(activeNodes, "Robust ANOVA or Kruskal-\nWallis test")
+    if (parametricTest == "Multiple regression")
+      activeNodes <- c(activeNodes, "Bootstrapped multiple\nregression")
+    if (parametricTest == "Factorial repeated measures \n ANOVA")
+      activeNodes <- c(activeNodes, "Robust factorial repeated\nmeasures ANOVA")
+    if (parametricTest == "Independent factorial \n ANOVA/multiple regression")
+      activeNodes <- c(activeNodes, "Robust independent factorial\n ANOVA/multiple regression")
+    if (parametricTest == "Factorial mixed ANOVA")
+      activeNodes <- c(activeNodes, "Robust factorial mixed\nANOVA")
+    if (parametricTest == "Multiple regression\n/ANCOVA")
+      activeNodes <- c(activeNodes, "Robust ANCOVA/\nbootstrapped regression")
+  }
   
   #declare active nodes
   nodesDf$active <- FALSE
@@ -184,10 +213,10 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
     if(nodesDf[i,]$label %in% activeNodes)
       nodesDf[i,]$active <- TRUE
   }
-
+  
   if(options[["nOutcomeVariables"]] == "nOutcomeMany")
     nodesDf$active[nodesDf$label == "Two or more"] <- TRUE
-    
+  
   
   
   #remove numbers from labels
@@ -213,8 +242,23 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
   answerNodesDf <- head(nodesDf, 36)
   testNodesDf <- tail(nodesDf, 28)
   
+  testChoice <- tail(activeNodes, 1)
+  labelDf <- data.frame(x = 1, y = 1, label = testChoice)
   
-  plot <- createJaspPlot(title = gettext("Decision Tree"), width = 2000, height = 1200)
+  plot1 <- createJaspPlot(title = gettext("Test choice"), width = 450, height = 150)
+  
+  plotObject <- ggplot2::ggplot() +
+    ggplot2::geom_label(data = labelDf, mapping = ggplot2::aes(x = x, y = y, label = label), size = 10, fill = "lightblue") +
+    ggplot2::theme_void()
+  
+  plot1$plotObject <- plotObject
+  
+  jaspResults[["DecisionTree"]] <- createJaspContainer("")
+  jaspResults[["DecisionTree"]][["Heading"]] <- plot1
+  jaspResults[["DecisionTree"]][["Text"]] <- createJaspHtml("Some explanation and maybe a link to the test?", "p")
+  
+  if (options[["displayFullTree"]]) {
+  plot2 <- createJaspPlot(title = gettext("Decision Tree"), width = 2000, height = 1200)
   
   plotObject <- ggplot2::ggplot() +
     ggplot2::scale_x_reverse() +
@@ -230,9 +274,11 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
     ggplot2::theme_void() + 
     ggplot2::theme(legend.position = "none")
   
-  plot$plotObject <- plotObject
+  plot2$plotObject <- plotObject
   
-  jaspResults[["DecisionTree"]] <- plot
+  jaspResults[["DecisionTree"]][["Plot"]] <- plot2
+  
+  }
   
   return()
 }
