@@ -28,8 +28,8 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
                                     "Same3", "Different3", "Both4", "NULL17", "NULL18", "Different4", "NULL19", "Different5",
                                     "Different6", "NULL20", "NULL21", "NULL22", "Pearson correlation \n or regression",
                                     "Dependent t-test", "Independent t-test or \n Point-biserial correlation",
-                                    "One-way repeated measures \n ANOVA", "One-way independent \n ANOVA", "Multiple regression",
-                                    "Factorial repeated measures \n ANOVA", "Independent factorial \n ANOVA/multiple regression",
+                                    "One-way repeated \n measures ANOVA", "One-way independent \n ANOVA", "Multiple regression",
+                                    "Factorial repeated \n measures ANOVA", "Independent factorial \n ANOVA / multiple \n regression",
                                     "Factorial mixed ANOVA", "Multiple regression\n/ANCOVA"),
                            to = c("Continuous", "Categorical", "Continuous2", "One2", "Two or more2", "One3", "Two or more3",
                                   "One4", "Two or more4", "Continuous3", "Categorical2", "Continuous4", "Categorical3", "Both",
@@ -39,24 +39,24 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
                                   "Same", "Different", "Same2", "Different2", "NULL16", "Same3", "Different3", "Both4", "NULL17",
                                   "NULL18", "Different4", "NULL19", "Different5", "Different6", "NULL20", "NULL21", "NULL22",
                                   "Pearson correlation \n or regression", "Dependent t-test",
-                                  "Independent t-test or \n Point-biserial correlation", "One-way repeated measures \n ANOVA",
-                                  "One-way independent \n ANOVA", "Multiple regression", "Factorial repeated measures \n ANOVA",
-                                  "Independent factorial \n ANOVA/multiple regression", "Factorial mixed ANOVA",
+                                  "Independent t-test or \n Point-biserial correlation", "One-way repeated \n measures ANOVA",
+                                  "One-way independent \n ANOVA", "Multiple regression", "Factorial repeated \n measures ANOVA",
+                                  "Independent factorial \n ANOVA / multiple \n regression", "Factorial mixed ANOVA",
                                   "Multiple regression\n/ANCOVA", "Logistic regression or \n biserial/point biserial \n correlation",
                                   "Pearson chi-square or \n likelihood ratio", "Logistic regression", "Loglinear analysis", 
                                   "Logistic regression2", "MANOVA", "Factorial MANOVA", "MANCOVA", 
                                   "Bootstrap correlation/\nregression, Spearman \n correlation, Kendall's tau",
-                                  "Bootstrapped t-test or \n Wilcoxon matched-pairs test",
-                                  "Bootstrapped t-test or Mann-\nWhitney Test", "Bootstrapped ANOVA or\nFriedman's ANOVA",
-                                  "Robust ANOVA or Kruskal-\nWallis test", "Bootstrapped multiple\nregression",
-                                  "Robust factorial repeated\nmeasures ANOVA", "Robust independent factorial\n ANOVA/multiple regression",
+                                  "Bootstrapped t-test or \n Wilcoxon matched-pairs \n test",
+                                  "Bootstrapped t-test or \n Mann-Whitney Test", "Bootstrapped ANOVA or\nFriedman's ANOVA",
+                                  "Robust ANOVA or \n Kruskal-Wallis test", "Bootstrapped multiple\nregression",
+                                  "Robust factorial repeated\nmeasures ANOVA", "Robust independent \n factorial ANOVA/\n multiple regression",
                                   "Robust factorial mixed\nANOVA", "Robust ANCOVA/\nbootstrapped regression"))
   graph <- igraph::graph_from_data_frame(decisionDf, directed = TRUE)
   coords <- igraph::layout_as_tree(graph)
   names <- igraph::vertex_attr(graph, "name")
   
   # data frame for nodes and box size
-  boxHeight <- 0.45
+  boxHeight <- 0.46
   boxWidth <-  .3
   nodesDf <- data.frame(label = names, x = coords[,2], y = coords[,1], 
                         xmin = coords[,2] - boxWidth, ymin = coords[,1] - boxHeight,
@@ -188,19 +188,19 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
     if (parametricTest == "Pearson correlation \n or regression")
       activeNodes <- c(activeNodes, "Bootstrap correlation/\nregression, Spearman \n correlation, Kendall's tau")
     if (parametricTest == "Dependent t-test")
-      activeNodes <- c(activeNodes, "Bootstrapped t-test or \n Wilcoxon matched-pairs test")
+      activeNodes <- c(activeNodes, "Bootstrapped t-test or \n Wilcoxon matched-pairs \n test")
     if (parametricTest == "Independent t-test or \n Point-biserial correlation")
-      activeNodes <- c(activeNodes, "Bootstrapped t-test or Mann-\nWhitney Test")
-    if (parametricTest == "One-way repeated measures \n ANOVA")
+      activeNodes <- c(activeNodes, "Bootstrapped t-test or \n Mann-Whitney Test")
+    if (parametricTest == "One-way repeated \n measures ANOVA")
       activeNodes <- c(activeNodes, "Bootstrapped ANOVA or\nFriedman's ANOVA")
     if (parametricTest == "One-way independent \n ANOVA")
-      activeNodes <- c(activeNodes, "Robust ANOVA or Kruskal-\nWallis test")
+      activeNodes <- c(activeNodes, "Robust ANOVA or \n Kruskal-Wallis test")
     if (parametricTest == "Multiple regression")
       activeNodes <- c(activeNodes, "Bootstrapped multiple\nregression")
-    if (parametricTest == "Factorial repeated measures \n ANOVA")
+    if (parametricTest == "Factorial repeated \n measures ANOVA")
       activeNodes <- c(activeNodes, "Robust factorial repeated\nmeasures ANOVA")
-    if (parametricTest == "Independent factorial \n ANOVA/multiple regression")
-      activeNodes <- c(activeNodes, "Robust independent factorial\n ANOVA/multiple regression")
+    if (parametricTest == "Independent factorial \n ANOVA / multiple \n regression")
+      activeNodes <- c(activeNodes, "Robust independent \n factorial ANOVA/\n multiple regression")
     if (parametricTest == "Factorial mixed ANOVA")
       activeNodes <- c(activeNodes, "Robust factorial mixed\nANOVA")
     if (parametricTest == "Multiple regression\n/ANCOVA")
@@ -229,7 +229,7 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
   yPos <- min(nodesDf$y) - 2
   xPos <- 7:0
   questionsDf <- data.frame(x = xPos, y = yPos,
-                            label = c("How many outcome variables?",
+                            label = c("How many outcome \n variables?",
                                       "What type of outcome?",
                                       "How many predictor variables?",
                                       "What type of predictor?",
@@ -248,7 +248,7 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
   plot1 <- createJaspPlot(title = gettext("Test choice"), width = 450, height = 150)
   
   plotObject <- ggplot2::ggplot() +
-    ggplot2::geom_label(data = labelDf, mapping = ggplot2::aes(x = x, y = y, label = label), size = 10, fill = "lightblue") +
+    ggplot2::geom_label(data = labelDf, mapping = ggplot2::aes(x = x, y = y, label = label), size = 10, fill = "#8dc63f") +
     ggplot2::theme_void()
   
   plot1$plotObject <- plotObject
@@ -258,27 +258,33 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
   jaspResults[["DecisionTree"]][["Text"]] <- createJaspHtml("Some explanation and maybe a link to the test?", "p")
   
   if (options[["displayFullTree"]]) {
-  plot2 <- createJaspPlot(title = gettext("Decision Tree"), width = 2000, height = 1200)
-  
-  plotObject <- ggplot2::ggplot() +
-    ggplot2::scale_x_reverse() +
-    ggplot2::scale_y_reverse() +
-    ggplot2::geom_rect(data = nodesDf, mapping = ggplot2::aes(xmin = xmin, ymin = ymin,
-                                                              xmax = xmax, ymax = ymax, fill = active), color = "black") +
-    ggplot2::geom_text(data = answerNodesDf, mapping = ggplot2::aes(x = x, y = y, label = label), size = 6) +
-    ggplot2::geom_text(data = testNodesDf, mapping = ggplot2::aes(x = x, y = y, label = label), size = 5) +
-    ggplot2::geom_text(data = questionsDf, mapping = ggplot2::aes(x = x, y = y, label = label), size = 6) +
-    ggplot2::geom_path(data = edgesDf, mapping = ggplot2::aes(x = x, y = y, group = id),
-                       arrow = ggplot2::arrow(length = ggplot2::unit(0.3, "cm"), type = "closed"),
-                       size = 1) +
-    ggplot2::theme_void() + 
-    ggplot2::theme(legend.position = "none")
-  
-  plot2$plotObject <- plotObject
-  
-  jaspResults[["DecisionTree"]][["Plot"]] <- plot2
-  
+    plot2 <- createJaspPlot(title = gettext("Decision Tree"), width = 2300, height = 1500)
+    
+    plotObject <- ggplot2::ggplot() +
+      ggplot2::scale_x_reverse() +
+      ggplot2::scale_y_reverse() +
+      ggplot2::geom_rect(data = nodesDf, mapping = ggplot2::aes(xmin = xmin, ymin = ymin,
+                                                                xmax = xmax, ymax = ymax, fill = active), color = "black") +
+      ggplot2::geom_text(data = answerNodesDf, mapping = ggplot2::aes(x = x, y = y, label = label), size = 6) +
+      ggplot2::geom_text(data = testNodesDf, mapping = ggplot2::aes(x = x, y = y, label = label), size = 5) +
+      ggplot2::geom_text(data = questionsDf, mapping = ggplot2::aes(x = x, y = y, label = label), size = 7) +
+      ggplot2::geom_path(data = edgesDf, mapping = ggplot2::aes(x = x, y = y, group = id),
+                         arrow = ggplot2::arrow(length = ggplot2::unit(0.3, "cm"), type = "closed"),
+                         size = 1) +
+      ggplot2::scale_fill_manual(values = c("TRUE" = "#8dc63f", "FALSE" = "#15a1e2")) +
+      ggplot2::theme_void() +
+      ggplot2::theme(legend.position = "none")
+    
+    plot2$plotObject <- plotObject
+    
+    jaspResults[["DecisionTree"]][["Plot"]] <- plot2
+    
   }
   
   return()
 }
+
+
+
+
+
