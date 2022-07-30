@@ -78,7 +78,6 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
   nodesDf <- subset(nodesDf, !grepl("NULL", nodesDf$label))
   decisionDf <- subset(decisionDf, !(grepl("NULL", decisionDf$from) | grepl("NULL", decisionDf$to)))
   
-  
   # add edges that skip rows
   extraEdges <- data.frame(from = c("Continuous3", "Continuous4", "Categorical3", "Categorical3", "Categorical3",
                                     "Both", "Continuous5", "Categorical4", "Continuous6", "Categorical5", "Both2",
