@@ -15,7 +15,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
-  
   decisionDf <- data.frame(from = c("One", "One", "Two or more", "Continuous", "Continuous", "Categorical", "Categorical",
                                     "Continuous2", "Continuous2", "One2", "One2", "Two or more2", "Two or more2", "Two or more2",
                                     "One3", "One3", "Two or more3", "Two or more3", "Two or more3", "One4",
@@ -62,10 +61,9 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
                         xmin = coords[,2] - boxWidth, ymin = coords[,1] - boxHeight,
                         xmax = coords[,2] + boxWidth, ymax = coords[,1] + boxHeight)
   
-  #remove NULL nodes from edgesDf and decision Df
+  # remove NULL nodes from edgesDf and decision Df
   nodesDf <- subset(nodesDf, !grepl("NULL", nodesDf$label))
   decisionDf <- subset(decisionDf, !(grepl("NULL", decisionDf$from) | grepl("NULL", decisionDf$to)))
-  
   
   # add edges that skip rows
   extraEdges <- data.frame(from = c("Continuous3", "Continuous4", "Categorical3", "Categorical3", "Categorical3",
@@ -83,8 +81,7 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
                                  values_to = "label")
   xCoord <- c()
   yCoord <- c()
-  
-  for(i in seq_len(nrow(edgesDf))){
+  for (i in seq_len(nrow(edgesDf))) {
     yCoord <- c(yCoord, nodesDf$y[nodesDf$label == edgesDf$label[i]])
     xDirection <- edgesDf$order[i]
     newXCoord <- ifelse(xDirection == "from", nodesDf$xmin[nodesDf$label == edgesDf$label[i]], nodesDf$xmax[nodesDf$label == edgesDf$label[i]])
@@ -92,81 +89,28 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
   }
   edgesDf <- cbind(edgesDf, x = xCoord, y = yCoord)
   
-  
-  
-  ### set active nodes ###
-  
+  # set active nodes
   ## create list with all paths to parametric tests
   allTestNames <- tail(nodesDf, 28)$label
   pathList <- igraph::all_shortest_paths(graph, "One", head(allTestNames, 15))$res
   pathList <- append(pathList, igraph::all_shortest_paths(graph, "Two or more", allTestNames[c(16, 17, 18)])$res)
   pathMatchList <- list()
-  #transform to characters, remove test outcome, numbers and NULLs to match
-  for(i in seq_along(pathList)){
+  
+  ##transform to characters, remove test outcome, numbers and NULLs to match
+  for (i in seq_along(pathList)) {
     pathList[[i]] <- igraph::as_ids(pathList[[i]])
     pathList[[i]] <- pathList[[i]][!grepl("NULL", pathList[[i]])]
     pathMatchList[[i]] <- head(pathList[[i]], -1)
     pathMatchList[[i]] <- gsub("[[:digit:]]", "", pathMatchList[[i]])
   }
   
-  
   ## get selected options to match
-  selectedOptionsVector <- c()
+  selectedOptionsVector <- .getSelectedOptions(options)
   
-  #Q1: "How many outcome variables?")
-  if(options[["nOutcomeVariables"]] == "nOutcomeOne")
-    selectedOptionsVector[1] <- "One"
-  if(options[["nOutcomeVariables"]] == "nOutcomeMany")
-    selectedOptionsVector[1] <- "Two or more"
+  ## match selected options with paths
+  pathID <- "No Match"   # default, if through QML bug an impossible combination is selected
   
-  #Q2: "What type of outcome?"
-  if(options[["typeOutcomeVariables"]] == "typeOutcomeCont")
-    selectedOptionsVector[2] <- "Continuous"
-  if(options[["typeOutcomeVariables"]] == "typeOutcomeCat" & options[["nOutcomeVariables"]] == "nOutcomeOne")
-    selectedOptionsVector[2] <- "Categorical"
-  
-  #Q3: "How many predictor variables?"
-  if(options[["nPredictor"]] == "onePredictor")
-    selectedOptionsVector[3] <- "One"
-  if(options[["nPredictor"]] == "twoPlusPredictors")
-    selectedOptionsVector[3] <- "Two or more"
-  
-  #Q4: "What type of predictor?"
-  if(options[["typePredictor"]] == "typePredictorCont" & options[["nOutcomeVariables"]] == "nOutcomeOne")
-    selectedOptionsVector[4] <- "Continuous"
-  if(options[["typePredictor"]] == "typePredictorCat")
-    selectedOptionsVector[4] <- "Categorical"
-  if(options[["typePredictor"]] == "typePredictorBoth" & options[["nPredictor"]] == "twoPlusPredictors")
-    selectedOptionsVector[4] <- "Both"
-  
-  ## optional questions:
-  
-  #Q5: "How many categories in predictor variable?"
-  if(options[["typePredictor"]] == "typePredictorCat" & options[["nPredictor"]] == "onePredictor" &
-     options[["nOutcomeVariables"]] == "nOutcomeOne" & options[["typeOutcomeVariables"]] == "typeOutcomeCont") {
-    if(options[["nCatPredictor"]] == "nCatPredictorTwo")
-      selectedOptionsVector <- c(selectedOptionsVector, "Two")
-    if(options[["nCatPredictor"]] == "nCatPredictorTwoPlus")
-      selectedOptionsVector <- c(selectedOptionsVector, "More than two")
-  }
-  
-  #Q6: "Same or different entities in categories of predictor?"
-  if((options[["typePredictor"]] == "typePredictorCat" & options[["nOutcomeVariables"]] == "nOutcomeOne") |
-     (options[["typeOutcomeVariables"]] == "typeOutcomeCat" & options[["typePredictor"]] == "typePredictorBoth")) {
-    if(options[["repCatPredictor"]] == "repCatPredictor" & options[["typeOutcomeVariables"]] == "typeOutcomeCont")
-      selectedOptionsVector <- c(selectedOptionsVector, "Same")
-    if (options[["repCatPredictor"]] == "mixedRepCatPredictor" & options[["nPredictor"]] == "twoPlusPredictors" &
-        options[["typeOutcomeVariables"]] == "typeOutcomeCont")
-      selectedOptionsVector <- c(selectedOptionsVector, "Both")
-    if (options[["repCatPredictor"]] == "noRepCatPredictor")
-      selectedOptionsVector <- c(selectedOptionsVector, "Different")
-  }
-  
-  
-  # match selected options with paths
-  pathID <- "No Match"   #default, if through QML bug an impossible combination is selected
-  
-  for(i in seq_along(pathMatchList)) {
+  for (i in seq_along(pathMatchList)) {
     if (all(pathMatchList[[i]] == selectedOptionsVector))
       pathID <- i
   }
@@ -178,7 +122,6 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
     jaspResults[["DecisionTree"]] <- plot
     return()
   }
-  
   
   activeNodes <- pathList[[pathID]]
   
@@ -207,25 +150,23 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
       activeNodes <- c(activeNodes, "Robust ANCOVA/\nbootstrapped regression")
   }
   
-  #declare active nodes
+  # declare active nodes
   nodesDf$active <- FALSE
-  for(i in seq_len(nrow(nodesDf))){
-    if(nodesDf[i,]$label %in% activeNodes)
+  for (i in seq_len(nrow(nodesDf))) {
+    if (nodesDf[i,]$label %in% activeNodes)
       nodesDf[i,]$active <- TRUE
   }
   
-  if(options[["nOutcomeVariables"]] == "nOutcomeMany")
+  if (options[["nOutcomeVariables"]] == "nOutcomeMany")
     nodesDf$active[nodesDf$label == "Two or more"] <- TRUE
   
-  
-  
-  #remove numbers from labels
-  for(i in seq_along(nodesDf$label)){
+  # remove numbers from labels
+  for (i in seq_along(nodesDf$label)) {
     nodesDf$label[i] <- gsub("[[:digit:]]", "", nodesDf$label[i])
   }
   
   
-  #create Df for questions as headings
+  # create Df for questions as headings
   yPos <- min(nodesDf$y) - 2
   xPos <- 7:0
   questionsDf <- data.frame(x = xPos, y = yPos,
@@ -238,34 +179,32 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
                                       "Parametric test",
                                       "Non-parametric alternative"))
   
-  #Divide nodes into answers to questions and tests to format them differently
+  # Divide nodes into "answers to questions" and "test outcomes" to format them differently
   answerNodesDf <- head(nodesDf, 36)
   testNodesDf <- tail(nodesDf, 28)
-  
   testChoice <- tail(activeNodes, 1)
   labelDf <- data.frame(x = 1, y = 1, label = testChoice)
   
+  # create test outcome plot
   plot1 <- createJaspPlot(title = gettext("Test choice"), width = 450, height = 150)
-  
   plotObject <- ggplot2::ggplot() +
     ggplot2::geom_label(data = labelDf, mapping = ggplot2::aes(x = x, y = y, label = label), size = 10, fill = "#8dc63f") +
     ggplot2::theme_void()
-  
   plot1$plotObject <- plotObject
   
   jaspResults[["DecisionTree"]] <- createJaspContainer("")
   jaspResults[["DecisionTree"]][["Heading"]] <- plot1
   jaspResults[["DecisionTree"]][["Text"]] <- createJaspHtml("Some explanation and maybe a link to the test?", "p")
   
+  # create decision tree plot
   if (options[["displayFullTree"]]) {
     plot2 <- createJaspPlot(title = gettext("Decision Tree"), width = 2300, height = 1500)
-    
     plotObject <- ggplot2::ggplot() +
       ggplot2::scale_x_reverse() +
       ggplot2::scale_y_reverse() +
       ggplot2::geom_rect(data = nodesDf, mapping = ggplot2::aes(xmin = xmin, ymin = ymin,
                                                                 xmax = xmax, ymax = ymax, fill = active), color = "black") +
-      ggplot2::geom_text(data = answerNodesDf, mapping = ggplot2::aes(x = x, y = y, label = label), size = 6) +
+      ggplot2::geom_text(data = answerNodesDf, mapping = ggplot2::aes(x = x, y = y, label = label), size = 8) +
       ggplot2::geom_text(data = testNodesDf, mapping = ggplot2::aes(x = x, y = y, label = label), size = 5) +
       ggplot2::geom_text(data = questionsDf, mapping = ggplot2::aes(x = x, y = y, label = label), size = 7, fontface = "bold") +
       ggplot2::geom_path(data = edgesDf, mapping = ggplot2::aes(x = x, y = y, group = id),
@@ -274,17 +213,66 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
       ggplot2::scale_fill_manual(values = c("TRUE" = "#8dc63f", "FALSE" = "#15a1e2")) +
       ggplot2::theme_void() +
       ggplot2::theme(legend.position = "none")
-    
     plot2$plotObject <- plotObject
     
     jaspResults[["DecisionTree"]][["Plot"]] <- plot2
-    
   }
-  
   return()
 }
 
-
-
+.getSelectedOptions <- function(options) { # extra if conditions to prevent qml bug from selecting impossible options
+  selectedOptionsVector <- c()
+  
+  #Q1: "How many outcome variables?")
+  if (options[["nOutcomeVariables"]] == "nOutcomeOne")
+    selectedOptionsVector[1] <- "One"
+  if (options[["nOutcomeVariables"]] == "nOutcomeMany")
+    selectedOptionsVector[1] <- "Two or more"
+  
+  #Q2: "What type of outcome?"
+  if (options[["typeOutcomeVariables"]] == "typeOutcomeCont")
+    selectedOptionsVector[2] <- "Continuous"
+  if (options[["typeOutcomeVariables"]] == "typeOutcomeCat" & options[["nOutcomeVariables"]] == "nOutcomeOne") 
+    selectedOptionsVector[2] <- "Categorical"
+  
+  #Q3: "How many predictor variables?"
+  if (options[["nPredictor"]] == "onePredictor")
+    selectedOptionsVector[3] <- "One"
+  if (options[["nPredictor"]] == "twoPlusPredictors")
+    selectedOptionsVector[3] <- "Two or more"
+  
+  #Q4: "What type of predictor?"
+  if (options[["typePredictor"]] == "typePredictorCont" & options[["nOutcomeVariables"]] == "nOutcomeOne")
+    selectedOptionsVector[4] <- "Continuous"
+  if (options[["typePredictor"]] == "typePredictorCat")
+    selectedOptionsVector[4] <- "Categorical"
+  if (options[["typePredictor"]] == "typePredictorBoth" & options[["nPredictor"]] == "twoPlusPredictors")
+    selectedOptionsVector[4] <- "Both"
+  
+  ## optional questions:
+  
+  #Q5: "How many categories in predictor variable?"
+  if (options[["typePredictor"]] == "typePredictorCat" & options[["nPredictor"]] == "onePredictor" &
+      options[["nOutcomeVariables"]] == "nOutcomeOne" & options[["typeOutcomeVariables"]] == "typeOutcomeCont") {
+    if (options[["nCatPredictor"]] == "nCatPredictorTwo")
+      selectedOptionsVector <- c(selectedOptionsVector, "Two")
+    if (options[["nCatPredictor"]] == "nCatPredictorTwoPlus")
+      selectedOptionsVector <- c(selectedOptionsVector, "More than two")
+  }
+  
+  #Q6: "Same or different entities in categories of predictor?"
+  if ((options[["typePredictor"]] == "typePredictorCat" & options[["nOutcomeVariables"]] == "nOutcomeOne") |
+      (options[["typeOutcomeVariables"]] == "typeOutcomeCat" & options[["typePredictor"]] == "typePredictorBoth")) {
+    if (options[["repCatPredictor"]] == "repCatPredictor" & options[["typeOutcomeVariables"]] == "typeOutcomeCont")
+      selectedOptionsVector <- c(selectedOptionsVector, "Same")
+    if (options[["repCatPredictor"]] == "mixedRepCatPredictor" & options[["nPredictor"]] == "twoPlusPredictors" &
+        options[["typeOutcomeVariables"]] == "typeOutcomeCont")
+      selectedOptionsVector <- c(selectedOptionsVector, "Both")
+    if (options[["repCatPredictor"]] == "noRepCatPredictor")
+      selectedOptionsVector <- c(selectedOptionsVector, "Different")
+  }
+  
+  return(selectedOptionsVector)
+}
 
 

@@ -17,7 +17,7 @@ Imports:
   jaspDescriptives,
   ggforce,
   tidyr,
-  dplyr
+  igraph
 Remotes:
   jasp-stats/jaspBase,
   jasp-stats/jaspGraphs,
