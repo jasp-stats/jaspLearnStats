@@ -28,6 +28,8 @@ Form
 	
 	Group{
 	
+	rowSpacing: 								25 * preferencesModel.uiScale
+	
 	RadioButtonGroup
 	{
 		name:                                   "nOutcomeVariables"
