@@ -60,10 +60,17 @@ Description
 	Analysis
 	{
 		title:	qsTr("P Values")
-		qml:	"PValues.qml"
+		qml:	"LSTPValues.qml"
 		func:	"pValues"
 	}
 
+	Analysis
+	{
+		title:	qsTr("Confidence Intervals")
+		qml:	"LSTconfidenceIntervals.qml"
+		func:	"confidenceIntervals"
+	}
+	
 	Analysis
 	{
 		title:	qsTr("Effect Sizes")
