@@ -2,256 +2,279 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.15\n"
 "POT-Creation-Date: 2023-01-02 12:20\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-01-04 23:49+0000\n"
+"Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/jasp/"
+"jasplearnstats-r/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 
+#, fuzzy
 msgid "Parent Distribution"
-msgstr ""
+msgstr "Eltern-Verteilung"
 
 msgid "Count: %i"
-msgstr ""
+msgstr "Anzahl: %i"
 
 msgid "Mean: %.2f"
-msgstr ""
+msgstr "Mittelwert: %.2f"
 
+#, fuzzy
 msgid "SE: %.2f"
-msgstr ""
+msgstr "SE: %.2f"
 
 msgid "SD: %.2f"
-msgstr ""
+msgstr "SD: %.2f"
 
 msgid "Sample Nr. %i"
-msgstr ""
+msgstr "Stichprobe Nr. %i"
 
 msgid "... until Sample Nr. %i"
-msgstr ""
+msgstr "... bis Stichprobe Nr. %i"
 
 msgid "Samples"
-msgstr ""
+msgstr "Stichproben"
 
 msgid "Std. Dev.: %.2f"
-msgstr ""
+msgstr "Std.-Abw.: %.2f"
 
 msgid "Sampling Distribution of the Mean"
-msgstr ""
+msgstr "Stichprobenverteilung des Mittelwerts"
 
 msgid "Std. Dev: %.2f"
-msgstr ""
+msgstr "Std.-Abw: %.2f"
 
 msgid "Explanation"
-msgstr ""
+msgstr "Erklärung"
 
 msgid "Visual Explanation"
-msgstr ""
+msgstr "Visuelle Erklärung"
 
 msgid "Visual Explanation 2"
-msgstr ""
+msgstr "Visuelle Erklärung 2"
 
 msgid "Visual Explanation 3"
-msgstr ""
+msgstr "Visuelle Erklärung 3"
 
 msgid "Visual Explanation 4"
-msgstr ""
+msgstr "Visuelle Erklärung 4"
 
 msgid "Range"
-msgstr ""
+msgstr "Wertebereich"
 
 msgid "Min"
-msgstr ""
+msgstr "Min"
 
 msgid "Max"
-msgstr ""
+msgstr "Max"
 
 msgid "1st quartile"
-msgstr ""
+msgstr "1. Quartil"
 
 msgid "2nd quartile / \n Median"
 msgstr ""
+"2. Quartil / \n"
+" Median"
 
 msgid "3rd quartile"
-msgstr ""
+msgstr "3. Quartil"
 
+#, fuzzy
 msgid "IQR"
-msgstr ""
+msgstr "IQA"
 
 msgid "Mean"
-msgstr ""
+msgstr "Mittelwert"
 
 msgid "Variance"
-msgstr ""
+msgstr "Varianz"
 
 msgid "-3 SD"
-msgstr ""
+msgstr "-3 SD"
 
 msgid "-2 SD"
-msgstr ""
+msgstr "-2 SD"
 
 msgid "-1 SD"
-msgstr ""
+msgstr "-1 SD"
 
 msgid "+1 SD"
-msgstr ""
+msgstr "+1 SD"
 
 msgid "+2 SD"
-msgstr ""
+msgstr "+2 SD"
 
 msgid "+3 SD"
-msgstr ""
+msgstr "+3 SD"
 
 msgid "Std. Dev."
-msgstr ""
+msgstr "Std.-Abw."
 
 msgid "Theoretical example distribution"
-msgstr ""
+msgstr "Theoretische Beispielverteilung"
 
 msgid "Median"
-msgstr ""
+msgstr "Median"
 
 msgid "Mode"
-msgstr ""
+msgstr "Modus"
 
 msgid "Min: %.2f"
-msgstr ""
+msgstr "Min: %.2f"
 
 msgid "Max: %.2f"
-msgstr ""
+msgstr "Max: %.2f"
 
 msgid "Range: %.2f"
-msgstr ""
+msgstr "Wertebereich: %.2f"
 
 msgid "1st quar. = %.2f"
-msgstr ""
+msgstr "1. Quart. = %.2f"
 
 msgid "2nd quar. / \n Median = %.2f"
 msgstr ""
+"2. Quart. / \n"
+" Median = %.2f"
 
 msgid "3rd quar. = %.2f"
-msgstr ""
+msgstr "3. Quart. = %.2f"
 
+#, fuzzy
 msgid "IQR = %.2f"
-msgstr ""
+msgstr "IQA = %.2f"
 
 msgid "-%i SD"
-msgstr ""
+msgstr "-%i SD"
 
 msgid "+%i SD"
-msgstr ""
+msgstr "+%i SD"
 
 msgid "Mean = %.2f"
-msgstr ""
+msgstr "Mittelwert = %.2f"
 
 msgid "Std. Dev. = %.2f"
-msgstr ""
+msgstr "Std.-Abw. = %.2f"
 
 msgid "Dotplot"
-msgstr ""
+msgstr "Punktdiagramm"
 
 msgid "No variance: All values are equal."
-msgstr ""
+msgstr "Keine Varianz: Alle Werte sind gleich."
 
 msgid "All values unique, \n no mode defined."
 msgstr ""
+"Alle Werte eindeutig, \n"
+" Modus nicht definiert."
 
 msgid "Mode = %i \n (Count = %i)"
 msgstr ""
+"Modus = %i\n"
+" (Anzahl = %i)"
 
 msgid "Mode = %.2f \n (Count = %i)"
 msgstr ""
+"Modus = %.2f \n"
+" (Anzahl = %i)"
 
 msgid "Mode = {%i"
-msgstr ""
+msgstr "Modus = {%i"
 
 msgid "Mode = /n {%.2f"
-msgstr ""
+msgstr "Modus = /n {%.2f"
 
 msgid ", %i"
-msgstr ""
+msgstr ", %i"
 
 msgid ", %.2f"
-msgstr ""
+msgstr ", %.2f"
 
 msgid "} \n (Count = %i)"
 msgstr ""
+"}\n"
+" (Anzahl = %i)"
 
 msgid "Median = %.2f"
-msgstr ""
+msgstr "Median = %.2f"
 
 msgid "2nd quar. / \n Median"
 msgstr ""
+"2. Quart. / \n"
+" Median"
 
 msgid "1st quar."
-msgstr ""
+msgstr "1. Quart."
 
 msgid "3rd quar."
-msgstr ""
+msgstr "3. Quart."
 
 msgid "Error Message"
-msgstr ""
+msgstr "Fehlermeldung"
 
 msgid "Population size too small. Cannot draw %i samples with size %i from a finite population of %i."
 msgstr ""
+"Zu kleine Grundgesamtheit. Es können keine %i Stichproben mit Größe %i aus "
+"einer endlichen Grundgesamtheit von %i gezogen werden."
 
 msgid "Statistics Summary"
-msgstr ""
+msgstr "Statistiken Zusammenfassung"
 
 msgid "Population and simulation distributibution"
-msgstr ""
+msgstr "Grundgesamtheits- und Simulationsverteilung"
 
 msgid "Population distributibution"
-msgstr ""
+msgstr "Grundgesamtheits-Verteilung"
 
 msgid "Simulation distributibution"
-msgstr ""
+msgstr "Simulations-Verteilung"
 
 msgid "Raincloud plot"
-msgstr ""
+msgstr "Regenwolkendiagramm"
 
 msgid "Group"
-msgstr ""
+msgstr "Gruppe"
 
 msgid "Control"
-msgstr ""
+msgstr "Kontrolle"
 
 msgid "Experimental"
-msgstr ""
+msgstr "Experimental"
 
 msgid "Density"
-msgstr ""
+msgstr "Dichte"
 
 msgid "Count"
-msgstr ""
+msgstr "Anzahl"
 
 msgid "Population"
-msgstr ""
+msgstr "Grundgesamtheit"
 
 msgid "Simulation"
-msgstr ""
+msgstr "Simulation"
 
 msgid "Lower"
-msgstr ""
+msgstr "Untergrenze"
 
 msgid "95% CI"
-msgstr ""
+msgstr "95% KI"
 
 msgid "Upper"
-msgstr ""
+msgstr "Obergrenze"
 
 msgid "Cohen's d"
-msgstr ""
+msgstr "Cohens d"
 
 msgid "Cohen's U%1$s"
-msgstr ""
+msgstr "Cohens U%1$s"
 
 msgid "Overlap"
-msgstr ""
+msgstr "Überlappung"
 
 msgid "Probability of superiority"
-msgstr ""
+msgstr "Überlegenheitswahrscheinlichkeit"
 
 msgid "Number needed to treat*"
 msgstr ""
@@ -261,111 +284,141 @@ msgstr ""
 
 msgid "Cohen's %1$s is a measure of the standardized difference between two groups. The rules of thumbs for interpreting the measure are:<ul><li>Small: %1$s = 0.20 </li> <li>Medium: %1$s = 0.50</li><li>Large: %1$s = 0.80</li></ul>"
 msgstr ""
+"Cohens %1$s ist ein Maß für die standardisierte Differenz zwischen zwei "
+"Gruppen. Die Daumenregel für die Interpretation des Maßes "
+"lauten:<ul><li>Klein: %1$s = 0,20 </li> <li>Mittel: %1$s = 0,50</li><li>Groß:"
+" %1$s = 0,80</li></ul>"
 
 msgid "- Cohen's U%1$s corresponds to the proportion of the control group that is surpassed by the upper upper half of the experimental group."
 msgstr ""
+"- Cohens U%1$s entspricht dem Anteil der Kontrollgruppe, der von der oberen "
+"Hälfte der Experimentalgruppe übertroffen wird."
 
 msgid "- Overlap corresponds to the common are of the control and experimental density."
 msgstr ""
+"- Die Überlappung entspricht der gemeinsamen Fläche von Kontroll- und "
+"Experimentaldichte."
 
 msgid "- Probability of superiority corresponds to the probability that a randomly chosen participant from the experimental group will have higher value than a randomly chosen participant from the control group."
 msgstr ""
+"- Die Überlegenheitswahrscheinlichkeit entspricht der Wahrscheinlichkeit, "
+"dass ein zufällig ausgewählter Proband aus der Experimentalgruppe einen "
+"höheren Wert hat als ein zufällig ausgewählter Proband aus der "
+"Kontrollgruppe."
 
 msgid "- Number needed to treat corresponds to the number of participants in the experimental group that would be required to observe one more successful outcome than in the control group."
 msgstr ""
 
 msgid "Pearson correlation"
-msgstr ""
+msgstr "Pearson-Korrelation"
 
 msgid "Shared variance (R%1$s)"
-msgstr ""
+msgstr "Gemeinsame Varianz (R%1$s)"
 
 msgid "Pearson correlation coefficient %1$s is a measure of the relationship between two continuous variables. The rules of thumbs for interpreting the measure are:<ul><li>Small: %1$s = 0.10 </li> <li>Medium: %1$s = 0.30</li><li>Large: %1$s = 0.50</li></ul>"
 msgstr ""
+"Der Pearson-Korrelationskoeffizient %1$s ist ein Maß für die Beziehung "
+"zwischen zwei kontinuierlichen Variablen. Die Daumenregel für die "
+"Interpretation des Maßes lauten:<ul><li>Klein: %1$s = 0,10 </li> <li>Mittel: "
+"%1$s = 0,30</li><li>Groß: %1$s = 0,50</li></ul>"
 
 msgid "- Shared variance (R%1$s) corresponds to proportion of variance shared common between the variables."
 msgstr ""
+"- Die gemeinsame Varianz (R%1$s) entspricht dem Anteil der gemeinsam "
+"geteilten Varianz der Variablen."
 
 msgid "The specified phi, P(X), and P(Y) do not yield a valid contingency table. One of the frequencies would need to be negative."
 msgstr ""
+"Die angegebenen Phi, P(X) und P(Y) ergeben keine gültige Kreuztabelle. Eine "
+"der Häufigkeiten müsste negativ sein."
 
 msgid "Frequencies"
-msgstr ""
+msgstr "Häufigkeiten"
 
 msgid "P(X=1)"
-msgstr ""
+msgstr "P(X=1)"
 
 msgid "P(Y=1)"
-msgstr ""
+msgstr "P(Y=1)"
 
 msgid "Phi coefficient"
-msgstr ""
+msgstr "Phi-Koeffizient"
 
 msgid "Odds ratio"
-msgstr ""
+msgstr "Chancenverhältnis"
 
 msgid "Risk ratio"
-msgstr ""
+msgstr "Risikoverhältnis"
 
 msgid "Risk difference"
-msgstr ""
+msgstr "Risikodifferenz"
 
 msgid "Contingency coefficient %1$s is a measure of the relationship between two nominal variables. The rules of thumbs for interpreting the measure are:<ul><li>Weak: %1$s = 0.20 </li> <li>Moderate: %1$s = 0.30</li><li>Strong: %1$s = 0.40</li><li>Very Strong: %1$s = 0.70</li></ul>"
 msgstr ""
+"Der Kontingenzkoeffizient %1$s ist ein Maß für die Beziehung zwischen zwei "
+"nominalen Variablen. Die Daumenregel für die Interpretation des Maßes "
+"lauten:<ul><li>Schwach: %1$s = 0,20 </li> <li>Moderat: %1$s = "
+"0,30</li><li>Stark: %1$s = 0,40</li><li>Sehr stark: %1$s = 0,70</li></ul>"
 
 msgid "- Odds ratio corresponds to the ratio of the odds of an event occuring in the experimental and control groups."
 msgstr ""
+"- Das Chancenverhältnis entspricht dem Verhältnis der Chancen, dass ein "
+"Ereignis in der Experimental- und der Kontrollgruppe eintritt."
 
 msgid "- Risk ratio corresponds to the ratio of the risk of an event occuring in the experimental and control groups."
 msgstr ""
+"- Das Risikoverhältnis entspricht dem Verhältnis des Risikos, dass ein "
+"Ereignis in der Experimental- und der Kontrollgruppe eintritt."
 
 msgid "- Risk difference corresponds to the difference in the risk of the event occuring between the experimental and control groups."
 msgstr ""
+"- Die Risikodifferenz entspricht der Differenz im Risiko des Auftretens des "
+"Ereignisses zwischen der Experimental- und der Kontrollgruppe."
 
 msgid "to be added..."
-msgstr ""
+msgstr "noch hinzuzufügen..."
 
 msgid "Theoretical distribution of the test statistic under H<sub>0</sub>"
-msgstr ""
+msgstr "Theoretische Verteilung der Teststatistik unter H<sub>0</sub>"
 
 msgid "Distribution plot"
-msgstr ""
+msgstr "Verteilungsdiagramm"
 
 msgid "Test statistic"
-msgstr ""
+msgstr "Teststatistik"
 
 msgid "Simulation under H<sub>0</sub>"
-msgstr ""
+msgstr "Simulation unter H<sub>0</sub>"
 
 msgid "Observed test statistics"
-msgstr ""
+msgstr "Beobachtete Teststatistiken"
 
 msgid "Null dist."
-msgstr ""
+msgstr "Null-Vert."
 
 msgid "Alt dist."
-msgstr ""
+msgstr "Alt.-Vert."
 
 msgid "Observed p-values"
-msgstr ""
+msgstr "Beobachtete p-Werte"
 
 msgid "p-values"
-msgstr ""
+msgstr "p-Werte"
 
 msgid "Frequency Table"
-msgstr ""
+msgstr "Häufigkeitstabelle"
 
 msgid "Percent"
-msgstr ""
+msgstr "Prozent"
 
 msgid "Significant"
-msgstr ""
+msgstr "Signifikant"
 
 msgid "Not significant"
-msgstr ""
+msgstr "Nicht signifikant"
 
 msgid "Total"
-msgstr ""
+msgstr "Gesamt"
 
 msgid "Simulation under H<sub>a</sub>"
-msgstr ""
+msgstr "Simulation unter H<sub>a</sub>"
