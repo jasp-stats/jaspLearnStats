@@ -317,11 +317,6 @@ msgctxt "LSTcentralLimitTheorem|"
 msgid "All"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:211
-msgctxt "LSTcentralLimitTheorem|"
-msgid ""
-msgstr ""
-
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:223
 msgctxt "LSTcentralLimitTheorem|"
 msgid "From"
@@ -817,11 +812,6 @@ msgctxt "LSTsampleVariability|"
 msgid "All"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:275
-msgctxt "LSTsampleVariability|"
-msgid ""
-msgstr ""
-
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:287
 msgctxt "LSTsampleVariability|"
 msgid "From"
@@ -1037,11 +1027,6 @@ msgctxt "LSTstandardError|"
 msgid "All"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:211
-msgctxt "LSTstandardError|"
-msgid ""
-msgstr ""
-
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:223
 msgctxt "LSTstandardError|"
 msgid "From"
@@ -1209,19 +1194,9 @@ msgctxt "PValues|"
 msgid "Specify test statistic"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:100
-msgctxt "PValues|"
-msgid ""
-msgstr ""
-
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:111
 msgctxt "PValues|"
 msgid "Specify p-value"
-msgstr ""
-
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:117
-msgctxt "PValues|"
-msgid ""
 msgstr ""
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:131
@@ -1325,4 +1300,29 @@ msgstr ""
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:297
 msgctxt "PValues|"
 msgid "Introductory text"
+msgstr ""
+
+#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:211
+msgctxt "LSTcentralLimitTheorem|"
+msgid ""
+msgstr ""
+
+#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:275
+msgctxt "LSTsampleVariability|"
+msgid ""
+msgstr ""
+
+#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:211
+msgctxt "LSTstandardError|"
+msgid ""
+msgstr ""
+
+#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:100
+msgctxt "PValues|"
+msgid ""
+msgstr ""
+
+#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:117
+msgctxt "PValues|"
+msgid ""
 msgstr ""
