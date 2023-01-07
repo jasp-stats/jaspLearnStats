@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.15\n"
 "POT-Creation-Date: 2023-01-02 12:20\n"
-"PO-Revision-Date: 2023-01-04 23:49+0000\n"
+"PO-Revision-Date: 2023-01-07 11:48+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
 "jasplearnstats-r/de/>\n"
@@ -83,7 +83,6 @@ msgstr ""
 msgid "3rd quartile"
 msgstr "3. Quartil"
 
-#, fuzzy
 msgid "IQR"
 msgstr "IQA"
 
@@ -143,7 +142,6 @@ msgstr ""
 msgid "3rd quar. = %.2f"
 msgstr "3. Quart. = %.2f"
 
-#, fuzzy
 msgid "IQR = %.2f"
 msgstr "IQA = %.2f"
 
@@ -277,7 +275,7 @@ msgid "Probability of superiority"
 msgstr "Überlegenheitswahrscheinlichkeit"
 
 msgid "Number needed to treat*"
-msgstr ""
+msgstr "Anzahl notwendiger Behandlungen*"
 
 msgid "The number needed to treat is based on a %1$s event rate."
 msgstr ""
