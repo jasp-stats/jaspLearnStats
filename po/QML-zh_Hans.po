@@ -1,19 +1,26 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2023-01-07 04:42+0000\n"
+"Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
+"jasp/jasplearnstats-qml/zh_Hans/>\n"
+"Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 "X-Qt-Contexts: true\n"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/Description.qml:6
 msgctxt "Description|"
 msgid "Learn Stats"
-msgstr ""
+msgstr "学习统计学"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/Description.qml:9
 msgctxt "Description|"
 msgid "Learn classical statistics with simple examples and supporting text"
-msgstr ""
+msgstr "通过简单的示例和讲义来学习经典统计"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/Description.qml:20
 msgctxt "Description|"
