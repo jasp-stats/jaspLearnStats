@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-01-05 00:47+0000\n"
+"PO-Revision-Date: 2023-01-08 12:48+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
 "jasplearnstats-qml/de/>\n"
@@ -117,13 +117,11 @@ msgid "Cohen's U3"
 msgstr "Cohens U3"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:274
-#, fuzzy
 msgctxt "LSeffectSizes|"
 msgid "Overlap"
 msgstr "Überlappung"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:281
-#, fuzzy
 msgctxt "LSeffectSizes|"
 msgid "Probability of superiority"
 msgstr "Überlegenheitswahrscheinlichkeit"
@@ -131,12 +129,12 @@ msgstr "Überlegenheitswahrscheinlichkeit"
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:288
 msgctxt "LSeffectSizes|"
 msgid "Number needed to treat"
-msgstr ""
+msgstr "Anzahl der notwendigen Behandlungen"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:294
 msgctxt "LSeffectSizes|"
 msgid "Event rate"
-msgstr ""
+msgstr "Ereignisrate"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:307
 msgctxt "LSeffectSizes|"
@@ -179,7 +177,6 @@ msgid "Show regression line"
 msgstr "Regressionsgerade anzeigen"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:373
-#, fuzzy
 msgctxt "LSeffectSizes|"
 msgid "Show as mosiac plot"
 msgstr "Als Mosaikdiagramm anzeigen"
