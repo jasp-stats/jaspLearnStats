@@ -165,8 +165,8 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Mode = %i \n"
-" (Count = %i)"
+"Mode = %1$i \n"
+" (Count = %2$i)"
 msgstr ""
 
 msgid ""
@@ -209,8 +209,8 @@ msgid "Error Message"
 msgstr ""
 
 msgid ""
-"Population size too small. Cannot draw %i samples with size %i from a finite "
-"population of %i."
+"Population size too small. Cannot draw %1$i samples with size %2$i from a finite "
+"population of %3$i."
 msgstr ""
 
 msgid "Statistics Summary"

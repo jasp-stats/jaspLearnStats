@@ -157,7 +157,7 @@ msgstr ""
 msgid "All values unique, \n no mode defined."
 msgstr ""
 
-msgid "Mode = %i \n (Count = %i)"
+msgid "Mode = 1$%i \n (Count = %2$i)"
 msgstr ""
 
 msgid "Mode = %.2f \n (Count = %i)"
@@ -193,7 +193,7 @@ msgstr ""
 msgid "Error Message"
 msgstr ""
 
-msgid "Population size too small. Cannot draw %i samples with size %i from a finite population of %i."
+msgid "Population size too small. Cannot draw %1$i samples with size %2$i from a finite population of %3$i."
 msgstr ""
 
 msgid "Statistics Summary"
