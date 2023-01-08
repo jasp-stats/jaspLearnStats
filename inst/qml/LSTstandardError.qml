@@ -208,7 +208,7 @@ Form
 			DoubleField
 			{
 				name:			"cltFirstOrLastSamples"
-				label:			qsTr("")
+				label:			""
 				fieldWidth:		60
 				defaultValue:	7
 				decimals:		0
