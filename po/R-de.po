@@ -222,13 +222,13 @@ msgstr ""
 msgid "Statistics Summary"
 msgstr "Statistiken Zusammenfassung"
 
-msgid "Population and simulation distributibution"
+msgid "Population and simulation distribution"
 msgstr "Grundgesamtheits- und Simulationsverteilung"
 
-msgid "Population distributibution"
+msgid "Population distribution"
 msgstr "Grundgesamtheits-Verteilung"
 
-msgid "Simulation distributibution"
+msgid "Simulation distribution"
 msgstr "Simulations-Verteilung"
 
 msgid "Raincloud plot"

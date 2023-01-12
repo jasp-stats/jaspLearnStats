@@ -199,13 +199,13 @@ msgstr ""
 msgid "Statistics Summary"
 msgstr ""
 
-msgid "Population and simulation distributibution"
+msgid "Population and simulation distribution"
 msgstr ""
 
-msgid "Population distributibution"
+msgid "Population distribution"
 msgstr ""
 
-msgid "Simulation distributibution"
+msgid "Simulation distribution"
 msgstr ""
 
 msgid "Raincloud plot"

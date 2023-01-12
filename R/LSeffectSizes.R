@@ -135,7 +135,7 @@ switchOptions <- function(options) {
 
   if (options[["plotCombine"]] && options[["simulateData"]]){
 
-    deltaCombinedPlot <- createJaspPlot(title = gettext("Population and simulation distributibution"), width = 500, height = 350)
+    deltaCombinedPlot <- createJaspPlot(title = gettext("Population and simulation distribution"), width = 500, height = 350)
     deltaCombinedPlot$position <- 1
     deltaPlot[["deltaCombinedPlot"]] <- deltaCombinedPlot
 
@@ -147,7 +147,7 @@ switchOptions <- function(options) {
 
   } else {
 
-    deltaPopulationPlot <- createJaspPlot(title = gettext("Population distributibution"), width = 500, height = 350)
+    deltaPopulationPlot <- createJaspPlot(title = gettext("Population distribution"), width = 500, height = 350)
     deltaPopulationPlot$position <- 1
     deltaPlot[["deltaPopulationPlot"]] <- deltaPopulationPlot
 
@@ -158,7 +158,7 @@ switchOptions <- function(options) {
 
     if (options[["simulateData"]]) {
 
-      deltaSimulationPlot <- createJaspPlot(title = gettext("Simulation distributibution"), width = 660, height = 350)
+      deltaSimulationPlot <- createJaspPlot(title = gettext("Simulation distribution"), width = 660, height = 350)
       deltaSimulationPlot$position <- 2
       deltaPlot[["deltaSimulationPlot"]] <- deltaSimulationPlot
 
@@ -568,7 +568,7 @@ switchOptions <- function(options) {
 
   if (options[["plotCombine"]] && options[["simulateData"]]){
 
-    rhoCombinedPlot <- createJaspPlot(title = gettext("Population and simulation distributibution"), height = 500, aspectRatio = 1)
+    rhoCombinedPlot <- createJaspPlot(title = gettext("Population and simulation distribution"), height = 500, aspectRatio = 1)
     rhoCombinedPlot$position <- 1
     rhoPlot[["rhoCombinedPlot"]] <- rhoCombinedPlot
 
@@ -583,7 +583,7 @@ switchOptions <- function(options) {
 
   } else {
 
-    rhoPopulationPlot   <- createJaspPlot(title = gettext("Population distributibution"), height = 500, aspectRatio = 1)
+    rhoPopulationPlot   <- createJaspPlot(title = gettext("Population distribution"), height = 500, aspectRatio = 1)
     rhoPopulationPlot$position <- 1
     rhoPlot[["rhoPopulationPlot"]] <- rhoPopulationPlot
 
@@ -597,7 +597,7 @@ switchOptions <- function(options) {
 
     if (options[["simulateData"]]) {
 
-      rhoSimulationPlot   <- createJaspPlot(title = gettext("Simulation distributibution"), height = 500, aspectRatio = 1)
+      rhoSimulationPlot   <- createJaspPlot(title = gettext("Simulation distribution"), height = 500, aspectRatio = 1)
       rhoSimulationPlot$position <- 2
       rhoPlot[["rhoSimulationPlot"]] <- rhoSimulationPlot
 
@@ -1032,7 +1032,7 @@ switchOptions <- function(options) {
 
   if (options[["plotCombine"]] && options[["simulateData"]]){
 
-    phiCombinedPlot <- createJaspPlot(title = gettext("Population and simulation distributibution"), height = 500, aspectRatio = 1)
+    phiCombinedPlot <- createJaspPlot(title = gettext("Population and simulation distribution"), height = 500, aspectRatio = 1)
     phiCombinedPlot$position <- 1
     phiPlot[["phiCombinedPlot"]] <- phiCombinedPlot
 
@@ -1045,7 +1045,7 @@ switchOptions <- function(options) {
 
   } else {
 
-    phiPopulationPlot   <- createJaspPlot(title = gettext("Population distributibution"), height = 500, aspectRatio = 1)
+    phiPopulationPlot   <- createJaspPlot(title = gettext("Population distribution"), height = 500, aspectRatio = 1)
     phiPopulationPlot$position <- 1
     phiPlot[["phiPopulationPlot"]] <- phiPopulationPlot
 
@@ -1057,7 +1057,7 @@ switchOptions <- function(options) {
 
     if (options[["simulateData"]]) {
 
-      phiSimulationPlot   <- createJaspPlot(title = gettext("Simulation distributibution"), height = 500, aspectRatio = 1)
+      phiSimulationPlot   <- createJaspPlot(title = gettext("Simulation distribution"), height = 500, aspectRatio = 1)
       phiSimulationPlot$position <- 2
       phiPlot[["phiSimulationPlot"]] <- phiSimulationPlot
 
