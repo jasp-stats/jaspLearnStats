@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-01-08 12:48+0000\n"
+"PO-Revision-Date: 2023-01-13 12:30+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
 "jasplearnstats-qml/de/>\n"
@@ -670,9 +670,10 @@ msgid "Parent Distribution"
 msgstr "Eltern-Verteilung"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:40
+#, fuzzy
 msgctxt "LSTsampleVariability|"
 msgid "Parent Distribution Size"
-msgstr ""
+msgstr "Breite der Elternverteilung"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:46
 msgctxt "LSTsampleVariability|"
@@ -690,9 +691,10 @@ msgid "Size"
 msgstr "Größe"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:73
+#, fuzzy
 msgctxt "LSTsampleVariability|"
 msgid "Parent Distribution Shape"
-msgstr ""
+msgstr "Form der Elternverteilung"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:78
 msgctxt "LSTsampleVariability|"
@@ -715,9 +717,10 @@ msgid "Binomial"
 msgstr "Binomial"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:88
+#, fuzzy
 msgctxt "LSTsampleVariability|"
 msgid "Show parent distribution"
-msgstr ""
+msgstr "Eltern-Verteilung anzeigen"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:95
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:238
@@ -918,9 +921,10 @@ msgstr "Anzahl von Klassen"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:30
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:38
+#, fuzzy
 msgctxt "LSTstandardError|"
 msgid "Parent Distribution"
-msgstr ""
+msgstr "Eltern-Verteilung"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:43
 msgctxt "LSTstandardError|"
@@ -938,9 +942,10 @@ msgid "Skewed"
 msgstr "Schief"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:52
+#, fuzzy
 msgctxt "LSTstandardError|"
 msgid "Show parent distribution"
-msgstr ""
+msgstr "Eltern-Verteilung anzeigen"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:59
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:174
