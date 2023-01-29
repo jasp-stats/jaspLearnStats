@@ -1,6 +1,5 @@
 msgid ""
 msgstr ""
-
 "PO-Revision-Date: 2023-01-29 10:26+0000\n"
 "Last-Translator: unalozden <uozden@ticaret.edu.tr>\n"
 "jasplearnstats-qml/gl/>\n"
