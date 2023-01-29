@@ -83,7 +83,7 @@ msgstr "Açıklayıcı metin"
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:242
 msgctxt "LSeffectSizes|"
 msgid "Simulate data"
-msgstr ""
+msgstr "Verileri simüle et"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:248
 msgctxt "LSeffectSizes|"
@@ -120,17 +120,17 @@ msgstr "Üstünlük olasılığı"
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:288
 msgctxt "LSeffectSizes|"
 msgid "Number needed to treat"
-msgstr ""
+msgstr "Gerekli sayı"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:294
 msgctxt "LSeffectSizes|"
 msgid "Event rate"
-msgstr ""
+msgstr "Olay oranı"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:307
 msgctxt "LSeffectSizes|"
 msgid "Shared variance (R²)"
-msgstr ""
+msgstr "Ortak varyans (R²)"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:320
 msgctxt "LSeffectSizes|"
@@ -186,7 +186,7 @@ msgstr "Anakitle özelliklerini belirtin"
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:38
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Parent Distribution"
-msgstr ""
+msgstr "Anakitle Dağılımı"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:43
 msgctxt "LSTcentralLimitTheorem|"
@@ -206,7 +206,7 @@ msgstr "Çarpık"
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:52
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Show parent distribution"
-msgstr ""
+msgstr "Anakitle dağılımını göster"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:59
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:174
@@ -295,7 +295,7 @@ msgstr "Veri noktalarını göster"
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:181
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Set seed"
-msgstr ""
+msgstr "Başlangıç sayısı belirle (Tohum belirle)"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:196
 msgctxt "LSTcentralLimitTheorem|"
@@ -320,12 +320,12 @@ msgstr "Hepsi"
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:223
 msgctxt "LSTcentralLimitTheorem|"
 msgid "From"
-msgstr ""
+msgstr "Başlangıç"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:234
 msgctxt "LSTcentralLimitTheorem|"
 msgid "To"
-msgstr ""
+msgstr "Bitiş"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:246
 msgctxt "LSTcentralLimitTheorem|"
@@ -340,7 +340,7 @@ msgstr "Örnekleme dağılımını göster"
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:257
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Superimpose normal distribution"
-msgstr ""
+msgstr "Normal dağılım ile örtüştür"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:279
 msgctxt "LSTcentralLimitTheorem|"
@@ -460,7 +460,7 @@ msgstr "Örneklem büyüklüğü"
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:95
 msgctxt "LSTdescriptives|"
 msgid "Set seed"
-msgstr ""
+msgstr "Başlangıç sayısı belirle (Tohum belirle)"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:110
 msgctxt "LSTdescriptives|"
@@ -511,7 +511,7 @@ msgstr "Normal dağılım"
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:161
 msgctxt "LSTdescriptives|"
 msgid "Comma-separated Sequence of Observations"
-msgstr ""
+msgstr "Virgülle ayrılmış gözlem değerleri dizisi"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:180
 msgctxt "LSTdescriptives|"
@@ -648,12 +648,12 @@ msgstr "Gri"
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:30
 msgctxt "LSTsampleVariability|"
 msgid "Parent Distribution"
-msgstr ""
+msgstr "Anakitle Dağılımı"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:40
 msgctxt "LSTsampleVariability|"
 msgid "Parent Distribution Size"
-msgstr ""
+msgstr "Anakitle Dağılımının Büyüklüğü"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:46
 msgctxt "LSTsampleVariability|"
@@ -673,7 +673,7 @@ msgstr "Büyüklük"
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:73
 msgctxt "LSTsampleVariability|"
 msgid "Parent Distribution Shape"
-msgstr ""
+msgstr "Anakitle Dağılımının Şekli"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:78
 msgctxt "LSTsampleVariability|"
@@ -698,7 +698,7 @@ msgstr "Binom"
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:88
 msgctxt "LSTsampleVariability|"
 msgid "Show parent distribution"
-msgstr ""
+msgstr "Anakitle dağılımını göster"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:95
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:238
@@ -790,7 +790,7 @@ msgstr "Veri noktalarını göster"
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:245
 msgctxt "LSTsampleVariability|"
 msgid "Set seed"
-msgstr ""
+msgstr "Başlangıç sayısı belirle (Tohum belirle)"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:260
 msgctxt "LSTsampleVariability|"
@@ -815,12 +815,12 @@ msgstr "Hepsi"
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:287
 msgctxt "LSTsampleVariability|"
 msgid "From"
-msgstr ""
+msgstr "Başlangıç"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:298
 msgctxt "LSTsampleVariability|"
 msgid "To"
-msgstr ""
+msgstr "Bitiş"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:310
 msgctxt "LSTsampleVariability|"
@@ -896,7 +896,7 @@ msgstr "Kutu sayısı"
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:38
 msgctxt "LSTstandardError|"
 msgid "Parent Distribution"
-msgstr ""
+msgstr "Anakitle Dağılımı"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:43
 msgctxt "LSTstandardError|"
@@ -916,7 +916,7 @@ msgstr "Çarpık"
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:52
 msgctxt "LSTstandardError|"
 msgid "Show parent distribution"
-msgstr ""
+msgstr "Anakitle dağılımını göster"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:59
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:174
@@ -1005,7 +1005,7 @@ msgstr "Veri noktalarını göster"
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:181
 msgctxt "LSTstandardError|"
 msgid "Set seed"
-msgstr ""
+msgstr "Başlangıç sayısı belirle (Tohum belirle)"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:196
 msgctxt "LSTstandardError|"
@@ -1030,12 +1030,12 @@ msgstr "Hepsi"
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:223
 msgctxt "LSTstandardError|"
 msgid "From"
-msgstr ""
+msgstr "Başlangıç"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:234
 msgctxt "LSTstandardError|"
 msgid "To"
-msgstr ""
+msgstr "Bitiş"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:246
 msgctxt "LSTstandardError|"
@@ -1050,7 +1050,7 @@ msgstr "Örnekleme Dağılımını Göster"
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:257
 msgctxt "LSTstandardError|"
 msgid "Superimpose normal distribution"
-msgstr ""
+msgstr "Normal dağılımla örtüştür"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:279
 msgctxt "LSTstandardError|"
@@ -1226,7 +1226,7 @@ msgstr "Simüle Et"
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:244
 msgctxt "PValues|"
 msgid "Reset"
-msgstr "Sil"
+msgstr "Sıfırla"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:169
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:255
@@ -1285,12 +1285,12 @@ msgstr "Merkezi Değil"
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:264
 msgctxt "PValues|"
 msgid "Overlay theoretical null distribution"
-msgstr ""
+msgstr "Teorik dağılımla örtüştür"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:270
 msgctxt "PValues|"
 msgid "Overlay theoretical alternative distribution"
-msgstr ""
+msgstr "Alternatif teorik dağılımla örtüştür"
 
 #: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:296
 msgctxt "PValues|"
