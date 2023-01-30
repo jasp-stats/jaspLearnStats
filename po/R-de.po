@@ -168,10 +168,10 @@ msgstr ""
 "Alle Werte eindeutig, \n"
 " Modus nicht definiert."
 
-msgid "Mode = %i \n (Count = %i)"
+msgid "Mode = %1$i \n (Count = %2$i)"
 msgstr ""
-"Modus = %i\n"
-" (Anzahl = %i)"
+"Modus = %1$i\n"
+" (Anzahl = %2$i)"
 
 msgid "Mode = %.2f \n (Count = %i)"
 msgstr ""
@@ -212,21 +212,21 @@ msgstr "3. Quart."
 msgid "Error Message"
 msgstr "Fehlermeldung"
 
-msgid "Population size too small. Cannot draw %i samples with size %i from a finite population of %i."
+msgid "Population size too small. Cannot draw %1$i samples with size %2$i from a finite population of %3$i."
 msgstr ""
-"Zu kleine Grundgesamtheit. Es können keine %i Stichproben mit Größe %i aus "
-"einer endlichen Grundgesamtheit von %i gezogen werden."
+"Zu kleine Grundgesamtheit. Es können keine %1$i Stichproben mit Größe %2$i aus "
+"einer endlichen Grundgesamtheit von %3$i gezogen werden."
 
 msgid "Statistics Summary"
 msgstr "Statistiken Zusammenfassung"
 
-msgid "Population and simulation distributibution"
+msgid "Population and simulation distribution"
 msgstr "Grundgesamtheits- und Simulationsverteilung"
 
-msgid "Population distributibution"
+msgid "Population distribution"
 msgstr "Grundgesamtheits-Verteilung"
 
-msgid "Simulation distributibution"
+msgid "Simulation distribution"
 msgstr "Simulations-Verteilung"
 
 msgid "Raincloud plot"
