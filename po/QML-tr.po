@@ -1308,28 +1308,3 @@ msgstr "Seçenekler"
 msgctxt "PValues|"
 msgid "Introductory text"
 msgstr "Tanıtım Metni"
-
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:211
-msgctxt "LSTcentralLimitTheorem|"
-msgid ""
-msgstr ""
-
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:275
-msgctxt "LSTsampleVariability|"
-msgid ""
-msgstr ""
-
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:211
-msgctxt "LSTstandardError|"
-msgid ""
-msgstr ""
-
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:100
-msgctxt "PValues|"
-msgid ""
-msgstr ""
-
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:117
-msgctxt "PValues|"
-msgid ""
-msgstr ""
