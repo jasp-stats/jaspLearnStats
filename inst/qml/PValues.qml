@@ -97,7 +97,7 @@ Form
 						
 					DoubleField
 					{
-						label:	qsTr("")
+						label:	""
 						name:	"plotTheoreticalTestStatistic"
 						defaultValue:	1
 						negativeValues: true
@@ -114,7 +114,7 @@ Form
 						
 					DoubleField
 					{
-						label:	qsTr("")
+						label:	""
 						name:	"plotTheoreticalPValue"
 						defaultValue:	0.3
 						min: 0.0001

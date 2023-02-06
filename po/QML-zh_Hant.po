@@ -1,0 +1,1022 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Qt-Contexts: true\n"
+
+msgctxt "Description|"
+msgid "Learn Stats"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Learn classical statistics with simple examples and supporting text"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Normal Distribution"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Binomial Distribution"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Central Limit Theorem"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Standard Error"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Descriptive Statistics"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Sample Variability"
+msgstr ""
+
+msgctxt "Description|"
+msgid "P Values"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Effect Sizes"
+msgstr ""
+
+msgctxt "LSeffectSizes|"
+msgid "Effect Size"
+msgstr ""
+
+msgctxt "LSeffectSizes|"
+msgid "Cohen's δ"
+msgstr ""
+
+msgctxt "LSeffectSizes|"
+msgid "Pearson correlation coefficient ρ"
+msgstr ""
+
+msgctxt "LSeffectSizes|"
+msgid "Contingency coefficient φ"
+msgstr ""
+
+msgctxt "LSeffectSizes|"
+msgid "Explanatory text"
+msgstr ""
+
+msgctxt "LSeffectSizes|"
+msgid "Simulate data"
+msgstr ""
+
+msgctxt "LSeffectSizes|"
+msgid "No. observations"
+msgstr ""
+
+msgctxt "LSeffectSizes|"
+msgid "Advanced"
+msgstr ""
+
+msgctxt "LSeffectSizes|"
+msgid "Additional Statistics"
+msgstr ""
+
+msgctxt "LSeffectSizes|"
+msgid "Cohen's U3"
+msgstr ""
+
+msgctxt "LSeffectSizes|"
+msgid "Overlap"
+msgstr ""
+
+msgctxt "LSeffectSizes|"
+msgid "Probability of superiority"
+msgstr ""
+
+msgctxt "LSeffectSizes|"
+msgid "Number needed to treat"
+msgstr ""
+
+msgctxt "LSeffectSizes|"
+msgid "Event rate"
+msgstr ""
+
+msgctxt "LSeffectSizes|"
+msgid "Shared variance (R²)"
+msgstr ""
+
+msgctxt "LSeffectSizes|"
+msgid "Odds Ratio"
+msgstr ""
+
+msgctxt "LSeffectSizes|"
+msgid "Risk Ratio"
+msgstr ""
+
+msgctxt "LSeffectSizes|"
+msgid "Risk Difference"
+msgstr ""
+
+msgctxt "LSeffectSizes|"
+msgid "Plot Options"
+msgstr ""
+
+msgctxt "LSeffectSizes|"
+msgid "Combine population and simulation"
+msgstr ""
+
+msgctxt "LSeffectSizes|"
+msgid "Raincloud plot"
+msgstr ""
+
+msgctxt "LSeffectSizes|"
+msgid "Show regression line"
+msgstr ""
+
+msgctxt "LSeffectSizes|"
+msgid "Show as mosiac plot"
+msgstr ""
+
+msgctxt "LSeffectSizes|"
+msgid "Show proportions"
+msgstr ""
+
+msgctxt "LSeffectSizes|"
+msgid "Specify populational characteristics"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Parent Distribution"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Normal"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Uniform"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Skewed"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Show parent distribution"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Show explanatory text"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Mean"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Std. Dev."
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Range"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Skew Direction"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Left"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Right"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Skew Intensity"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Low skew"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Medium skew"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "High skew"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Sample Options"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Number of observations per sample"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Number of total samples"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Show samples"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Show rug marks"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Set seed"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Show Samples"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "First"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Last"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "All"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "From"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "To"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Sampling Distribution Options"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Show sampling distribution"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Superimpose normal distribution"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Plot Options"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Color palette"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Colorblind"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Colorblind Alt."
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Viridis"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "ggplot2"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Gray"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Bin width type"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Sturges"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Scott"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Doane"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Freedman-Diaconis"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Manual"
+msgstr ""
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Number of bins"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Statistics to explain"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Central tendency"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Spread"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Data options"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Data Input Type"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Random Sample"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Enter sequence"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Select variable"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Sample size"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Set seed"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Distribution Type"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Discrete"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Continuous"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Distribution"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Binomial distribution"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Poisson distribution"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Skewed normal distribution"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Uniform distribution"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Normal distribution"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Comma-separated Sequence of Observations"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Available"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Selected"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Central Tendency Measures"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Select Central Tendency Measure"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Show Mean"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Show Median"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Show Mode"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Compare All"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Show explanation"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Measures of spread"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Select measure of spread"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Range"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Quartiles"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Std. dev. and variance"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Plots"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Histogram / Barplot"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Show counts"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Show density (Histogram only)"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Display rug marks"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Dot plot"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Color palette"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Colorblind"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Colorblind Alt."
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Viridis"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "ggplot2"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Gray"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Parent Distribution"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Parent Distribution Size"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Infinite"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Finite"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Size"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Parent Distribution Shape"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Normal"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Uniform"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Skewed"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Binomial"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Show parent distribution"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Show explanatory text"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Mean"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Std. Dev."
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Range"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Skew Direction"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Left"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Right"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Skew Intensity"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Low skew"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Medium skew"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "High skew"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Probability"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Sample Options"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Number of observations per sample"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Number of total samples"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Show samples"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Show rug marks"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Set seed"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Show Samples"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "First"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Last"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "All"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "From"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "To"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Plot Options"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Color palette"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Colorblind"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Colorblind Alt."
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Viridis"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "ggplot2"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Gray"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Bin width type"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Sturges"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Scott"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Doane"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Freedman-Diaconis"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Manual"
+msgstr ""
+
+msgctxt "LSTsampleVariability|"
+msgid "Number of bins"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Parent Distribution"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Normal"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Uniform"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Skewed"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Show parent distribution"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Show explanatory text"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Mean"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Std. Dev."
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Range"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Skew Direction"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Left"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Right"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Skew Intensity"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Low skew"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Medium skew"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "High skew"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Sample Options"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Number of observations per sample"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Number of total samples"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Show samples"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Show rug marks"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Set seed"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Show Samples"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "First"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Last"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "All"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "From"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "To"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Sampling Distribution Options"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Show sampling distribution"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Superimpose normal distribution"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Plot Options"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Color palette"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Colorblind"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Colorblind Alt."
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Viridis"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "ggplot2"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Gray"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Bin width type"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Sturges"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Scott"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Doane"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Freedman-Diaconis"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Manual"
+msgstr ""
+
+msgctxt "LSTstandardError|"
+msgid "Number of bins"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Theoretical distribution"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Normal"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "T distribution"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "df"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Test settings"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Type-I error rate α"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Alt. hypothesis"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Two sided"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Greater"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Less"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Plot theoretical distribution"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Highlight critical region"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Highlight specified test statistic"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Specify test statistic"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Specify p-value"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Simulation under the null hypothesis"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Simulation"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Number of studies to simulate"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Simulate"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Reset"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Output"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Plot test statistics"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Overlay theoretical distribution"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Plot p-values"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Overlay uniform distribution"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Frequency table"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Simulation under the alternative hypothesis"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Specify alternative sampling distribution"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Mean"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Non-centrality"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Overlay theoretical null distribution"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Overlay theoretical alternative distribution"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Options"
+msgstr ""
+
+msgctxt "PValues|"
+msgid "Introductory text"
+msgstr ""

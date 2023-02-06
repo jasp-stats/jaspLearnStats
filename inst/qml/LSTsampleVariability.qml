@@ -285,8 +285,7 @@ Form
 				IntegerField
 				{
 					name:			"svFirstOrLastSamples"
-					id:				svFirstOrLastSamples
-					label:			qsTr("")
+					label:			""
 					fieldWidth:		60
 					defaultValue:	7
 					visible:		svSampleShowType.currentValue == "first" | svSampleShowType.currentValue == "last"
