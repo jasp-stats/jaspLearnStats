@@ -218,7 +218,7 @@ ConfidenceIntervals <- function(jaspResults, dataset = NULL, options) {
     if (addDots && listCounter == 2) {
       plotList[[listCounter]] <- ggplot2::ggplot(data = data.frame(x = c(-1,1), y = c(-1,1))) + ggplot2::theme_void() +
         ggplot2::annotate("text", x = -3, y = -2.5, 
-                          label = gettextf("..."), 
+                          label = "...", 
                           size = 60)
     } else {
       
