@@ -371,26 +371,26 @@ ConfidenceIntervals <- function(jaspResults, dataset = NULL, options) {
   else
     singlePlot$plotObject <- p
   
-  if (options$dataPlotShowN > 1) {
-    for(i in 1:options$dataPlotShowN) {
+  for (i in seq_len(options$dataPlotShowN)) {
+
       
-      thisRainData <- data.frame(y = unlist(jaspContainer[["simulatedDatasets"]][["object"]][[i]]), 
-                                 group = rep(1, options$n))
+    thisRainData <- data.frame(
+      y = unlist(jaspContainer[["simulatedDatasets"]][["object"]][[I]]), 
+      group = rep(1, options$n)
+    )
       
-      singlePlot <- createJaspPlot(title = "", width = 480, height = 320)
-      rainCloudPlotsContainer[[paste0("rainCloudPlotSingle", i)]] <- singlePlot
-      p <- try(jaspTTests::.descriptivesPlotsRainCloudFill(thisRainData, "y", "group", 
-                                                           yLabel = "Dependent", 
-                                                           xLabel = "Rep",
-                                                           testValue = options$mu,
-                                                           addLines = FALSE, horiz = FALSE))
-      if(isTryError(p))
-        singlePlot$setError(.extractErrorMessage(p))
-      else
-        singlePlot$plotObject <- p
+    singlePlot <- createJaspPlot(title = "", width = 480, height = 320)
+    rainCloudPlotsContainer[[paste0("rainCloudPlotSingle", i)]] <- singlePlot
+    p <- try(jaspTTests::.descriptivesPlotsRainCloudFill(thisRainData, "y", "group", 
+                                                         yLabel = "Dependent", 
+                                                         xLabel = "Rep",
+                                                         testValue = options$mu,
+                                                         addLines = FALSE, horiz = FALSE))
+    if(isTryError(p))
+      singlePlot$setError(.extractErrorMessage(p))
+    else
+      singlePlot$plotObject <- p
       
-    }
-    
   }
   
   return()
