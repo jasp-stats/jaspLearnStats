@@ -96,7 +96,7 @@ ConfidenceIntervals <- function(jaspResults, dataset = NULL, options) {
                          Repetitions = options$nReps,
                          n = options$n,
                          coverage = sum(meanCI[["successfulCI"]]),
-                         coveragePercentage = sum(meanCI[["successfulCI"]]) / options$nReps)
+                         coveragePercentage = mean(meanCI[["successfulCI"]])
   
   resultTable$setData(tableDat)
   
