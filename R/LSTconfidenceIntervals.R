@@ -204,7 +204,7 @@ ConfidenceIntervals <- function(jaspResults, dataset = NULL, options) {
   matrixPlot <- createJaspPlot(title = gettext("Samples"), width = 960/(3/nCols), 
                                height = 800/(3/nRows))
   
-  plotList <- vector(mode = "list", length = nRows * nCols)
+  plotList <- matrix(list(), nRows, nCols)
   
   if (addDots) {
     loopingVector <- c(1, 2, (options$dataPlotShowN-6):options$dataPlotShowN)
