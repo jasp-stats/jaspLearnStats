@@ -272,8 +272,8 @@ ConfidenceIntervals <- function(jaspResults, dataset = NULL, options) {
     simulMatrix[ , i] <- rbeta(1e3, cumSuccessProportion[i]*i+1, i-cumSuccessProportion[i]*i+1)
   }
   credInt <- apply(simulMatrix, 2, HDInterval::hdi) # record the credibility interval
-  y.upper <- credInt[1,]
-  y.lower <- credInt[2,]
+  yUpper <- credInt[1,]
+  yLower <- credInt[2,]
 
   p <- ggplot2::ggplot(data= NULL) +
     ggplot2::xlab(gettext("Number of Replications")) +
