@@ -276,8 +276,8 @@ ConfidenceIntervals <- function(jaspResults, dataset = NULL, options) {
   y.lower <- credInt[2,]
 
   p <- ggplot2::ggplot(data= NULL) +
-    ggplot2::xlab("Number of Replications") +
-    ggplot2::ylab("p(Coverage)") +
+    ggplot2::xlab(gettext("Number of Replications")) +
+    ggplot2::ylab(gettext("p(Coverage)")) +
     ggplot2::coord_cartesian(xlim = c(0, options$nReps), ylim = myYlim) + 
     ggplot2::geom_polygon(ggplot2::aes(x = c(1:options$nReps,options$nReps:1), y = c(y.upper, rev(y.lower))),
                           fill = "lightsteelblue") +  # CI
