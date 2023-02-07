@@ -226,8 +226,8 @@ ConfidenceIntervals <- function(jaspResults, dataset = NULL, options) {
                                  group = rep(1, options$n))  
       
       plotList[[listCounter]] <- try(jaspTTests::.descriptivesPlotsRainCloudFill(thisRainData, "y", "group", 
-                                                                                 yLabel = "Dependent", 
-                                                                                 xLabel = paste("Repetition", i),
+                                                                                 yLabel = gettext("Dependent"), 
+                                                                                 xLabel = gettextf("Repetition %d", i),
                                                                                  testValue = options$mu,
                                                                                  addLines = FALSE, horiz = FALSE))
       if(isTryError(plotList[[listCounter]]))
