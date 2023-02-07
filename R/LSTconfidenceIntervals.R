@@ -45,7 +45,7 @@ ConfidenceIntervals <- function(jaspResults, dataset = NULL, options) {
   if (!is.null(jaspContainer[["simulatedDatasets"]]))
     return()
   
-  listWithData <- lapply(1:options$nReps, function(x) rnorm(options$n,
+  listWithData <- lapply(seq_len(options[["nReps"]]), function(x) rnorm(options$n,
                                                             options$mu,
                                                             options$sigma))
   
