@@ -148,7 +148,7 @@ ConfidenceIntervals <- function(jaspResults, dataset = NULL, options) {
   
   meanCI <- jaspContainer[["computedConfidenceIntervals"]][["object"]]
   meanCI$Repetition <- rev(meanCI$Repetition)
-  meanCItrimmed <- meanCI[1:options$dataPlotShowN, ]
+  meanCItrimmed <- meanCI[seq_len(options$dataPlotShowN), ]
   
   myTicks <- jaspGraphs::getPrettyAxisBreaks(1:options$nReps)
   myTicks[1] <- 1
