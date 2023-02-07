@@ -362,8 +362,8 @@ ConfidenceIntervals <- function(jaspResults, dataset = NULL, options) {
   singlePlot <- createJaspPlot(title = "", width = 480, height = 320)
   rainCloudPlotsContainer[["rainCloudPlotAll"]] <- singlePlot
   p <- try(jaspTTests::.descriptivesPlotsRainCloudFill(rainData, "y", "group", 
-                                                       yLabel = "Dependent", 
-                                                       xLabel = "Rep", 
+                                                       yLabel = gettext("Dependent"), 
+                                                       xLabel = gettext("Rep"), 
                                                        testValue = options$mu,
                                                        addLines = FALSE, horiz = FALSE))
   if(isTryError(p))
