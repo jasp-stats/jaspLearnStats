@@ -190,7 +190,7 @@ ConfidenceIntervals <- function(jaspResults, dataset = NULL, options) {
     return()
   
   rainData <- data.frame(y = unlist(jaspContainer[["simulatedDatasets"]][["object"]]), 
-                         group = rep(1:options$nReps, each = options$n))
+                         group = rep(seq_len(options$nReps), each = options$n))
   
   jaspContainer[["containerRainCloudPlots"]] <- createJaspContainer(gettext("Data plots"), 
                                                                     dependencies = c("dataPlotShowN", "dataPlot"))
