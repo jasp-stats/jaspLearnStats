@@ -170,7 +170,7 @@ Form
 				DoubleField
 				{
 					name: "convergenceZoomMargin"
-					label: qsTr("")
+					label: ""
 					negativeValues: false
 					defaultValue: 0.2
 					min: 0.01
