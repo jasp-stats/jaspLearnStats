@@ -147,7 +147,7 @@ Form
 				DoubleField
 				{
 					name: "fixAxisUpper";
-					label: qsTr("")
+					label: ""
 					negativeValues: true
 					defaultValue: 2
 				}
