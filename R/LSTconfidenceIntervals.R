@@ -37,15 +37,7 @@ ConfidenceIntervals <- function(jaspResults, dataset = NULL, options) {
 }
 
 .getConfidenceContainer <- function(jaspResults) {
-  if (!is.null(jaspResults[["confidenceContainer"]])) {
-    confidenceContainer <- jaspResults[["confidenceContainer"]]
-  } else {
-    confidenceContainer <- createJaspContainer()
-    # we set the dependencies on the container, this means that all items inside the container automatically have these dependencies
-    confidenceContainer$dependOn(c("mu", "sigma", "n", "confidenceIntervalInterval", "nReps", 
-                                   "treePlot"))
-    jaspResults[["confidenceContainer"]] <- confidenceContainer
-  }
+  confidenceContainer <- jaspResults[["confidenceContainer"]] %setOrRetrieve% createJaspContainer(dependencies = c("mu", "sigma", "n", "confidenceIntervalInterval", "nReps", "treePlot"))
   return(confidenceContainer)
 }
 
