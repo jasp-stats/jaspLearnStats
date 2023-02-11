@@ -12,1299 +12,1018 @@ msgstr ""
 "X-Generator: Weblate 4.15.1-dev\n"
 "X-Qt-Contexts: true\n"
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/Description.qml:6
 msgctxt "Description|"
 msgid "Learn Stats"
 msgstr "学习统计学"
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/Description.qml:9
 msgctxt "Description|"
 msgid "Learn classical statistics with simple examples and supporting text"
 msgstr "通过简单的示例和讲义来学习经典统计"
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/Description.qml:20
 msgctxt "Description|"
 msgid "Normal Distribution"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/Description.qml:27
 msgctxt "Description|"
 msgid "Binomial Distribution"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/Description.qml:34
 msgctxt "Description|"
 msgid "Central Limit Theorem"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/Description.qml:41
 msgctxt "Description|"
 msgid "Standard Error"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/Description.qml:48
 msgctxt "Description|"
 msgid "Descriptive Statistics"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/Description.qml:55
 msgctxt "Description|"
 msgid "Sample Variability"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/Description.qml:62
 msgctxt "Description|"
 msgid "P Values"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/Description.qml:69
 msgctxt "Description|"
 msgid "Effect Sizes"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:31
 msgctxt "LSeffectSizes|"
 msgid "Effect Size"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:36
 msgctxt "LSeffectSizes|"
 msgid "Cohen's δ"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:43
 msgctxt "LSeffectSizes|"
 msgid "Pearson correlation coefficient ρ"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:50
 msgctxt "LSeffectSizes|"
 msgid "Contingency coefficient φ"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:230
 msgctxt "LSeffectSizes|"
 msgid "Explanatory text"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:242
 msgctxt "LSeffectSizes|"
 msgid "Simulate data"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:248
 msgctxt "LSeffectSizes|"
 msgid "No. observations"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:257
 msgctxt "LSeffectSizes|"
 msgid "Advanced"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:261
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:301
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:314
 msgctxt "LSeffectSizes|"
 msgid "Additional Statistics"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:267
 msgctxt "LSeffectSizes|"
 msgid "Cohen's U3"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:274
 msgctxt "LSeffectSizes|"
 msgid "Overlap"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:281
 msgctxt "LSeffectSizes|"
 msgid "Probability of superiority"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:288
 msgctxt "LSeffectSizes|"
 msgid "Number needed to treat"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:294
 msgctxt "LSeffectSizes|"
 msgid "Event rate"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:307
 msgctxt "LSeffectSizes|"
 msgid "Shared variance (R²)"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:320
 msgctxt "LSeffectSizes|"
 msgid "Odds Ratio"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:327
 msgctxt "LSeffectSizes|"
 msgid "Risk Ratio"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:334
 msgctxt "LSeffectSizes|"
 msgid "Risk Difference"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:341
 msgctxt "LSeffectSizes|"
 msgid "Plot Options"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:347
 msgctxt "LSeffectSizes|"
 msgid "Combine population and simulation"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:356
 msgctxt "LSeffectSizes|"
 msgid "Raincloud plot"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:364
 msgctxt "LSeffectSizes|"
 msgid "Show regression line"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:373
 msgctxt "LSeffectSizes|"
 msgid "Show as mosiac plot"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:381
 msgctxt "LSeffectSizes|"
 msgid "Show proportions"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSeffectSizes.qml:395
 msgctxt "LSeffectSizes|"
 msgid "Specify populational characteristics"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:30
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:38
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Parent Distribution"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:43
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Normal"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:44
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Uniform"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:45
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Skewed"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:52
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Show parent distribution"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:59
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:174
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:272
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Show explanatory text"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:69
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Mean"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:78
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Std. Dev."
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:89
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:203
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Range"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:100
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Skew Direction"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:106
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Left"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:107
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Right"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:114
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Skew Intensity"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:120
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Low skew"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:121
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Medium skew"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:122
 msgctxt "LSTcentralLimitTheorem|"
 msgid "High skew"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:130
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Sample Options"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:138
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Number of observations per sample"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:147
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Number of total samples"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:160
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Show samples"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:166
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:264
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Show rug marks"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:181
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Set seed"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:196
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Show Samples"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:201
 msgctxt "LSTcentralLimitTheorem|"
 msgid "First"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:202
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Last"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:204
 msgctxt "LSTcentralLimitTheorem|"
 msgid "All"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:223
 msgctxt "LSTcentralLimitTheorem|"
 msgid "From"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:234
 msgctxt "LSTcentralLimitTheorem|"
 msgid "To"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:246
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Sampling Distribution Options"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:251
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Show sampling distribution"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:257
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Superimpose normal distribution"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:279
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Plot Options"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:284
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Color palette"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:288
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Colorblind"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:289
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Colorblind Alt."
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:290
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Viridis"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:291
 msgctxt "LSTcentralLimitTheorem|"
 msgid "ggplot2"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:292
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Gray"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:302
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Bin width type"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:307
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Sturges"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:308
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Scott"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:309
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Doane"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:310
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Freedman-Diaconis"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:311
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Manual"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTcentralLimitTheorem.qml:318
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Number of bins"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:31
 msgctxt "LSTdescriptives|"
 msgid "Statistics to explain"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:36
 msgctxt "LSTdescriptives|"
 msgid "Central tendency"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:37
 msgctxt "LSTdescriptives|"
 msgid "Spread"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:43
 msgctxt "LSTdescriptives|"
 msgid "Data options"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:50
 msgctxt "LSTdescriptives|"
 msgid "Data Input Type"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:56
 msgctxt "LSTdescriptives|"
 msgid "Random Sample"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:64
 msgctxt "LSTdescriptives|"
 msgid "Enter sequence"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:71
 msgctxt "LSTdescriptives|"
 msgid "Select variable"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:85
 msgctxt "LSTdescriptives|"
 msgid "Sample size"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:95
 msgctxt "LSTdescriptives|"
 msgid "Set seed"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:110
 msgctxt "LSTdescriptives|"
 msgid "Distribution Type"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:116
 msgctxt "LSTdescriptives|"
 msgid "Discrete"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:124
 msgctxt "LSTdescriptives|"
 msgid "Continuous"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:133
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:147
 msgctxt "LSTdescriptives|"
 msgid "Distribution"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:138
 msgctxt "LSTdescriptives|"
 msgid "Binomial distribution"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:139
 msgctxt "LSTdescriptives|"
 msgid "Poisson distribution"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:152
 msgctxt "LSTdescriptives|"
 msgid "Skewed normal distribution"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:153
 msgctxt "LSTdescriptives|"
 msgid "Uniform distribution"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:154
 msgctxt "LSTdescriptives|"
 msgid "Normal distribution"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:161
 msgctxt "LSTdescriptives|"
 msgid "Comma-separated Sequence of Observations"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:180
 msgctxt "LSTdescriptives|"
 msgid "Available"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:186
 msgctxt "LSTdescriptives|"
 msgid "Selected"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:196
 msgctxt "LSTdescriptives|"
 msgid "Central Tendency Measures"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:201
 msgctxt "LSTdescriptives|"
 msgid "Select Central Tendency Measure"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:207
 msgctxt "LSTdescriptives|"
 msgid "Show Mean"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:214
 msgctxt "LSTdescriptives|"
 msgid "Show Median"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:220
 msgctxt "LSTdescriptives|"
 msgid "Show Mode"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:226
 msgctxt "LSTdescriptives|"
 msgid "Compare All"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:233
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:271
 msgctxt "LSTdescriptives|"
 msgid "Show explanation"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:240
 msgctxt "LSTdescriptives|"
 msgid "Measures of spread"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:245
 msgctxt "LSTdescriptives|"
 msgid "Select measure of spread"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:251
 msgctxt "LSTdescriptives|"
 msgid "Range"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:258
 msgctxt "LSTdescriptives|"
 msgid "Quartiles"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:264
 msgctxt "LSTdescriptives|"
 msgid "Std. dev. and variance"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:278
 msgctxt "LSTdescriptives|"
 msgid "Plots"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:283
 msgctxt "LSTdescriptives|"
 msgid "Histogram / Barplot"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:293
 msgctxt "LSTdescriptives|"
 msgid "Show counts"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:300
 msgctxt "LSTdescriptives|"
 msgid "Show density (Histogram only)"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:307
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:321
 msgctxt "LSTdescriptives|"
 msgid "Display rug marks"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:315
 msgctxt "LSTdescriptives|"
 msgid "Dot plot"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:329
 msgctxt "LSTdescriptives|"
 msgid "Color palette"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:333
 msgctxt "LSTdescriptives|"
 msgid "Colorblind"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:334
 msgctxt "LSTdescriptives|"
 msgid "Colorblind Alt."
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:335
 msgctxt "LSTdescriptives|"
 msgid "Viridis"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:336
 msgctxt "LSTdescriptives|"
 msgid "ggplot2"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTdescriptives.qml:337
 msgctxt "LSTdescriptives|"
 msgid "Gray"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:30
 msgctxt "LSTsampleVariability|"
 msgid "Parent Distribution"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:40
 msgctxt "LSTsampleVariability|"
 msgid "Parent Distribution Size"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:46
 msgctxt "LSTsampleVariability|"
 msgid "Infinite"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:54
 msgctxt "LSTsampleVariability|"
 msgid "Finite"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:61
 msgctxt "LSTsampleVariability|"
 msgid "Size"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:73
 msgctxt "LSTsampleVariability|"
 msgid "Parent Distribution Shape"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:78
 msgctxt "LSTsampleVariability|"
 msgid "Normal"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:79
 msgctxt "LSTsampleVariability|"
 msgid "Uniform"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:80
 msgctxt "LSTsampleVariability|"
 msgid "Skewed"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:81
 msgctxt "LSTsampleVariability|"
 msgid "Binomial"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:88
 msgctxt "LSTsampleVariability|"
 msgid "Show parent distribution"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:95
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:238
 msgctxt "LSTsampleVariability|"
 msgid "Show explanatory text"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:105
 msgctxt "LSTsampleVariability|"
 msgid "Mean"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:116
 msgctxt "LSTsampleVariability|"
 msgid "Std. Dev."
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:127
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:267
 msgctxt "LSTsampleVariability|"
 msgid "Range"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:138
 msgctxt "LSTsampleVariability|"
 msgid "Skew Direction"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:144
 msgctxt "LSTsampleVariability|"
 msgid "Left"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:145
 msgctxt "LSTsampleVariability|"
 msgid "Right"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:152
 msgctxt "LSTsampleVariability|"
 msgid "Skew Intensity"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:158
 msgctxt "LSTsampleVariability|"
 msgid "Low skew"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:159
 msgctxt "LSTsampleVariability|"
 msgid "Medium skew"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:160
 msgctxt "LSTsampleVariability|"
 msgid "High skew"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:167
 msgctxt "LSTsampleVariability|"
 msgid "Probability"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:191
 msgctxt "LSTsampleVariability|"
 msgid "Sample Options"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:199
 msgctxt "LSTsampleVariability|"
 msgid "Number of observations per sample"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:210
 msgctxt "LSTsampleVariability|"
 msgid "Number of total samples"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:224
 msgctxt "LSTsampleVariability|"
 msgid "Show samples"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:230
 msgctxt "LSTsampleVariability|"
 msgid "Show rug marks"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:245
 msgctxt "LSTsampleVariability|"
 msgid "Set seed"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:260
 msgctxt "LSTsampleVariability|"
 msgid "Show Samples"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:265
 msgctxt "LSTsampleVariability|"
 msgid "First"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:266
 msgctxt "LSTsampleVariability|"
 msgid "Last"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:268
 msgctxt "LSTsampleVariability|"
 msgid "All"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:287
 msgctxt "LSTsampleVariability|"
 msgid "From"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:298
 msgctxt "LSTsampleVariability|"
 msgid "To"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:310
 msgctxt "LSTsampleVariability|"
 msgid "Plot Options"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:315
 msgctxt "LSTsampleVariability|"
 msgid "Color palette"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:319
 msgctxt "LSTsampleVariability|"
 msgid "Colorblind"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:320
 msgctxt "LSTsampleVariability|"
 msgid "Colorblind Alt."
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:321
 msgctxt "LSTsampleVariability|"
 msgid "Viridis"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:322
 msgctxt "LSTsampleVariability|"
 msgid "ggplot2"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:323
 msgctxt "LSTsampleVariability|"
 msgid "Gray"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:333
 msgctxt "LSTsampleVariability|"
 msgid "Bin width type"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:338
 msgctxt "LSTsampleVariability|"
 msgid "Sturges"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:339
 msgctxt "LSTsampleVariability|"
 msgid "Scott"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:340
 msgctxt "LSTsampleVariability|"
 msgid "Doane"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:341
 msgctxt "LSTsampleVariability|"
 msgid "Freedman-Diaconis"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:342
 msgctxt "LSTsampleVariability|"
 msgid "Manual"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTsampleVariability.qml:349
 msgctxt "LSTsampleVariability|"
 msgid "Number of bins"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:30
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:38
 msgctxt "LSTstandardError|"
 msgid "Parent Distribution"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:43
 msgctxt "LSTstandardError|"
 msgid "Normal"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:44
 msgctxt "LSTstandardError|"
 msgid "Uniform"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:45
 msgctxt "LSTstandardError|"
 msgid "Skewed"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:52
 msgctxt "LSTstandardError|"
 msgid "Show parent distribution"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:59
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:174
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:272
 msgctxt "LSTstandardError|"
 msgid "Show explanatory text"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:69
 msgctxt "LSTstandardError|"
 msgid "Mean"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:78
 msgctxt "LSTstandardError|"
 msgid "Std. Dev."
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:89
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:203
 msgctxt "LSTstandardError|"
 msgid "Range"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:100
 msgctxt "LSTstandardError|"
 msgid "Skew Direction"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:106
 msgctxt "LSTstandardError|"
 msgid "Left"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:107
 msgctxt "LSTstandardError|"
 msgid "Right"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:114
 msgctxt "LSTstandardError|"
 msgid "Skew Intensity"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:120
 msgctxt "LSTstandardError|"
 msgid "Low skew"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:121
 msgctxt "LSTstandardError|"
 msgid "Medium skew"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:122
 msgctxt "LSTstandardError|"
 msgid "High skew"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:130
 msgctxt "LSTstandardError|"
 msgid "Sample Options"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:138
 msgctxt "LSTstandardError|"
 msgid "Number of observations per sample"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:147
 msgctxt "LSTstandardError|"
 msgid "Number of total samples"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:160
 msgctxt "LSTstandardError|"
 msgid "Show samples"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:166
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:264
 msgctxt "LSTstandardError|"
 msgid "Show rug marks"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:181
 msgctxt "LSTstandardError|"
 msgid "Set seed"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:196
 msgctxt "LSTstandardError|"
 msgid "Show Samples"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:201
 msgctxt "LSTstandardError|"
 msgid "First"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:202
 msgctxt "LSTstandardError|"
 msgid "Last"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:204
 msgctxt "LSTstandardError|"
 msgid "All"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:223
 msgctxt "LSTstandardError|"
 msgid "From"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:234
 msgctxt "LSTstandardError|"
 msgid "To"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:246
 msgctxt "LSTstandardError|"
 msgid "Sampling Distribution Options"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:251
 msgctxt "LSTstandardError|"
 msgid "Show sampling distribution"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:257
 msgctxt "LSTstandardError|"
 msgid "Superimpose normal distribution"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:279
 msgctxt "LSTstandardError|"
 msgid "Plot Options"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:284
 msgctxt "LSTstandardError|"
 msgid "Color palette"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:288
 msgctxt "LSTstandardError|"
 msgid "Colorblind"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:289
 msgctxt "LSTstandardError|"
 msgid "Colorblind Alt."
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:290
 msgctxt "LSTstandardError|"
 msgid "Viridis"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:291
 msgctxt "LSTstandardError|"
 msgid "ggplot2"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:292
 msgctxt "LSTstandardError|"
 msgid "Gray"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:302
 msgctxt "LSTstandardError|"
 msgid "Bin width type"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:307
 msgctxt "LSTstandardError|"
 msgid "Sturges"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:308
 msgctxt "LSTstandardError|"
 msgid "Scott"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:309
 msgctxt "LSTstandardError|"
 msgid "Doane"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:310
 msgctxt "LSTstandardError|"
 msgid "Freedman-Diaconis"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:311
 msgctxt "LSTstandardError|"
 msgid "Manual"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/LSTstandardError.qml:318
 msgctxt "LSTstandardError|"
 msgid "Number of bins"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:31
 msgctxt "PValues|"
 msgid "Theoretical distribution"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:38
 msgctxt "PValues|"
 msgid "Normal"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:39
 msgctxt "PValues|"
 msgid "T distribution"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:42
 msgctxt "PValues|"
 msgid "df"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:47
 msgctxt "PValues|"
 msgid "Test settings"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:50
 msgctxt "PValues|"
 msgid "Type-I error rate α"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:57
 msgctxt "PValues|"
 msgid "Alt. hypothesis"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:61
 msgctxt "PValues|"
 msgid "Two sided"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:62
 msgctxt "PValues|"
 msgid "Greater"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:63
 msgctxt "PValues|"
 msgid "Less"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:70
 msgctxt "PValues|"
 msgid "Plot theoretical distribution"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:76
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:195
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:281
 msgctxt "PValues|"
 msgid "Highlight critical region"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:82
 msgctxt "PValues|"
 msgid "Highlight specified test statistic"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:94
 msgctxt "PValues|"
 msgid "Specify test statistic"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:111
 msgctxt "PValues|"
 msgid "Specify p-value"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:131
 msgctxt "PValues|"
 msgid "Simulation under the null hypothesis"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:136
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:222
 msgctxt "PValues|"
 msgid "Simulation"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:140
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:226
 msgctxt "PValues|"
 msgid "Number of studies to simulate"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:148
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:234
 msgctxt "PValues|"
 msgid "Simulate"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:158
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:244
 msgctxt "PValues|"
 msgid "Reset"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:169
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:255
 msgctxt "PValues|"
 msgid "Output"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:173
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:259
 msgctxt "PValues|"
 msgid "Plot test statistics"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:178
 msgctxt "PValues|"
 msgid "Overlay theoretical distribution"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:185
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:277
 msgctxt "PValues|"
 msgid "Plot p-values"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:190
 msgctxt "PValues|"
 msgid "Overlay uniform distribution"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:203
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:289
 msgctxt "PValues|"
 msgid "Frequency table"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:210
 msgctxt "PValues|"
 msgid "Simulation under the alternative hypothesis"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:214
 msgctxt "PValues|"
 msgid "Specify alternative sampling distribution"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:216
 msgctxt "PValues|"
 msgid "Mean"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:217
 msgctxt "PValues|"
 msgid "Non-centrality"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:264
 msgctxt "PValues|"
 msgid "Overlay theoretical null distribution"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:270
 msgctxt "PValues|"
 msgid "Overlay theoretical alternative distribution"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:296
 msgctxt "PValues|"
 msgid "Options"
 msgstr ""
 
-#: /home/runner/work/jaspLearnStats/jaspLearnStats/inst/qml/PValues.qml:297
 msgctxt "PValues|"
 msgid "Introductory text"
 msgstr ""
