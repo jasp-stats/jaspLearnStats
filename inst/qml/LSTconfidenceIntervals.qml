@@ -139,7 +139,7 @@ Form
 				DoubleField
 				{
 					name: "fixAxisLower"
-					label: qsTr("")
+					label: ""
 					negativeValues: true
 					defaultValue: -2
 					afterLabel: qsTr(" to ")

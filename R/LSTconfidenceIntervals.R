@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-ConfidenceIntervals <- function(jaspResults, dataset = NULL, options) {
+LSTconfidenceIntervals <- function(jaspResults, dataset = NULL, options) {
   
   confidenceContainer <- .getConfidenceContainer(jaspResults)
   
@@ -96,7 +96,7 @@ ConfidenceIntervals <- function(jaspResults, dataset = NULL, options) {
                          Repetitions = options$nReps,
                          n = options$n,
                          coverage = sum(meanCI[["successfulCI"]]),
-                         coveragePercentage = mean(meanCI[["successfulCI"]])
+                         coveragePercentage = mean(meanCI[["successfulCI"]]))
   
   resultTable$setData(tableDat)
   

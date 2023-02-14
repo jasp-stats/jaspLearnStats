@@ -68,7 +68,7 @@ Description
 	{
 		title:	qsTr("Confidence Intervals")
 		qml:	"LSTconfidenceIntervals.qml"
-		func:	"confidenceIntervals"
+		func:	"LSTconfidenceIntervals"
 	}
 	
 	Analysis
