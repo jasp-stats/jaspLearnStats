@@ -14,8 +14,10 @@ Imports:
   jaspBase,
   jaspGraphs,
   jaspDistributions,
+  jaspDescriptives,
   ggforce
 Remotes:
   jasp-stats/jaspBase,
   jasp-stats/jaspGraphs,
-  jasp-stats/jaspDistributions
+  jasp-stats/jaspDistributions,
+  jasp-stats/jaspDescriptives
