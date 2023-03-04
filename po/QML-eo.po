@@ -885,138 +885,214 @@ msgctxt "LSTstandardError|"
 msgid "Number of bins"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "Description|"
+msgid "Confidence Intervals"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "μ"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "σ"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Sample size (n)"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Confidence level"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Repetitions"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Show last"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "<b>- 10</b>"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "<b>- 1</b>"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "<b>+ 1</b>"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "<b>+ 10</b>"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Plots"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Tree plot"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Display table"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Fix x-axis from "
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid " to "
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Data distribution plots"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Convergence plot"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Zoom in with margin"
+msgstr ""
+
+msgctxt "LSTPValues|"
 msgid "Theoretical distribution"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Normal"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "T distribution"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "df"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Test settings"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Type-I error rate α"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Alt. hypothesis"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Two sided"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Greater"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Less"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Plot theoretical distribution"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Highlight critical region"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Highlight specified test statistic"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Specify test statistic"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Specify p-value"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Simulation under the null hypothesis"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Simulation"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Number of studies to simulate"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Simulate"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Reset"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Output"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Plot test statistics"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Overlay theoretical distribution"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Plot p-values"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Overlay uniform distribution"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Frequency table"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Simulation under the alternative hypothesis"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Specify alternative sampling distribution"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Mean"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Non-centrality"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Overlay theoretical null distribution"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Overlay theoretical alternative distribution"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Options"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Introductory text"
 msgstr ""

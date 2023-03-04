@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.17.0\n"
-"POT-Creation-Date: 2023-01-02 12:20\n"
+"POT-Creation-Date: 2023-03-04 04:45\n"
 "PO-Revision-Date: 2023-01-11 15:53+0000\n"
 "Last-Translator: Don van den Bergh <donvdbergh@hotmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/"
@@ -46,6 +46,68 @@ msgstr ""
 msgid "Std. Dev: %.2f"
 msgstr ""
 
+msgid "μ"
+msgstr ""
+
+msgid "σ"
+msgstr ""
+
+msgid "Coverage"
+msgstr ""
+
+msgid "Coverage %"
+msgstr ""
+
+msgid "Mean"
+msgstr ""
+
+msgid "Estimate"
+msgstr ""
+
+msgid "%s%% CI for Mean Difference"
+msgstr ""
+
+msgid "Lower"
+msgstr ""
+
+msgid "Upper"
+msgstr ""
+
+msgid "CI contains μ?"
+msgstr ""
+
+msgid "Tree Plot"
+msgstr ""
+
+msgid ""
+"Make sure to specify a lower bound that is lower than the upper bound for "
+"the x-axis."
+msgstr ""
+
+msgid "Observed mean and %s%% CI"
+msgstr ""
+
+msgid "Data plots"
+msgstr ""
+
+msgid "Dependent"
+msgstr ""
+
+msgid "Repetition %d"
+msgstr ""
+
+msgid "Convergence Plot"
+msgstr ""
+
+msgid "Number of Replications"
+msgstr ""
+
+msgid "p(Coverage)"
+msgstr ""
+
+msgid "Rep"
+msgstr ""
+
 msgid "Explanation"
 msgstr ""
 
@@ -82,9 +144,6 @@ msgid "3rd quartile"
 msgstr ""
 
 msgid "IQR"
-msgstr ""
-
-msgid "Mean"
 msgstr ""
 
 msgid "Variance"
@@ -207,12 +266,66 @@ msgstr ""
 msgid "3rd quar."
 msgstr ""
 
+msgid "to be added..."
+msgstr ""
+
+msgid "Theoretical distribution of the test statistic under H<sub>0</sub>"
+msgstr ""
+
+msgid "Distribution plot"
+msgstr ""
+
+msgid "Test statistic"
+msgstr ""
+
+msgid "Density"
+msgstr ""
+
+msgid "Simulation under H<sub>0</sub>"
+msgstr ""
+
+msgid "Observed test statistics"
+msgstr ""
+
+msgid "Count"
+msgstr ""
+
+msgid "Null dist."
+msgstr ""
+
+msgid "Alt dist."
+msgstr ""
+
+msgid "Observed p-values"
+msgstr ""
+
+msgid "p-values"
+msgstr ""
+
+msgid "Frequency Table"
+msgstr ""
+
+msgid "Percent"
+msgstr ""
+
+msgid "Significant"
+msgstr ""
+
+msgid "Not significant"
+msgstr ""
+
+msgid "Total"
+msgstr ""
+
+msgid "Simulation under H<sub>a</sub>"
+msgstr ""
+
 msgid "Error Message"
 msgstr ""
 
 msgid ""
-"Population size too small. Cannot draw %1$i samples with size %2$i from a finite "
-"population of %3$i."
+"Population size too small. Cannot draw %1$i samples with size %2$i from a "
+"finite population of %3$i."
 msgstr ""
 
 msgid "Statistics Summary"
@@ -239,25 +352,13 @@ msgstr ""
 msgid "Experimental"
 msgstr ""
 
-msgid "Density"
-msgstr ""
-
-msgid "Count"
-msgstr ""
-
 msgid "Population"
 msgstr ""
 
 msgid "Simulation"
 msgstr ""
 
-msgid "Lower"
-msgstr ""
-
 msgid "95% CI"
-msgstr ""
-
-msgid "Upper"
 msgstr ""
 
 msgid "Cohen's d"
@@ -370,52 +471,4 @@ msgstr ""
 msgid ""
 "- Risk difference corresponds to the difference in the risk of the event "
 "occuring between the experimental and control groups."
-msgstr ""
-
-msgid "to be added..."
-msgstr ""
-
-msgid "Theoretical distribution of the test statistic under H<sub>0</sub>"
-msgstr ""
-
-msgid "Distribution plot"
-msgstr ""
-
-msgid "Test statistic"
-msgstr ""
-
-msgid "Simulation under H<sub>0</sub>"
-msgstr ""
-
-msgid "Observed test statistics"
-msgstr ""
-
-msgid "Null dist."
-msgstr ""
-
-msgid "Alt dist."
-msgstr ""
-
-msgid "Observed p-values"
-msgstr ""
-
-msgid "p-values"
-msgstr ""
-
-msgid "Frequency Table"
-msgstr ""
-
-msgid "Percent"
-msgstr ""
-
-msgid "Significant"
-msgstr ""
-
-msgid "Not significant"
-msgstr ""
-
-msgid "Total"
-msgstr ""
-
-msgid "Simulation under H<sub>a</sub>"
 msgstr ""
