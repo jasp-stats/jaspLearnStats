@@ -1,0 +1,1029 @@
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2023-01-31 14:41+0000\n"
+"Last-Translator: Ünal Halit ÖZDEN <uozden@ticaret.edu.tr>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/jasp/"
+"jasplearnstats-qml/tr/>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.16-dev\n"
+"X-Qt-Contexts: true\n"
+
+msgctxt "Description|"
+msgid "Learn Stats"
+msgstr "İstatistik Öğren"
+
+msgctxt "Description|"
+msgid "Learn classical statistics with simple examples and supporting text"
+msgstr "Basit örnekler ve destekleyici metinlerle istatistik öğrenin"
+
+msgctxt "Description|"
+msgid "Normal Distribution"
+msgstr "Normal Dağılım"
+
+msgctxt "Description|"
+msgid "Binomial Distribution"
+msgstr "Binom Dağılımı"
+
+msgctxt "Description|"
+msgid "Central Limit Theorem"
+msgstr "Merkezi Limit Teorisi"
+
+msgctxt "Description|"
+msgid "Standard Error"
+msgstr "Standart Hata"
+
+msgctxt "Description|"
+msgid "Descriptive Statistics"
+msgstr "Tanımsal (Betimsel) İstatistik"
+
+msgctxt "Description|"
+msgid "Sample Variability"
+msgstr "Örneklem Değişkenliği"
+
+msgctxt "Description|"
+msgid "P Values"
+msgstr "P Değeri"
+
+msgctxt "Description|"
+msgid "Effect Sizes"
+msgstr "Etki Büyüklükleri"
+
+msgctxt "LSeffectSizes|"
+msgid "Effect Size"
+msgstr "Etki Büyüklüğü"
+
+msgctxt "LSeffectSizes|"
+msgid "Cohen's δ"
+msgstr "Cohen δ"
+
+msgctxt "LSeffectSizes|"
+msgid "Pearson correlation coefficient ρ"
+msgstr "Pearson korelasyon katsayısı ρ"
+
+msgctxt "LSeffectSizes|"
+msgid "Contingency coefficient φ"
+msgstr "Kontenjans katsayısı φ"
+
+msgctxt "LSeffectSizes|"
+msgid "Explanatory text"
+msgstr "Açıklayıcı metin"
+
+msgctxt "LSeffectSizes|"
+msgid "Simulate data"
+msgstr "Verileri simüle et"
+
+msgctxt "LSeffectSizes|"
+msgid "No. observations"
+msgstr "Gözlem sayısı"
+
+msgctxt "LSeffectSizes|"
+msgid "Advanced"
+msgstr "İleri Düzey"
+
+msgctxt "LSeffectSizes|"
+msgid "Additional Statistics"
+msgstr "Ek İstatistikler"
+
+msgctxt "LSeffectSizes|"
+msgid "Cohen's U3"
+msgstr "Cohen U3"
+
+msgctxt "LSeffectSizes|"
+msgid "Overlap"
+msgstr "Örtüşme"
+
+msgctxt "LSeffectSizes|"
+msgid "Probability of superiority"
+msgstr "Üstünlük olasılığı"
+
+msgctxt "LSeffectSizes|"
+msgid "Number needed to treat"
+msgstr "Gerekli sayı"
+
+msgctxt "LSeffectSizes|"
+msgid "Event rate"
+msgstr "Olay oranı"
+
+msgctxt "LSeffectSizes|"
+msgid "Shared variance (R²)"
+msgstr "Ortak varyans (R²)"
+
+msgctxt "LSeffectSizes|"
+msgid "Odds Ratio"
+msgstr "Olasılık Oranı"
+
+msgctxt "LSeffectSizes|"
+msgid "Risk Ratio"
+msgstr "Risk Oranı"
+
+msgctxt "LSeffectSizes|"
+msgid "Risk Difference"
+msgstr "Risk Farkı"
+
+msgctxt "LSeffectSizes|"
+msgid "Plot Options"
+msgstr "Grafik Seçenekleri"
+
+msgctxt "LSeffectSizes|"
+msgid "Combine population and simulation"
+msgstr "Anakitle ve simülasyonu birleştir"
+
+msgctxt "LSeffectSizes|"
+msgid "Raincloud plot"
+msgstr "Yağmur bulutu grafiği"
+
+msgctxt "LSeffectSizes|"
+msgid "Show regression line"
+msgstr "Regresyon doğrusunu göster"
+
+msgctxt "LSeffectSizes|"
+msgid "Show as mosiac plot"
+msgstr "Mozaik grafik olarak göster"
+
+msgctxt "LSeffectSizes|"
+msgid "Show proportions"
+msgstr "Oranları göster"
+
+msgctxt "LSeffectSizes|"
+msgid "Specify populational characteristics"
+msgstr "Anakitle özelliklerini belirtin"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Parent Distribution"
+msgstr "Anakitle Dağılımı"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Normal"
+msgstr "Normal"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Uniform"
+msgstr "Tekdüze"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Skewed"
+msgstr "Çarpık"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Show parent distribution"
+msgstr "Anakitle dağılımını göster"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Show explanatory text"
+msgstr "Açıklayıcı metni göster"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Mean"
+msgstr "Aritmetik Ortalama"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Std. Dev."
+msgstr "Standart Sapma"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Range"
+msgstr "Değişim Aralığı"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Skew Direction"
+msgstr "Çarpıklık Yönü"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Left"
+msgstr "Sol"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Right"
+msgstr "Sağ"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Skew Intensity"
+msgstr "Çarpıklık Yoğunluğu"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Low skew"
+msgstr "Düşük Çarpık"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Medium skew"
+msgstr "Orta çarpık"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "High skew"
+msgstr "Yüksek çarpık"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Sample Options"
+msgstr "Örneklem Seçenekleri"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Number of observations per sample"
+msgstr "Örneklem başına gözlem sayısı"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Number of total samples"
+msgstr "Örneklem birim sayısı"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Show sample"
+msgstr "Örneklemi göster"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Show rug marks"
+msgstr "Veri noktalarını göster"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Set seed"
+msgstr "Başlangıç sayısı belirle (Tohum belirle)"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Show Samples"
+msgstr "Örneklemi Göster"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "First"
+msgstr "İlk"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Last"
+msgstr "Son"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "All"
+msgstr "Hepsi"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "From"
+msgstr "Başlangıç"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "To"
+msgstr "Bitiş"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Sampling Distribution Options"
+msgstr "Örnekleme Dağılımı Seçenekleri"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Show sampling distribution"
+msgstr "Örnekleme dağılımını göster"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Superimpose normal distribution"
+msgstr "Normal dağılım ile örtüştür"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Plot Options"
+msgstr "Grafik Seçenekleri"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Color palette"
+msgstr "Renk paleti"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Colorblind"
+msgstr "Renk körü"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Colorblind Alt."
+msgstr "Renk Körü Alt."
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Viridis"
+msgstr "Viridis"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "ggplot2"
+msgstr "ggplot2"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Gray"
+msgstr "Gri"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Bin width type"
+msgstr "Kutu genişliği tipi"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Sturges"
+msgstr "Sturges"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Scott"
+msgstr "Scott"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Doane"
+msgstr "Doane"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Freedman-Diaconis"
+msgstr "Freedman-Diaconis"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Manual"
+msgstr "Elle"
+
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Number of bins"
+msgstr "Kutu sayısı"
+
+msgctxt "LSTdescriptives|"
+msgid "Statistics to explain"
+msgstr "Açıklanacak istatistikler"
+
+msgctxt "LSTdescriptives|"
+msgid "Central tendency"
+msgstr "Merkezi eğilim"
+
+msgctxt "LSTdescriptives|"
+msgid "Spread"
+msgstr "Değişkenlik"
+
+msgctxt "LSTdescriptives|"
+msgid "Data options"
+msgstr "Veri seçenekleri"
+
+msgctxt "LSTdescriptives|"
+msgid "Data Input Type"
+msgstr "Veri Girişi Türü"
+
+msgctxt "LSTdescriptives|"
+msgid "Random Sample"
+msgstr "Tesadüfi Örneklem"
+
+msgctxt "LSTdescriptives|"
+msgid "Enter sequence"
+msgstr "Sıra gir"
+
+msgctxt "LSTdescriptives|"
+msgid "Select variable"
+msgstr "Değişken seç"
+
+msgctxt "LSTdescriptives|"
+msgid "Sample size"
+msgstr "Örneklem büyüklüğü"
+
+msgctxt "LSTdescriptives|"
+msgid "Set seed"
+msgstr "Başlangıç sayısı belirle (Tohum belirle)"
+
+msgctxt "LSTdescriptives|"
+msgid "Distribution Type"
+msgstr "Dağılım Türü"
+
+msgctxt "LSTdescriptives|"
+msgid "Discrete"
+msgstr "Kesikli"
+
+msgctxt "LSTdescriptives|"
+msgid "Continuous"
+msgstr "Sürekli"
+
+msgctxt "LSTdescriptives|"
+msgid "Distribution"
+msgstr "Dağılım"
+
+msgctxt "LSTdescriptives|"
+msgid "Binomial distribution"
+msgstr "Binom dağılımı"
+
+msgctxt "LSTdescriptives|"
+msgid "Poisson distribution"
+msgstr "Poisson dağılımı"
+
+msgctxt "LSTdescriptives|"
+msgid "Skewed normal distribution"
+msgstr "Çarpık normal dağılım"
+
+msgctxt "LSTdescriptives|"
+msgid "Uniform distribution"
+msgstr "Tekdüze dağılım"
+
+msgctxt "LSTdescriptives|"
+msgid "Normal distribution"
+msgstr "Normal dağılım"
+
+msgctxt "LSTdescriptives|"
+msgid "Comma-separated Sequence of Observations"
+msgstr "Virgülle ayrılmış gözlem değerleri dizisi"
+
+msgctxt "LSTdescriptives|"
+msgid "Available"
+msgstr "Mevcut"
+
+msgctxt "LSTdescriptives|"
+msgid "Selected"
+msgstr "Seçilmiş"
+
+msgctxt "LSTdescriptives|"
+msgid "Central Tendency Measures"
+msgstr "Merkezi Eğilim Ölçüleri"
+
+msgctxt "LSTdescriptives|"
+msgid "Select Central Tendency Measure"
+msgstr "Merkezi Eğilim Ölçüsü Seç"
+
+msgctxt "LSTdescriptives|"
+msgid "Show Mean"
+msgstr "Aritmetik Ortalamayı Göster"
+
+msgctxt "LSTdescriptives|"
+msgid "Show Median"
+msgstr "Medyanı Göster"
+
+msgctxt "LSTdescriptives|"
+msgid "Show Mode"
+msgstr "Modu Göster"
+
+msgctxt "LSTdescriptives|"
+msgid "Compare All"
+msgstr "Hepsini Karşılaştır"
+
+msgctxt "LSTdescriptives|"
+msgid "Show explanation"
+msgstr "Açıklamayı Göster"
+
+msgctxt "LSTdescriptives|"
+msgid "Measures of spread"
+msgstr "Değişkenlik ölçüleri"
+
+msgctxt "LSTdescriptives|"
+msgid "Select measure of spread"
+msgstr "Değişkenlik ölçülerini seç"
+
+msgctxt "LSTdescriptives|"
+msgid "Range"
+msgstr "Değişim Aralığı"
+
+msgctxt "LSTdescriptives|"
+msgid "Quartiles"
+msgstr "Kartiller"
+
+msgctxt "LSTdescriptives|"
+msgid "Std. dev. and variance"
+msgstr "Std. Sapma ve varyans"
+
+msgctxt "LSTdescriptives|"
+msgid "Plots"
+msgstr "Grafik"
+
+msgctxt "LSTdescriptives|"
+msgid "Histogram / Barplot"
+msgstr "Histogram / Sütun Grafiği"
+
+msgctxt "LSTdescriptives|"
+msgid "Show counts"
+msgstr "Sayıları göster"
+
+msgctxt "LSTdescriptives|"
+msgid "Show density (Histogram only)"
+msgstr "Yoğunluğu göster (Yalnızca histogram)"
+
+msgctxt "LSTdescriptives|"
+msgid "Display rug marks"
+msgstr "Veri noktalarını göster"
+
+msgctxt "LSTdescriptives|"
+msgid "Dot plot"
+msgstr "Nokta grafiği"
+
+msgctxt "LSTdescriptives|"
+msgid "Color palette"
+msgstr "Renk paleti"
+
+msgctxt "LSTdescriptives|"
+msgid "Colorblind"
+msgstr "Renk Körü"
+
+msgctxt "LSTdescriptives|"
+msgid "Colorblind Alt."
+msgstr "Renk Körü Alt."
+
+msgctxt "LSTdescriptives|"
+msgid "Viridis"
+msgstr "Viridis"
+
+msgctxt "LSTdescriptives|"
+msgid "ggplot2"
+msgstr "ggplot2"
+
+msgctxt "LSTdescriptives|"
+msgid "Gray"
+msgstr "Gri"
+
+msgctxt "LSTsampleVariability|"
+msgid "Parent Distribution"
+msgstr "Anakitle Dağılımı"
+
+msgctxt "LSTsampleVariability|"
+msgid "Parent Distribution Size"
+msgstr "Anakitle Dağılımının Büyüklüğü"
+
+msgctxt "LSTsampleVariability|"
+msgid "Infinite"
+msgstr "Sonsuz"
+
+msgctxt "LSTsampleVariability|"
+msgid "Finite"
+msgstr "Sonlu"
+
+msgctxt "LSTsampleVariability|"
+msgid "Size"
+msgstr "Büyüklük"
+
+msgctxt "LSTsampleVariability|"
+msgid "Parent Distribution Shape"
+msgstr "Anakitle Dağılımının Şekli"
+
+msgctxt "LSTsampleVariability|"
+msgid "Normal"
+msgstr "Normal"
+
+msgctxt "LSTsampleVariability|"
+msgid "Uniform"
+msgstr "Tekdüze"
+
+msgctxt "LSTsampleVariability|"
+msgid "Skewed"
+msgstr "Çarpık"
+
+msgctxt "LSTsampleVariability|"
+msgid "Binomial"
+msgstr "Binom"
+
+msgctxt "LSTsampleVariability|"
+msgid "Show parent distribution"
+msgstr "Anakitle dağılımını göster"
+
+msgctxt "LSTsampleVariability|"
+msgid "Show explanatory text"
+msgstr "Açıklayıcı metni göster"
+
+msgctxt "LSTsampleVariability|"
+msgid "Mean"
+msgstr "Aritmetik Ortalama"
+
+msgctxt "LSTsampleVariability|"
+msgid "Std. Dev."
+msgstr "Std. Sapma"
+
+msgctxt "LSTsampleVariability|"
+msgid "Range"
+msgstr "Değişim Aralığı"
+
+msgctxt "LSTsampleVariability|"
+msgid "Skew Direction"
+msgstr "Çarpıklık Yönü"
+
+msgctxt "LSTsampleVariability|"
+msgid "Left"
+msgstr "Sol"
+
+msgctxt "LSTsampleVariability|"
+msgid "Right"
+msgstr "Sağ"
+
+msgctxt "LSTsampleVariability|"
+msgid "Skew Intensity"
+msgstr "Çarpıklık Yoğunluğu"
+
+msgctxt "LSTsampleVariability|"
+msgid "Low skew"
+msgstr "Düşük çarpık"
+
+msgctxt "LSTsampleVariability|"
+msgid "Medium skew"
+msgstr "Orta çarpık"
+
+msgctxt "LSTsampleVariability|"
+msgid "High skew"
+msgstr "Yüksek çarpık"
+
+msgctxt "LSTsampleVariability|"
+msgid "Probability"
+msgstr "Olasılık"
+
+msgctxt "LSTsampleVariability|"
+msgid "Sample Options"
+msgstr "Örneklem Seçenekleri"
+
+msgctxt "LSTsampleVariability|"
+msgid "Number of observations per sample"
+msgstr "Örneklem başına gözlem sayısı"
+
+msgctxt "LSTsampleVariability|"
+msgid "Number of total samples"
+msgstr "Toplam Örneklem birim sayısı"
+
+msgctxt "LSTsampleVariability|"
+msgid "Show samples"
+msgstr "Örneklemi göster"
+
+msgctxt "LSTsampleVariability|"
+msgid "Show rug marks"
+msgstr "Veri noktalarını göster"
+
+msgctxt "LSTsampleVariability|"
+msgid "Set seed"
+msgstr "Başlangıç sayısı belirle (Tohum belirle)"
+
+msgctxt "LSTsampleVariability|"
+msgid "Show Samples"
+msgstr "Örneklemi göster"
+
+msgctxt "LSTsampleVariability|"
+msgid "First"
+msgstr "İlk"
+
+msgctxt "LSTsampleVariability|"
+msgid "Last"
+msgstr "Son"
+
+msgctxt "LSTsampleVariability|"
+msgid "All"
+msgstr "Hepsi"
+
+msgctxt "LSTsampleVariability|"
+msgid "From"
+msgstr "Başlangıç"
+
+msgctxt "LSTsampleVariability|"
+msgid "To"
+msgstr "Bitiş"
+
+msgctxt "LSTsampleVariability|"
+msgid "Plot Options"
+msgstr "Grafik Seçenekleri"
+
+msgctxt "LSTsampleVariability|"
+msgid "Color palette"
+msgstr "Renk Paleti"
+
+msgctxt "LSTsampleVariability|"
+msgid "Colorblind"
+msgstr "Renk Körü"
+
+msgctxt "LSTsampleVariability|"
+msgid "Colorblind Alt."
+msgstr "Renk Körü Alt."
+
+msgctxt "LSTsampleVariability|"
+msgid "Viridis"
+msgstr "Viridis"
+
+msgctxt "LSTsampleVariability|"
+msgid "ggplot2"
+msgstr "ggplot2"
+
+msgctxt "LSTsampleVariability|"
+msgid "Gray"
+msgstr "Gri"
+
+msgctxt "LSTsampleVariability|"
+msgid "Bin width type"
+msgstr "Kutu genişliği türü"
+
+msgctxt "LSTsampleVariability|"
+msgid "Sturges"
+msgstr "Sturges"
+
+msgctxt "LSTsampleVariability|"
+msgid "Scott"
+msgstr "Scott"
+
+msgctxt "LSTsampleVariability|"
+msgid "Doane"
+msgstr "Doane"
+
+msgctxt "LSTsampleVariability|"
+msgid "Freedman-Diaconis"
+msgstr "Freedman-Diaconis"
+
+msgctxt "LSTsampleVariability|"
+msgid "Manual"
+msgstr "Elle"
+
+msgctxt "LSTsampleVariability|"
+msgid "Number of bins"
+msgstr "Kutu sayısı"
+
+msgctxt "LSTstandardError|"
+msgid "Parent Distribution"
+msgstr "Anakitle Dağılımı"
+
+msgctxt "LSTstandardError|"
+msgid "Normal"
+msgstr "Normal"
+
+msgctxt "LSTstandardError|"
+msgid "Uniform"
+msgstr "Tekdüze"
+
+msgctxt "LSTstandardError|"
+msgid "Skewed"
+msgstr "Çarpık"
+
+msgctxt "LSTstandardError|"
+msgid "Show parent distribution"
+msgstr "Anakitle dağılımını göster"
+
+msgctxt "LSTstandardError|"
+msgid "Show explanatory text"
+msgstr "Açıklayıcı metni göster"
+
+msgctxt "LSTstandardError|"
+msgid "Mean"
+msgstr "Aritmetik Ortalama"
+
+msgctxt "LSTstandardError|"
+msgid "Std. Dev."
+msgstr "Std. Sapma"
+
+msgctxt "LSTstandardError|"
+msgid "Range"
+msgstr "Değişim Aralığı"
+
+msgctxt "LSTstandardError|"
+msgid "Skew Direction"
+msgstr "Çarpıklık Yönü"
+
+msgctxt "LSTstandardError|"
+msgid "Left"
+msgstr "Sol"
+
+msgctxt "LSTstandardError|"
+msgid "Right"
+msgstr "Sağ"
+
+msgctxt "LSTstandardError|"
+msgid "Skew Intensity"
+msgstr "Çarpıklık Yoğunluğu"
+
+msgctxt "LSTstandardError|"
+msgid "Low skew"
+msgstr "Düşük çarpık"
+
+msgctxt "LSTstandardError|"
+msgid "Medium skew"
+msgstr "Orta çarpık"
+
+msgctxt "LSTstandardError|"
+msgid "High skew"
+msgstr "Yüksek Çarpık"
+
+msgctxt "LSTstandardError|"
+msgid "Sample Options"
+msgstr "Örneklem Seçenekleri"
+
+msgctxt "LSTstandardError|"
+msgid "Number of observations per sample"
+msgstr "Örneklem başına gözlem sayısı"
+
+msgctxt "LSTstandardError|"
+msgid "Number of total samples"
+msgstr "Toplam örneklem sayısı"
+
+msgctxt "LSTstandardError|"
+msgid "Show samples"
+msgstr "Örneklemi göster"
+
+msgctxt "LSTstandardError|"
+msgid "Show rug marks"
+msgstr "Veri noktalarını göster"
+
+msgctxt "LSTstandardError|"
+msgid "Set seed"
+msgstr "Başlangıç sayısı belirle (Tohum belirle)"
+
+msgctxt "LSTstandardError|"
+msgid "Show Samples"
+msgstr "Örneklemi göster"
+
+msgctxt "LSTstandardError|"
+msgid "First"
+msgstr "İlk"
+
+msgctxt "LSTstandardError|"
+msgid "Last"
+msgstr "Son"
+
+msgctxt "LSTstandardError|"
+msgid "All"
+msgstr "Hepsi"
+
+msgctxt "LSTstandardError|"
+msgid "From"
+msgstr "Başlangıç"
+
+msgctxt "LSTstandardError|"
+msgid "To"
+msgstr "Bitiş"
+
+msgctxt "LSTstandardError|"
+msgid "Sampling Distribution Options"
+msgstr "Örnekleme Dağılımı Seçenekleri"
+
+msgctxt "LSTstandardError|"
+msgid "Show sampling distribution"
+msgstr "Örnekleme Dağılımını Göster"
+
+msgctxt "LSTstandardError|"
+msgid "Superimpose normal distribution"
+msgstr "Normal dağılımla örtüştür"
+
+msgctxt "LSTstandardError|"
+msgid "Plot Options"
+msgstr "Grafik Seçenekleri"
+
+msgctxt "LSTstandardError|"
+msgid "Color palette"
+msgstr "Renk paleti"
+
+msgctxt "LSTstandardError|"
+msgid "Colorblind"
+msgstr "Renk Körü"
+
+msgctxt "LSTstandardError|"
+msgid "Colorblind Alt."
+msgstr "Renk Körü Alt."
+
+msgctxt "LSTstandardError|"
+msgid "Viridis"
+msgstr "Viridis"
+
+msgctxt "LSTstandardError|"
+msgid "ggplot2"
+msgstr "ggplot2"
+
+msgctxt "LSTstandardError|"
+msgid "Gray"
+msgstr "Gri"
+
+msgctxt "LSTstandardError|"
+msgid "Bin width type"
+msgstr "Kutu genişliği türü"
+
+msgctxt "LSTstandardError|"
+msgid "Sturges"
+msgstr "Sturges"
+
+msgctxt "LSTstandardError|"
+msgid "Scott"
+msgstr "Scott"
+
+msgctxt "LSTstandardError|"
+msgid "Doane"
+msgstr "Doane"
+
+msgctxt "LSTstandardError|"
+msgid "Freedman-Diaconis"
+msgstr "Freedman-Diaconis"
+
+msgctxt "LSTstandardError|"
+msgid "Manual"
+msgstr "Elle"
+
+msgctxt "LSTstandardError|"
+msgid "Number of bins"
+msgstr "Kutu sayısı"
+
+msgctxt "PValues|"
+msgid "Theoretical distribution"
+msgstr "Teorik dağılım"
+
+msgctxt "PValues|"
+msgid "Normal"
+msgstr "Normal"
+
+msgctxt "PValues|"
+msgid "T distribution"
+msgstr "t Dağılımı"
+
+msgctxt "PValues|"
+msgid "df"
+msgstr "sd."
+
+msgctxt "PValues|"
+msgid "Test settings"
+msgstr "Test ayarları"
+
+msgctxt "PValues|"
+msgid "Type-I error rate α"
+msgstr "I. tip hata oranı α"
+
+msgctxt "PValues|"
+msgid "Alt. hypothesis"
+msgstr "Alt. hipotez"
+
+msgctxt "PValues|"
+msgid "Two sided"
+msgstr "Çift taraflı"
+
+msgctxt "PValues|"
+msgid "Greater"
+msgstr "Büyüktür"
+
+msgctxt "PValues|"
+msgid "Less"
+msgstr "Küçüktür"
+
+msgctxt "PValues|"
+msgid "Plot theoretical distribution"
+msgstr "Teorik dağılım grafiği"
+
+msgctxt "PValues|"
+msgid "Highlight critical region"
+msgstr "Kritik bölgeyi vurgula"
+
+msgctxt "PValues|"
+msgid "Highlight specified test statistic"
+msgstr "Belirtilen test istatistiğini vurgula"
+
+msgctxt "PValues|"
+msgid "Specify test statistic"
+msgstr "Test istatistiğini belirle"
+
+msgctxt "PValues|"
+msgid "Specify p-value"
+msgstr "p değerini belirle"
+
+msgctxt "PValues|"
+msgid "Simulation under the null hypothesis"
+msgstr "Sıfır hipotezi altında simülasyon"
+
+msgctxt "PValues|"
+msgid "Simulation"
+msgstr "Simülasyon"
+
+msgctxt "PValues|"
+msgid "Number of studies to simulate"
+msgstr "Simüle edilecek çalışma sayısı"
+
+msgctxt "PValues|"
+msgid "Simulate"
+msgstr "Simüle Et"
+
+msgctxt "PValues|"
+msgid "Reset"
+msgstr "Sıfırla"
+
+msgctxt "PValues|"
+msgid "Output"
+msgstr "Çıktı"
+
+msgctxt "PValues|"
+msgid "Plot test statistics"
+msgstr "Test istatistiklerini çiz"
+
+msgctxt "PValues|"
+msgid "Overlay theoretical distribution"
+msgstr "Teorik dağılım ile örtüştür"
+
+msgctxt "PValues|"
+msgid "Plot p-values"
+msgstr "p-değerini çiz"
+
+msgctxt "PValues|"
+msgid "Overlay uniform distribution"
+msgstr "Tekdüze dağılım ile örtüştür"
+
+msgctxt "PValues|"
+msgid "Frequency table"
+msgstr "Frekans tablosu"
+
+msgctxt "PValues|"
+msgid "Simulation under the alternative hypothesis"
+msgstr "Sıfır hipotezi altında simülasyon"
+
+msgctxt "PValues|"
+msgid "Specify alternative sampling distribution"
+msgstr "Alternatif örnekleme dağılımını belirle"
+
+msgctxt "PValues|"
+msgid "Mean"
+msgstr "Aritmetik Ortalama"
+
+msgctxt "PValues|"
+msgid "Non-centrality"
+msgstr "Merkezi Değil"
+
+msgctxt "PValues|"
+msgid "Overlay theoretical null distribution"
+msgstr "Teorik dağılımla örtüştür"
+
+msgctxt "PValues|"
+msgid "Overlay theoretical alternative distribution"
+msgstr "Alternatif teorik dağılımla örtüştür"
+
+msgctxt "PValues|"
+msgid "Options"
+msgstr "Seçenekler"
+
+msgctxt "PValues|"
+msgid "Introductory text"
+msgstr "Tanıtım Metni"

@@ -223,8 +223,7 @@ Form
 			IntegerField
 			{
 				name:			"cltFirstOrLastSamples"
-				id:				cltFirstOrLastSamples
-				label:			qsTr("")
+				label:			""
 				fieldWidth:		60
 				defaultValue:	7
 				visible:		cltSampleShowType.currentValue == "first" | cltSampleShowType.currentValue == "last"

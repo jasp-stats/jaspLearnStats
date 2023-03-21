@@ -88,7 +88,7 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
     N <- options[["svParentSize"]]
     if ((n * k) > N) {
       errors <- TRUE
-      errorMessage$setError(gettextf("Population size too small. Cannot draw %i samples with size %i from a finite population of %i.", k, n, N))
+      errorMessage$setError(gettextf("Population size too small. Cannot draw %1$i samples with size %2$i from a finite population of %3$i.", k, n, N))
     }
   }
   if (errors) {
