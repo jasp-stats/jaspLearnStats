@@ -232,7 +232,6 @@ Form
 		{
 			name: "LSdescExplanationC"
 			label: qsTr("Show explanation")
-			checked: true
 		}
 	}
 	
@@ -270,7 +269,6 @@ Form
 		{
 			name:		"LSdescExplanationS"
 			label:		qsTr("Show explanation")
-			checked:	true
 		}
 	}
 	
@@ -282,7 +280,6 @@ Form
 		{
 			name:		"LSdescHistBar"
 			label:		qsTr("Histogram / Barplot")
-			checked:	true
 		
 			RadioButtonGroup
 			{
