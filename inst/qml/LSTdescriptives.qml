@@ -33,7 +33,7 @@ Form
 		id: lsDescCentralOrSpread
 		values:
 		[
-			{label: qsTr("Central tendency"),		value: "LSdescCentralTendency"},
+			{label: qsTr("Central tendency"), value: "LSdescCentralTendency"},
 			{label: qsTr("Spread"),	value: "LSdescSpread"}
 		]
 	}
@@ -48,13 +48,13 @@ Form
 		{
 			columns:	3
 			name:		"lstDescDataType"
-			title:		qsTr("Data Input Type")
+			title:		qsTr("Data input type")
 			id:			lstDescDataType
 			
 			RadioButton
 			{
 				value:		"dataRandom"
-				label:		qsTr("Random Sample")
+				label:		qsTr("Random sample")
 				id:			dataTypeA
 				checked:	true
 			}
@@ -82,7 +82,7 @@ Form
 			DoubleField
 			{
 				name:			"lstDescSampleN"
-				visible:	dataTypeA.checked
+				visible:		dataTypeA.checked
 				label:			qsTr("Sample size")
 				fieldWidth:		60
 				defaultValue:	100
@@ -108,7 +108,7 @@ Form
 				columns:	3
 				name:		"lstDescSampleDistType"
 				visible:	dataTypeA.checked
-				title:		qsTr("Distribution Type")
+				title:		qsTr("Distribution type")
 				id:			distributionType
 		
 				RadioButton
@@ -159,10 +159,10 @@ Form
 		
 		TextArea
 		{
-			title:		qsTr("Comma-separated Sequence of Observations")
+			title:		qsTr("Comma-separated sequence of observations")
 			visible:	dataTypeB.checked
 			height:		100
-			name:     "lstDescDataSequenceInput"
+			name:		"lstDescDataSequenceInput"
 			textType:	JASP.TextTypeSource
 			separators:	[",",";","\n"]
 		}
@@ -194,37 +194,37 @@ Form
 	
 	Section
 	{
-		title: qsTr("Central Tendency Measures")
+		title: qsTr("Central tendency measures")
 		visible: lsDescCentralOrSpread.currentValue == "LSdescCentralTendency"
 		
 		RadioButtonGroup
 		{
-			title:                                  qsTr("Select Central Tendency Measure")
-			name:                                   "LSdescCT"
+			title:									qsTr("Select central tendency measure")
+			name:									"LSdescCT"
 
 			RadioButton
 			{
-				name:                               "LSdescMean"
-				label:                              qsTr("Show Mean")
-				checked:                            true
+				name:								"LSdescMean"
+				label:								qsTr("Show mean")
+				checked:							true
 			}
 			
 			RadioButton
 			{
-				name:                               "LSdescMedian"
-				label:                              qsTr("Show Median")
+				name:								"LSdescMedian"
+				label:								qsTr("Show median")
 			}
 			
 			RadioButton
 			{
-			name:                               "LSdescMode"
-			label:                              qsTr("Show Mode")
+			name:									"LSdescMode"
+			label:									qsTr("Show mode")
 			}
 			
 			RadioButton
 			{
-				name:                               "LSdescMMM"
-				label:                              qsTr("Compare All")
+				name:								"LSdescMMM"
+				label:								qsTr("Compare all")
 			}
 		}
 		

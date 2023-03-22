@@ -36,7 +36,7 @@ Form
 			DropDown
 			{
 				name:				"cltParentDistribution"
-				label:				qsTr("Parent Distribution")
+				label:				qsTr("Parent distribution")
 				indexDefaultValue:	0
 				id:					cltParentDistribution
 				values:
@@ -76,7 +76,7 @@ Form
 			DoubleField
 			{
 				name:			"cltStdDev"
-				label:			qsTr("Std. Dev.")
+				label:			qsTr("Std. dev.")
 				fieldWidth:		60
 				defaultValue:	1
 				decimals:		2
@@ -98,7 +98,7 @@ Form
 			DropDown
 			{
 				name:				"cltSkewDirection"
-				label:				qsTr("Skew Direction")
+				label:				qsTr("Skew direction")
 				indexDefaultValue:	0
 				visible:			cltParentDistribution.currentValue == "skewed"
 				id:					cltSkewDirection
@@ -112,7 +112,7 @@ Form
 			DropDown
 			{
 				name:				"cltSkewIntensity"
-				label:				qsTr("Skew Intensity")
+				label:				qsTr("Skew intensity")
 				indexDefaultValue:	0
 				visible:			cltParentDistribution.currentValue == "skewed"
 				id:					cltSkewIntensity
@@ -142,7 +142,7 @@ Form
 	
 	Section
 	{
-		title: qsTr("Sample Options")
+		title: qsTr("Sample options")
 	
 		Group
 		{
@@ -213,10 +213,10 @@ Form
 				indexDefaultValue:	0
 				values:
 				[
-					{ label: qsTr("First"),		value: "first"},
+					{ label: qsTr("First"),		value: "first"	},
 					{ label: qsTr("Last"),		value: "last"	},
-					{ label: qsTr("Range"),			value: "range"		},
-					{ label: qsTr("All"),			value: "all"		}
+					{ label: qsTr("Range"),		value: "range"	},
+					{ label: qsTr("All"),		value: "all"	}
 				]
 			}
 
@@ -248,7 +248,7 @@ Form
 			{
 				name:			"cltToSample"
 				id:				cltToSample
-				label:			qsTr("To")
+				label:			qsTr("to")
 				fieldWidth:		60
 				defaultValue:	7
 				visible:		cltSampleShowType.currentValue == "range"
@@ -260,7 +260,7 @@ Form
 	
 	Section
 	{
-		title: qsTr("Sampling Distribution Options")
+		title: qsTr("Sampling distribution options")
 	
 		CheckBox
 		{
