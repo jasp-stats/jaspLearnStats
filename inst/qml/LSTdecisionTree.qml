@@ -32,157 +32,157 @@ Form
 	
 	RadioButtonGroup
 	{
-		name:                                   "nOutcomeVariables"
+		name:									"nOutcomeVariables"
 		id:										nOutcomeVariables
 		title:			qsTr("How many outcome variables?")
 		
 		RadioButton
 		{
-			name:                              "nOutcomeOne"
-			label:                              qsTr("One")		
-			checked:                            true		
+			name:								"nOutcomeOne"
+			label:								qsTr("One")
+			checked:							true
 		}
 
 		RadioButton
 		{
-			name:                               "nOutcomeMany"
-			label:                              qsTr("Two or more")
+			name:								"nOutcomeMany"
+			label:								qsTr("Two or more")
 		}
 	}
 	
 		RadioButtonGroup
 	{
-		name:                                   "typeOutcomeVariables"
+		name:									"typeOutcomeVariables"
 		id:										typeOutcomeVariables
 		title:									qsTr("What type of outcome?")
 		
 		RadioButton
 		{
-			name:                              "typeOutcomeCont"
-			label:                              qsTr("Continuous")		
-			checked:                            true		
+			name:								"typeOutcomeCont"
+			label:								qsTr("Continuous")
+			checked:							true
 		}
 
 		RadioButton
 		{
-			name:                               "typeOutcomeCat"
-			label:                              qsTr("Categorical")
+			name:								"typeOutcomeCat"
+			label:								qsTr("Categorical")
 			enabled:							nOutcomeVariables.value == "nOutcomeOne"
 		}
 	}
 	
 	RadioButtonGroup
 	{
-		name:                                   "nPredictor"
-		title:			qsTr("How many predictor variables?")
-		id:				nPredictor
+		name:								"nPredictor"
+		title:								qsTr("How many predictor variables?")
+		id:									nPredictor
 		
 		RadioButton
 		{
-			name:                              "onePredictor"
-			label:                              qsTr("One")		
-			checked:                            true		
+			name:								"onePredictor"
+			label:								qsTr("One")
+			checked:							true
 		}
 
 		RadioButton
 		{
-			name:                               "twoPlusPredictors"
-			label:                              qsTr("Two or more")
+			name:								"twoPlusPredictors"
+			label:								qsTr("Two or more")
 		}
 	}
 	
 	RadioButtonGroup
 	{
-		name:                                   "typePredictor"
-		id:										typePredictor
-		title:						qsTr("What type of predictor?")
+		name:								"typePredictor"
+		id:									typePredictor
+		title:								qsTr("What type of predictor?")
 		
 		RadioButton
 		{
-			name:                              "typePredictorCont"
-			label:                              qsTr("Continuous")		
+			name:								"typePredictorCont"
+			label:								qsTr("Continuous")
 			enabled:							nOutcomeVariables.value == "nOutcomeOne"
 		}
 
 		RadioButton
 		{
-			name:                               "typePredictorCat"
-			label:                              qsTr("Categorical")
+			name:								"typePredictorCat"
+			label:								qsTr("Categorical")
 			checked:							true
 		}
 		
 		RadioButton
 		{
-			name:                               "typePredictorBoth"
-			label:                              qsTr("Both")
+			name:								"typePredictorBoth"
+			label:								qsTr("Both")
 			enabled:							nPredictor.value == "twoPlusPredictors"
 		}
 	}
 	
 	RadioButtonGroup
 	{
-		name:                                   "nCatPredictor"
-		title:						qsTr("How many categories in predictor variable?")
-		enabled:					typePredictor.value == "typePredictorCat" && nPredictor.value == "onePredictor" && nOutcomeVariables.value == "nOutcomeOne" && typeOutcomeVariables.value == "typeOutcomeCont"
+		name:								"nCatPredictor"
+		title:								qsTr("How many categories in predictor variable?")
+		enabled:							typePredictor.value == "typePredictorCat" && nPredictor.value == "onePredictor" && nOutcomeVariables.value == "nOutcomeOne" && typeOutcomeVariables.value == "typeOutcomeCont"
 		
 		RadioButton
 		{
-			name:                              "nCatPredictorTwo"
-			label:                              qsTr("Two")		
-			checked:                            true		
+			name:								"nCatPredictorTwo"
+			label:								qsTr("Two")
+			checked:							true
 		}
 
 		RadioButton
 		{
-			name:                              "nCatPredictorTwoPlus"
-			label:                              qsTr("More than two")		
+			name:								"nCatPredictorTwoPlus"
+			label:								qsTr("More than two")
 		}
 	}
 	
 	RadioButtonGroup
 	{
-		name:                                   "repCatPredictor"
-		title:						qsTr("Same or different entities in categories of predictor?")
-		enabled:					(typePredictor.value == "typePredictorCat" & nOutcomeVariables.value == "nOutcomeOne") | (typeOutcomeVariables.value == "typeOutcomeCat" & typePredictor.value == "typePredictorBoth")
+		name:								"repCatPredictor"
+		title:								qsTr("Same or different entities in categories of predictor?")
+		enabled:							(typePredictor.value == "typePredictorCat" & nOutcomeVariables.value == "nOutcomeOne") | (typeOutcomeVariables.value == "typeOutcomeCat" & typePredictor.value == "typePredictorBoth")
 		
 		RadioButton
 		{
-			name:                              "repCatPredictor"
-			label:                              qsTr("Same")		
+			name:								"repCatPredictor"
+			label:								qsTr("Same")
 			enabled:							typeOutcomeVariables.value == "typeOutcomeCont"
 		}
 
 		RadioButton
 		{
-			name:                              "noRepCatPredictor"
-			label:                              qsTr("Different")
+			name:								"noRepCatPredictor"
+			label:								qsTr("Different")
 			checked:							true
 		}
 		
 		RadioButton
 		{
-			name:                              "mixedRepCatPredictor"
-			label:                              qsTr("Both")
+			name:								"mixedRepCatPredictor"
+			label:								qsTr("Both")
 			enabled:							nPredictor.value == "twoPlusPredictors" & typeOutcomeVariables.value == "typeOutcomeCont"
 		}
 	}
 	
 	RadioButtonGroup
 	{
-		name:                                   "parametricTest"
-		title:						qsTr("Are the assumptions for a parametric test met?")
+		name:								"parametricTest"
+		title:								qsTr("Are the assumptions for a parametric test met?")
 		
 		RadioButton
 		{
-			name:                              "parametric"
-			label:                              qsTr("Assumptions met")		
-			checked:                            true		
+			name:								"parametric"
+			label:								qsTr("Assumptions met")
+			checked:							true
 		}
 
 		RadioButton
 		{
-			name:                              "nonparametric"
-			label:                              qsTr("Assumptions not met")		
+			name:								"nonparametric"
+			label:								qsTr("Assumptions not met")
 		}
 	}
 	
