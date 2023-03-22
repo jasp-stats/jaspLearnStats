@@ -242,18 +242,18 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
     selectedOptionsVector[3] <- "Two or more"
   
   #Q4: "What type of predictor?"
-  if (options[["typePredictor"]] == "typePredictorCont" & options[["nOutcomeVariables"]] == "nOutcomeOne")
+  if (options[["typePredictor"]] == "typePredictorCont" && options[["nOutcomeVariables"]] == "nOutcomeOne")
     selectedOptionsVector[4] <- "Continuous"
   if (options[["typePredictor"]] == "typePredictorCat")
     selectedOptionsVector[4] <- "Categorical"
-  if (options[["typePredictor"]] == "typePredictorBoth" & options[["nPredictor"]] == "twoPlusPredictors")
+  if (options[["typePredictor"]] == "typePredictorBoth" && options[["nPredictor"]] == "twoPlusPredictors")
     selectedOptionsVector[4] <- "Both"
   
   ## optional questions:
   
   #Q5: "How many categories in predictor variable?"
-  if (options[["typePredictor"]] == "typePredictorCat" & options[["nPredictor"]] == "onePredictor" &
-      options[["nOutcomeVariables"]] == "nOutcomeOne" & options[["typeOutcomeVariables"]] == "typeOutcomeCont") {
+  if (options[["typePredictor"]] == "typePredictorCat" && options[["nPredictor"]] == "onePredictor" &&
+      options[["nOutcomeVariables"]] == "nOutcomeOne" && options[["typeOutcomeVariables"]] == "typeOutcomeCont") {
     if (options[["nCatPredictor"]] == "nCatPredictorTwo")
       selectedOptionsVector <- c(selectedOptionsVector, "Two")
     if (options[["nCatPredictor"]] == "nCatPredictorTwoPlus")
@@ -261,11 +261,11 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
   }
   
   #Q6: "Same or different entities in categories of predictor?"
-  if ((options[["typePredictor"]] == "typePredictorCat" & options[["nOutcomeVariables"]] == "nOutcomeOne") |
-      (options[["typeOutcomeVariables"]] == "typeOutcomeCat" & options[["typePredictor"]] == "typePredictorBoth")) {
-    if (options[["repCatPredictor"]] == "repCatPredictor" & options[["typeOutcomeVariables"]] == "typeOutcomeCont")
+  if ((options[["typePredictor"]] == "typePredictorCat" && options[["nOutcomeVariables"]] == "nOutcomeOne") ||
+      (options[["typeOutcomeVariables"]] == "typeOutcomeCat" && options[["typePredictor"]] == "typePredictorBoth")) {
+    if (options[["repCatPredictor"]] == "repCatPredictor" && options[["typeOutcomeVariables"]] == "typeOutcomeCont")
       selectedOptionsVector <- c(selectedOptionsVector, "Same")
-    if (options[["repCatPredictor"]] == "mixedRepCatPredictor" & options[["nPredictor"]] == "twoPlusPredictors" &
+    if (options[["repCatPredictor"]] == "mixedRepCatPredictor" && options[["nPredictor"]] == "twoPlusPredictors" &&
         options[["typeOutcomeVariables"]] == "typeOutcomeCont")
       selectedOptionsVector <- c(selectedOptionsVector, "Both")
     if (options[["repCatPredictor"]] == "noRepCatPredictor")
