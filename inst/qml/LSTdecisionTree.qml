@@ -34,7 +34,7 @@ Form
 	{
 		name:									"nOutcomeVariables"
 		id:										nOutcomeVariables
-		title:			qsTr("How many outcome variables?")
+		title:									qsTr("How many outcome variables?")
 		
 		RadioButton
 		{
