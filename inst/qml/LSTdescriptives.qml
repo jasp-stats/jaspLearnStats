@@ -50,20 +50,20 @@ Form
 			name:		"lstDescDataType"
 			title:		qsTr("Data input type")
 			id:			lstDescDataType
+
+			RadioButton
+			{
+				value:		"dataSequence"
+				label:		qsTr("Enter sequence")
+				id:			dataTypeB
+				checked:	true
+			}
 			
 			RadioButton
 			{
 				value:		"dataRandom"
 				label:		qsTr("Random sample")
 				id:			dataTypeA
-				checked:	true
-			}
-			
-			RadioButton
-			{
-				value:		"dataSequence"
-				label:		qsTr("Enter sequence")
-				id:			dataTypeB
 			}
 			
 			RadioButton
@@ -295,7 +295,7 @@ Form
 				RadioButton
 				{
 					name:	"LSdescHistDens"
-					label:	qsTr("Show density (Histogram only)")
+					label:	qsTr("Show density (histogram only)")
 				}
 			}
 			
