@@ -25,18 +25,18 @@ Form
 {
 	columns: 1
 	
-	DropDown
-	{
-		name: "LSdescCentralOrSpread"
-		label: qsTr("Statistics to explain")
-		indexDefaultValue: 0
-		id: lsDescCentralOrSpread
-		values:
-		[
-			{label: qsTr("Central tendency"), value: "LSdescCentralTendency"},
-			{label: qsTr("Spread"),	value: "LSdescSpread"}
-		]
-	}
+	// DropDown
+	// {
+	// 	name: "LSdescCentralOrSpread"
+	// 	label: qsTr("Statistics to explain")
+	// 	indexDefaultValue: 0
+	// 	id: lsDescCentralOrSpread
+	// 	values:
+	// 	[
+	// 		{label: qsTr("Central tendency"), value: "LSdescCentralTendency"},
+	// 		{label: qsTr("Spread"),	value: "LSdescSpread"}
+	// 	]
+	// }
 	
 	Section
 	{
@@ -190,87 +190,168 @@ Form
 				}
 			}
 		}
-	}
-	
-	Section
-	{
-		title: qsTr("Central tendency measures")
-		visible: lsDescCentralOrSpread.currentValue == "LSdescCentralTendency"
-		
+
+
 		RadioButtonGroup
 		{
-			title:									qsTr("Select central tendency measure")
-			name:									"LSdescCT"
+			title:									qsTr("Statistics to display")
+			name:									"LSdescStatistics"
+			columns:								3
 
-			RadioButton
-			{
-				name:								"LSdescMean"
-				label:								qsTr("Show mean")
-				checked:							true
+			Group
+			{	
+				title:								qsTr("Central tendency measures")
+
+				RadioButton
+				{
+					name:								"LSdescMean"
+					label:								qsTr("Show mean")
+					checked:							true
+				}
+				
+				RadioButton
+				{
+					name:								"LSdescMedian"
+					label:								qsTr("Show median")
+				}
+				
+				RadioButton
+				{
+				name:									"LSdescMode"
+				label:									qsTr("Show mode")
+				}
+				
+				RadioButton
+				{
+					name:								"LSdescMMM"
+					label:								qsTr("Compare all")
+				}
+
 			}
+
+			Group
+			{	
+				title:								qsTr("Spread measures")
+
+				RadioButton
+				{
+					name:		"LSdescRange"
+					label:		qsTr("Show range")
+					checked:	true
+				}
+				
+				RadioButton
+				{
+					name:	"LSdescQR"
+					label:	qsTr("Show quartiles")
+				}
 			
-			RadioButton
-			{
-				name:								"LSdescMedian"
-				label:								qsTr("Show median")
+				RadioButton
+				{
+					name:	"LSdescSD"
+					label:	qsTr("Show std. dev. and variance")
+				}
+
 			}
-			
-			RadioButton
+
+			Group
 			{
-			name:									"LSdescMode"
-			label:									qsTr("Show mode")
+				title:		" "
+				RadioButton
+				{
+					name:								"none"
+					label:								qsTr("None")
+					checked:							true
+				}
 			}
-			
-			RadioButton
+
+			CheckBox
 			{
-				name:								"LSdescMMM"
-				label:								qsTr("Compare all")
-			}
-		}
-		
-		CheckBox
-		{
-			name: "LSdescExplanationC"
-			label: qsTr("Show explanation")
+				name:		"LSdescExplanationS"
+				label:		qsTr("Show explanation")
+			}	
 		}
 	}
 	
-	Section
-	{
-		title: qsTr("Measures of spread")
-		visible: lsDescCentralOrSpread.currentValue == "LSdescSpread"
+	// Section
+	// {
+	// 	title: qsTr("Central tendency measures")
+	// 	visible: lsDescCentralOrSpread.currentValue == "LSdescCentralTendency"
 		
-		RadioButtonGroup
-		{
-			title:	qsTr("Select measure of spread")
-			name:	"LSdescS"
+	// 	RadioButtonGroup
+	// 	{
+	// 		title:									qsTr("Select central tendency measure")
+	// 		name:									"LSdescCT"
 
-			RadioButton
-			{
-				name:		"LSdescRange"
-				label:		qsTr("Range")
-				checked:	true
-			}
+	// 		RadioButton
+	// 		{
+	// 			name:								"LSdescMean"
+	// 			label:								qsTr("Show mean")
+	// 			checked:							true
+	// 		}
 			
-			RadioButton
-			{
-				name:	"LSdescQR"
-				label:	qsTr("Quartiles")
-			}
+	// 		RadioButton
+	// 		{
+	// 			name:								"LSdescMedian"
+	// 			label:								qsTr("Show median")
+	// 		}
+			
+	// 		RadioButton
+	// 		{
+	// 		name:									"LSdescMode"
+	// 		label:									qsTr("Show mode")
+	// 		}
+			
+	// 		RadioButton
+	// 		{
+	// 			name:								"LSdescMMM"
+	// 			label:								qsTr("Compare all")
+	// 		}
+	// 	}
 		
-			RadioButton
-			{
-				name:	"LSdescSD"
-				label:	qsTr("Std. dev. and variance")
-			}
-		}
+	// 	CheckBox
+	// 	{
+	// 		name: "LSdescExplanationC"
+	// 		label: qsTr("Show explanation")
+	// 	}
+	// }
+	
+	// Section
+	// {
+	// 	title: qsTr("Measures of spread")
+	// 	visible: lsDescCentralOrSpread.currentValue == "LSdescSpread"
 		
-		CheckBox
-		{
-			name:		"LSdescExplanationS"
-			label:		qsTr("Show explanation")
-		}
-	}
+	// 	RadioButtonGroup
+	// 	{
+	// 		title:	qsTr("Select measure of spread")
+	// 		name:	"LSdescS"
+
+	// 		RadioButton
+	// 		{
+	// 			name:		"LSdescRange"
+	// 			label:		qsTr("Range")
+	// 			checked:	true
+	// 		}
+			
+	// 		RadioButton
+	// 		{
+	// 			name:	"LSdescQR"
+	// 			label:	qsTr("Quartiles")
+	// 		}
+		
+	// 		RadioButton
+	// 		{
+	// 			name:	"LSdescSD"
+	// 			label:	qsTr("Std. dev. and variance")
+	// 		}
+	// 	}
+		
+	// 	CheckBox
+	// 	{
+	// 		name:		"LSdescExplanationS"
+	// 		label:		qsTr("Show explanation")
+	// 	}
+	// }
 	
 	Section
 	{
