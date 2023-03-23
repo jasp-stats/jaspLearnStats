@@ -129,15 +129,7 @@ Form
 	
 	function getMinSamplesCLT()
 	{
-		var min = 99999
-		if(cltSampleShowType.currentValue == "first" | cltSampleShowType.currentValue == "last")
-		{
-			min = cltFirstOrLastSamples.value
-		} else
-		{
-			min = cltToSample.value
-		}
-		return min
+		return cltSampleShowType.currentValue === "first" || cltSampleShowType.currentValue === "last" ? cltFirstOrLastSamples.value : cltToSample.value
 	}
 	
 	Section
