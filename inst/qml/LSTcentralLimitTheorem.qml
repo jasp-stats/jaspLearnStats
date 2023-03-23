@@ -28,6 +28,7 @@ Form
 	Section
 	{
 		title: qsTr("Parent Distribution")
+		expanded: true
 
 		Group
 		{
@@ -125,6 +126,12 @@ Form
 		}
 	}
 	
+	
+	function getMinSamplesCLT()
+	{
+		return cltSampleShowType.currentValue === "first" || cltSampleShowType.currentValue === "last" ? cltFirstOrLastSamples.value : cltToSample.value
+	}
+	
 	Section
 	{
 		title: qsTr("Sample Options")
@@ -132,22 +139,22 @@ Form
 		Group
 		{
 	
-			DoubleField
+			IntegerField
 			{
 				name:			"cltSampleSize"
 				label:			qsTr("Number of observations per sample")
 				fieldWidth:		60
 				defaultValue:	30
-				decimals:		0
 			}
 		
-			DoubleField
+			IntegerField
 			{
 				name:			"cltSampleAmount"
+				id:				cltSampleAmount
 				label:			qsTr("Number of total samples")
 				fieldWidth:		60
 				defaultValue:	100
-				decimals:		0
+				min:			getMinSamplesCLT()
 			}
 		}
 		
@@ -193,7 +200,7 @@ Form
 			DropDown
 			{
 				name:				"cltSampleShowType"
-				label:				qsTr("Show Samples")
+				label:				qsTr("Show samples")
 				id:					cltSampleShowType
 				indexDefaultValue:	0
 				values:
@@ -205,38 +212,40 @@ Form
 				]
 			}
 
-			DoubleField
+			IntegerField
 			{
 				name:			"cltFirstOrLastSamples"
 				label:			""
 				fieldWidth:		60
 				defaultValue:	7
-				decimals:		0
 				visible:		cltSampleShowType.currentValue == "first" | cltSampleShowType.currentValue == "last"
-				max:			999
+				max:			cltSampleAmount.value
+				min:			1
 				}
 				
 				
-			DoubleField
+			IntegerField
 			{
 				name:			"cltFromSample"
+				id:				cltFromSample
 				label:			qsTr("From")
 				fieldWidth:		60
 				defaultValue:	1
-				decimals:		0
 				visible:		cltSampleShowType.currentValue == "range"
 				min: 			1
+				max:			cltToSample.value
 			}
 				
-			DoubleField
+			IntegerField
 			{
 				name:			"cltToSample"
+				id:				cltToSample
 				label:			qsTr("To")
 				fieldWidth:		60
 				defaultValue:	7
-				decimals:		0
 				visible:		cltSampleShowType.currentValue == "range"
-				max:			999
+				max:			cltSampleAmount.value
+				min:			cltFromSample.value
 			}
 		}
 	}

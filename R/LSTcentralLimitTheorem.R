@@ -26,7 +26,7 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     jaspResults[["cltParentDistribution"]]$position <- 1
   }
   if (options[["parentExplain"]]){
-    jaspResults[["cltParentDistributionExplanation"]] <- createJaspHtml("This is the placeholder text for the CLT parent distribution explanation.", "p")
+    jaspResults[["cltParentDistributionExplanation"]] <- createJaspHtml("Placeholder")
     jaspResults[["cltParentDistributionExplanation"]]$position <- 2
     jaspResults[["cltParentDistributionExplanation"]]$dependOn("parentExplain")
   }
@@ -41,7 +41,7 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     jaspResults[["cltSamples"]]$position <- 3
   }
   if (options[["samplesExplain"]]){
-    jaspResults[["cltSamplesExplanation"]] <- createJaspHtml("This is the placeholder text for the CLT samples explanation.", "p")
+    jaspResults[["cltSamplesExplanation"]] <- createJaspHtml("Placeholder")
     jaspResults[["cltSamplesExplanation"]]$position <- 4
     jaspResults[["cltSamplesExplanation"]]$dependOn("samplesExplain")
   }
@@ -51,7 +51,7 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     jaspResults[["cltSamplingDistribution"]]$position <- 5
   }
   if (options[["samplingDistExplain"]]){
-    jaspResults[["cltSamplingDistExplanation"]] <- createJaspHtml("This is the placeholder text for the CLT sampling dist. explanation.", "p")
+    jaspResults[["cltSamplingDistExplanation"]] <- createJaspHtml("Placeholder")
     jaspResults[["cltSamplingDistExplanation"]]$position <- 6
     jaspResults[["cltSamplingDistExplanation"]]$dependOn("samplingDistExplain")
   }
@@ -166,7 +166,7 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
     allCounts <- c(allCounts, counts)
   }
   
-  yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(0, allCounts))
+  yBreaks <- unique(as.integer(jaspGraphs::getPrettyAxisBreaks(c(0, allCounts))))
   yStep <- yBreaks[2] - yBreaks[1]
   yLimits <- c(min(yBreaks), max(yBreaks) + 2 * yStep)
   
@@ -176,7 +176,7 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
   } else {
     binWidthType2 <- .getBinWidth(unlist(samples), options)
     h2 <- hist(unlist(samples), plot = FALSE, right = FALSE, breaks = binWidthType2)
-    xBreaks <- jaspGraphs::getPrettyAxisBreaks(c(h2$breaks))
+    xBreaks <- jaspGraphs::getPrettyAxisBreaks(h2$breaks)
     xStep <- xBreaks[2] - xBreaks[1]
     xLimits <- c(min(xBreaks) - xStep, max(xBreaks) + 1.5 * xStep)
     binWidth <- (h2$breaks[2] - h2$breaks[1])
@@ -246,7 +246,7 @@ LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
   tbcString <- ifelse(to == maxSamples, "", gettextf("... until Sample Nr. %i", maxSamples))
   plotMat <- .arrangePlotMat(plotList, tbc = tbcString)
   rows <- .getPlotMatDetails(length(visibleSamples))$rows
-  plotHeight <- rows * 200
+  plotHeight <- rows * 250
   
   sampleMatrixPlot <- createJaspPlot(title = gettext("Samples"), width = 1200, height = plotHeight)
   sampleMatrixPlot$position <- 2

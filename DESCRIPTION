@@ -15,7 +15,9 @@ Imports:
   jaspGraphs,
   jaspDistributions,
   jaspDescriptives,
-  ggforce
+  ggforce,
+  tidyr,
+  igraph
 Remotes:
   jasp-stats/jaspBase,
   jasp-stats/jaspGraphs,

@@ -41,6 +41,7 @@ Form
 	Section
 	{
 		title: qsTr("Data options")
+		expanded: true
 		columns:	1
 	
 		RadioButtonGroup
