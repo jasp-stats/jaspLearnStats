@@ -235,21 +235,21 @@ Form
 
 				RadioButton
 				{
-					name:		"LSdescRange"
-					label:		qsTr("Show range")
-					checked:	true
+					name:							"LSdescRange"
+					label:							qsTr("Show range")
+					checked:						true
 				}
 				
 				RadioButton
 				{
-					name:	"LSdescQR"
-					label:	qsTr("Show quartiles")
+					name:							"LSdescQR"
+					label:							qsTr("Show quartiles")
 				}
 			
 				RadioButton
 				{
-					name:	"LSdescSD"
-					label:	qsTr("Show std. dev. and variance")
+					name:							"LSdescSD"
+					label:							qsTr("Show std. dev. and variance")
 				}
 
 			}
@@ -257,17 +257,18 @@ Form
 			Group
 			{
 				title:		" "
+
 				RadioButton
 				{
-					name:								"none"
-					label:								qsTr("None")
-					checked:							true
+					name:							"none"
+					label:							qsTr("None")
+					checked:						true
 				}
 			}
 
 			CheckBox
 			{
-				name:		"LSdescExplanationS"
+				name:		"LSdescExplanation"
 				label:		qsTr("Show explanation")
 			}	
 		}
