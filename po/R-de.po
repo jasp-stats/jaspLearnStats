@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.15\n"
-"POT-Creation-Date: 2023-03-04 04:45\n"
+"POT-Creation-Date: 2023-03-25 04:43\n"
 "PO-Revision-Date: 2023-01-08 12:48+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
@@ -109,6 +109,12 @@ msgid "p(Coverage)"
 msgstr ""
 
 msgid "Rep"
+msgstr ""
+
+msgid "Decision Tree"
+msgstr ""
+
+msgid "Test choice"
 msgstr ""
 
 msgid "Explanation"

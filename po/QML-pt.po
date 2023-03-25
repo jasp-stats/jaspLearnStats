@@ -18,10 +18,6 @@ msgid "Normal Distribution"
 msgstr ""
 
 msgctxt "Description|"
-msgid "Binomial Distribution"
-msgstr ""
-
-msgctxt "Description|"
 msgid "Central Limit Theorem"
 msgstr ""
 
@@ -231,10 +227,6 @@ msgstr ""
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Set seed"
-msgstr ""
-
-msgctxt "LSTcentralLimitTheorem|"
-msgid "Show Samples"
 msgstr ""
 
 msgctxt "LSTcentralLimitTheorem|"
@@ -626,10 +618,6 @@ msgid "Set seed"
 msgstr ""
 
 msgctxt "LSTsampleVariability|"
-msgid "Show Samples"
-msgstr ""
-
-msgctxt "LSTsampleVariability|"
 msgid "First"
 msgstr ""
 
@@ -791,10 +779,6 @@ msgstr ""
 
 msgctxt "LSTstandardError|"
 msgid "Set seed"
-msgstr ""
-
-msgctxt "LSTstandardError|"
-msgid "Show Samples"
 msgstr ""
 
 msgctxt "LSTstandardError|"
@@ -1095,4 +1079,84 @@ msgstr ""
 
 msgctxt "LSTPValues|"
 msgid "Introductory text"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Statistical Test Decision Tree"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "How many outcome variables?"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "One"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Two or more"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "What type of outcome?"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Continuous"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Categorical"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "How many predictor variables?"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "What type of predictor?"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Both"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "How many categories in predictor variable?"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Two"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "More than two"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Same or different entities in categories of predictor?"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Same"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Different"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Are the assumptions for a parametric test met?"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Assumptions met"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Assumptions not met"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Show full decision tree"
 msgstr ""
