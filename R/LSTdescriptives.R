@@ -26,68 +26,90 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   #checking whether data is discrete or continuous, whereas only integers are treated as discrete
   discrete <- ifelse(all(data$x == as.integer(data$x)), TRUE, FALSE)
   
-  centralOrSpread <- switch(options[["LSdescStatistics"]],
+  stats <- switch(options[["LSdescStatistics"]],
                             "LSdescMean" = "ct", "LSdescMedian" = "ct", "LSdescMode" = "ct", "LSdescMMM" = "ct",
                             "LSdescRange" = "spread", "LSdescQR" = "spread", "LSdescSD" = "spread",
                             "none" = "none")
   
   
-  if (centralOrSpread == "ct" || centralOrSpread == "none") {
-    if (options[["LSdescExplanation"]])
-      .descExplanationCT(jaspResults, options, colors)
-    if (options[["LSdescHistBar"]])
-      .lstDescCreateHistogramOrBarplot(jaspResults, options, data, ready, discrete, stats = "ct", colors)
-    if (options[["LSdescDotPlot"]])
-      .lstDescCreateDotplot(jaspResults, options, data, ready, discrete, stats = "ct", colors)
-  }
-  
-  if (centralOrSpread == "spread") {
-    if (options[["LSdescExplanation"]])
-      .descExplanationS(jaspResults, options, colors)
-    if (options[["LSdescHistBar"]])
-      .lstDescCreateHistogramOrBarplot(jaspResults, options, data, ready, discrete, stats = "spread", colors)
-    if (options[["LSdescDotPlot"]])
-      .lstDescCreateDotplot(jaspResults, options, data, ready, discrete, stats = "spread", colors)
-  }
+  if (options[["LSdescHistBar"]])
+    .lstDescCreateHistogramOrBarplot(jaspResults, options, data, ready, discrete, stats = stats, colors)
+  if (options[["LSdescDotPlot"]])
+    .lstDescCreateDotplot(jaspResults, options, data, ready, discrete, stats = stats, colors)  
+  if (options[["LSdescExplanation"]])
+    .descExplanation(jaspResults, options, colors, stats = stats)
 }
 
 
-.descExplanationS <- function(jaspResults, options, colors) {
-  jaspResults[["descExplanationS"]] <- createJaspContainer(gettext("Explanation"))
-  jaspResults[["descExplanationS"]]$position <- 1
-  jaspResults[["descExplanationS"]]$dependOn(options = c("LSdescStatistics",
-                                                         "LSdescExplanation"))
+.descExplanation <- function(jaspResults, options, colors, stats = c("ct", "spread", "none")) {
+  jaspResults[["descExplanation"]] <- createJaspContainer(gettext("Explanation"))
+  jaspResults[["descExplanation"]]$position <- 1
+  jaspResults[["descExplanation"]]$dependOn(options = c("LSdescStatistics",
+                                                        "LSdescExplanation"))
   
-  set.seed(123)
-  data <- data.frame(index = 1:21, x = rnorm(21, 10, 2.5))
-  
-  plot1 <- createJaspPlot(title = gettext("Visual Explanation"), width = 700, height = 700)
-  
-  if (options[["LSdescStatistics"]] == "LSdescRange") {
-    plot1$plotObject <- .visualExplanationRange(data, colors)
-  } else if (options[["LSdescStatistics"]] == "LSdescQR") {
-    plot1$plotObject <- .visualExplanationQuartiles(data, colors)
-  } else if (options[["LSdescStatistics"]] == "LSdescSD") {
-    plot1$plotObject <- .visualExplanationStdDev(data, colors)$plot1
-    plot2 <- createJaspPlot(title = gettext("Visual Explanation 2"), width = 700, height = 700)
-    plot2$plotObject <- .visualExplanationStdDev(data, colors)$plot2
-    jaspResults[["descExplanationS"]][["Plot2"]] <- plot2
-    jaspResults[["descExplanationS"]][["Plot2"]]$position <- 3
-    plot3 <- createJaspPlot(title = gettext("Visual Explanation 3"), width = 700, height = 700)
-    plot3$plotObject <- .visualExplanationStdDev(data, colors)$plot3
-    jaspResults[["descExplanationS"]][["Plot3"]] <- plot3
-    jaspResults[["descExplanationS"]][["Plot3"]]$position <- 4
-    plot4 <- createJaspPlot(title = gettext("Visual Explanation 4"), width = 700, height = 700)
-    plot4$plotObject <- .visualExplanationStdDev(data, colors)$plot4
-    jaspResults[["descExplanationS"]][["Plot4"]] <- plot4
-    jaspResults[["descExplanationS"]][["Plot4"]]$position <- 5
+  if (stats == "none") {
+    return() 
+  } else if (stats == "ct") {
+    plot1 <- createJaspPlot(title = gettext("Theoretical example distribution"), width = 700, height = 400)
+    plot1$position <- 1
+    
+    mean <- 0
+    sd <- 1
+    skew <- 1000
+    distLimits <- c(mean - 4 * sd, mean + 4 * sd)
+    
+    data <- data.frame(x = .scaledSkewedNormal(100000, xi = mean, omega = sd, alpha = skew))
+    data <- subset(data, data$x > distLimits[1] & data$x < distLimits[2]) # remove values outside limits
+    
+    plot1Object <- .plotCTexampleDistribution(data)
+    
+    allCTs <- options[["LSdescStatistics"]] == "LSdescMMM"
+    
+    if (options[["LSdescStatistics"]] == "LSdescMedian" | allCTs) {
+      plot1Object <- .visualExplanationMedian(plot1Object, data, options, colors)
+      text <- "Text for Median:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    }
+    if (options[["LSdescStatistics"]] == "LSdescMode" | allCTs) {
+      plot1Object <- .visualExplanationMode(plot1Object, data, options, colors)
+      text <- "Text for Mode:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    }
+    if (options[["LSdescStatistics"]] == "LSdescMean" | allCTs) {
+      plot1Object <- .visualExplanationMean(plot1Object, data, options, colors)
+      text <- "Text for Mean : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    }
+    if (allCTs) {
+      text <- "Text for comparison:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    }
+    plot1$plotObject <- plot1Object
+  } else if(stats == "spread") {
+    data <- data.frame(index = 1:21, x = rnorm(21, 10, 2.5))
+    plot1 <- createJaspPlot(title = gettext("Visual Explanation"), width = 700, height = 700)
+    
+    if (options[["LSdescStatistics"]] == "LSdescRange") {
+      plot1$plotObject <- .visualExplanationRange(data, colors)
+    } else if (options[["LSdescStatistics"]] == "LSdescQR") {
+      plot1$plotObject <- .visualExplanationQuartiles(data, colors)
+    } else if (options[["LSdescStatistics"]] == "LSdescSD") {
+      plot1$plotObject <- .visualExplanationStdDev(data, colors)$plot1
+      plot2 <- createJaspPlot(title = gettext("Visual Explanation 2"), width = 700, height = 700)
+      plot2$plotObject <- .visualExplanationStdDev(data, colors)$plot2
+      jaspResults[["descExplanation"]][["Plot2"]] <- plot2
+      jaspResults[["descExplanation"]][["Plot2"]]$position <- 3
+      plot3 <- createJaspPlot(title = gettext("Visual Explanation 3"), width = 700, height = 700)
+      plot3$plotObject <- .visualExplanationStdDev(data, colors)$plot3
+      jaspResults[["descExplanation"]][["Plot3"]] <- plot3
+      jaspResults[["descExplanation"]][["Plot3"]]$position <- 4
+      plot4 <- createJaspPlot(title = gettext("Visual Explanation 4"), width = 700, height = 700)
+      plot4$plotObject <- .visualExplanationStdDev(data, colors)$plot4
+      jaspResults[["descExplanation"]][["Plot4"]] <- plot4
+      jaspResults[["descExplanation"]][["Plot4"]]$position <- 5
+    }
+    text <- "Text for comparison:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   }
-  text <- "Text for comparison:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  
-  jaspResults[["descExplanationS"]][["Plot"]] <- plot1
-  jaspResults[["descExplanationS"]][["Plot"]]$position <- 1
-  jaspResults[["descExplanationS"]][["Text"]] <- createJaspHtml(text, "p")
-  jaspResults[["descExplanationS"]][["Text"]]$position <- 2
+  jaspResults[["descExplanation"]][["Plot"]] <- plot1
+  jaspResults[["descExplanation"]][["Plot"]]$position <- 1
+  jaspResults[["descExplanation"]][["Text"]] <- createJaspHtml(text, "p")
+  jaspResults[["descExplanation"]][["Text"]]$position <- 2
 }
 
 .visualExplanationRange <- function(data, colors) {
@@ -303,48 +325,6 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
 .indexOfNearestValue <- function(targetValue, valueSet) {
   nearestPointIndex <- which.min(abs(valueSet - targetValue))
   return(nearestPointIndex)
-}
-
-.descExplanationCT <- function(jaspResults, options, colors) {
-  jaspResults[["descExplanationCT"]] <- createJaspContainer(gettext("Explanation"))
-  jaspResults[["descExplanationCT"]]$position <- 1
-  jaspResults[["descExplanationCT"]]$dependOn(options = c("LSdescStatistics",
-                                                          "LSdescExplanation"))
-  
-  pdPlot <- createJaspPlot(title = gettext("Theoretical example distribution"), width = 700, height = 400)
-  pdPlot$position <- 1
-  
-  mean <- 0
-  sd <- 1
-  skew <- 1000
-  distLimits <- c(mean - 4 * sd, mean + 4 * sd)
-  
-  data <- data.frame(x = .scaledSkewedNormal(100000, xi = mean, omega = sd, alpha = skew))
-  data <- subset(data, data$x > distLimits[1] & data$x < distLimits[2]) # remove values outside limits
-  
-  pdPlotObject <- .plotCTexampleDistribution(data)
-  
-  allCTs <- options[["LSdescStatistics"]] == "LSdescMMM"
-  
-  if (options[["LSdescStatistics"]] == "LSdescMedian" | allCTs) {
-    pdPlotObject <- .visualExplanationMedian(pdPlotObject, data, options, colors)
-    text <- "Text for Median:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  }
-  if (options[["LSdescStatistics"]] == "LSdescMode" | allCTs) {
-    pdPlotObject <- .visualExplanationMode(pdPlotObject, data, options, colors)
-    text <- "Text for Mode:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  }
-  if (options[["LSdescStatistics"]] == "LSdescMean" | allCTs) {
-    pdPlotObject <- .visualExplanationMean(pdPlotObject, data, options, colors)
-    text <- "Text for Mean : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  }
-  if (allCTs) {
-    text <- "Text for comparison:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  }
-  
-  pdPlot$plotObject <- pdPlotObject
-  jaspResults[["descExplanationCT"]][["Plot"]] <- pdPlot
-  jaspResults[["descExplanationCT"]][["Text"]] <- createJaspHtml(text, "p")
 }
 
 .plotCTexampleDistribution <- function(data) {
@@ -614,7 +594,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   return(plotObject)
 }
 
-.lstDescCreateHistogramOrBarplot <- function(jaspResults, options, data, ready, discrete, stats = c("ct", "spread"), colors) {
+.lstDescCreateHistogramOrBarplot <- function(jaspResults, options, data, ready, discrete, stats = c("ct", "spread", "none"), colors) {
   title <- ifelse(discrete, "Barplot", "Histogram")
   jaspResults[["descHistogramOrBarplot"]] <- createJaspContainer(gettext(title))
   p <- createJaspPlot(title = gettext(title), width = 800, height = 700)
@@ -632,7 +612,9 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
                          "LSdescStatistics",
                          "LSdescHistBar",
                          "LSdescHistCountOrDens",
-                         "LSdescHistBarRugs"))
+                         "LSdescHistBarRugs",
+                         "descBinWidthType",
+                         "descNumberOfBins"))
   errors <- .plotErrors(p, data, options, stats)$errors
   
   if (ready && !errors) {
@@ -654,8 +636,11 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       xBreaks <- jaspGraphs::getPrettyAxisBreaks(data$x)
       xStep <- xBreaks[2] - xBreaks[1]
       xLimits <- c(min(xBreaks) - xStep/2, max(xBreaks) + xStep * 3)
+      binWidthType <- options[["descBinWidthType"]]
+      numberOfBins <- options[["descNumberOfBins"]]
       plotObject <- jaspDescriptives:::.plotMarginal(data$x, variableName = "Observations", displayDensity = displayDensity,
-                                                     binWidthType = "sturges", rugs = options[["LSdescHistBarRugs"]]) 
+                                                     binWidthType = binWidthType, rugs = options[["LSdescHistBarRugs"]],
+                                                     numberOfBins = numberOfBins) 
       yMax <- max(ggplot2::ggplot_build(plotObject)$data[[1]]$y) * 1.3
       yBreaks <- jaspGraphs::getPrettyAxisBreaks(ggplot2::ggplot_build(plotObject)$data[[1]]$y)
       yLimits <- c(0, yMax)
@@ -677,7 +662,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
 }
 
 
-.lstDescCreateDotplot <- function(jaspResults, options, data, ready, discrete, stats = c("ct", "spread"), colors) {
+.lstDescCreateDotplot <- function(jaspResults, options, data, ready, discrete, stats = c("ct", "spread", "none"), colors) {
   jaspResults[["descDotplot"]] <- createJaspContainer(gettext("Dotplot"))
   height <- 700 + (length(data$x) / 50) * 25
   dp <- createJaspPlot(title = gettext("Dotplot"), width = 800, height = height)
