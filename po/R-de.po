@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.15\n"
 "POT-Creation-Date: 2023-03-25 04:43\n"
-"PO-Revision-Date: 2023-01-08 12:48+0000\n"
+"PO-Revision-Date: 2023-03-27 19:38+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
 "jasplearnstats-r/de/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Weblate 4.17-dev\n"
 
 #, fuzzy
 msgid "Parent Distribution"
@@ -49,25 +49,27 @@ msgid "Std. Dev: %.2f"
 msgstr "Std.-Abw: %.2f"
 
 msgid "μ"
-msgstr ""
+msgstr "μ"
 
 msgid "σ"
-msgstr ""
+msgstr "σ"
 
+#, fuzzy
 msgid "Coverage"
-msgstr ""
+msgstr "Überdeckung"
 
+#, fuzzy
 msgid "Coverage %"
-msgstr ""
+msgstr "Überdeckung %"
 
 msgid "Mean"
 msgstr "Mittelwert"
 
 msgid "Estimate"
-msgstr ""
+msgstr "Schätzung"
 
 msgid "%s%% CI for Mean Difference"
-msgstr ""
+msgstr "%s%% KI für mittlere Differenz"
 
 msgid "Lower"
 msgstr "Untergrenze"
@@ -76,31 +78,32 @@ msgid "Upper"
 msgstr "Obergrenze"
 
 msgid "CI contains μ?"
-msgstr ""
+msgstr "KI enthält μ?"
 
 msgid "Tree Plot"
-msgstr ""
+msgstr "Baum-Diagramm"
 
 msgid ""
 "Make sure to specify a lower bound that is lower than the upper bound for "
 "the x-axis."
 msgstr ""
+"Achten Sie darauf, eine untere Grenze anzugeben, die niedriger ist als die "
+"obere Grenze für die x-Achse."
 
 msgid "Observed mean and %s%% CI"
-msgstr ""
+msgstr "Beobachteter Mittelwert und %s%% KI"
 
-#, fuzzy
 msgid "Data plots"
-msgstr "Punktdiagramm"
+msgstr "Daten-Diagramme"
 
 msgid "Dependent"
-msgstr ""
+msgstr "Abhängig"
 
 msgid "Repetition %d"
-msgstr ""
+msgstr "Wiederholung %d"
 
 msgid "Convergence Plot"
-msgstr ""
+msgstr "Konvergenz-Diagramm"
 
 msgid "Number of Replications"
 msgstr ""
@@ -112,10 +115,10 @@ msgid "Rep"
 msgstr ""
 
 msgid "Decision Tree"
-msgstr ""
+msgstr "Entscheidungsbaum"
 
 msgid "Test choice"
-msgstr ""
+msgstr "Test-Auswahl"
 
 msgid "Explanation"
 msgstr "Erklärung"
