@@ -22,12 +22,12 @@ Description
 		func:	"LSTnormDist"
 	}
 	
-	// Analysis
-	// {
-	// 	title:	qsTr("Binomial Distribution")
-	// 	qml:	"LSTbinomDist.qml"
-	// 	func:	"LSTbinomDist"
-	// }
+	Analysis
+	{
+		title:	qsTr("Binomial Distribution")
+		qml:	"LSTbinomDist.qml"
+		func:	"LSTbinomDist"
+	}
 
 	Analysis
 	{
