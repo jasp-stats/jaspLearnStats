@@ -189,9 +189,6 @@ LSTconfidenceIntervals <- function(jaspResults, dataset = NULL, options) {
   if (!is.null(jaspContainer[["containerRainCloudPlots"]]) || !options$dataPlot)
     return()
   
-  rainData <- data.frame(y = unlist(jaspContainer[["simulatedDatasets"]][["object"]]), 
-                         group = rep(seq_len(options$nReps), each = options$n))
-  
   jaspContainer[["containerRainCloudPlots"]] <- createJaspContainer(gettext("Data plots"), 
                                                                     dependencies = c("dataPlotShowN", "dataPlot"))
   
@@ -204,7 +201,7 @@ LSTconfidenceIntervals <- function(jaspResults, dataset = NULL, options) {
   matrixPlot <- createJaspPlot(title = gettext("Samples"), width = 960/(3/nCols), 
                                height = 800/(3/nRows))
   
-  plotList <- matrix(list(), nRows, nCols)
+  plotList <- list()
   
   if (addDots) {
     loopingVector <- c(1, 2, (options$dataPlotShowN-6):options$dataPlotShowN)
@@ -222,14 +219,16 @@ LSTconfidenceIntervals <- function(jaspResults, dataset = NULL, options) {
                           size = 60)
     } else {
       
-      thisRainData <- data.frame(y = unlist(jaspContainer[["simulatedDatasets"]][["object"]][[i]]), 
+      thisRainData <- data.frame(y = rainData[[i]], 
                                  group = rep(1, options$n))  
       
-      plotList[[listCounter]] <- try(jaspTTests::.descriptivesPlotsRainCloudFill(thisRainData, "y", "group", 
-                                                                                 yLabel = gettext("Dependent"), 
+      plotList[[listCounter]] <- try(jaspTTests::.descriptivesPlotsRainCloudFill(thisRainData, "y", "group",
+                                                                                 yLabel = gettext("Dependent"),
                                                                                  xLabel = gettextf("Repetition %d", i),
                                                                                  testValue = options$mu,
                                                                                  addLines = FALSE, horiz = FALSE))
+      
+      
       if(isTryError(plotList[[listCounter]]))
         matrixPlot$setError(.extractErrorMessage(plotList[[listCounter]]))
       
@@ -279,7 +278,7 @@ LSTconfidenceIntervals <- function(jaspResults, dataset = NULL, options) {
     ggplot2::xlab(gettext("Number of Replications")) +
     ggplot2::ylab(gettext("p(Coverage)")) +
     ggplot2::coord_cartesian(xlim = c(0, options$nReps), ylim = myYlim) + 
-    ggplot2::geom_polygon(ggplot2::aes(x = c(1:options$nReps,options$nReps:1), y = c(y.upper, rev(y.lower))),
+    ggplot2::geom_polygon(ggplot2::aes(x = c(1:options$nReps,options$nReps:1), y = c(yUpper, rev(yLower))),
                           fill = "lightsteelblue") +  # CI
     ggplot2::geom_line(color = "darkred", ggplot2::aes(x = 1:options$nReps, 
                                                        y = rep(options$confidenceIntervalInterval, options$nReps))) +  # confidence level
