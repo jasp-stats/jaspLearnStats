@@ -457,17 +457,27 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   n <- options[["lstDescSampleN"]]
   if (options[["lstDescSampleDistType"]] == "lstSampleDistDiscrete") {
     if (options[["LSdescDiscreteDistributions"]] == "binomialDist") {
-      data <- rbinom(n, 10, prob = .5)
+      k <- options[["binomialDistributionNumberOfTrials"]]
+      p <- options[["binomialDistributionSuccessProbability"]]
+      data <- rbinom(n, k, prob = p)
     } else if (options[["LSdescDiscreteDistributions"]] == "poissonDist") {
-      data <- rpois(n, 1)
+      lambda <- options[["poissonDistributionLambda"]]
+      data <- rpois(n, lambda)
     }
   } else if (options[["lstDescSampleDistType"]] == "lstSampleDistCont") {
     if (options[["LSdescContinuousDistributions"]] == "skewedNormal") {
-      data <- sn::rsn(n, alpha = 100)
+      xi <- options[["skewedNormalDistributionLocation"]]
+      omega <- options[["skewedNormalDistributionScale"]]
+      alpha <- options[["skewedNormalDistributionShape"]]
+      data <- sn::rsn(n, alpha = alpha, xi = xi, omega = omega)
     } else if (options[["LSdescContinuousDistributions"]] == "uniform") {
-      data <- runif(n = n, min = 0, max = 5)
+      min <- options[["uniformDistributionLowerBound"]]
+      max <- options[["uniformDistributionUpperBound"]]
+      data <- runif(n = n, min = min, max = max)
     } else if (options[["LSdescContinuousDistributions"]] == "normal") {
-      data <- rnorm(n, 0, 10)
+      mu <- options[["normalDistributionMean"]]
+      sigma <- options[["normalDistributionStdDev"]]
+      data <- rnorm(n, mu, sigma)
     }
   }
   df <- data.frame(x = data)

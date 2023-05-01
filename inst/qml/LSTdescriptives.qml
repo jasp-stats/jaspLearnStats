@@ -353,4 +353,126 @@ Form
 			]
 		}
 	}
+
+	Section
+	{
+		title:		qsTr("Distribution options")
+		visible:	dataTypeA.checked
+
+		Group
+		{
+			title:		qsTr("Binomial distribution parameters")
+			visible:	lsDescDiscreteDistributions.currentValue == "binomialDist" && distTypeDisc.checked
+
+			DoubleField
+			{
+				name:			"binomialDistributionSuccessProbability"
+				label:			qsTr("Probability of success (p)")
+				defaultValue:	.5
+				min:			0
+				max:			1
+			}
+
+			DoubleField
+			{
+				name:			"binomialDistributionNumberOfTrials"
+				label:			qsTr("Number of trials (k)")
+				defaultValue:	10
+				min:			1
+			}
+		}
+
+		Group
+		{
+			title:		qsTr("Poisson distribution parameters")
+			visible:	lsDescDiscreteDistributions.currentValue == "poissonDist" && distTypeDisc.checked
+
+			DoubleField
+			{
+				name:			"poissonDistributionLambda"
+				label:			qsTr("Rate (λ)")
+				defaultValue:	1
+				min:			0
+			}
+		}
+
+		Group
+		{
+			title:		qsTr("Skewed normal distribution parameters")
+			visible:	lsDescContinuousDistributions.currentValue == "skewedNormal" && distTypeCont.checked
+
+			DoubleField
+			{
+				name:			"skewedNormalDistributionLocation"
+				label:			qsTr("Location (ξ)")
+				defaultValue:	0
+				negativeValues:	true
+			}
+
+			DoubleField
+			{
+				name:			"skewedNormalDistributionScale"
+				label:			qsTr("Scale (ω)")
+				defaultValue:	1
+				min:			0
+			}
+
+			DoubleField
+			{
+				name:			"skewedNormalDistributionShape"
+				label:			qsTr("Shape (α)")
+				defaultValue:	100
+				negativeValues:	true
+			}
+		}
+
+		Group
+		{
+			title:		qsTr("Uniform distribution parameters")
+			visible:	lsDescContinuousDistributions.currentValue == "uniform" && distTypeCont.checked
+
+			DoubleField
+			{
+				name:			"uniformDistributionLowerBound"
+				label:			qsTr("Lower bound")
+				defaultValue:	0
+				id:				uniformDistributionLowerBound
+				max: 			parseFloat(uniformDistributionUpperBound.value)
+				negativeValues:	true
+			}
+
+			DoubleField
+			{
+				name:			"uniformDistributionUpperBound"
+				label:			qsTr("Upper bound")
+				defaultValue:	5
+				id:				uniformDistributionUpperBound
+				min: 			parseFloat(uniformDistributionLowerBound.value)
+				negativeValues:	true
+			}
+
+		}
+
+		Group
+		{
+			title:		qsTr("Normal distribution parameters")
+			visible:	lsDescContinuousDistributions.currentValue == "normal" && distTypeCont.checked
+
+			DoubleField
+			{
+				name:			"normalDistributionMean"
+				label:			qsTr("Mean (μ)")
+				defaultValue:	0
+				negativeValues:	true
+			}
+
+			DoubleField
+			{
+				name:			"normalDistributionStdDev"
+				label:			qsTr("Std. dev. (σ)")
+				defaultValue:	10
+				min:			0
+			}
+		}
+	}
 }
