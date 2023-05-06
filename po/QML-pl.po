@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-04-29 04:41+0000\n"
+"PO-Revision-Date: 2023-05-02 05:11+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/"
 "jasplearnstats-qml/pl/>\n"
@@ -15,11 +15,11 @@ msgstr ""
 
 msgctxt "Description|"
 msgid "Learn Stats"
-msgstr "Poznaj statystyki"
+msgstr "Poznaj statystykę"
 
 msgctxt "Description|"
 msgid "Learn classical statistics with simple examples and supporting text"
-msgstr "Naucz się klasycznych statystyk z prostymi przykładami i objaśnieniami"
+msgstr "Poznaj klasyczne statystyki z prostymi przykładami i objaśnieniami"
 
 msgctxt "Description|"
 msgid "Normal Distribution"
