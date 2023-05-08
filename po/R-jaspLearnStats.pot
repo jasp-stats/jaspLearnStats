@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.15\n"
-"POT-Creation-Date: 2023-03-25 04:43\n"
+"POT-Creation-Date: 2023-05-08 15:23\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,12 +43,6 @@ msgstr ""
 msgid "Std. Dev: %.2f"
 msgstr ""
 
-msgid "μ"
-msgstr ""
-
-msgid "σ"
-msgstr ""
-
 msgid "Coverage"
 msgstr ""
 
@@ -70,7 +64,7 @@ msgstr ""
 msgid "Upper"
 msgstr ""
 
-msgid "CI contains μ?"
+msgid "CI contains %s?"
 msgstr ""
 
 msgid "Tree Plot"

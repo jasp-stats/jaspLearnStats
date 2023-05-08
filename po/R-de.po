@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.15\n"
-"POT-Creation-Date: 2023-03-25 04:43\n"
+"POT-Creation-Date: 2023-05-08 15:23\n"
 "PO-Revision-Date: 2023-03-27 19:38+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
@@ -48,12 +48,6 @@ msgstr "Stichprobenverteilung des Mittelwerts"
 msgid "Std. Dev: %.2f"
 msgstr "Std.-Abw: %.2f"
 
-msgid "μ"
-msgstr "μ"
-
-msgid "σ"
-msgstr "σ"
-
 #, fuzzy
 msgid "Coverage"
 msgstr "Überdeckung"
@@ -77,7 +71,8 @@ msgstr "Untergrenze"
 msgid "Upper"
 msgstr "Obergrenze"
 
-msgid "CI contains μ?"
+#, fuzzy
+msgid "CI contains %s?"
 msgstr "KI enthält μ?"
 
 msgid "Tree Plot"
@@ -535,3 +530,9 @@ msgid ""
 msgstr ""
 "- Die Risikodifferenz entspricht der Differenz im Risiko des Auftretens des "
 "Ereignisses zwischen der Experimental- und der Kontrollgruppe."
+
+#~ msgid "μ"
+#~ msgstr "μ"
+
+#~ msgid "σ"
+#~ msgstr "σ"
