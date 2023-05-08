@@ -1,15 +1,9 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-01-07 04:42+0000\n"
-"Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
-"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
-"jasp/jasplearnstats-qml/zh_Hans/>\n"
-"Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
 "X-Language: zh_Hans\n"
 "X-Qt-Contexts: true\n"
 
@@ -239,10 +233,6 @@ msgstr ""
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Set seed"
-msgstr ""
-
-msgctxt "LSTcentralLimitTheorem|"
-msgid "Show Samples"
 msgstr ""
 
 msgctxt "LSTcentralLimitTheorem|"
@@ -634,10 +624,6 @@ msgid "Set seed"
 msgstr ""
 
 msgctxt "LSTsampleVariability|"
-msgid "Show Samples"
-msgstr ""
-
-msgctxt "LSTsampleVariability|"
 msgid "First"
 msgstr ""
 
@@ -802,10 +788,6 @@ msgid "Set seed"
 msgstr ""
 
 msgctxt "LSTstandardError|"
-msgid "Show Samples"
-msgstr ""
-
-msgctxt "LSTstandardError|"
 msgid "First"
 msgstr ""
 
@@ -893,138 +875,294 @@ msgctxt "LSTstandardError|"
 msgid "Number of bins"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "Description|"
+msgid "Confidence Intervals"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Statistical Test Decision Tree"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "μ"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "σ"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Sample size (n)"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Confidence level"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Repetitions"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Show last"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "<b>- 10</b>"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "<b>- 1</b>"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "<b>+ 1</b>"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "<b>+ 10</b>"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Plots"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Tree plot"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Display table"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Fix x-axis from "
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid " to "
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Data distribution plots"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Convergence plot"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Zoom in with margin"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "How many outcome variables?"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "One"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Two or more"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "What type of outcome?"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Continuous"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Categorical"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "How many predictor variables?"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "What type of predictor?"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Both"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "How many categories in predictor variable?"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Two"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "More than two"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Same or different entities in categories of predictor?"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Same"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Different"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Are the assumptions for a parametric test met?"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Assumptions met"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Assumptions not met"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Show full decision tree"
+msgstr ""
+
+msgctxt "LSTPValues|"
 msgid "Theoretical distribution"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Normal"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "T distribution"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "df"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Test settings"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Type-I error rate α"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Alt. hypothesis"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Two sided"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Greater"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Less"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Plot theoretical distribution"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Highlight critical region"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Highlight specified test statistic"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Specify test statistic"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Specify p-value"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Simulation under the null hypothesis"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Simulation"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Number of studies to simulate"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Simulate"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Reset"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Output"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Plot test statistics"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Overlay theoretical distribution"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Plot p-values"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Overlay uniform distribution"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Frequency table"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Simulation under the alternative hypothesis"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Specify alternative sampling distribution"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Mean"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Non-centrality"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Overlay theoretical null distribution"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Overlay theoretical alternative distribution"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Options"
 msgstr ""
 
-msgctxt "PValues|"
+msgctxt "LSTPValues|"
 msgid "Introductory text"
 msgstr ""

@@ -1,15 +1,9 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-01-31 14:41+0000\n"
-"Last-Translator: Ünal Halit ÖZDEN <uozden@ticaret.edu.tr>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/jasp/"
-"jasplearnstats-qml/tr/>\n"
-"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Language: tr\n"
 "X-Qt-Contexts: true\n"
 
@@ -230,20 +224,12 @@ msgid "Number of total samples"
 msgstr "Örneklem birim sayısı"
 
 msgctxt "LSTcentralLimitTheorem|"
-msgid "Show sample"
-msgstr "Örneklemi göster"
-
-msgctxt "LSTcentralLimitTheorem|"
 msgid "Show rug marks"
 msgstr "Veri noktalarını göster"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Set seed"
 msgstr "Başlangıç sayısı belirle (Tohum belirle)"
-
-msgctxt "LSTcentralLimitTheorem|"
-msgid "Show Samples"
-msgstr "Örneklemi Göster"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "First"
@@ -634,10 +620,6 @@ msgid "Set seed"
 msgstr "Başlangıç sayısı belirle (Tohum belirle)"
 
 msgctxt "LSTsampleVariability|"
-msgid "Show Samples"
-msgstr "Örneklemi göster"
-
-msgctxt "LSTsampleVariability|"
 msgid "First"
 msgstr "İlk"
 
@@ -802,10 +784,6 @@ msgid "Set seed"
 msgstr "Başlangıç sayısı belirle (Tohum belirle)"
 
 msgctxt "LSTstandardError|"
-msgid "Show Samples"
-msgstr "Örneklemi göster"
-
-msgctxt "LSTstandardError|"
 msgid "First"
 msgstr "İlk"
 
@@ -893,138 +871,335 @@ msgctxt "LSTstandardError|"
 msgid "Number of bins"
 msgstr "Kutu sayısı"
 
-msgctxt "PValues|"
+msgctxt "Description|"
+msgid "Confidence Intervals"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Statistical Test Decision Tree"
+msgstr ""
+
+#, fuzzy
+msgctxt "LSTcentralLimitTheorem|"
+msgid "Show samples"
+msgstr "Örneklemi göster"
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "μ"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "σ"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Sample size (n)"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Confidence level"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Repetitions"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Show last"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "<b>- 10</b>"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "<b>- 1</b>"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "<b>+ 1</b>"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "<b>+ 10</b>"
+msgstr ""
+
+#, fuzzy
+msgctxt "LSTconfidenceIntervals|"
+msgid "Plots"
+msgstr "Grafik"
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Tree plot"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Display table"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Fix x-axis from "
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid " to "
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Data distribution plots"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Convergence plot"
+msgstr ""
+
+msgctxt "LSTconfidenceIntervals|"
+msgid "Zoom in with margin"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "How many outcome variables?"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "One"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Two or more"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "What type of outcome?"
+msgstr ""
+
+#, fuzzy
+msgctxt "LSTdecisionTree|"
+msgid "Continuous"
+msgstr "Sürekli"
+
+msgctxt "LSTdecisionTree|"
+msgid "Categorical"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "How many predictor variables?"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "What type of predictor?"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Both"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "How many categories in predictor variable?"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Two"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "More than two"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Same or different entities in categories of predictor?"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Same"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Different"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Are the assumptions for a parametric test met?"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Assumptions met"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Assumptions not met"
+msgstr ""
+
+msgctxt "LSTdecisionTree|"
+msgid "Show full decision tree"
+msgstr ""
+
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Theoretical distribution"
 msgstr "Teorik dağılım"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Normal"
 msgstr "Normal"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "T distribution"
 msgstr "t Dağılımı"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "df"
 msgstr "sd."
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Test settings"
 msgstr "Test ayarları"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Type-I error rate α"
 msgstr "I. tip hata oranı α"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Alt. hypothesis"
 msgstr "Alt. hipotez"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Two sided"
 msgstr "Çift taraflı"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Greater"
 msgstr "Büyüktür"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Less"
 msgstr "Küçüktür"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Plot theoretical distribution"
 msgstr "Teorik dağılım grafiği"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Highlight critical region"
 msgstr "Kritik bölgeyi vurgula"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Highlight specified test statistic"
 msgstr "Belirtilen test istatistiğini vurgula"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Specify test statistic"
 msgstr "Test istatistiğini belirle"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Specify p-value"
 msgstr "p değerini belirle"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Simulation under the null hypothesis"
 msgstr "Sıfır hipotezi altında simülasyon"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Simulation"
 msgstr "Simülasyon"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Number of studies to simulate"
 msgstr "Simüle edilecek çalışma sayısı"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Simulate"
 msgstr "Simüle Et"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Reset"
 msgstr "Sıfırla"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Output"
 msgstr "Çıktı"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Plot test statistics"
 msgstr "Test istatistiklerini çiz"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Overlay theoretical distribution"
 msgstr "Teorik dağılım ile örtüştür"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Plot p-values"
 msgstr "p-değerini çiz"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Overlay uniform distribution"
 msgstr "Tekdüze dağılım ile örtüştür"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Frequency table"
 msgstr "Frekans tablosu"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Simulation under the alternative hypothesis"
 msgstr "Sıfır hipotezi altında simülasyon"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Specify alternative sampling distribution"
 msgstr "Alternatif örnekleme dağılımını belirle"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Mean"
 msgstr "Aritmetik Ortalama"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Non-centrality"
 msgstr "Merkezi Değil"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Overlay theoretical null distribution"
 msgstr "Teorik dağılımla örtüştür"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Overlay theoretical alternative distribution"
 msgstr "Alternatif teorik dağılımla örtüştür"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Options"
 msgstr "Seçenekler"
 
-msgctxt "PValues|"
+#, fuzzy
+msgctxt "LSTPValues|"
 msgid "Introductory text"
 msgstr "Tanıtım Metni"
