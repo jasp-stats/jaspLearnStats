@@ -84,8 +84,8 @@ LSTconfidenceIntervals <- function(jaspResults, dataset = NULL, options) {
   jaspContainer[["resultTable"]] <- resultTable
   
   resultTable$addColumnInfo(name = "Repetitions", type = "integer")
-  resultTable$addColumnInfo(name = "mu", type = "number", title=gettext("μ"))
-  resultTable$addColumnInfo(name = "sigma", title=gettext("σ"), type = "number")
+  resultTable$addColumnInfo(name = "mu", type = "number", title="μ")
+  resultTable$addColumnInfo(name = "sigma", title="σ", type = "number")
   resultTable$addColumnInfo(name = "n", type = "integer")
   resultTable$addColumnInfo(name = "coverage", type = "integer",title=gettext("Coverage"))
   resultTable$addColumnInfo(name = "coveragePercentage", type = "number", format = "pc", title=gettext("Coverage %"))
@@ -118,7 +118,7 @@ LSTconfidenceIntervals <- function(jaspResults, dataset = NULL, options) {
   thisOverTitle <- gettextf("%s%% CI for Mean Difference", options$confidenceIntervalInterval * 100)
   treeTable$addColumnInfo(name="lower", type = "number", title = gettext("Lower"), overtitle = thisOverTitle)
   treeTable$addColumnInfo(name="upper", type = "number", title = gettext("Upper"), overtitle = thisOverTitle)
-  treeTable$addColumnInfo(name = "successfulCI", type = "string", title=gettext("CI contains μ?"))
+  treeTable$addColumnInfo(name = "successfulCI", type = "string", title=gettextf("CI contains %s?", "μ"))
   
   meanCI <- jaspContainer[["computedConfidenceIntervals"]][["object"]]
   meanCI[["successfulCI"]] <- ifelse(meanCI[["successfulCI"]], "Yes", "No")
