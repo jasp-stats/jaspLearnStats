@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2023-05-08 15:14+0000\n"
+"Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
+"Language-Team: Galician <https://hosted.weblate.org/projects/jasp/"
+"jasplearnstats-qml/gl/>\n"
+"Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.18-dev\n"
 "X-Language: gl\n"
 "X-Qt-Contexts: true\n"
 
@@ -877,328 +883,292 @@ msgstr "Número de barras"
 
 msgctxt "Description|"
 msgid "Confidence Intervals"
-msgstr ""
+msgstr "Intervalos de Confianza"
 
 msgctxt "Description|"
 msgid "Statistical Test Decision Tree"
-msgstr ""
+msgstr "Árbore de Decisión da Proba Estatística"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "μ"
-msgstr ""
+msgstr "μ"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "σ"
-msgstr ""
+msgstr "σ"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Sample size (n)"
-msgstr ""
+msgstr "Tamaño mostral (n)"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Confidence level"
-msgstr ""
+msgstr "Nivel de confianza"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Repetitions"
-msgstr ""
+msgstr "Repeticións"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Show last"
-msgstr ""
+msgstr "Amosar o último"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "<b>- 10</b>"
-msgstr ""
+msgstr "<b>- 10</b>"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "<b>- 1</b>"
-msgstr ""
+msgstr "<b>- 1</b>"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "<b>+ 1</b>"
-msgstr ""
+msgstr "<b>+ 1</b>"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "<b>+ 10</b>"
-msgstr ""
+msgstr "<b>+ 10</b>"
 
-#, fuzzy
 msgctxt "LSTconfidenceIntervals|"
 msgid "Plots"
 msgstr "Gráficas"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Tree plot"
-msgstr ""
+msgstr "Gráfica de árbore"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Display table"
-msgstr ""
+msgstr "Presentar a táboa"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Fix x-axis from "
-msgstr ""
+msgstr "Fixar o eixo x desde "
 
 msgctxt "LSTconfidenceIntervals|"
 msgid " to "
-msgstr ""
+msgstr " ata "
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Data distribution plots"
-msgstr ""
+msgstr "Gráficas de distribución dos datos"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Convergence plot"
-msgstr ""
+msgstr "Gráfica de converxencia"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Zoom in with margin"
-msgstr ""
+msgstr "Ampliar dentro con marxe"
 
 msgctxt "LSTdecisionTree|"
 msgid "How many outcome variables?"
-msgstr ""
+msgstr "Cantas variables de resultados?"
 
 msgctxt "LSTdecisionTree|"
 msgid "One"
-msgstr ""
+msgstr "Unha"
 
 msgctxt "LSTdecisionTree|"
 msgid "Two or more"
-msgstr ""
+msgstr "Dúas ou máis"
 
 msgctxt "LSTdecisionTree|"
 msgid "What type of outcome?"
-msgstr ""
+msgstr "Que tipo de resultado?"
 
-#, fuzzy
 msgctxt "LSTdecisionTree|"
 msgid "Continuous"
-msgstr "Continuas"
+msgstr "Continuo"
 
 msgctxt "LSTdecisionTree|"
 msgid "Categorical"
-msgstr ""
+msgstr "Con categorías"
 
 msgctxt "LSTdecisionTree|"
 msgid "How many predictor variables?"
-msgstr ""
+msgstr "Cantas variables preditoras?"
 
 msgctxt "LSTdecisionTree|"
 msgid "What type of predictor?"
-msgstr ""
+msgstr "Que tipo de preditor?"
 
 msgctxt "LSTdecisionTree|"
 msgid "Both"
-msgstr ""
+msgstr "Ambos"
 
 msgctxt "LSTdecisionTree|"
 msgid "How many categories in predictor variable?"
-msgstr ""
+msgstr "Cantas categorías na variable preditora?"
 
 msgctxt "LSTdecisionTree|"
 msgid "Two"
-msgstr ""
+msgstr "Dúas"
 
 msgctxt "LSTdecisionTree|"
 msgid "More than two"
-msgstr ""
+msgstr "Máis de dúas"
 
 msgctxt "LSTdecisionTree|"
 msgid "Same or different entities in categories of predictor?"
-msgstr ""
+msgstr "Entidades iguais ou diferentes, nas categorías do preditor?"
 
 msgctxt "LSTdecisionTree|"
 msgid "Same"
-msgstr ""
+msgstr "Iguais"
 
 msgctxt "LSTdecisionTree|"
 msgid "Different"
-msgstr ""
+msgstr "Diferentes"
 
 msgctxt "LSTdecisionTree|"
 msgid "Are the assumptions for a parametric test met?"
-msgstr ""
+msgstr "Cúmprense os supostos para unha proba paramétrica?"
 
 msgctxt "LSTdecisionTree|"
 msgid "Assumptions met"
-msgstr ""
+msgstr "Supostos satisfeitos"
 
 msgctxt "LSTdecisionTree|"
 msgid "Assumptions not met"
-msgstr ""
+msgstr "Supostos insatisfeitos"
 
 msgctxt "LSTdecisionTree|"
 msgid "Show full decision tree"
-msgstr ""
+msgstr "Amosar a árbore de decisión completa"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Theoretical distribution"
 msgstr "Distribución teórica"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Normal"
 msgstr "Normal"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "T distribution"
 msgstr "Distribución t"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "df"
 msgstr "gl"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Test settings"
-msgstr "Configuración das probas"
+msgstr "Configuracións de probas"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Type-I error rate α"
 msgstr "Taxa α de erro tipo I"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Alt. hypothesis"
 msgstr "Hipótese alternativa"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Two sided"
-msgstr "Dúas colas"
+msgstr "Bilateral"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Greater"
 msgstr "Maior"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Less"
 msgstr "Menor"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Plot theoretical distribution"
 msgstr "Debuxar a distribución teórica"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Highlight critical region"
 msgstr "Resaltar a rexión crítica"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Highlight specified test statistic"
 msgstr "Resaltar un estatístico de proba específico"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Specify test statistic"
 msgstr "Especificar un estatístico de proba"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Specify p-value"
 msgstr "Especificar o valor p"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Simulation under the null hypothesis"
 msgstr "Simulación baixo a hipótese nula"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Simulation"
 msgstr "Simulación"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Number of studies to simulate"
 msgstr "Número de estudos a simular"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Simulate"
 msgstr "Simular"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Reset"
 msgstr "Restablecer"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Output"
 msgstr "Saída de resultados"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Plot test statistics"
 msgstr "Representar estatísticos de proba"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Overlay theoretical distribution"
 msgstr "Sobrepor a distribución teórica"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Plot p-values"
 msgstr "Representar os valores p"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Overlay uniform distribution"
 msgstr "Sobrepor a distribución Uniforme"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Frequency table"
 msgstr "Táboa de frecuencias"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Simulation under the alternative hypothesis"
 msgstr "Simulación baixo a hipótese alternativa"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Specify alternative sampling distribution"
 msgstr "Especificar a distribución da mostraxe alternativa"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Mean"
 msgstr "Media"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Non-centrality"
 msgstr "Non centrado"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Overlay theoretical null distribution"
 msgstr "Sobrepor a distribución nula teórica"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Overlay theoretical alternative distribution"
 msgstr "Sobrepor a distribución alternativa teórica"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Options"
 msgstr "Opcións"
 
-#, fuzzy
 msgctxt "LSTPValues|"
 msgid "Introductory text"
 msgstr "Texto introdutorio"
