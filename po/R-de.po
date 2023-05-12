@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.15\n"
 "POT-Creation-Date: 2023-05-08 15:23\n"
-"PO-Revision-Date: 2023-05-12 18:52+0000\n"
+"PO-Revision-Date: 2023-05-13 04:42+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
 "jasplearnstats-r/de/>\n"
@@ -99,8 +99,9 @@ msgstr "Wiederholung %d"
 msgid "Convergence Plot"
 msgstr "Konvergenz-Diagramm"
 
+#, fuzzy
 msgid "Number of Replications"
-msgstr ""
+msgstr "Anzahl von Wiederholungen"
 
 #, fuzzy
 msgid "p(Coverage)"
