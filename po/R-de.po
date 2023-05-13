@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.15\n"
 "POT-Creation-Date: 2023-05-08 15:23\n"
-"PO-Revision-Date: 2023-03-27 19:38+0000\n"
+"PO-Revision-Date: 2023-05-13 04:42+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
 "jasplearnstats-r/de/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #, fuzzy
 msgid "Parent Distribution"
@@ -71,9 +71,8 @@ msgstr "Untergrenze"
 msgid "Upper"
 msgstr "Obergrenze"
 
-#, fuzzy
 msgid "CI contains %s?"
-msgstr "KI enthält μ?"
+msgstr "KI enthält %s?"
 
 msgid "Tree Plot"
 msgstr "Baum-Diagramm"
@@ -100,14 +99,17 @@ msgstr "Wiederholung %d"
 msgid "Convergence Plot"
 msgstr "Konvergenz-Diagramm"
 
+#, fuzzy
 msgid "Number of Replications"
-msgstr ""
+msgstr "Anzahl von Wiederholungen"
 
+#, fuzzy
 msgid "p(Coverage)"
-msgstr ""
+msgstr "p(Überdeckung)"
 
+#, fuzzy
 msgid "Rep"
-msgstr ""
+msgstr "Wied."
 
 msgid "Decision Tree"
 msgstr "Entscheidungsbaum"
