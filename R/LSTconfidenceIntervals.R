@@ -122,6 +122,7 @@ LSTconfidenceIntervals <- function(jaspResults, dataset = NULL, options) {
   
   meanCI <- jaspContainer[["computedConfidenceIntervals"]][["object"]]
   meanCI[["successfulCI"]] <- ifelse(meanCI[["successfulCI"]], "Yes", "No")
+  meanCI <- meanCI[1:options$dataPlotShowN,]  # Show data only for CIs that are also plotted
   
   treeTable$showSpecifiedColumnsOnly <- TRUE
   treeTable$setData(meanCI)

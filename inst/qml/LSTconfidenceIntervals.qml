@@ -153,11 +153,70 @@ Form
 				}
 			}
 		}
+
 		CheckBox
 		{
 			name:	"dataPlot"
 			label:	qsTr("Data distribution plots")
+
+			Group
+			{
+			
+				columns:	3
+			
+				DropDown
+				{
+					name:				"ciSampleShowType"
+					label:				qsTr("Show samples")
+					id:					ciSampleShowType
+					indexDefaultValue:	0
+					values:
+					[
+						{ label: qsTr("First"),		value: "first"	},
+						{ label: qsTr("Last"),		value: "last"	},
+						{ label: qsTr("Range"),		value: "range"	},
+						{ label: qsTr("All"),		value: "all"	}
+					]
+				}
+
+				IntegerField
+				{
+					name:			"ciFirstOrLastSamples"
+					label:			""
+					fieldWidth:		60
+					defaultValue:	7
+					visible:		ciSampleShowType.currentValue == "first" | ciSampleShowType.currentValue == "last"
+					max:			ciSampleAmount.value
+					min:			1
+					}
+					
+					
+				IntegerField
+				{
+					name:			"ciFromSample"
+					id:				ciFromSample
+					label:			qsTr("From")
+					fieldWidth:		60
+					defaultValue:	1
+					visible:		ciSampleShowType.currentValue == "range"
+					min: 			1
+					max:			ciToSample.value
+				}
+					
+				IntegerField
+				{
+					name:			"ciToSample"
+					id:				ciToSample
+					label:			qsTr("To")
+					fieldWidth:		60
+					defaultValue:	7
+					visible:		ciSampleShowType.currentValue == "range"
+					max:			ciSampleAmount.value
+					min:			ciFromSample.value
+				}
+			}
 		}
+	
 		CheckBox
 		{
 			name: "convergencePlot"
