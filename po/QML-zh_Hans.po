@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2023-05-20 04:41+0000\n"
+"Last-Translator: Pr0ph3t <beomnyul@gmail.com>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
+"jasp/jasplearnstats-qml/zh_Hans/>\n"
+"Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.18-dev\n"
 "X-Language: zh_Hans\n"
 "X-Qt-Contexts: true\n"
 
@@ -17,23 +23,23 @@ msgstr "通过简单的示例和讲义来学习经典统计"
 
 msgctxt "Description|"
 msgid "Normal Distribution"
-msgstr ""
+msgstr "正态分布"
 
 msgctxt "Description|"
 msgid "Binomial Distribution"
-msgstr ""
+msgstr "二项分布"
 
 msgctxt "Description|"
 msgid "Central Limit Theorem"
-msgstr ""
+msgstr "中心极限定理"
 
 msgctxt "Description|"
 msgid "Standard Error"
-msgstr ""
+msgstr "标准误"
 
 msgctxt "Description|"
 msgid "Descriptive Statistics"
-msgstr ""
+msgstr "描述性统计"
 
 msgctxt "Description|"
 msgid "Sample Variability"
@@ -41,15 +47,15 @@ msgstr ""
 
 msgctxt "Description|"
 msgid "P Values"
-msgstr ""
+msgstr "P 值"
 
 msgctxt "Description|"
 msgid "Effect Sizes"
-msgstr ""
+msgstr "效应量"
 
 msgctxt "LSeffectSizes|"
 msgid "Effect Size"
-msgstr ""
+msgstr "效应量"
 
 msgctxt "LSeffectSizes|"
 msgid "Cohen's δ"
@@ -57,7 +63,7 @@ msgstr ""
 
 msgctxt "LSeffectSizes|"
 msgid "Pearson correlation coefficient ρ"
-msgstr ""
+msgstr "皮尔逊相关系数 ρ"
 
 msgctxt "LSeffectSizes|"
 msgid "Contingency coefficient φ"
@@ -69,7 +75,7 @@ msgstr ""
 
 msgctxt "LSeffectSizes|"
 msgid "Simulate data"
-msgstr ""
+msgstr "模拟数据"
 
 msgctxt "LSeffectSizes|"
 msgid "No. observations"
@@ -113,7 +119,7 @@ msgstr ""
 
 msgctxt "LSeffectSizes|"
 msgid "Risk Ratio"
-msgstr ""
+msgstr "风险率"
 
 msgctxt "LSeffectSizes|"
 msgid "Risk Difference"
@@ -133,7 +139,7 @@ msgstr ""
 
 msgctxt "LSeffectSizes|"
 msgid "Show regression line"
-msgstr ""
+msgstr "显示回归线"
 
 msgctxt "LSeffectSizes|"
 msgid "Show as mosiac plot"
@@ -149,7 +155,7 @@ msgstr ""
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Parent Distribution"
-msgstr ""
+msgstr "母体分布"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Normal"
@@ -173,7 +179,7 @@ msgstr ""
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Mean"
-msgstr ""
+msgstr "均值"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Std. Dev."
@@ -189,11 +195,11 @@ msgstr ""
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Left"
-msgstr ""
+msgstr "左"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Right"
-msgstr ""
+msgstr "右"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Skew Intensity"
@@ -225,7 +231,7 @@ msgstr ""
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Show samples"
-msgstr ""
+msgstr "显示样本"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Show rug marks"
@@ -233,11 +239,11 @@ msgstr ""
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Set seed"
-msgstr ""
+msgstr "设置种子"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "First"
-msgstr ""
+msgstr "第一"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Last"
@@ -245,7 +251,7 @@ msgstr ""
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "All"
-msgstr ""
+msgstr "全部"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "From"
@@ -337,15 +343,15 @@ msgstr ""
 
 msgctxt "LSTdescriptives|"
 msgid "Data options"
-msgstr ""
+msgstr "数据选项"
 
 msgctxt "LSTdescriptives|"
 msgid "Data Input Type"
-msgstr ""
+msgstr "数据输入类型"
 
 msgctxt "LSTdescriptives|"
 msgid "Random Sample"
-msgstr ""
+msgstr "随机样本"
 
 msgctxt "LSTdescriptives|"
 msgid "Enter sequence"
@@ -353,19 +359,19 @@ msgstr ""
 
 msgctxt "LSTdescriptives|"
 msgid "Select variable"
-msgstr ""
+msgstr "选择变量"
 
 msgctxt "LSTdescriptives|"
 msgid "Sample size"
-msgstr ""
+msgstr "样本大小"
 
 msgctxt "LSTdescriptives|"
 msgid "Set seed"
-msgstr ""
+msgstr "设置种子"
 
 msgctxt "LSTdescriptives|"
 msgid "Distribution Type"
-msgstr ""
+msgstr "分布类型"
 
 msgctxt "LSTdescriptives|"
 msgid "Discrete"
@@ -377,19 +383,19 @@ msgstr ""
 
 msgctxt "LSTdescriptives|"
 msgid "Distribution"
-msgstr ""
+msgstr "分布"
 
 msgctxt "LSTdescriptives|"
 msgid "Binomial distribution"
-msgstr ""
+msgstr "二项分布"
 
 msgctxt "LSTdescriptives|"
 msgid "Poisson distribution"
-msgstr ""
+msgstr "泊松分布"
 
 msgctxt "LSTdescriptives|"
 msgid "Skewed normal distribution"
-msgstr ""
+msgstr "偏态分布"
 
 msgctxt "LSTdescriptives|"
 msgid "Uniform distribution"
@@ -397,7 +403,7 @@ msgstr ""
 
 msgctxt "LSTdescriptives|"
 msgid "Normal distribution"
-msgstr ""
+msgstr "正太分布"
 
 msgctxt "LSTdescriptives|"
 msgid "Comma-separated Sequence of Observations"
@@ -421,11 +427,11 @@ msgstr ""
 
 msgctxt "LSTdescriptives|"
 msgid "Show Mean"
-msgstr ""
+msgstr "显示均值"
 
 msgctxt "LSTdescriptives|"
 msgid "Show Median"
-msgstr ""
+msgstr "显示中位数"
 
 msgctxt "LSTdescriptives|"
 msgid "Show Mode"
@@ -509,7 +515,7 @@ msgstr ""
 
 msgctxt "LSTsampleVariability|"
 msgid "Parent Distribution"
-msgstr ""
+msgstr "母体分布"
 
 msgctxt "LSTsampleVariability|"
 msgid "Parent Distribution Size"
@@ -557,7 +563,7 @@ msgstr ""
 
 msgctxt "LSTsampleVariability|"
 msgid "Mean"
-msgstr ""
+msgstr "均值"
 
 msgctxt "LSTsampleVariability|"
 msgid "Std. Dev."
@@ -573,11 +579,11 @@ msgstr ""
 
 msgctxt "LSTsampleVariability|"
 msgid "Left"
-msgstr ""
+msgstr "左"
 
 msgctxt "LSTsampleVariability|"
 msgid "Right"
-msgstr ""
+msgstr "右"
 
 msgctxt "LSTsampleVariability|"
 msgid "Skew Intensity"
@@ -613,7 +619,7 @@ msgstr ""
 
 msgctxt "LSTsampleVariability|"
 msgid "Show samples"
-msgstr ""
+msgstr "显示样本"
 
 msgctxt "LSTsampleVariability|"
 msgid "Show rug marks"
@@ -621,11 +627,11 @@ msgstr ""
 
 msgctxt "LSTsampleVariability|"
 msgid "Set seed"
-msgstr ""
+msgstr "设置种子"
 
 msgctxt "LSTsampleVariability|"
 msgid "First"
-msgstr ""
+msgstr "第一"
 
 msgctxt "LSTsampleVariability|"
 msgid "Last"
@@ -633,15 +639,15 @@ msgstr ""
 
 msgctxt "LSTsampleVariability|"
 msgid "All"
-msgstr ""
+msgstr "全部"
 
 msgctxt "LSTsampleVariability|"
 msgid "From"
-msgstr ""
+msgstr "从"
 
 msgctxt "LSTsampleVariability|"
 msgid "To"
-msgstr ""
+msgstr "至"
 
 msgctxt "LSTsampleVariability|"
 msgid "Plot Options"
@@ -717,7 +723,7 @@ msgstr ""
 
 msgctxt "LSTstandardError|"
 msgid "Show parent distribution"
-msgstr ""
+msgstr "显示母体分布"
 
 msgctxt "LSTstandardError|"
 msgid "Show explanatory text"
@@ -725,7 +731,7 @@ msgstr ""
 
 msgctxt "LSTstandardError|"
 msgid "Mean"
-msgstr ""
+msgstr "均值"
 
 msgctxt "LSTstandardError|"
 msgid "Std. Dev."
@@ -741,11 +747,11 @@ msgstr ""
 
 msgctxt "LSTstandardError|"
 msgid "Left"
-msgstr ""
+msgstr "左"
 
 msgctxt "LSTstandardError|"
 msgid "Right"
-msgstr ""
+msgstr "右"
 
 msgctxt "LSTstandardError|"
 msgid "Skew Intensity"
@@ -777,7 +783,7 @@ msgstr ""
 
 msgctxt "LSTstandardError|"
 msgid "Show samples"
-msgstr ""
+msgstr "显示样本"
 
 msgctxt "LSTstandardError|"
 msgid "Show rug marks"
@@ -785,11 +791,11 @@ msgstr ""
 
 msgctxt "LSTstandardError|"
 msgid "Set seed"
-msgstr ""
+msgstr "设置种子"
 
 msgctxt "LSTstandardError|"
 msgid "First"
-msgstr ""
+msgstr "第一"
 
 msgctxt "LSTstandardError|"
 msgid "Last"
@@ -797,15 +803,15 @@ msgstr ""
 
 msgctxt "LSTstandardError|"
 msgid "All"
-msgstr ""
+msgstr "全部"
 
 msgctxt "LSTstandardError|"
 msgid "From"
-msgstr ""
+msgstr "从"
 
 msgctxt "LSTstandardError|"
 msgid "To"
-msgstr ""
+msgstr "至"
 
 msgctxt "LSTstandardError|"
 msgid "Sampling Distribution Options"
@@ -885,15 +891,15 @@ msgstr ""
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "μ"
-msgstr ""
+msgstr "μ"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "σ"
-msgstr ""
+msgstr "σ"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Sample size (n)"
-msgstr ""
+msgstr "样本大小 (n)"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Confidence level"
@@ -961,11 +967,11 @@ msgstr ""
 
 msgctxt "LSTdecisionTree|"
 msgid "One"
-msgstr ""
+msgstr "一"
 
 msgctxt "LSTdecisionTree|"
 msgid "Two or more"
-msgstr ""
+msgstr "二或更多"
 
 msgctxt "LSTdecisionTree|"
 msgid "What type of outcome?"
@@ -997,11 +1003,11 @@ msgstr ""
 
 msgctxt "LSTdecisionTree|"
 msgid "Two"
-msgstr ""
+msgstr "二"
 
 msgctxt "LSTdecisionTree|"
 msgid "More than two"
-msgstr ""
+msgstr "大于二"
 
 msgctxt "LSTdecisionTree|"
 msgid "Same or different entities in categories of predictor?"
@@ -1041,7 +1047,7 @@ msgstr ""
 
 msgctxt "LSTPValues|"
 msgid "T distribution"
-msgstr ""
+msgstr "T 分布"
 
 msgctxt "LSTPValues|"
 msgid "df"
@@ -1073,7 +1079,7 @@ msgstr ""
 
 msgctxt "LSTPValues|"
 msgid "Plot theoretical distribution"
-msgstr ""
+msgstr "绘制理论分布"
 
 msgctxt "LSTPValues|"
 msgid "Highlight critical region"
@@ -1113,7 +1119,7 @@ msgstr ""
 
 msgctxt "LSTPValues|"
 msgid "Output"
-msgstr ""
+msgstr "输出"
 
 msgctxt "LSTPValues|"
 msgid "Plot test statistics"
@@ -1145,7 +1151,7 @@ msgstr ""
 
 msgctxt "LSTPValues|"
 msgid "Mean"
-msgstr ""
+msgstr "均值"
 
 msgctxt "LSTPValues|"
 msgid "Non-centrality"
@@ -1161,7 +1167,7 @@ msgstr ""
 
 msgctxt "LSTPValues|"
 msgid "Options"
-msgstr ""
+msgstr "选项"
 
 msgctxt "LSTPValues|"
 msgid "Introductory text"
