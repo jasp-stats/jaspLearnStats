@@ -25,19 +25,6 @@ Form
 {
 	columns: 1
 	
-	DropDown
-	{
-		name: "LSdescCentralOrSpread"
-		label: qsTr("Statistics to explain")
-		indexDefaultValue: 0
-		id: lsDescCentralOrSpread
-		values:
-		[
-			{label: qsTr("Central tendency"),		value: "LSdescCentralTendency"},
-			{label: qsTr("Spread"),	value: "LSdescSpread"}
-		]
-	}
-	
 	Section
 	{
 		title: qsTr("Data options")
@@ -48,22 +35,22 @@ Form
 		{
 			columns:	3
 			name:		"lstDescDataType"
-			title:		qsTr("Data Input Type")
+			title:		qsTr("Data input type")
 			id:			lstDescDataType
-			
-			RadioButton
-			{
-				value:		"dataRandom"
-				label:		qsTr("Random Sample")
-				id:			dataTypeA
-				checked:	true
-			}
-			
+
 			RadioButton
 			{
 				value:		"dataSequence"
 				label:		qsTr("Enter sequence")
 				id:			dataTypeB
+				checked:	true
+			}
+			
+			RadioButton
+			{
+				value:		"dataRandom"
+				label:		qsTr("Random sample")
+				id:			dataTypeA
 			}
 			
 			RadioButton
@@ -82,7 +69,7 @@ Form
 			DoubleField
 			{
 				name:			"lstDescSampleN"
-				visible:	dataTypeA.checked
+				visible:		dataTypeA.checked
 				label:			qsTr("Sample size")
 				fieldWidth:		60
 				defaultValue:	100
@@ -108,7 +95,7 @@ Form
 				columns:	3
 				name:		"lstDescSampleDistType"
 				visible:	dataTypeA.checked
-				title:		qsTr("Distribution Type")
+				title:		qsTr("Distribution type")
 				id:			distributionType
 		
 				RadioButton
@@ -159,10 +146,10 @@ Form
 		
 		TextArea
 		{
-			title:		qsTr("Comma-separated Sequence of Observations")
+			title:		qsTr("Comma-separated sequence of observations")
 			visible:	dataTypeB.checked
 			height:		100
-			name:     "lstDescDataSequenceInput"
+			name:		"lstDescDataSequenceInput"
 			textType:	JASP.TextTypeSource
 			separators:	[",",";","\n"]
 		}
@@ -190,87 +177,85 @@ Form
 				}
 			}
 		}
-	}
-	
-	Section
-	{
-		title: qsTr("Central Tendency Measures")
-		visible: lsDescCentralOrSpread.currentValue == "LSdescCentralTendency"
-		
+
+
 		RadioButtonGroup
 		{
-			title:                                  qsTr("Select Central Tendency Measure")
-			name:                                   "LSdescCT"
+			title:									qsTr("Statistics to display")
+			name:									"LSdescStatistics"
+			columns:								3
 
-			RadioButton
-			{
-				name:                               "LSdescMean"
-				label:                              qsTr("Show Mean")
-				checked:                            true
-			}
-			
-			RadioButton
-			{
-				name:                               "LSdescMedian"
-				label:                              qsTr("Show Median")
-			}
-			
-			RadioButton
-			{
-			name:                               "LSdescMode"
-			label:                              qsTr("Show Mode")
-			}
-			
-			RadioButton
-			{
-				name:                               "LSdescMMM"
-				label:                              qsTr("Compare All")
-			}
-		}
-		
-		CheckBox
-		{
-			name: "LSdescExplanationC"
-			label: qsTr("Show explanation")
-			checked: true
-		}
-	}
-	
-	Section
-	{
-		title: qsTr("Measures of spread")
-		visible: lsDescCentralOrSpread.currentValue == "LSdescSpread"
-		
-		RadioButtonGroup
-		{
-			title:	qsTr("Select measure of spread")
-			name:	"LSdescS"
+			Group
+			{	
+				title:								qsTr("Central tendency measures")
 
-			RadioButton
-			{
-				name:		"LSdescRange"
-				label:		qsTr("Range")
-				checked:	true
+				RadioButton
+				{
+					name:								"LSdescMean"
+					label:								qsTr("Mean")
+				}
+				
+				RadioButton
+				{
+					name:								"LSdescMedian"
+					label:								qsTr("Median")
+				}
+				
+				RadioButton
+				{
+				name:									"LSdescMode"
+				label:									qsTr("Mode")
+				}
+				
+				RadioButton
+				{
+					name:								"LSdescMMM"
+					label:								qsTr("All")
+				}
+
 			}
+
+			Group
+			{	
+				title:								qsTr("Spread measures")
+
+				RadioButton
+				{
+					name:							"LSdescRange"
+					label:							qsTr("Range")
+				}
+				
+				RadioButton
+				{
+					name:							"LSdescQR"
+					label:							qsTr("Quartiles")
+				}
 			
-			RadioButton
-			{
-				name:	"LSdescQR"
-				label:	qsTr("Quartiles")
+				RadioButton
+				{
+					name:							"LSdescSD"
+					label:							qsTr("Std. dev.")
+				}
+
 			}
-		
-			RadioButton
+
+			Group
 			{
-				name:	"LSdescSD"
-				label:	qsTr("Std. dev. and variance")
+				title:		" "
+
+				RadioButton
+				{
+					name:							"none"
+					label:							qsTr("None")
+					checked:						true
+				}
 			}
-		}
-		
-		CheckBox
-		{
-			name:		"LSdescExplanationS"
-			label:		qsTr("Show explanation")
-			checked:	true
+
+			CheckBox
+			{
+				name:		"LSdescExplanation"
+				label:		qsTr("Show explanation")
+			}	
 		}
 	}
 	
@@ -282,7 +267,6 @@ Form
 		{
 			name:		"LSdescHistBar"
 			label:		qsTr("Histogram / Barplot")
-			checked:	true
 		
 			RadioButtonGroup
 			{
@@ -298,7 +282,7 @@ Form
 				RadioButton
 				{
 					name:	"LSdescHistDens"
-					label:	qsTr("Show density (Histogram only)")
+					label:	qsTr("Show density (histogram only)")
 				}
 			}
 			
@@ -307,6 +291,36 @@ Form
 				name:		"LSdescHistBarRugs"
 				label:		qsTr("Display rug marks")
 				checked:	true
+			}
+
+			Group
+			{
+	
+				DropDown
+				{
+					name:				"descBinWidthType"
+					label:				qsTr("Histogram bin width type")
+					indexDefaultValue:	0
+					id:					binWidthType
+					values:
+					[
+					{label: qsTr("Sturges"),				value: "sturges"},
+					{label: qsTr("Scott"),					value: "scott"},
+					{label: qsTr("Doane"),					value: "doane"},
+					{label: qsTr("Freedman-Diaconis"),		value: "fd"	},
+					{label: qsTr("Manual"),					value: "manual"	}
+					]
+				}
+					
+				DoubleField
+				{
+					name:			"descNumberOfBins"
+					label:			qsTr("Number of bins")
+					defaultValue:	30
+					min:			3;
+					max:			10000;
+					enabled:		binWidthType.currentValue === "manual"
+				}
 			}
 		}
 		
@@ -337,6 +351,128 @@ Form
 				{ label: qsTr("ggplot2"),			value: "ggplot2"		},
 				{ label: qsTr("Gray"),				value: "gray"			}
 			]
+		}
+	}
+
+	Section
+	{
+		title:		qsTr("Distribution options")
+		visible:	dataTypeA.checked
+
+		Group
+		{
+			title:		qsTr("Binomial distribution parameters")
+			visible:	lsDescDiscreteDistributions.currentValue == "binomialDist" && distTypeDisc.checked
+
+			DoubleField
+			{
+				name:			"binomialDistributionSuccessProbability"
+				label:			qsTr("Probability of success (p)")
+				defaultValue:	.5
+				min:			0
+				max:			1
+			}
+
+			DoubleField
+			{
+				name:			"binomialDistributionNumberOfTrials"
+				label:			qsTr("Number of trials (k)")
+				defaultValue:	10
+				min:			1
+			}
+		}
+
+		Group
+		{
+			title:		qsTr("Poisson distribution parameters")
+			visible:	lsDescDiscreteDistributions.currentValue == "poissonDist" && distTypeDisc.checked
+
+			DoubleField
+			{
+				name:			"poissonDistributionLambda"
+				label:			qsTr("Rate (λ)")
+				defaultValue:	1
+				min:			0
+			}
+		}
+
+		Group
+		{
+			title:		qsTr("Skewed normal distribution parameters")
+			visible:	lsDescContinuousDistributions.currentValue == "skewedNormal" && distTypeCont.checked
+
+			DoubleField
+			{
+				name:			"skewedNormalDistributionLocation"
+				label:			qsTr("Location (ξ)")
+				defaultValue:	0
+				negativeValues:	true
+			}
+
+			DoubleField
+			{
+				name:			"skewedNormalDistributionScale"
+				label:			qsTr("Scale (ω)")
+				defaultValue:	1
+				min:			0
+			}
+
+			DoubleField
+			{
+				name:			"skewedNormalDistributionShape"
+				label:			qsTr("Shape (α)")
+				defaultValue:	100
+				negativeValues:	true
+			}
+		}
+
+		Group
+		{
+			title:		qsTr("Uniform distribution parameters")
+			visible:	lsDescContinuousDistributions.currentValue == "uniform" && distTypeCont.checked
+
+			DoubleField
+			{
+				name:			"uniformDistributionLowerBound"
+				label:			qsTr("Lower bound")
+				defaultValue:	0
+				id:				uniformDistributionLowerBound
+				max: 			parseFloat(uniformDistributionUpperBound.value)
+				negativeValues:	true
+			}
+
+			DoubleField
+			{
+				name:			"uniformDistributionUpperBound"
+				label:			qsTr("Upper bound")
+				defaultValue:	5
+				id:				uniformDistributionUpperBound
+				min: 			parseFloat(uniformDistributionLowerBound.value)
+				negativeValues:	true
+			}
+
+		}
+
+		Group
+		{
+			title:		qsTr("Normal distribution parameters")
+			visible:	lsDescContinuousDistributions.currentValue == "normal" && distTypeCont.checked
+
+			DoubleField
+			{
+				name:			"normalDistributionMean"
+				label:			qsTr("Mean (μ)")
+				defaultValue:	0
+				negativeValues:	true
+			}
+
+			DoubleField
+			{
+				name:			"normalDistributionStdDev"
+				label:			qsTr("Std. dev. (σ)")
+				defaultValue:	10
+				min:			0
+			}
 		}
 	}
 }

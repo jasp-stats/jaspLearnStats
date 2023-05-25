@@ -74,6 +74,19 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
                                   "Different4", "Logistic regression", "Different5", "Different6", "MANOVA", "Factorial MANOVA", "MANCOVA"))
   decisionDf <- rbind(decisionDf, extraEdges)
   
+  #remove NULL nodes from edgesDf and decision Df
+  nodesDf <- subset(nodesDf, !grepl("NULL", nodesDf$label))
+  decisionDf <- subset(decisionDf, !(grepl("NULL", decisionDf$from) | grepl("NULL", decisionDf$to)))
+  
+  # add edges that skip rows
+  extraEdges <- data.frame(from = c("Continuous3", "Continuous4", "Categorical3", "Categorical3", "Categorical3",
+                                    "Both", "Continuous5", "Categorical4", "Continuous6", "Categorical5", "Both2",
+                                    "Categorical6", "Categorical7", "Both3"),
+                           to = c("Pearson correlation \n or regression", "Multiple regression", "Same3", "Different3",
+                                  "Both4", "Multiple regression\n/ANCOVA", "Logistic regression or \n biserial/point biserial \n correlation",
+                                  "Different4", "Logistic regression", "Different5", "Different6", "MANOVA", "Factorial MANOVA", "MANCOVA"))
+  decisionDf <- rbind(decisionDf, extraEdges)
+  
   # data frame for edges
   edgesDf <- cbind(decisionDf, "id" = seq_len(nrow(decisionDf))) 
   edgesDf <- tidyr::pivot_longer(edgesDf, cols = c("from", "to"),

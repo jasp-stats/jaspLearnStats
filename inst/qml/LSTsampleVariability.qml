@@ -38,7 +38,7 @@ Form
 			{
 				columns:	2
 				name:		"svParentSizeType"
-				title:		qsTr("Parent Distribution Size")
+				title:		qsTr("Parent distribution size")
 				id:			svParentSizeType
 			
 				RadioButton
@@ -71,7 +71,7 @@ Form
 			DropDown
 			{
 				name:				"cltParentDistribution"
-				label:				qsTr("Parent Distribution Shape")
+				label:				qsTr("Parent distribution shape")
 				indexDefaultValue:	0
 				id:					cltParentDistribution
 				values:
@@ -114,7 +114,7 @@ Form
 			DoubleField
 			{
 				name:			"cltStdDev"
-				label:			qsTr("Std. Dev.")
+				label:			qsTr("Std. dev.")
 				fieldWidth:		60
 				defaultValue:	1
 				decimals:		2
@@ -136,7 +136,7 @@ Form
 			DropDown
 			{
 				name:				"cltSkewDirection"
-				label:				qsTr("Skew Direction")
+				label:				qsTr("Skew direction")
 				indexDefaultValue:	0
 				visible:			cltParentDistribution.currentValue == "skewed"
 				id:					cltSkewDirection
@@ -150,7 +150,7 @@ Form
 			DropDown
 			{
 				name:				"cltSkewIntensity"
-				label:				qsTr("Skew Intensity")
+				label:				qsTr("Skew intensity")
 				indexDefaultValue:	0
 				visible:			cltParentDistribution.currentValue == "skewed"
 				id:					cltSkewIntensity
@@ -310,7 +310,7 @@ Form
 				{
 					name:			"svToSample"
 					id:				svToSample
-					label:			qsTr("To")
+					label:			qsTr("to")
 					fieldWidth:		60
 					defaultValue:	7
 					visible:		svSampleShowType.currentValue == "range"

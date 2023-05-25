@@ -122,6 +122,7 @@ LSTconfidenceIntervals <- function(jaspResults, dataset = NULL, options) {
   
   meanCI <- jaspContainer[["computedConfidenceIntervals"]][["object"]]
   meanCI[["successfulCI"]] <- ifelse(meanCI[["successfulCI"]], "Yes", "No")
+  meanCI <- meanCI[1:options$dataPlotShowN,]  # Show data only for CIs that are also plotted
   
   treeTable$showSpecifiedColumnsOnly <- TRUE
   treeTable$setData(meanCI)
@@ -185,62 +186,45 @@ LSTconfidenceIntervals <- function(jaspResults, dataset = NULL, options) {
   return()
 }
 
+
 .plotDatasets <- function(jaspContainer, options) {
   if (!is.null(jaspContainer[["containerRainCloudPlots"]]) || !options$dataPlot)
     return()
   
-  rainData <- data.frame(y = unlist(jaspContainer[["simulatedDatasets"]][["object"]]), 
-                         group = rep(seq_len(options$nReps), each = options$n))
-  
   jaspContainer[["containerRainCloudPlots"]] <- createJaspContainer(gettext("Data plots"), 
-                                                                    dependencies = c("dataPlotShowN", "dataPlot"))
+                                                                    dependencies = c("dataPlotShowN", "dataPlot", "ciSampleShowType",
+                                                                                     "ciFirstOrLastSamples", "ciFromSample",
+                                                                                     "ciToSample"))
   
   rainData <- jaspContainer[["simulatedDatasets"]][["object"]]
+  maxSamples <- length(rainData)
+  fromTo <- .getFromToSampleShow(options[["ciSampleShowType"]], maxSamples, singleValue = options[["ciFirstOrLastSamples"]],
+                                 start = options[["ciFromSample"]], stop = options[["ciToSample"]])
+  from <- fromTo[1]
+  to <- fromTo[2]
+  visibleRainData <- rainData[from:to]
+  rows <- .getPlotMatDetails(length(visibleRainData))$rows
+  plotHeight <- rows * 250
+  matrixPlot <- createJaspPlot(title = gettext("Samples"), width = 1200, 
+                               height = plotHeight)
   
-  nRows <- min((options$dataPlotShowN %/% 3) + 1, 3)
-  nCols <- ifelse(nRows == 1, options$dataPlotShowN, 3)
-  addDots <- ifelse(options$dataPlotShowN > 9, TRUE, FALSE)
-  
-  matrixPlot <- createJaspPlot(title = gettext("Samples"), width = 960/(3/nCols), 
-                               height = 800/(3/nRows))
-  
-  plotList <- matrix(list(), nRows, nCols)
-  
-  if (addDots) {
-    loopingVector <- c(1, 2, (options$dataPlotShowN-6):options$dataPlotShowN)
-  } else {
-    loopingVector <- 1:options$dataPlotShowN
+  plotList <- list()
+  for (i in seq_along(visibleRainData)){
+    thisRainData <- data.frame(y = visibleRainData[[i]], 
+                               group = rep(1, options$n))
+    repetitionNumber <- from + i - 1
+    plotList[[i]] <- try(jaspTTests::.descriptivesPlotsRainCloudFill(thisRainData, "y", "group",
+                                                                     yLabel = gettext("Dependent"),
+                                                                     xLabel = gettextf("Repetition %d", repetitionNumber),
+                                                                     testValue = options$mu,
+                                                                     addLines = FALSE, horiz = FALSE))
+     if(isTryError(plotList[[i]]))
+       matrixPlot$setError(.extractErrorMessage(plotList[[i]]))
   }
-  
-  listCounter <- 1
-  for (i in loopingVector) {
-    
-    if (addDots && listCounter == 2) {
-      plotList[[listCounter]] <- ggplot2::ggplot(data = data.frame(x = c(-1,1), y = c(-1,1))) + ggplot2::theme_void() +
-        ggplot2::annotate("text", x = -3, y = -2.5, 
-                          label = "...", 
-                          size = 60)
-    } else {
-      
-      thisRainData <- data.frame(y = unlist(jaspContainer[["simulatedDatasets"]][["object"]][[i]]), 
-                                 group = rep(1, options$n))  
-      
-      plotList[[listCounter]] <- try(jaspTTests::.descriptivesPlotsRainCloudFill(thisRainData, "y", "group", 
-                                                                                 yLabel = gettext("Dependent"), 
-                                                                                 xLabel = gettextf("Repetition %d", i),
-                                                                                 testValue = options$mu,
-                                                                                 addLines = FALSE, horiz = FALSE))
-      if(isTryError(plotList[[listCounter]]))
-        matrixPlot$setError(.extractErrorMessage(plotList[[listCounter]]))
-      
-    }
-    listCounter <- listCounter + 1
-  }
-  
-  p <- jaspGraphs::ggMatrixPlot(matrix(plotList, nrow = nRows, ncol = nCols, byrow = TRUE))
-  matrixPlot$plotObject <- p
+  tbcString <- ifelse(to == maxSamples, "", gettextf("... until Sample Nr. %i", maxSamples))
+  plotMat <- .arrangePlotMat(plotList, tbc = tbcString)
+  matrixPlot$plotObject <- jaspGraphs::ggMatrixPlot(plotMat)
   jaspContainer[["containerRainCloudPlots"]][["plotObject"]] <- matrixPlot
-  
   return()
 }
 
@@ -279,7 +263,7 @@ LSTconfidenceIntervals <- function(jaspResults, dataset = NULL, options) {
     ggplot2::xlab(gettext("Number of Replications")) +
     ggplot2::ylab(gettext("p(Coverage)")) +
     ggplot2::coord_cartesian(xlim = c(0, options$nReps), ylim = myYlim) + 
-    ggplot2::geom_polygon(ggplot2::aes(x = c(1:options$nReps,options$nReps:1), y = c(y.upper, rev(y.lower))),
+    ggplot2::geom_polygon(ggplot2::aes(x = c(1:options$nReps,options$nReps:1), y = c(yUpper, rev(yLower))),
                           fill = "lightsteelblue") +  # CI
     ggplot2::geom_line(color = "darkred", ggplot2::aes(x = 1:options$nReps, 
                                                        y = rep(options$confidenceIntervalInterval, options$nReps))) +  # confidence level
@@ -396,4 +380,60 @@ LSTconfidenceIntervals <- function(jaspResults, dataset = NULL, options) {
   return()
 }
 
-
+.plotDatasetsOLD2 <- function(jaspContainer, options) {
+  if (!is.null(jaspContainer[["containerRainCloudPlots"]]) || !options$dataPlot)
+    return()
+  
+  jaspContainer[["containerRainCloudPlots"]] <- createJaspContainer(gettext("Data plots"), 
+                                                                    dependencies = c("dataPlotShowN", "dataPlot"))
+  
+  rainData <- jaspContainer[["simulatedDatasets"]][["object"]]
+  
+  nRows <- min((options$dataPlotShowN %/% 3) + 1, 3)
+  nCols <- ifelse(nRows == 1, options$dataPlotShowN, 3)
+  addDots <- ifelse(options$dataPlotShowN > 9, TRUE, FALSE)
+  
+  matrixPlot <- createJaspPlot(title = gettext("Samples"), width = 960/(3/nCols), 
+                               height = 800/(3/nRows))
+  
+  plotList <- list()
+  
+  if (addDots) {
+    loopingVector <- c(1, 2, (options$dataPlotShowN-6):options$dataPlotShowN)
+  } else {
+    loopingVector <- 1:options$dataPlotShowN
+  }
+  
+  listCounter <- 1
+  for (i in loopingVector) {
+    
+    if (addDots && listCounter == 2) {
+      plotList[[listCounter]] <- ggplot2::ggplot(data = data.frame(x = c(-1,1), y = c(-1,1))) + ggplot2::theme_void() +
+        ggplot2::annotate("text", x = -3, y = -2.5, 
+                          label = "...", 
+                          size = 60)
+    } else {
+      
+      thisRainData <- data.frame(y = rainData[[i]], 
+                                 group = rep(1, options$n))  
+      
+      plotList[[listCounter]] <- try(jaspTTests::.descriptivesPlotsRainCloudFill(thisRainData, "y", "group",
+                                                                                 yLabel = gettext("Dependent"),
+                                                                                 xLabel = gettextf("Repetition %d", i),
+                                                                                 testValue = options$mu,
+                                                                                 addLines = FALSE, horiz = FALSE))
+      
+      
+      if(isTryError(plotList[[listCounter]]))
+        matrixPlot$setError(.extractErrorMessage(plotList[[listCounter]]))
+      
+    }
+    listCounter <- listCounter + 1
+  }
+  
+  p <- jaspGraphs::ggMatrixPlot(matrix(plotList, nrow = nRows, ncol = nCols, byrow = TRUE))
+  matrixPlot$plotObject <- p
+  jaspContainer[["containerRainCloudPlots"]][["plotObject"]] <- matrixPlot
+  
+  return()
+}

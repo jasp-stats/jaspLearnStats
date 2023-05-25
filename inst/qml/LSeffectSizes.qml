@@ -28,7 +28,7 @@ Form {
 	{
 		name: 	"effectSize"
 		id:		effectSize
-		title:	qsTr("Effect Size")
+		title:	qsTr("Effect size")
   		
 		RadioButton
 		{
@@ -258,7 +258,7 @@ Form {
 
 		Group
 		{
-			title:			qsTr("Additional Statistics")
+			title:			qsTr("Additional statistics")
 			visible:		effectSize.value == "delta"
 
 			CheckBox
@@ -298,7 +298,7 @@ Form {
 
 		Group
 		{
-			title:			qsTr("Additional Statistics")
+			title:			qsTr("Additional statistics")
 			visible:		effectSize.value == "rho"
 				
 			CheckBox
@@ -311,34 +311,34 @@ Form {
 
 		Group
 		{
-			title:			qsTr("Additional Statistics")
+			title:			qsTr("Additional statistics")
 			visible:		effectSize.value == "phi"
 				
 			CheckBox
 			{
 				name:			"phiOR"
-				label:			qsTr("Odds Ratio")
+				label:			qsTr("Odds ratio")
 				checked:		false
 			}
 
 			CheckBox
 			{
 				name:			"phiRR"
-				label:			qsTr("Risk Ratio")
+				label:			qsTr("Risk ratio")
 				checked:		false
 			}
 
 			CheckBox
 			{
 				name:			"phiRD"
-				label:			qsTr("Risk Difference")
+				label:			qsTr("Risk difference")
 				checked:		false
 			}
 		}
 
 		Group
 		{
-			title:			qsTr("Plot Options")
+			title:			qsTr("Plot options")
 				
 			CheckBox
 			{
