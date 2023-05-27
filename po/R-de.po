@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.15\n"
-"POT-Creation-Date: 2023-05-08 15:23\n"
+"POT-Creation-Date: 2023-05-27 04:43\n"
 "PO-Revision-Date: 2023-05-13 04:42+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
@@ -120,6 +120,9 @@ msgstr "Test-Auswahl"
 msgid "Explanation"
 msgstr "Erklärung"
 
+msgid "Theoretical example distribution"
+msgstr "Theoretische Beispielverteilung"
+
 msgid "Visual Explanation"
 msgstr "Visuelle Erklärung"
 
@@ -180,9 +183,6 @@ msgstr "+3 SD"
 
 msgid "Std. Dev."
 msgstr "Std.-Abw."
-
-msgid "Theoretical example distribution"
-msgstr "Theoretische Beispielverteilung"
 
 msgid "Median"
 msgstr "Median"

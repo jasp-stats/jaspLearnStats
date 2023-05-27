@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.17.0\n"
-"POT-Creation-Date: 2023-05-08 15:23\n"
+"POT-Creation-Date: 2023-05-27 04:43\n"
 "PO-Revision-Date: 2023-05-09 13:24+0000\n"
 "Last-Translator: Johnny van Doorn <j.b.vandoorn@uva.nl>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/"
@@ -111,6 +111,9 @@ msgstr ""
 msgid "Explanation"
 msgstr ""
 
+msgid "Theoretical example distribution"
+msgstr ""
+
 msgid "Visual Explanation"
 msgstr ""
 
@@ -168,9 +171,6 @@ msgid "+3 SD"
 msgstr ""
 
 msgid "Std. Dev."
-msgstr ""
-
-msgid "Theoretical example distribution"
 msgstr ""
 
 msgid "Median"
