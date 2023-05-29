@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.15\n"
 "POT-Creation-Date: 2023-05-27 04:43\n"
-"PO-Revision-Date: 2023-05-12 15:54+0000\n"
+"PO-Revision-Date: 2023-05-30 14:48+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/"
 "jasplearnstats-r/pl/>\n"
@@ -18,28 +18,28 @@ msgid "Parent Distribution"
 msgstr ""
 
 msgid "Count: %i"
-msgstr ""
+msgstr "Liczebność: %i"
 
 msgid "Mean: %.2f"
-msgstr ""
+msgstr "Średnia: %.2f"
 
 msgid "SE: %.2f"
-msgstr ""
+msgstr "Błąd stand.: %.2f"
 
 msgid "SD: %.2f"
-msgstr ""
+msgstr "Odch. stand.: %.2f"
 
 msgid "Sample Nr. %i"
-msgstr ""
+msgstr "Próba nr. %i"
 
 msgid "... until Sample Nr. %i"
-msgstr ""
+msgstr "... do próby nr. %i"
 
 msgid "Samples"
 msgstr ""
 
 msgid "Std. Dev.: %.2f"
-msgstr ""
+msgstr "Odch. stand."
 
 msgid "Sampling Distribution of the Mean"
 msgstr ""
@@ -54,7 +54,7 @@ msgid "Coverage %"
 msgstr ""
 
 msgid "Mean"
-msgstr ""
+msgstr "Średnia"
 
 msgid "Estimate"
 msgstr "Oszacowanie"
