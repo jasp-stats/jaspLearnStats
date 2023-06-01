@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.15\n"
 "POT-Creation-Date: 2023-05-27 04:43\n"
-"PO-Revision-Date: 2023-05-30 14:48+0000\n"
+"PO-Revision-Date: 2023-06-02 20:51+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/"
 "jasplearnstats-r/pl/>\n"
@@ -184,10 +184,10 @@ msgid "Min: %.2f"
 msgstr ""
 
 msgid "Max: %.2f"
-msgstr ""
+msgstr "Maks: %.2f"
 
 msgid "Range: %.2f"
-msgstr ""
+msgstr "Rozstęp: %.2f"
 
 msgid "1st quar. = %.2f"
 msgstr ""
@@ -201,19 +201,19 @@ msgid "3rd quar. = %.2f"
 msgstr ""
 
 msgid "IQR = %.2f"
-msgstr ""
+msgstr "IQR = %.2f"
 
 msgid "-%i SD"
-msgstr ""
+msgstr "-%i odch. stand."
 
 msgid "+%i SD"
-msgstr ""
+msgstr "+%i odch. stand."
 
 msgid "Mean = %.2f"
-msgstr ""
+msgstr "Średnia = %.2f"
 
 msgid "Std. Dev. = %.2f"
-msgstr ""
+msgstr "Odch. stand. = %.2f"
 
 msgid "Dotplot"
 msgstr ""
@@ -243,10 +243,10 @@ msgid "Mode = /n {%.2f"
 msgstr ""
 
 msgid ", %i"
-msgstr ""
+msgstr ", %i"
 
 msgid ", %.2f"
-msgstr ""
+msgstr ", %.2f"
 
 msgid ""
 "} \n"
@@ -254,7 +254,7 @@ msgid ""
 msgstr ""
 
 msgid "Median = %.2f"
-msgstr ""
+msgstr "Mediana = %.2f"
 
 msgid ""
 "2nd quar. / \n"
@@ -262,10 +262,10 @@ msgid ""
 msgstr ""
 
 msgid "1st quar."
-msgstr ""
+msgstr "1szy kwart."
 
 msgid "3rd quar."
-msgstr ""
+msgstr "3ci kwart."
 
 msgid "to be added..."
 msgstr ""
@@ -274,13 +274,13 @@ msgid "Theoretical distribution of the test statistic under H<sub>0</sub>"
 msgstr ""
 
 msgid "Distribution plot"
-msgstr ""
+msgstr "Wykres rozkładu"
 
 msgid "Test statistic"
-msgstr ""
+msgstr "Statystyki testu"
 
 msgid "Density"
-msgstr ""
+msgstr "Gęstość"
 
 msgid "Simulation under H<sub>0</sub>"
 msgstr ""
@@ -298,31 +298,31 @@ msgid "Alt dist."
 msgstr ""
 
 msgid "Observed p-values"
-msgstr ""
+msgstr "Obserwowane wartości p"
 
 msgid "p-values"
-msgstr ""
+msgstr "Wartości p"
 
 msgid "Frequency Table"
 msgstr ""
 
 msgid "Percent"
-msgstr ""
+msgstr "Procent"
 
 msgid "Significant"
-msgstr ""
+msgstr "Istotność"
 
 msgid "Not significant"
-msgstr ""
+msgstr "Nieistotne"
 
 msgid "Total"
-msgstr ""
+msgstr "Całość"
 
 msgid "Simulation under H<sub>a</sub>"
 msgstr ""
 
 msgid "Error Message"
-msgstr ""
+msgstr "Komunikat błędu"
 
 msgid ""
 "Population size too small. Cannot draw %1$i samples with size %2$i from a "
@@ -342,10 +342,10 @@ msgid "Simulation distribution"
 msgstr ""
 
 msgid "Raincloud plot"
-msgstr ""
+msgstr "Wykres chmury deszczowej"
 
 msgid "Group"
-msgstr ""
+msgstr "Grupa"
 
 msgid "Control"
 msgstr ""
@@ -354,19 +354,19 @@ msgid "Experimental"
 msgstr ""
 
 msgid "Population"
-msgstr ""
+msgstr "Populacja"
 
 msgid "Simulation"
-msgstr ""
+msgstr "Symulacja"
 
 msgid "95% CI"
-msgstr ""
+msgstr "95% PU"
 
 msgid "Cohen's d"
-msgstr ""
+msgstr "d Cohena"
 
 msgid "Cohen's U%1$s"
-msgstr ""
+msgstr "U%1$s Cohena"
 
 msgid "Overlap"
 msgstr ""
@@ -409,7 +409,7 @@ msgid ""
 msgstr ""
 
 msgid "Pearson correlation"
-msgstr ""
+msgstr "Korelacja Pearsona"
 
 msgid "Shared variance (R%1$s)"
 msgstr ""
@@ -432,16 +432,16 @@ msgid ""
 msgstr ""
 
 msgid "Frequencies"
-msgstr ""
+msgstr "Częstości"
 
 msgid "P(X=1)"
-msgstr ""
+msgstr "P(X=1)"
 
 msgid "P(Y=1)"
-msgstr ""
+msgstr "P(Y=1)"
 
 msgid "Phi coefficient"
-msgstr ""
+msgstr "Współczynnik Phi"
 
 msgid "Odds ratio"
 msgstr "Iloraz szans"
