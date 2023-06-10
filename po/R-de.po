@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.15\n"
 "POT-Creation-Date: 2023-05-27 04:43\n"
-"PO-Revision-Date: 2023-05-13 04:42+0000\n"
+"PO-Revision-Date: 2023-06-04 08:48+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
 "jasplearnstats-r/de/>\n"
@@ -109,7 +109,7 @@ msgstr "p(Überdeckung)"
 
 #, fuzzy
 msgid "Rep"
-msgstr "Wied."
+msgstr "Wdh."
 
 msgid "Decision Tree"
 msgstr "Entscheidungsbaum"
