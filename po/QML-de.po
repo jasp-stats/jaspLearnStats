@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2023-06-17 04:41+0000\n"
+"Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/jasp/"
+"jasplearnstats-qml/de/>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.18.1\n"
 "X-Language: de\n"
 "X-Qt-Contexts: true\n"
 
@@ -785,7 +791,7 @@ msgstr " bis "
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Data distribution plots"
-msgstr ""
+msgstr "Datenverteilungsdiagramme"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Convergence plot"
@@ -1010,57 +1016,59 @@ msgstr "Einführungstext"
 
 msgctxt "LSeffectSizes|"
 msgid "Effect size"
-msgstr ""
+msgstr "Effektstärke"
 
 msgctxt "LSeffectSizes|"
 msgid "Additional statistics"
-msgstr ""
+msgstr "Weitere Statistiken"
 
 msgctxt "LSeffectSizes|"
 msgid "Odds ratio"
-msgstr ""
+msgstr "Chancenverhältnis"
 
 msgctxt "LSeffectSizes|"
 msgid "Risk ratio"
-msgstr ""
+msgstr "Risikoverhältnis"
 
 msgctxt "LSeffectSizes|"
 msgid "Risk difference"
-msgstr ""
+msgstr "Risikodifferenz"
 
 msgctxt "LSeffectSizes|"
 msgid "Plot options"
-msgstr ""
+msgstr "Diagrammoptionen"
 
+#, fuzzy
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Parent distribution"
-msgstr ""
+msgstr "Eltern-Verteilung"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Std. dev."
-msgstr ""
+msgstr "Std.-Abw."
 
+#, fuzzy
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Skew direction"
-msgstr ""
+msgstr "Schiefe-Richtung"
 
+#, fuzzy
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Skew intensity"
-msgstr ""
+msgstr "Schiefe-Intensität"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Sample options"
-msgstr ""
+msgstr "Stichprobe-Optionen"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Sampling distribution options"
-msgstr ""
+msgstr "Stichprobenverteilung-Optionen"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Plot options"
-msgstr ""
+msgstr "Diagrammoptionen"
 
-#, fuzzy
 msgctxt "LSTconfidenceIntervals|"
 msgid "Show samples"
 msgstr "Stichproben anzeigen"
@@ -1075,230 +1083,232 @@ msgctxt "LSTconfidenceIntervals|"
 msgid "Last"
 msgstr "Letzte"
 
-#, fuzzy
 msgctxt "LSTconfidenceIntervals|"
 msgid "Range"
 msgstr "Wertebereich"
 
-#, fuzzy
 msgctxt "LSTconfidenceIntervals|"
 msgid "All"
 msgstr "Alle"
 
-#, fuzzy
 msgctxt "LSTconfidenceIntervals|"
 msgid "From"
 msgstr "Von"
 
-#, fuzzy
 msgctxt "LSTconfidenceIntervals|"
 msgid "To"
 msgstr "Bis"
 
+#, fuzzy
 msgctxt "LSTdescriptives|"
 msgid "Data input type"
-msgstr ""
+msgstr "Daten-Eingabe-Typ"
 
+#, fuzzy
 msgctxt "LSTdescriptives|"
 msgid "Random sample"
-msgstr ""
+msgstr "Zufallsstichprobe"
 
+#, fuzzy
 msgctxt "LSTdescriptives|"
 msgid "Distribution type"
-msgstr ""
+msgstr "Verteilungs-Typ"
 
 msgctxt "LSTdescriptives|"
 msgid "Comma-separated sequence of observations"
-msgstr ""
+msgstr "Komma-getrennte Sequenz von Beobachtungen"
 
 msgctxt "LSTdescriptives|"
 msgid "Statistics to display"
-msgstr ""
+msgstr "Anzuzeigende Statistiken"
 
 msgctxt "LSTdescriptives|"
 msgid "Central tendency measures"
-msgstr ""
+msgstr "Maße der zentralen Tendenz"
 
-#, fuzzy
 msgctxt "LSTdescriptives|"
 msgid "Mean"
 msgstr "Mittelwert"
 
 msgctxt "LSTdescriptives|"
 msgid "Median"
-msgstr ""
+msgstr "Median"
 
 msgctxt "LSTdescriptives|"
 msgid "Mode"
-msgstr ""
+msgstr "Modus"
 
-#, fuzzy
 msgctxt "LSTdescriptives|"
 msgid "All"
 msgstr "Alle"
 
+#, fuzzy
 msgctxt "LSTdescriptives|"
 msgid "Spread measures"
-msgstr ""
+msgstr "Streuungsmaße"
 
 msgctxt "LSTdescriptives|"
 msgid "Std. dev."
-msgstr ""
+msgstr "Std.-Abw."
 
 msgctxt "LSTdescriptives|"
 msgid "None"
-msgstr ""
+msgstr "Keine"
 
 msgctxt "LSTdescriptives|"
 msgid "Show density (histogram only)"
-msgstr ""
+msgstr "Dichte anzeigen (nur Histogramm)"
 
 msgctxt "LSTdescriptives|"
 msgid "Histogram bin width type"
-msgstr ""
+msgstr "Typ Histogrammklassen-Breite"
 
-#, fuzzy
 msgctxt "LSTdescriptives|"
 msgid "Sturges"
 msgstr "Sturges"
 
-#, fuzzy
 msgctxt "LSTdescriptives|"
 msgid "Scott"
 msgstr "Scott"
 
-#, fuzzy
 msgctxt "LSTdescriptives|"
 msgid "Doane"
 msgstr "Doane"
 
-#, fuzzy
 msgctxt "LSTdescriptives|"
 msgid "Freedman-Diaconis"
 msgstr "Freedman-Diaconis"
 
-#, fuzzy
 msgctxt "LSTdescriptives|"
 msgid "Manual"
 msgstr "Manuell"
 
-#, fuzzy
 msgctxt "LSTdescriptives|"
 msgid "Number of bins"
 msgstr "Anzahl von Klassen"
 
 msgctxt "LSTdescriptives|"
 msgid "Distribution options"
-msgstr ""
+msgstr "Verteilungs-Optionen"
 
 msgctxt "LSTdescriptives|"
 msgid "Binomial distribution parameters"
-msgstr ""
+msgstr "Parameter Binomialverteilung"
 
 msgctxt "LSTdescriptives|"
 msgid "Probability of success (p)"
-msgstr ""
+msgstr "Erfolgswahrscheinlichkeit (p)"
 
 msgctxt "LSTdescriptives|"
 msgid "Number of trials (k)"
-msgstr ""
+msgstr "Anzahl der Versuche (k)"
 
 msgctxt "LSTdescriptives|"
 msgid "Poisson distribution parameters"
-msgstr ""
+msgstr "Parameter Poisson-Verteilung"
 
 msgctxt "LSTdescriptives|"
 msgid "Rate (λ)"
-msgstr ""
+msgstr "Rate (λ)"
 
 msgctxt "LSTdescriptives|"
 msgid "Skewed normal distribution parameters"
-msgstr ""
+msgstr "Parameter schiefe Normalverteilung"
 
 msgctxt "LSTdescriptives|"
 msgid "Location (ξ)"
-msgstr ""
+msgstr "Lage (ξ)"
 
+#, fuzzy
 msgctxt "LSTdescriptives|"
 msgid "Scale (ω)"
-msgstr ""
+msgstr "Skalierung (ω)"
 
 msgctxt "LSTdescriptives|"
 msgid "Shape (α)"
-msgstr ""
+msgstr "Form (α)"
 
 msgctxt "LSTdescriptives|"
 msgid "Uniform distribution parameters"
-msgstr ""
+msgstr "Parameter Gleichverteilung"
 
 msgctxt "LSTdescriptives|"
 msgid "Lower bound"
-msgstr ""
+msgstr "Untergrenze"
 
 msgctxt "LSTdescriptives|"
 msgid "Upper bound"
-msgstr ""
+msgstr "Obergrenze"
 
 msgctxt "LSTdescriptives|"
 msgid "Normal distribution parameters"
-msgstr ""
+msgstr "Parameter Normalverteilung"
 
 msgctxt "LSTdescriptives|"
 msgid "Mean (μ)"
-msgstr ""
+msgstr "Mittelwert (μ)"
 
 msgctxt "LSTdescriptives|"
 msgid "Std. dev. (σ)"
-msgstr ""
+msgstr "Std. Abw. (σ)"
 
+#, fuzzy
 msgctxt "LSTsampleVariability|"
 msgid "Parent distribution size"
-msgstr ""
+msgstr "Breite Eltern-Verteilung"
 
+#, fuzzy
 msgctxt "LSTsampleVariability|"
 msgid "Parent distribution shape"
-msgstr ""
+msgstr "Form Eltern-Verteilung"
 
 msgctxt "LSTsampleVariability|"
 msgid "Std. dev."
-msgstr ""
+msgstr "Std.-Abw."
 
+#, fuzzy
 msgctxt "LSTsampleVariability|"
 msgid "Skew direction"
-msgstr ""
+msgstr "Schiefe-Richtung"
 
+#, fuzzy
 msgctxt "LSTsampleVariability|"
 msgid "Skew intensity"
-msgstr ""
+msgstr "Schiefe-Intensität"
 
+#, fuzzy
 msgctxt "LSTsampleVariability|"
 msgid "to"
-msgstr ""
+msgstr "bis"
 
+#, fuzzy
 msgctxt "LSTstandardError|"
 msgid "Parent distribution"
-msgstr ""
+msgstr "Eltern-Verteilung"
 
 msgctxt "LSTstandardError|"
 msgid "Std. dev."
-msgstr ""
+msgstr "Std.-Abw."
 
+#, fuzzy
 msgctxt "LSTstandardError|"
 msgid "Skew direction"
-msgstr ""
+msgstr "Schiefe-Richtung"
 
+#, fuzzy
 msgctxt "LSTstandardError|"
 msgid "Skew intensity"
-msgstr ""
+msgstr "Schiefe-Intensität"
 
 msgctxt "LSTstandardError|"
 msgid "Sample options"
-msgstr ""
+msgstr "Stichprobe-Optionen"
 
+#, fuzzy
 msgctxt "LSTstandardError|"
 msgid "to"
-msgstr ""
+msgstr "bis"
 
 msgctxt "LSTstandardError|"
 msgid "Sampling distribution options"
-msgstr ""
+msgstr "Stichprobenverteilung-Optionen"
