@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2023-07-06 16:52+0000\n"
+"Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/jasp/"
+"jasplearnstats-qml/de/>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.0-dev\n"
 "X-Language: de\n"
 "X-Qt-Contexts: true\n"
 
@@ -1098,7 +1104,6 @@ msgctxt "LSTdescriptives|"
 msgid "Data input type"
 msgstr "Daten-Eingabe-Typ"
 
-#, fuzzy
 msgctxt "LSTdescriptives|"
 msgid "Random sample"
 msgstr "Zufallsstichprobe"
@@ -1136,7 +1141,6 @@ msgctxt "LSTdescriptives|"
 msgid "All"
 msgstr "Alle"
 
-#, fuzzy
 msgctxt "LSTdescriptives|"
 msgid "Spread measures"
 msgstr "Streuungsmaße"
@@ -1270,7 +1274,6 @@ msgctxt "LSTsampleVariability|"
 msgid "Skew intensity"
 msgstr "Schiefe-Intensität"
 
-#, fuzzy
 msgctxt "LSTsampleVariability|"
 msgid "to"
 msgstr "bis"
@@ -1298,7 +1301,6 @@ msgctxt "LSTstandardError|"
 msgid "Sample options"
 msgstr "Stichprobe-Optionen"
 
-#, fuzzy
 msgctxt "LSTstandardError|"
 msgid "to"
 msgstr "bis"
