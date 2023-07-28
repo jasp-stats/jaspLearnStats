@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.15\n"
 "POT-Creation-Date: 2023-05-27 04:43\n"
-"PO-Revision-Date: 2023-07-26 07:07+0000\n"
+"PO-Revision-Date: 2023-07-28 19:32+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
 "jasplearnstats-r/de/>\n"
@@ -63,11 +63,9 @@ msgstr "Schätzung"
 msgid "%s%% CI for Mean Difference"
 msgstr "%s%% KI für mittlere Differenz"
 
-#, fuzzy
 msgid "Lower"
 msgstr "Untergrenze"
 
-#, fuzzy
 msgid "Upper"
 msgstr "Obergrenze"
 
