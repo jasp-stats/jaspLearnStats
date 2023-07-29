@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.15\n"
 "POT-Creation-Date: 2023-05-27 04:43\n"
-"PO-Revision-Date: 2023-06-04 08:48+0000\n"
+"PO-Revision-Date: 2023-07-28 19:32+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
 "jasplearnstats-r/de/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #, fuzzy
 msgid "Parent Distribution"
@@ -48,11 +48,9 @@ msgstr "Stichprobenverteilung des Mittelwerts"
 msgid "Std. Dev: %.2f"
 msgstr "Std.-Abw: %.2f"
 
-#, fuzzy
 msgid "Coverage"
 msgstr "Überdeckung"
 
-#, fuzzy
 msgid "Coverage %"
 msgstr "Überdeckung %"
 
@@ -103,7 +101,6 @@ msgstr "Konvergenz-Diagramm"
 msgid "Number of Replications"
 msgstr "Anzahl von Wiederholungen"
 
-#, fuzzy
 msgid "p(Coverage)"
 msgstr "p(Überdeckung)"
 
