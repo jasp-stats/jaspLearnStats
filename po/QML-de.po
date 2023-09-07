@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2023-09-08 09:49+0000\n"
+"Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/jasp/"
+"jasplearnstats-qml/de/>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.0.1-dev\n"
 "X-Language: de\n"
 "X-Qt-Contexts: true\n"
 
@@ -137,7 +143,6 @@ msgctxt "LSTcentralLimitTheorem|"
 msgid "Skewed"
 msgstr "Schief"
 
-#, fuzzy
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Show parent distribution"
 msgstr "Eltern-Verteilung anzeigen"
@@ -390,7 +395,6 @@ msgctxt "LSTdescriptives|"
 msgid "Gray"
 msgstr "Grau"
 
-#, fuzzy
 msgctxt "LSTsampleVariability|"
 msgid "Parent Distribution"
 msgstr "Eltern-Verteilung"
@@ -423,7 +427,6 @@ msgctxt "LSTsampleVariability|"
 msgid "Binomial"
 msgstr "Binomial"
 
-#, fuzzy
 msgctxt "LSTsampleVariability|"
 msgid "Show parent distribution"
 msgstr "Eltern-Verteilung anzeigen"
@@ -560,7 +563,6 @@ msgctxt "LSTsampleVariability|"
 msgid "Number of bins"
 msgstr "Anzahl von Klassen"
 
-#, fuzzy
 msgctxt "LSTstandardError|"
 msgid "Parent Distribution"
 msgstr "Eltern-Verteilung"
@@ -577,7 +579,6 @@ msgctxt "LSTstandardError|"
 msgid "Skewed"
 msgstr "Schief"
 
-#, fuzzy
 msgctxt "LSTstandardError|"
 msgid "Show parent distribution"
 msgstr "Eltern-Verteilung anzeigen"
@@ -718,7 +719,6 @@ msgctxt "Description|"
 msgid "Confidence Intervals"
 msgstr "Konfidenzintervalle"
 
-#, fuzzy
 msgctxt "Description|"
 msgid "Statistical Test Decision Tree"
 msgstr "Entscheidungsbaum für statistische Tests"
@@ -793,7 +793,7 @@ msgstr "Konvergenz-Diagramm"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Zoom in with margin"
-msgstr ""
+msgstr "Vergrößern mit Randgrenze"
 
 msgctxt "LSTdecisionTree|"
 msgid "How many outcome variables?"
@@ -1032,7 +1032,6 @@ msgctxt "LSeffectSizes|"
 msgid "Plot options"
 msgstr "Diagrammoptionen"
 
-#, fuzzy
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Parent distribution"
 msgstr "Eltern-Verteilung"
@@ -1041,12 +1040,10 @@ msgctxt "LSTcentralLimitTheorem|"
 msgid "Std. dev."
 msgstr "Std.-Abw."
 
-#, fuzzy
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Skew direction"
 msgstr "Schiefe-Richtung"
 
-#, fuzzy
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Skew intensity"
 msgstr "Schiefe-Intensität"
@@ -1067,12 +1064,10 @@ msgctxt "LSTconfidenceIntervals|"
 msgid "Show samples"
 msgstr "Stichproben anzeigen"
 
-#, fuzzy
 msgctxt "LSTconfidenceIntervals|"
 msgid "First"
 msgstr "Erste"
 
-#, fuzzy
 msgctxt "LSTconfidenceIntervals|"
 msgid "Last"
 msgstr "Letzte"
@@ -1093,7 +1088,6 @@ msgctxt "LSTconfidenceIntervals|"
 msgid "To"
 msgstr "Bis"
 
-#, fuzzy
 msgctxt "LSTdescriptives|"
 msgid "Data input type"
 msgstr "Daten-Eingabe-Typ"
@@ -1102,10 +1096,9 @@ msgctxt "LSTdescriptives|"
 msgid "Random sample"
 msgstr "Zufallsstichprobe"
 
-#, fuzzy
 msgctxt "LSTdescriptives|"
 msgid "Distribution type"
-msgstr "Verteilungs-Typ"
+msgstr "Verteilungstyp"
 
 msgctxt "LSTdescriptives|"
 msgid "Comma-separated sequence of observations"
@@ -1211,7 +1204,6 @@ msgctxt "LSTdescriptives|"
 msgid "Location (ξ)"
 msgstr "Lage (ξ)"
 
-#, fuzzy
 msgctxt "LSTdescriptives|"
 msgid "Scale (ω)"
 msgstr "Skalierung (ω)"
@@ -1249,7 +1241,6 @@ msgctxt "LSTsampleVariability|"
 msgid "Parent distribution size"
 msgstr "Breite Eltern-Verteilung"
 
-#, fuzzy
 msgctxt "LSTsampleVariability|"
 msgid "Parent distribution shape"
 msgstr "Form Eltern-Verteilung"
@@ -1258,12 +1249,10 @@ msgctxt "LSTsampleVariability|"
 msgid "Std. dev."
 msgstr "Std.-Abw."
 
-#, fuzzy
 msgctxt "LSTsampleVariability|"
 msgid "Skew direction"
 msgstr "Schiefe-Richtung"
 
-#, fuzzy
 msgctxt "LSTsampleVariability|"
 msgid "Skew intensity"
 msgstr "Schiefe-Intensität"
@@ -1272,7 +1261,6 @@ msgctxt "LSTsampleVariability|"
 msgid "to"
 msgstr "bis"
 
-#, fuzzy
 msgctxt "LSTstandardError|"
 msgid "Parent distribution"
 msgstr "Eltern-Verteilung"
@@ -1281,12 +1269,10 @@ msgctxt "LSTstandardError|"
 msgid "Std. dev."
 msgstr "Std.-Abw."
 
-#, fuzzy
 msgctxt "LSTstandardError|"
 msgid "Skew direction"
 msgstr "Schiefe-Richtung"
 
-#, fuzzy
 msgctxt "LSTstandardError|"
 msgid "Skew intensity"
 msgstr "Schiefe-Intensität"
