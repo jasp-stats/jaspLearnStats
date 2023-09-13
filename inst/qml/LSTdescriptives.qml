@@ -255,6 +255,8 @@ Form
 			{
 				name:		"LSdescExplanation"
 				label:		qsTr("Show explanation")
+				checked:	false
+				enabled:	false
 			}	
 		}
 	}

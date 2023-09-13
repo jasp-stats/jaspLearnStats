@@ -294,6 +294,13 @@ Form
 	Section
 	{
 		title:	qsTr("Options")
-		CheckBox	{	name: "introText"; label:	qsTr("Introductory text")	}
+		
+		CheckBox	
+		{	
+			name: "introText" 
+			label:	qsTr("Introductory text")
+			checked:	false
+			enabled:	false
+		}
 	}
 }
