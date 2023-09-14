@@ -207,7 +207,7 @@ LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
   
   jaspResults[["DecisionTree"]] <- createJaspContainer("")
   jaspResults[["DecisionTree"]][["Heading"]] <- plot1
-  jaspResults[["DecisionTree"]][["Text"]] <- createJaspHtml("Some explanation and maybe a link to the test?", "p")
+  # jaspResults[["DecisionTree"]][["Text"]] <- createJaspHtml("placeholder", "p") #TODO: Write an informative explanation for each test and where to find it in JASP (maybe even create a link if possible).
   
   # create decision tree plot
   if (options[["displayFullTree"]]) {

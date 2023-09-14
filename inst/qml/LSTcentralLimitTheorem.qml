@@ -58,7 +58,8 @@ Form
 			{
 				name:		"parentExplain"
 				label:		qsTr("Show explanatory text")
-				checked:	true
+				checked:	false
+				enabled:	false
 			}
 		}
 		
@@ -179,7 +180,8 @@ Form
 			{
 				name:		"samplesExplain"
 				label:		qsTr("Show explanatory text")
-				checked:	true
+				checked:	false
+				enabled:	false
 			}
 		
 			DoubleField
@@ -279,7 +281,8 @@ Form
 			{
 				name:		"samplingDistExplain"
 				label:		qsTr("Show explanatory text")
-				checked:	true
+				checked:	false
+				enabled:	false
 			}
 	}
 	
