@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-09-08 09:49+0000\n"
+"PO-Revision-Date: 2023-09-16 04:41+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
 "jasplearnstats-qml/de/>\n"
@@ -1236,10 +1236,9 @@ msgctxt "LSTdescriptives|"
 msgid "Std. dev. (σ)"
 msgstr "Std. Abw. (σ)"
 
-#, fuzzy
 msgctxt "LSTsampleVariability|"
 msgid "Parent distribution size"
-msgstr "Breite Eltern-Verteilung"
+msgstr "Breite der Eltern-Verteilung"
 
 msgctxt "LSTsampleVariability|"
 msgid "Parent distribution shape"
