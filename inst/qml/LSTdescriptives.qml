@@ -58,7 +58,7 @@ Form
 				value:		"dataVariable"
 				label:		qsTr("Select variable")
 				id:			dataTypeC
-				enabled:	mainWindow.dataAvailable
+				enabled:	dataSetInfo.dataAvailable
 			}
 		}
 		
