@@ -21,16 +21,16 @@ import JASP.Controls 1.0
 import JASP.Widgets 1.0
 import JASP.Theme 1.0
 
-Form 
+Form
 {
 	columns: 1
-	
+
 	Section
 	{
 		title: qsTr("Data options")
 		expanded: true
 		columns:	1
-	
+
 		RadioButtonGroup
 		{
 			columns:	3
@@ -45,14 +45,14 @@ Form
 				id:			dataTypeB
 				checked:	true
 			}
-			
+
 			RadioButton
 			{
 				value:		"dataRandom"
 				label:		qsTr("Random sample")
 				id:			dataTypeA
 			}
-			
+
 			RadioButton
 			{
 				value:		"dataVariable"
@@ -61,11 +61,11 @@ Form
 				enabled:	dataSetInfo.dataAvailable
 			}
 		}
-		
+
 		Group
 		{
 			columns: 2
-	
+
 			DoubleField
 			{
 				name:			"lstDescSampleN"
@@ -75,7 +75,7 @@ Form
 				defaultValue:	100
 				decimals:		0
 			}
-			
+
 			DoubleField
 			{
 				name:			"lstDescSampleSeed"
@@ -86,10 +86,10 @@ Form
 				decimals:		0
 			}
 		}
-		
+
 		Group
 		{
-		
+
 			RadioButtonGroup
 			{
 				columns:	3
@@ -97,7 +97,7 @@ Form
 				visible:	dataTypeA.checked
 				title:		qsTr("Distribution type")
 				id:			distributionType
-		
+
 				RadioButton
 				{
 					value:		"lstSampleDistDiscrete"
@@ -105,15 +105,15 @@ Form
 					id:			distTypeDisc
 					checked:	true
 				}
-				
+
 				RadioButton
 				{
 					value:		"lstSampleDistCont"
 					label:		qsTr("Continuous")
 					id:			distTypeCont
-				}	
+				}
 			}
-			
+
 			DropDown
 			{
 				name: "LSdescDiscreteDistributions"
@@ -127,7 +127,7 @@ Form
 					{label: qsTr("Poisson distribution"),		value: "poissonDist"}
 				]
 			}
-		
+
 			DropDown
 			{
 				name: "LSdescContinuousDistributions"
@@ -143,7 +143,7 @@ Form
 				]
 			}
 		}
-		
+
 		TextArea
 		{
 			title:		qsTr("Comma-separated sequence of observations")
@@ -153,21 +153,21 @@ Form
 			textType:	JASP.TextTypeSource
 			separators:	[",",";","\n"]
 		}
-		
+
 		Group
 		{
 			visible: dataTypeC.checked
-			
+
 			VariablesForm
 			{
 				preferredHeight:	150
-				
+
 				AvailableVariablesList
 				{
 					name:	"allVariables"
 					title:	qsTr("Available")
 				}
-				
+
 				AssignedVariablesList
 				{
 					name:				"selectedVariable"
@@ -186,7 +186,7 @@ Form
 			columns:								3
 
 			Group
-			{	
+			{
 				title:								qsTr("Central tendency measures")
 
 				RadioButton
@@ -194,19 +194,19 @@ Form
 					name:								"LSdescMean"
 					label:								qsTr("Mean")
 				}
-				
+
 				RadioButton
 				{
 					name:								"LSdescMedian"
 					label:								qsTr("Median")
 				}
-				
+
 				RadioButton
 				{
 				name:									"LSdescMode"
 				label:									qsTr("Mode")
 				}
-				
+
 				RadioButton
 				{
 					name:								"LSdescMMM"
@@ -216,7 +216,7 @@ Form
 			}
 
 			Group
-			{	
+			{
 				title:								qsTr("Spread measures")
 
 				RadioButton
@@ -224,13 +224,13 @@ Form
 					name:							"LSdescRange"
 					label:							qsTr("Range")
 				}
-				
+
 				RadioButton
 				{
 					name:							"LSdescQR"
 					label:							qsTr("Quartiles")
 				}
-			
+
 				RadioButton
 				{
 					name:							"LSdescSD"
@@ -257,37 +257,37 @@ Form
 				label:		qsTr("Show explanation")
 				checked:	false
 				enabled:	false
-			}	
+			}
 		}
 	}
-	
+
 	Section
 	{
 		title: qsTr("Plots")
-		
+
 		CheckBox
 		{
 			name:		"LSdescHistBar"
 			label:		qsTr("Histogram / Barplot")
-		
+
 			RadioButtonGroup
 			{
 				name:	"LSdescHistCountOrDens"
-			
+
 				RadioButton
 				{
 					name:		"LSdescHistCount"
 					label:		qsTr("Show counts")
 					checked:	true
 				}
-			
+
 				RadioButton
 				{
 					name:	"LSdescHistDens"
 					label:	qsTr("Show density (histogram only)")
 				}
 			}
-			
+
 			CheckBox
 			{
 				name:		"LSdescHistBarRugs"
@@ -297,7 +297,7 @@ Form
 
 			Group
 			{
-	
+
 				DropDown
 				{
 					name:				"descBinWidthType"
@@ -313,7 +313,7 @@ Form
 					{label: qsTr("Manual"),					value: "manual"	}
 					]
 				}
-					
+
 				DoubleField
 				{
 					name:			"descNumberOfBins"
@@ -325,7 +325,7 @@ Form
 				}
 			}
 		}
-		
+
 		CheckBox
 		{
 			name:		"LSdescDotPlot"
@@ -339,7 +339,7 @@ Form
 				checked:	true
 			}
 		}
-		
+
 		DropDown
 		{
 			name:				"descColorPalette"
@@ -378,7 +378,7 @@ Form
 			DoubleField
 			{
 				name:			"binomialDistributionNumberOfTrials"
-				label:			qsTr("Number of trials (k)")
+				label:			qsTr("Number of trials (n)")
 				defaultValue:	10
 				min:			1
 			}
