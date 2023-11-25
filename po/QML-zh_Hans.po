@@ -1192,10 +1192,6 @@ msgid "Probability of success (p)"
 msgstr ""
 
 msgctxt "LSTdescriptives|"
-msgid "Number of trials (k)"
-msgstr ""
-
-msgctxt "LSTdescriptives|"
 msgid "Poisson distribution parameters"
 msgstr ""
 
@@ -1293,4 +1289,8 @@ msgstr ""
 
 msgctxt "LSTstandardError|"
 msgid "Sampling distribution options"
+msgstr ""
+
+msgctxt "LSTdescriptives|"
+msgid "Number of trials (n)"
 msgstr ""
