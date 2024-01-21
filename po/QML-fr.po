@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-01-21 19:01+0000\n"
+"PO-Revision-Date: 2024-01-22 18:11+0000\n"
 "Last-Translator: robachowyk <kaya.robach@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/jasp/"
 "jasplearnstats-qml/fr/>\n"
@@ -31,7 +31,7 @@ msgstr ""
 
 msgctxt "Description|"
 msgid "Standard Error"
-msgstr ""
+msgstr "Erreur Type"
 
 msgctxt "Description|"
 msgid "Descriptive Statistics"
