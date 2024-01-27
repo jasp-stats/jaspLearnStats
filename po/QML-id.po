@@ -1,65 +1,72 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2024-01-21 19:01+0000\n"
+"Last-Translator: Rania Rahida <raniarahida@gmail.com>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
+"jasplearnstats-qml/id/>\n"
+"Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.4-dev\n"
 "X-Qt-Contexts: true\n"
 
 msgctxt "Description|"
 msgid "Learn Stats"
-msgstr ""
+msgstr "Pelajari Statistik"
 
 msgctxt "Description|"
 msgid "Learn classical statistics with simple examples and supporting text"
-msgstr ""
+msgstr "Pelajari statistik klasik dengan contoh sederhana dan teks pendukung"
 
 msgctxt "Description|"
 msgid "Normal Distribution"
-msgstr ""
+msgstr "Distribusi Normal"
 
 msgctxt "Description|"
 msgid "Central Limit Theorem"
-msgstr ""
+msgstr "Teorema Batas Tengah"
 
 msgctxt "Description|"
 msgid "Standard Error"
-msgstr ""
+msgstr "Kesalahan Standar"
 
 msgctxt "Description|"
 msgid "Descriptive Statistics"
-msgstr ""
+msgstr "Statistik Deskriptif"
 
 msgctxt "Description|"
 msgid "Sample Variability"
-msgstr ""
+msgstr "Variabilitas Sampel"
 
 msgctxt "Description|"
 msgid "P Values"
-msgstr ""
+msgstr "Nilai P"
 
 msgctxt "Description|"
 msgid "Effect Sizes"
-msgstr ""
+msgstr "Ukuran Efek"
 
 msgctxt "LSeffectSizes|"
 msgid "Cohen's δ"
-msgstr ""
+msgstr "Cohen δ"
 
 msgctxt "LSeffectSizes|"
 msgid "Pearson correlation coefficient ρ"
-msgstr ""
+msgstr "Koefisien korelasi Pearson ρ"
 
 msgctxt "LSeffectSizes|"
 msgid "Contingency coefficient φ"
-msgstr ""
+msgstr "Koefisien kontingensi φ"
 
 msgctxt "LSeffectSizes|"
 msgid "Explanatory text"
-msgstr ""
+msgstr "Teks penjelasan"
 
 msgctxt "LSeffectSizes|"
 msgid "Simulate data"
-msgstr ""
+msgstr "Mensimulasikan data"
 
 msgctxt "LSeffectSizes|"
 msgid "No. observations"
@@ -71,387 +78,395 @@ msgstr ""
 
 msgctxt "LSeffectSizes|"
 msgid "Cohen's U3"
-msgstr ""
+msgstr "Cohen U3"
 
 msgctxt "LSeffectSizes|"
 msgid "Overlap"
-msgstr ""
+msgstr "Tumpang tindih"
 
 msgctxt "LSeffectSizes|"
 msgid "Probability of superiority"
-msgstr ""
+msgstr "Probabilitas superioritas"
 
 msgctxt "LSeffectSizes|"
 msgid "Number needed to treat"
-msgstr ""
+msgstr "Jumlah yang dibutuhkan untuk perawatan"
 
 msgctxt "LSeffectSizes|"
 msgid "Event rate"
-msgstr ""
+msgstr "Tingkat acara"
 
 msgctxt "LSeffectSizes|"
 msgid "Shared variance (R²)"
-msgstr ""
+msgstr "Varians bersama (R²)"
 
 msgctxt "LSeffectSizes|"
 msgid "Combine population and simulation"
-msgstr ""
+msgstr "Menggabungkan populasi dan simulasi"
 
 msgctxt "LSeffectSizes|"
 msgid "Raincloud plot"
-msgstr ""
+msgstr "Plot awan hujan"
 
 msgctxt "LSeffectSizes|"
 msgid "Show regression line"
-msgstr ""
+msgstr "Tampilkan garis regresi"
 
 msgctxt "LSeffectSizes|"
 msgid "Show as mosiac plot"
-msgstr ""
+msgstr "Tampilkan sebagai plot mosiac"
 
 msgctxt "LSeffectSizes|"
 msgid "Show proportions"
-msgstr ""
+msgstr "Tunjukkan proporsi"
 
 msgctxt "LSeffectSizes|"
 msgid "Specify populational characteristics"
-msgstr ""
+msgstr "Menentukan karakteristik populasi"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Uniform"
-msgstr ""
+msgstr "Seragam"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Skewed"
-msgstr ""
+msgstr "Miring"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Show parent distribution"
-msgstr ""
+msgstr "Tampilkan distribusi induk"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Show explanatory text"
-msgstr ""
+msgstr "Menampilkan teks penjelasan"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Mean"
-msgstr ""
+msgstr "Berarti"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Range"
-msgstr ""
+msgstr "Jangkauan"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Left"
-msgstr ""
+msgstr "Kiri"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Right"
-msgstr ""
+msgstr "Kanan"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Low skew"
-msgstr ""
+msgstr "Kemiringan rendah"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Medium skew"
-msgstr ""
+msgstr "Kemiringan sedang"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "High skew"
-msgstr ""
+msgstr "Kemiringan tinggi"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Number of observations per sample"
-msgstr ""
+msgstr "Jumlah pengamatan per sampel"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Number of total samples"
-msgstr ""
+msgstr "Jumlah total sampel"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Show samples"
-msgstr ""
+msgstr "Tampilkan sampel"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Show rug marks"
-msgstr ""
+msgstr "Tampilkan tanda karpet"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Set seed"
-msgstr ""
+msgstr "Tetapkan benih"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "First"
-msgstr ""
+msgstr "Pertama"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Last"
-msgstr ""
+msgstr "Terakhir"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "All"
-msgstr ""
+msgstr "Semua"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "From"
-msgstr ""
+msgstr "Dari"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "To"
-msgstr ""
+msgstr "Untuk"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Show sampling distribution"
-msgstr ""
+msgstr "Tampilkan distribusi pengambilan sampel"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Superimpose normal distribution"
-msgstr ""
+msgstr "Menumpangkan distribusi normal"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Color palette"
-msgstr ""
+msgstr "Palet warna"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Colorblind"
-msgstr ""
+msgstr "Buta warna"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Colorblind Alt."
-msgstr ""
+msgstr "Buta Warna Alt."
 
+#, fuzzy
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Viridis"
-msgstr ""
+msgstr "Viridis"
 
+#, fuzzy
 msgctxt "LSTcentralLimitTheorem|"
 msgid "ggplot2"
-msgstr ""
+msgstr "ggplot2"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Gray"
-msgstr ""
+msgstr "Abu-abu"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Bin width type"
-msgstr ""
+msgstr "Jenis lebar tempat sampah"
 
+#, fuzzy
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Sturges"
-msgstr ""
+msgstr "Sturges"
 
+#, fuzzy
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Scott"
-msgstr ""
+msgstr "Scott"
 
+#, fuzzy
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Doane"
-msgstr ""
+msgstr "Doane"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Freedman-Diaconis"
-msgstr ""
+msgstr "Freedman-Diakonis"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Manual"
-msgstr ""
+msgstr "Manual"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Number of bins"
-msgstr ""
+msgstr "Jumlah tempat sampah"
 
 msgctxt "LSTdescriptives|"
 msgid "Data options"
-msgstr ""
+msgstr "Opsi data"
 
 msgctxt "LSTdescriptives|"
 msgid "Enter sequence"
-msgstr ""
+msgstr "Masukkan urutan"
 
 msgctxt "LSTdescriptives|"
 msgid "Select variable"
-msgstr ""
+msgstr "Pilih variabel"
 
 msgctxt "LSTdescriptives|"
 msgid "Sample size"
-msgstr ""
+msgstr "Ukuran sampel"
 
 msgctxt "LSTdescriptives|"
 msgid "Set seed"
-msgstr ""
+msgstr "Tetapkan benih"
 
 msgctxt "LSTdescriptives|"
 msgid "Discrete"
-msgstr ""
+msgstr "Diskrit"
 
 msgctxt "LSTdescriptives|"
 msgid "Continuous"
-msgstr ""
+msgstr "Berkelanjutan"
 
 msgctxt "LSTdescriptives|"
 msgid "Distribution"
-msgstr ""
+msgstr "Distribusi"
 
 msgctxt "LSTdescriptives|"
 msgid "Binomial distribution"
-msgstr ""
+msgstr "Distribusi binomial"
 
 msgctxt "LSTdescriptives|"
 msgid "Poisson distribution"
-msgstr ""
+msgstr "Distribusi Poisson"
 
 msgctxt "LSTdescriptives|"
 msgid "Skewed normal distribution"
-msgstr ""
+msgstr "Distribusi normal miring"
 
 msgctxt "LSTdescriptives|"
 msgid "Uniform distribution"
-msgstr ""
+msgstr "Distribusi seragam"
 
 msgctxt "LSTdescriptives|"
 msgid "Normal distribution"
-msgstr ""
+msgstr "Distribusi normal"
 
 msgctxt "LSTdescriptives|"
 msgid "Available"
-msgstr ""
+msgstr "Tersedia"
 
 msgctxt "LSTdescriptives|"
 msgid "Selected"
-msgstr ""
+msgstr "Dipilih"
 
 msgctxt "LSTdescriptives|"
 msgid "Show explanation"
-msgstr ""
+msgstr "Tampilkan penjelasan"
 
 msgctxt "LSTdescriptives|"
 msgid "Range"
-msgstr ""
+msgstr "Jangkauan"
 
 msgctxt "LSTdescriptives|"
 msgid "Quartiles"
-msgstr ""
+msgstr "Kuartil"
 
 msgctxt "LSTdescriptives|"
 msgid "Plots"
-msgstr ""
+msgstr "Plot"
 
 msgctxt "LSTdescriptives|"
 msgid "Histogram / Barplot"
-msgstr ""
+msgstr "Histogram / Barplot"
 
 msgctxt "LSTdescriptives|"
 msgid "Show counts"
-msgstr ""
+msgstr "Tampilkan hitungan"
 
 msgctxt "LSTdescriptives|"
 msgid "Display rug marks"
-msgstr ""
+msgstr "Menampilkan tanda karpet"
 
 msgctxt "LSTdescriptives|"
 msgid "Dot plot"
-msgstr ""
+msgstr "Plot titik"
 
 msgctxt "LSTdescriptives|"
 msgid "Color palette"
-msgstr ""
+msgstr "Palet warna"
 
 msgctxt "LSTdescriptives|"
 msgid "Colorblind"
-msgstr ""
+msgstr "Buta warna"
 
 msgctxt "LSTdescriptives|"
 msgid "Colorblind Alt."
-msgstr ""
+msgstr "Buta Warna Alt."
 
+#, fuzzy
 msgctxt "LSTdescriptives|"
 msgid "Viridis"
-msgstr ""
+msgstr "Viridis"
 
+#, fuzzy
 msgctxt "LSTdescriptives|"
 msgid "ggplot2"
-msgstr ""
+msgstr "ggplot2"
 
 msgctxt "LSTdescriptives|"
 msgid "Gray"
-msgstr ""
+msgstr "Abu-abu"
 
 msgctxt "LSTsampleVariability|"
 msgid "Parent Distribution"
-msgstr ""
+msgstr "Distribusi Induk"
 
 msgctxt "LSTsampleVariability|"
 msgid "Infinite"
-msgstr ""
+msgstr "Tak terbatas"
 
 msgctxt "LSTsampleVariability|"
 msgid "Finite"
-msgstr ""
+msgstr "Terbatas"
 
 msgctxt "LSTsampleVariability|"
 msgid "Size"
-msgstr ""
+msgstr "Ukuran"
 
 msgctxt "LSTsampleVariability|"
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 msgctxt "LSTsampleVariability|"
 msgid "Uniform"
-msgstr ""
+msgstr "Seragam"
 
 msgctxt "LSTsampleVariability|"
 msgid "Skewed"
-msgstr ""
+msgstr "Miring"
 
+#, fuzzy
 msgctxt "LSTsampleVariability|"
 msgid "Binomial"
-msgstr ""
+msgstr "Binomial"
 
 msgctxt "LSTsampleVariability|"
 msgid "Show parent distribution"
-msgstr ""
+msgstr "Tampilkan distribusi induk"
 
 msgctxt "LSTsampleVariability|"
 msgid "Show explanatory text"
-msgstr ""
+msgstr "Menampilkan teks penjelasan"
 
 msgctxt "LSTsampleVariability|"
 msgid "Mean"
-msgstr ""
+msgstr "Berarti"
 
 msgctxt "LSTsampleVariability|"
 msgid "Range"
-msgstr ""
+msgstr "Jangkauan"
 
 msgctxt "LSTsampleVariability|"
 msgid "Left"
-msgstr ""
+msgstr "Kiri"
 
 msgctxt "LSTsampleVariability|"
 msgid "Right"
-msgstr ""
+msgstr "Kanan"
 
 msgctxt "LSTsampleVariability|"
 msgid "Low skew"
-msgstr ""
+msgstr "Kemiringan rendah"
 
 msgctxt "LSTsampleVariability|"
 msgid "Medium skew"
-msgstr ""
+msgstr "Kemiringan sedang"
 
 msgctxt "LSTsampleVariability|"
 msgid "High skew"
-msgstr ""
+msgstr "Kemiringan tinggi"
 
 msgctxt "LSTsampleVariability|"
 msgid "Probability"
-msgstr ""
+msgstr "Probabilitas"
 
 msgctxt "LSTsampleVariability|"
 msgid "Sample Options"
@@ -459,687 +474,699 @@ msgstr ""
 
 msgctxt "LSTsampleVariability|"
 msgid "Number of observations per sample"
-msgstr ""
+msgstr "Jumlah pengamatan per sampel"
 
 msgctxt "LSTsampleVariability|"
 msgid "Number of total samples"
-msgstr ""
+msgstr "Jumlah total sampel"
 
 msgctxt "LSTsampleVariability|"
 msgid "Show samples"
-msgstr ""
+msgstr "Tampilkan sampel"
 
 msgctxt "LSTsampleVariability|"
 msgid "Show rug marks"
-msgstr ""
+msgstr "Tampilkan tanda karpet"
 
 msgctxt "LSTsampleVariability|"
 msgid "Set seed"
-msgstr ""
+msgstr "Tetapkan benih"
 
 msgctxt "LSTsampleVariability|"
 msgid "First"
-msgstr ""
+msgstr "Pertama"
 
 msgctxt "LSTsampleVariability|"
 msgid "Last"
-msgstr ""
+msgstr "Terakhir"
 
 msgctxt "LSTsampleVariability|"
 msgid "All"
-msgstr ""
+msgstr "Semua"
 
 msgctxt "LSTsampleVariability|"
 msgid "From"
-msgstr ""
+msgstr "Dari"
 
 msgctxt "LSTsampleVariability|"
 msgid "Plot Options"
-msgstr ""
+msgstr "Opsi Plot"
 
 msgctxt "LSTsampleVariability|"
 msgid "Color palette"
-msgstr ""
+msgstr "Palet warna"
 
 msgctxt "LSTsampleVariability|"
 msgid "Colorblind"
-msgstr ""
+msgstr "Buta warna"
 
 msgctxt "LSTsampleVariability|"
 msgid "Colorblind Alt."
-msgstr ""
+msgstr "Buta Warna Alt."
 
+#, fuzzy
 msgctxt "LSTsampleVariability|"
 msgid "Viridis"
-msgstr ""
+msgstr "Viridis"
 
+#, fuzzy
 msgctxt "LSTsampleVariability|"
 msgid "ggplot2"
-msgstr ""
+msgstr "ggplot2"
 
 msgctxt "LSTsampleVariability|"
 msgid "Gray"
-msgstr ""
+msgstr "Abu-abu"
 
 msgctxt "LSTsampleVariability|"
 msgid "Bin width type"
-msgstr ""
+msgstr "Jenis lebar tempat sampah"
 
+#, fuzzy
 msgctxt "LSTsampleVariability|"
 msgid "Sturges"
-msgstr ""
+msgstr "Sturges"
 
+#, fuzzy
 msgctxt "LSTsampleVariability|"
 msgid "Scott"
-msgstr ""
+msgstr "Scott"
 
+#, fuzzy
 msgctxt "LSTsampleVariability|"
 msgid "Doane"
-msgstr ""
+msgstr "Doane"
 
 msgctxt "LSTsampleVariability|"
 msgid "Freedman-Diaconis"
-msgstr ""
+msgstr "Freedman-Diakonis"
 
 msgctxt "LSTsampleVariability|"
 msgid "Manual"
-msgstr ""
+msgstr "Manual"
 
 msgctxt "LSTsampleVariability|"
 msgid "Number of bins"
-msgstr ""
+msgstr "Jumlah tempat sampah"
 
 msgctxt "LSTstandardError|"
 msgid "Parent Distribution"
-msgstr ""
+msgstr "Distribusi Induk"
 
 msgctxt "LSTstandardError|"
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 msgctxt "LSTstandardError|"
 msgid "Uniform"
-msgstr ""
+msgstr "Seragam"
 
 msgctxt "LSTstandardError|"
 msgid "Skewed"
-msgstr ""
+msgstr "Miring"
 
 msgctxt "LSTstandardError|"
 msgid "Show parent distribution"
-msgstr ""
+msgstr "Tampilkan distribusi induk"
 
 msgctxt "LSTstandardError|"
 msgid "Show explanatory text"
-msgstr ""
+msgstr "Menampilkan teks penjelasan"
 
 msgctxt "LSTstandardError|"
 msgid "Mean"
-msgstr ""
+msgstr "Berarti"
 
 msgctxt "LSTstandardError|"
 msgid "Range"
-msgstr ""
+msgstr "Jangkauan"
 
 msgctxt "LSTstandardError|"
 msgid "Left"
-msgstr ""
+msgstr "Kiri"
 
 msgctxt "LSTstandardError|"
 msgid "Right"
-msgstr ""
+msgstr "Kanan"
 
 msgctxt "LSTstandardError|"
 msgid "Low skew"
-msgstr ""
+msgstr "Kemiringan rendah"
 
 msgctxt "LSTstandardError|"
 msgid "Medium skew"
-msgstr ""
+msgstr "Kemiringan sedang"
 
 msgctxt "LSTstandardError|"
 msgid "High skew"
-msgstr ""
+msgstr "Kemiringan tinggi"
 
 msgctxt "LSTstandardError|"
 msgid "Number of observations per sample"
-msgstr ""
+msgstr "Jumlah pengamatan per sampel"
 
 msgctxt "LSTstandardError|"
 msgid "Number of total samples"
-msgstr ""
+msgstr "Jumlah total sampel"
 
 msgctxt "LSTstandardError|"
 msgid "Show samples"
-msgstr ""
+msgstr "Tampilkan sampel"
 
 msgctxt "LSTstandardError|"
 msgid "Show rug marks"
-msgstr ""
+msgstr "Tampilkan tanda karpet"
 
 msgctxt "LSTstandardError|"
 msgid "Set seed"
-msgstr ""
+msgstr "Tetapkan benih"
 
 msgctxt "LSTstandardError|"
 msgid "First"
-msgstr ""
+msgstr "Pertama"
 
 msgctxt "LSTstandardError|"
 msgid "Last"
-msgstr ""
+msgstr "Terakhir"
 
 msgctxt "LSTstandardError|"
 msgid "All"
-msgstr ""
+msgstr "Semua"
 
 msgctxt "LSTstandardError|"
 msgid "From"
-msgstr ""
+msgstr "Dari"
 
 msgctxt "LSTstandardError|"
 msgid "Show sampling distribution"
-msgstr ""
+msgstr "Tampilkan distribusi pengambilan sampel"
 
 msgctxt "LSTstandardError|"
 msgid "Superimpose normal distribution"
-msgstr ""
+msgstr "Menumpangkan distribusi normal"
 
 msgctxt "LSTstandardError|"
 msgid "Plot Options"
-msgstr ""
+msgstr "Opsi Plot"
 
 msgctxt "LSTstandardError|"
 msgid "Color palette"
-msgstr ""
+msgstr "Palet warna"
 
 msgctxt "LSTstandardError|"
 msgid "Colorblind"
-msgstr ""
+msgstr "Buta warna"
 
 msgctxt "LSTstandardError|"
 msgid "Colorblind Alt."
-msgstr ""
+msgstr "Buta Warna Alt."
 
+#, fuzzy
 msgctxt "LSTstandardError|"
 msgid "Viridis"
-msgstr ""
+msgstr "Viridis"
 
+#, fuzzy
 msgctxt "LSTstandardError|"
 msgid "ggplot2"
-msgstr ""
+msgstr "ggplot2"
 
 msgctxt "LSTstandardError|"
 msgid "Gray"
-msgstr ""
+msgstr "Abu-abu"
 
 msgctxt "LSTstandardError|"
 msgid "Bin width type"
-msgstr ""
+msgstr "Jenis lebar tempat sampah"
 
+#, fuzzy
 msgctxt "LSTstandardError|"
 msgid "Sturges"
-msgstr ""
+msgstr "Sturges"
 
+#, fuzzy
 msgctxt "LSTstandardError|"
 msgid "Scott"
-msgstr ""
+msgstr "Scott"
 
+#, fuzzy
 msgctxt "LSTstandardError|"
 msgid "Doane"
-msgstr ""
+msgstr "Doane"
 
 msgctxt "LSTstandardError|"
 msgid "Freedman-Diaconis"
-msgstr ""
+msgstr "Freedman-Diakonis"
 
 msgctxt "LSTstandardError|"
 msgid "Manual"
-msgstr ""
+msgstr "Manual"
 
 msgctxt "LSTstandardError|"
 msgid "Number of bins"
-msgstr ""
+msgstr "Jumlah tempat sampah"
 
 msgctxt "Description|"
 msgid "Confidence Intervals"
-msgstr ""
+msgstr "Interval Keyakinan"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "μ"
-msgstr ""
+msgstr "μ"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "σ"
-msgstr ""
+msgstr "σ"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Sample size (n)"
-msgstr ""
+msgstr "Ukuran sampel (n)"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Confidence level"
-msgstr ""
+msgstr "Tingkat kepercayaan diri"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Repetitions"
-msgstr ""
+msgstr "Pengulangan"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Show last"
-msgstr ""
+msgstr "Tampilkan terakhir"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "<b>- 10</b>"
-msgstr ""
+msgstr "<b>- 10</b>"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "<b>- 1</b>"
-msgstr ""
+msgstr "<b>- 1</b>"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "<b>+ 1</b>"
-msgstr ""
+msgstr "<b>+ 1</b>"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "<b>+ 10</b>"
-msgstr ""
+msgstr "<b>+ 10</b>"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Plots"
-msgstr ""
+msgstr "Plot"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Tree plot"
-msgstr ""
+msgstr "Plot pohon"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Display table"
-msgstr ""
+msgstr "Tabel tampilan"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Fix x-axis from "
-msgstr ""
+msgstr "Perbaiki sumbu x dari "
 
 msgctxt "LSTconfidenceIntervals|"
 msgid " to "
-msgstr ""
+msgstr " to "
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Data distribution plots"
-msgstr ""
+msgstr "Plot distribusi data"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Convergence plot"
-msgstr ""
+msgstr "Plot konvergensi"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Zoom in with margin"
-msgstr ""
+msgstr "Memperbesar dengan margin"
 
 msgctxt "LSTPValues|"
 msgid "Theoretical distribution"
-msgstr ""
+msgstr "Distribusi teoretis"
 
 msgctxt "LSTPValues|"
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 msgctxt "LSTPValues|"
 msgid "T distribution"
-msgstr ""
+msgstr "Distribusi T"
 
 msgctxt "LSTPValues|"
 msgid "df"
-msgstr ""
+msgstr "df"
 
 msgctxt "LSTPValues|"
 msgid "Test settings"
-msgstr ""
+msgstr "Pengaturan pengujian"
 
 msgctxt "LSTPValues|"
 msgid "Type-I error rate α"
-msgstr ""
+msgstr "Type-I error rate α"
 
 msgctxt "LSTPValues|"
 msgid "Alt. hypothesis"
-msgstr ""
+msgstr "Alt. hipotesis"
 
 msgctxt "LSTPValues|"
 msgid "Two sided"
-msgstr ""
+msgstr "Dua sisi"
 
 msgctxt "LSTPValues|"
 msgid "Greater"
-msgstr ""
+msgstr "Lebih besar"
 
 msgctxt "LSTPValues|"
 msgid "Less"
-msgstr ""
+msgstr "Kurang"
 
 msgctxt "LSTPValues|"
 msgid "Plot theoretical distribution"
-msgstr ""
+msgstr "Plot distribusi teoretis"
 
 msgctxt "LSTPValues|"
 msgid "Highlight critical region"
-msgstr ""
+msgstr "Menyoroti wilayah kritis"
 
 msgctxt "LSTPValues|"
 msgid "Highlight specified test statistic"
-msgstr ""
+msgstr "Menyoroti statistik uji yang ditentukan"
 
 msgctxt "LSTPValues|"
 msgid "Specify test statistic"
-msgstr ""
+msgstr "Tentukan statistik uji"
 
 msgctxt "LSTPValues|"
 msgid "Specify p-value"
-msgstr ""
+msgstr "Tentukan nilai-p"
 
 msgctxt "LSTPValues|"
 msgid "Simulation under the null hypothesis"
-msgstr ""
+msgstr "Simulasi di bawah hipotesis nol"
 
 msgctxt "LSTPValues|"
 msgid "Simulation"
-msgstr ""
+msgstr "Simulasi"
 
 msgctxt "LSTPValues|"
 msgid "Number of studies to simulate"
-msgstr ""
+msgstr "Jumlah studi yang akan disimulasikan"
 
 msgctxt "LSTPValues|"
 msgid "Simulate"
-msgstr ""
+msgstr "Mensimulasikan"
 
 msgctxt "LSTPValues|"
 msgid "Reset"
-msgstr ""
+msgstr "Atur ulang"
 
 msgctxt "LSTPValues|"
 msgid "Output"
-msgstr ""
+msgstr "Keluaran"
 
 msgctxt "LSTPValues|"
 msgid "Plot test statistics"
-msgstr ""
+msgstr "Statistik uji plot"
 
 msgctxt "LSTPValues|"
 msgid "Overlay theoretical distribution"
-msgstr ""
+msgstr "Hamparan distribusi teoritis"
 
 msgctxt "LSTPValues|"
 msgid "Plot p-values"
-msgstr ""
+msgstr "Plot nilai-p"
 
 msgctxt "LSTPValues|"
 msgid "Overlay uniform distribution"
-msgstr ""
+msgstr "Hamparan distribusi seragam"
 
 msgctxt "LSTPValues|"
 msgid "Frequency table"
-msgstr ""
+msgstr "Tabel frekuensi"
 
 msgctxt "LSTPValues|"
 msgid "Simulation under the alternative hypothesis"
-msgstr ""
+msgstr "Simulasi di bawah hipotesis alternatif"
 
 msgctxt "LSTPValues|"
 msgid "Specify alternative sampling distribution"
-msgstr ""
+msgstr "Tentukan distribusi pengambilan sampel alternatif"
 
 msgctxt "LSTPValues|"
 msgid "Mean"
-msgstr ""
+msgstr "Berarti"
 
 msgctxt "LSTPValues|"
 msgid "Non-centrality"
-msgstr ""
+msgstr "Non-sentralitas"
 
 msgctxt "LSTPValues|"
 msgid "Overlay theoretical null distribution"
-msgstr ""
+msgstr "Hamparan distribusi nol teoretis"
 
 msgctxt "LSTPValues|"
 msgid "Overlay theoretical alternative distribution"
-msgstr ""
+msgstr "Hamparan distribusi alternatif teoritis"
 
 msgctxt "LSTPValues|"
 msgid "Options"
-msgstr ""
+msgstr "Pilihan"
 
 msgctxt "LSTPValues|"
 msgid "Introductory text"
-msgstr ""
+msgstr "Teks pengantar"
 
 msgctxt "Description|"
 msgid "Statistical Test Decision Tree"
-msgstr ""
+msgstr "Pohon Keputusan Uji Statistik"
 
 msgctxt "LSTdecisionTree|"
 msgid "How many outcome variables?"
-msgstr ""
+msgstr "Berapa banyak variabel hasil?"
 
 msgctxt "LSTdecisionTree|"
 msgid "One"
-msgstr ""
+msgstr "Satu"
 
 msgctxt "LSTdecisionTree|"
 msgid "Two or more"
-msgstr ""
+msgstr "Dua atau lebih"
 
 msgctxt "LSTdecisionTree|"
 msgid "What type of outcome?"
-msgstr ""
+msgstr "Jenis hasil seperti apa?"
 
 msgctxt "LSTdecisionTree|"
 msgid "Continuous"
-msgstr ""
+msgstr "Berkelanjutan"
 
 msgctxt "LSTdecisionTree|"
 msgid "Categorical"
-msgstr ""
+msgstr "Kategorikal"
 
 msgctxt "LSTdecisionTree|"
 msgid "How many predictor variables?"
-msgstr ""
+msgstr "Berapa banyak variabel prediktor?"
 
 msgctxt "LSTdecisionTree|"
 msgid "What type of predictor?"
-msgstr ""
+msgstr "Jenis prediktor apa?"
 
 msgctxt "LSTdecisionTree|"
 msgid "Both"
-msgstr ""
+msgstr "Keduanya"
 
 msgctxt "LSTdecisionTree|"
 msgid "How many categories in predictor variable?"
-msgstr ""
+msgstr "Berapa banyak kategori dalam variabel prediktor?"
 
 msgctxt "LSTdecisionTree|"
 msgid "Two"
-msgstr ""
+msgstr "Dua"
 
 msgctxt "LSTdecisionTree|"
 msgid "More than two"
-msgstr ""
+msgstr "Lebih dari dua"
 
 msgctxt "LSTdecisionTree|"
 msgid "Same or different entities in categories of predictor?"
-msgstr ""
+msgstr "Entitas yang sama atau berbeda dalam kategori prediktor?"
 
 msgctxt "LSTdecisionTree|"
 msgid "Same"
-msgstr ""
+msgstr "Sama."
 
 msgctxt "LSTdecisionTree|"
 msgid "Different"
-msgstr ""
+msgstr "Berbeda"
 
 msgctxt "LSTdecisionTree|"
 msgid "Are the assumptions for a parametric test met?"
-msgstr ""
+msgstr "Apakah asumsi untuk uji parametrik terpenuhi?"
 
 msgctxt "LSTdecisionTree|"
 msgid "Assumptions met"
-msgstr ""
+msgstr "Asumsi terpenuhi"
 
 msgctxt "LSTdecisionTree|"
 msgid "Assumptions not met"
-msgstr ""
+msgstr "Asumsi tidak terpenuhi"
 
 msgctxt "LSTdecisionTree|"
 msgid "Show full decision tree"
-msgstr ""
+msgstr "Tampilkan pohon keputusan lengkap"
 
 msgctxt "Description|"
 msgid "Binomial Distribution"
-msgstr ""
+msgstr "Distribusi Binomial"
 
 msgctxt "LSeffectSizes|"
 msgid "Effect size"
-msgstr ""
+msgstr "Ukuran efek"
 
 msgctxt "LSeffectSizes|"
 msgid "Additional statistics"
-msgstr ""
+msgstr "Statistik tambahan"
 
 msgctxt "LSeffectSizes|"
 msgid "Odds ratio"
-msgstr ""
+msgstr "Rasio peluang"
 
 msgctxt "LSeffectSizes|"
 msgid "Risk ratio"
-msgstr ""
+msgstr "Rasio risiko"
 
 msgctxt "LSeffectSizes|"
 msgid "Risk difference"
-msgstr ""
+msgstr "Perbedaan risiko"
 
 msgctxt "LSeffectSizes|"
 msgid "Plot options"
-msgstr ""
+msgstr "Pilihan plot"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Parent distribution"
-msgstr ""
+msgstr "Distribusi induk"
 
+#, fuzzy
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Std. dev."
-msgstr ""
+msgstr "Std. dev."
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Skew direction"
-msgstr ""
+msgstr "Arah kemiringan"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Skew intensity"
-msgstr ""
+msgstr "Intensitas kemiringan"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Sample options"
-msgstr ""
+msgstr "Opsi sampel"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Sampling distribution options"
-msgstr ""
+msgstr "Opsi distribusi pengambilan sampel"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Plot options"
-msgstr ""
+msgstr "Opsi plot"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Show samples"
-msgstr ""
+msgstr "Tampilkan sampel"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "First"
-msgstr ""
+msgstr "Pertama"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Last"
-msgstr ""
+msgstr "Terakhir"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Range"
-msgstr ""
+msgstr "Jangkauan"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "All"
-msgstr ""
+msgstr "Semua"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "From"
-msgstr ""
+msgstr "Dari"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "To"
-msgstr ""
+msgstr "Untuk"
 
 msgctxt "LSTdescriptives|"
 msgid "Data input type"
-msgstr ""
+msgstr "Jenis masukan data"
 
 msgctxt "LSTdescriptives|"
 msgid "Random sample"
-msgstr ""
+msgstr "Sampel acak"
 
 msgctxt "LSTdescriptives|"
 msgid "Distribution type"
-msgstr ""
+msgstr "Jenis distribusi"
 
 msgctxt "LSTdescriptives|"
 msgid "Comma-separated sequence of observations"
-msgstr ""
+msgstr "Urutan pengamatan yang dipisahkan dengan koma"
 
 msgctxt "LSTdescriptives|"
 msgid "Statistics to display"
-msgstr ""
+msgstr "Statistik yang akan ditampilkan"
 
 msgctxt "LSTdescriptives|"
 msgid "Central tendency measures"
-msgstr ""
+msgstr "Ukuran tendensi sentral"
 
 msgctxt "LSTdescriptives|"
 msgid "Mean"
-msgstr ""
+msgstr "Berarti"
 
 msgctxt "LSTdescriptives|"
 msgid "Median"
-msgstr ""
+msgstr "Median"
 
 msgctxt "LSTdescriptives|"
 msgid "Mode"
-msgstr ""
+msgstr "Mode"
 
 msgctxt "LSTdescriptives|"
 msgid "All"
-msgstr ""
+msgstr "Semua"
 
 msgctxt "LSTdescriptives|"
 msgid "Spread measures"
-msgstr ""
+msgstr "Langkah-langkah penyebaran"
 
+#, fuzzy
 msgctxt "LSTdescriptives|"
 msgid "Std. dev."
-msgstr ""
+msgstr "Std. dev."
 
 msgctxt "LSTdescriptives|"
 msgid "None"
-msgstr ""
+msgstr "Tidak ada"
 
 msgctxt "LSTdescriptives|"
 msgid "Show density (histogram only)"
-msgstr ""
+msgstr "Menampilkan kepadatan (hanya histogram)"
 
 msgctxt "LSTdescriptives|"
 msgid "Histogram bin width type"
-msgstr ""
+msgstr "Jenis lebar tempat sampah histogram"
 
 msgctxt "LSTdescriptives|"
 msgid "Sturges"
-msgstr ""
+msgstr "Sturge"
 
 msgctxt "LSTdescriptives|"
 msgid "Scott"
@@ -1151,128 +1178,131 @@ msgstr ""
 
 msgctxt "LSTdescriptives|"
 msgid "Freedman-Diaconis"
-msgstr ""
+msgstr "Freedman-Diakonis"
 
 msgctxt "LSTdescriptives|"
 msgid "Manual"
-msgstr ""
+msgstr "Manual"
 
 msgctxt "LSTdescriptives|"
 msgid "Number of bins"
-msgstr ""
+msgstr "Jumlah tempat sampah"
 
 msgctxt "LSTdescriptives|"
 msgid "Distribution options"
-msgstr ""
+msgstr "Opsi distribusi"
 
 msgctxt "LSTdescriptives|"
 msgid "Binomial distribution parameters"
-msgstr ""
+msgstr "Parameter distribusi binomial"
 
 msgctxt "LSTdescriptives|"
 msgid "Probability of success (p)"
-msgstr ""
+msgstr "Probabilitas keberhasilan (p)"
 
 msgctxt "LSTdescriptives|"
 msgid "Poisson distribution parameters"
-msgstr ""
+msgstr "Parameter distribusi poisson"
 
 msgctxt "LSTdescriptives|"
 msgid "Rate (λ)"
-msgstr ""
+msgstr "Laju (λ)"
 
 msgctxt "LSTdescriptives|"
 msgid "Skewed normal distribution parameters"
-msgstr ""
+msgstr "Parameter distribusi normal miring"
 
 msgctxt "LSTdescriptives|"
 msgid "Location (ξ)"
-msgstr ""
+msgstr "Lokasi (ξ)"
 
 msgctxt "LSTdescriptives|"
 msgid "Scale (ω)"
-msgstr ""
+msgstr "Skala (ω)"
 
 msgctxt "LSTdescriptives|"
 msgid "Shape (α)"
-msgstr ""
+msgstr "Bentuk (α)"
 
 msgctxt "LSTdescriptives|"
 msgid "Uniform distribution parameters"
-msgstr ""
+msgstr "Parameter distribusi seragam"
 
 msgctxt "LSTdescriptives|"
 msgid "Lower bound"
-msgstr ""
+msgstr "Batas bawah"
 
 msgctxt "LSTdescriptives|"
 msgid "Upper bound"
-msgstr ""
+msgstr "Batas atas"
 
 msgctxt "LSTdescriptives|"
 msgid "Normal distribution parameters"
-msgstr ""
+msgstr "Parameter distribusi normal"
 
 msgctxt "LSTdescriptives|"
 msgid "Mean (μ)"
-msgstr ""
+msgstr "Rata-rata (μ)"
 
+#, fuzzy
 msgctxt "LSTdescriptives|"
 msgid "Std. dev. (σ)"
-msgstr ""
+msgstr "Std. dev. (σ)"
 
 msgctxt "LSTsampleVariability|"
 msgid "Parent distribution size"
-msgstr ""
+msgstr "Ukuran distribusi induk"
 
 msgctxt "LSTsampleVariability|"
 msgid "Parent distribution shape"
-msgstr ""
+msgstr "Bentuk distribusi induk"
 
+#, fuzzy
 msgctxt "LSTsampleVariability|"
 msgid "Std. dev."
-msgstr ""
+msgstr "Std. dev."
 
 msgctxt "LSTsampleVariability|"
 msgid "Skew direction"
-msgstr ""
+msgstr "Arah kemiringan"
 
 msgctxt "LSTsampleVariability|"
 msgid "Skew intensity"
-msgstr ""
+msgstr "Intensitas kemiringan"
 
 msgctxt "LSTsampleVariability|"
 msgid "to"
-msgstr ""
+msgstr "untuk"
 
 msgctxt "LSTstandardError|"
 msgid "Parent distribution"
-msgstr ""
+msgstr "Distribusi induk"
 
+#, fuzzy
 msgctxt "LSTstandardError|"
 msgid "Std. dev."
-msgstr ""
+msgstr "Std. dev."
 
 msgctxt "LSTstandardError|"
 msgid "Skew direction"
-msgstr ""
+msgstr "Arah kemiringan"
 
 msgctxt "LSTstandardError|"
 msgid "Skew intensity"
-msgstr ""
+msgstr "Intensitas kemiringan"
 
 msgctxt "LSTstandardError|"
 msgid "Sample options"
-msgstr ""
+msgstr "Opsi sampel"
 
 msgctxt "LSTstandardError|"
 msgid "to"
-msgstr ""
+msgstr "untuk"
 
 msgctxt "LSTstandardError|"
 msgid "Sampling distribution options"
-msgstr ""
+msgstr "Opsi distribusi pengambilan sampel"
 
 msgctxt "LSTdescriptives|"
 msgid "Number of trials (n)"
-msgstr ""
+msgstr "Jumlah uji coba (n)"
