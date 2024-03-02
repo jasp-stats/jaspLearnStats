@@ -49,7 +49,7 @@ msgstr ""
 msgid "Coverage"
 msgstr ""
 
-msgid "Coverage %"
+msgid "Coverage %%"
 msgstr ""
 
 msgid "Mean"
@@ -358,7 +358,7 @@ msgstr ""
 msgid "Simulation"
 msgstr ""
 
-msgid "95% CI"
+msgid "95%% CI"
 msgstr ""
 
 msgid "Cohen's d"

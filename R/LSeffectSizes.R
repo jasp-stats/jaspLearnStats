@@ -404,8 +404,8 @@ switchOptions <- function(options) {
   deltaTable$addColumnInfo(name = "population",  title = gettext("Population") ,  type = "number")
   if (length(delta) > 1) {
     deltaTable$addColumnInfo(name = "simulation", title = gettext("Simulation"),  type = "number")
-    deltaTable$addColumnInfo(name = "lower",      title = gettext("Lower"),       type = "number", overtitle = gettext("95% CI"))
-    deltaTable$addColumnInfo(name = "upper",      title = gettext("Upper"),       type = "number", overtitle = gettext("95% CI"))
+    deltaTable$addColumnInfo(name = "lower",      title = gettext("Lower"),       type = "number", overtitle = gettextf("95%% CI"))
+    deltaTable$addColumnInfo(name = "upper",      title = gettext("Upper"),       type = "number", overtitle = gettextf("95%% CI"))
   }
 
   # based on: https://rpsychologist.com/cohend/
@@ -848,8 +848,8 @@ switchOptions <- function(options) {
   rhoTable$addColumnInfo(name = "population",  title = gettext("Population") ,  type = "number")
   if (length(rho) > 1) {
     rhoTable$addColumnInfo(name = "simulation", title = gettext("Simulation"),  type = "number")
-    rhoTable$addColumnInfo(name = "lower",      title = gettext("Lower"),       type = "number", overtitle = gettext("95% CI"))
-    rhoTable$addColumnInfo(name = "upper",      title = gettext("Upper"),       type = "number", overtitle = gettext("95% CI"))
+    rhoTable$addColumnInfo(name = "lower",      title = gettext("Lower"),       type = "number", overtitle = gettextf("95%% CI"))
+    rhoTable$addColumnInfo(name = "upper",      title = gettext("Upper"),       type = "number", overtitle = gettextf("95%% CI"))
   }
 
   # based on: https://rpsychologist.com/cohend/
@@ -1324,8 +1324,8 @@ switchOptions <- function(options) {
   phiTable2$addColumnInfo(name = "population",  title = gettext("Population") ,  type = "number")
   if (length(phi) > 1) {
     phiTable2$addColumnInfo(name = "simulation", title = gettext("Simulation"),  type = "number")
-    phiTable2$addColumnInfo(name = "lower",      title = gettext("Lower"),       type = "number", overtitle = gettext("95% CI"))
-    phiTable2$addColumnInfo(name = "upper",      title = gettext("Upper"),       type = "number", overtitle = gettext("95% CI"))
+    phiTable2$addColumnInfo(name = "lower",      title = gettext("Lower"),       type = "number", overtitle = gettextf("95%% CI"))
+    phiTable2$addColumnInfo(name = "upper",      title = gettext("Upper"),       type = "number", overtitle = gettextf("95%% CI"))
   }
 
   row1 <- list(

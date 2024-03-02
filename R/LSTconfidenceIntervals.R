@@ -88,7 +88,7 @@ LSTconfidenceIntervals <- function(jaspResults, dataset = NULL, options) {
   resultTable$addColumnInfo(name = "sigma", title="σ", type = "number")
   resultTable$addColumnInfo(name = "n", type = "integer")
   resultTable$addColumnInfo(name = "coverage", type = "integer",title=gettext("Coverage"))
-  resultTable$addColumnInfo(name = "coveragePercentage", type = "number", format = "pc", title=gettext("Coverage %"))
+  resultTable$addColumnInfo(name = "coveragePercentage", type = "number", format = "pc", title=gettextf("Coverage %%"))
   
   meanCI <- jaspContainer[["computedConfidenceIntervals"]][["object"]]
   tableDat <- data.frame(mu = options$mu,
