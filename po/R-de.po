@@ -49,8 +49,8 @@ msgstr "Std.-Abw: %.2f"
 msgid "Coverage"
 msgstr "Überdeckung"
 
-msgid "Coverage %"
-msgstr "Überdeckung %"
+msgid "Coverage %%"
+msgstr "Überdeckung %%"
 
 msgid "Mean"
 msgstr "Mittelwert"
@@ -376,8 +376,8 @@ msgstr "Grundgesamtheit"
 msgid "Simulation"
 msgstr "Simulation"
 
-msgid "95% CI"
-msgstr "95% KI"
+msgid "95%% CI"
+msgstr "95%% KI"
 
 msgid "Cohen's d"
 msgstr "Cohens d"
