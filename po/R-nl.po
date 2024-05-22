@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.17.0\n"
 "POT-Creation-Date: 2023-05-27 04:43\n"
-"PO-Revision-Date: 2023-11-18 04:41+0000\n"
+"PO-Revision-Date: 2024-05-22 22:08+0000\n"
 "Last-Translator: Koen Derks <koen-derks@hotmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/"
 "jasplearnstats-r/nl/>\n"
@@ -11,46 +11,46 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.2\n"
+"X-Generator: Weblate 5.6-dev\n"
 
 msgid "Parent Distribution"
-msgstr ""
+msgstr "Bovenliggende Verdeling"
 
 msgid "Count: %i"
-msgstr ""
+msgstr "Aantal: %i"
 
 msgid "Mean: %.2f"
-msgstr ""
+msgstr "Gemiddelde: %.2f"
 
 msgid "SE: %.2f"
-msgstr ""
+msgstr "SE: %.2f"
 
 msgid "SD: %.2f"
-msgstr ""
+msgstr "SD: %.2f"
 
 msgid "Sample Nr. %i"
-msgstr ""
+msgstr "Trekking Nr. %i"
 
 msgid "... until Sample Nr. %i"
-msgstr ""
+msgstr "... tot Trekking Nr. %i"
 
 msgid "Samples"
-msgstr ""
+msgstr "Trekkingen"
 
 msgid "Std. Dev.: %.2f"
-msgstr ""
+msgstr "Std. Dev.: %.2f"
 
 msgid "Sampling Distribution of the Mean"
-msgstr ""
+msgstr "Steekproevenverdeling van het Gemiddelde"
 
 msgid "Std. Dev: %.2f"
-msgstr ""
+msgstr "Std. Dev: %.2f"
 
 msgid "Coverage"
-msgstr ""
+msgstr "Dekking"
 
 msgid "Coverage %%"
-msgstr ""
+msgstr "Dekking %%"
 
 msgid "Mean"
 msgstr "Gemiddelde"
@@ -59,7 +59,7 @@ msgid "Estimate"
 msgstr "Schatting"
 
 msgid "%s%% CI for Mean Difference"
-msgstr ""
+msgstr "%s%% BI voor Gemiddeld Verschil"
 
 msgid "Lower"
 msgstr "Onder"
@@ -68,350 +68,384 @@ msgid "Upper"
 msgstr "Boven"
 
 msgid "CI contains %s?"
-msgstr ""
+msgstr "BI bevat %s?"
 
 msgid "Tree Plot"
-msgstr ""
+msgstr "Boomfiguur"
 
 msgid ""
 "Make sure to specify a lower bound that is lower than the upper bound for "
 "the x-axis."
 msgstr ""
+"Zorg ervoor dat je een ondergrens specificeert die lager is dan de "
+"bovengrens voor de x-as."
 
 msgid "Observed mean and %s%% CI"
-msgstr ""
+msgstr "Waargenomen gemiddelde en %s%% BI"
 
 msgid "Data plots"
-msgstr ""
+msgstr "Datafiguren"
 
 msgid "Dependent"
-msgstr ""
+msgstr "Afhankelijk"
 
 msgid "Repetition %d"
-msgstr ""
+msgstr "Herhaling %d"
 
 msgid "Convergence Plot"
-msgstr ""
+msgstr "Convergentiefiguur"
 
 msgid "Number of Replications"
-msgstr ""
+msgstr "Aantal Replicaties"
 
 msgid "p(Coverage)"
-msgstr ""
+msgstr "p(Dekking)"
 
 msgid "Rep"
-msgstr ""
+msgstr "Rep"
 
 msgid "Decision Tree"
 msgstr "Beslisboom"
 
 msgid "Test choice"
-msgstr ""
+msgstr "Testkeuze"
 
 msgid "Explanation"
-msgstr ""
+msgstr "Uitleg"
 
 msgid "Theoretical example distribution"
-msgstr ""
+msgstr "Theoretische voorbeeldverdeling"
 
 msgid "Visual Explanation"
-msgstr ""
+msgstr "Visuele Uitleg"
 
 msgid "Visual Explanation 2"
-msgstr ""
+msgstr "Visuele Uitleg 2"
 
 msgid "Visual Explanation 3"
-msgstr ""
+msgstr "Visuele Uitleg 3"
 
 msgid "Visual Explanation 4"
-msgstr ""
+msgstr "Visuele Uitleg 4"
 
 msgid "Range"
 msgstr "Bereik"
 
 msgid "Min"
-msgstr ""
+msgstr "Min"
 
 msgid "Max"
-msgstr ""
+msgstr "Max"
 
 msgid "1st quartile"
-msgstr ""
+msgstr "1e kwartiel"
 
 msgid ""
 "2nd quartile / \n"
 " Median"
 msgstr ""
+"2e kwartiel / \n"
+" Mediaan"
 
 msgid "3rd quartile"
-msgstr ""
+msgstr "3e kwartiel"
 
 msgid "IQR"
-msgstr ""
+msgstr "IQR"
 
 msgid "Variance"
-msgstr ""
+msgstr "Variantie"
 
 msgid "-3 SD"
-msgstr ""
+msgstr "-3 SD"
 
 msgid "-2 SD"
-msgstr ""
+msgstr "-2 SD"
 
 msgid "-1 SD"
-msgstr ""
+msgstr "-1 SD"
 
 msgid "+1 SD"
-msgstr ""
+msgstr "+1 SD"
 
 msgid "+2 SD"
-msgstr ""
+msgstr "+2 SD"
 
 msgid "+3 SD"
-msgstr ""
+msgstr "+3 SD"
 
 msgid "Std. Dev."
-msgstr ""
+msgstr "Std. Dev."
 
 msgid "Median"
-msgstr ""
+msgstr "Mediaan"
 
 msgid "Mode"
-msgstr ""
+msgstr "Modus"
 
 msgid "Min: %.2f"
-msgstr ""
+msgstr "Min: %.2f"
 
 msgid "Max: %.2f"
-msgstr ""
+msgstr "Max: %.2f"
 
 msgid "Range: %.2f"
-msgstr ""
+msgstr "Bereik: %.2f"
 
 msgid "1st quar. = %.2f"
-msgstr ""
+msgstr "1e kwart. = %.2f"
 
 msgid ""
 "2nd quar. / \n"
 " Median = %.2f"
 msgstr ""
+"2e kwart. / \n"
+" Mediaan = %.2f"
 
 msgid "3rd quar. = %.2f"
-msgstr ""
+msgstr "3e kwart. = %.2f"
 
 msgid "IQR = %.2f"
-msgstr ""
+msgstr "IQR = %.2f"
 
 msgid "-%i SD"
-msgstr ""
+msgstr "-%i SD"
 
 msgid "+%i SD"
-msgstr ""
+msgstr "+%i SD"
 
 msgid "Mean = %.2f"
-msgstr ""
+msgstr "Gemiddelde = %.2f"
 
 msgid "Std. Dev. = %.2f"
-msgstr ""
+msgstr "Std. Dev. = %.2f"
 
 msgid "Dotplot"
-msgstr ""
+msgstr "Puntfiguur"
 
 msgid "No variance: All values are equal."
-msgstr ""
+msgstr "Geen variantie: Alle waarden zijn gelijk."
 
 msgid ""
 "All values unique, \n"
 " no mode defined."
 msgstr ""
+"Alle waarden zijn uniek, \n"
+" geen modus gedefinieerd."
 
 msgid ""
 "Mode = %1$i \n"
 " (Count = %2$i)"
 msgstr ""
+"Modus = %1$i \n"
+" (Aantal = %2$i)"
 
 msgid ""
 "Mode = %.2f \n"
 " (Count = %i)"
 msgstr ""
+"Modus = %.2f \n"
+" (Aantal = %i)"
 
 msgid "Mode = {%i"
-msgstr ""
+msgstr "Modus = {%i"
 
 msgid "Mode = /n {%.2f"
-msgstr ""
+msgstr "Modus = /n {%.2f"
 
 msgid ", %i"
-msgstr ""
+msgstr ", %i"
 
 msgid ", %.2f"
-msgstr ""
+msgstr ", %.2f"
 
 msgid ""
 "} \n"
 " (Count = %i)"
 msgstr ""
+"} \n"
+" (Aantal = %i)"
 
 msgid "Median = %.2f"
-msgstr ""
+msgstr "Mediaan = %.2f"
 
 msgid ""
 "2nd quar. / \n"
 " Median"
 msgstr ""
+"2e kwart. / \n"
+" Mediaan"
 
 msgid "1st quar."
-msgstr ""
+msgstr "1e kwart."
 
 msgid "3rd quar."
-msgstr ""
+msgstr "3e kwart."
 
 msgid "to be added..."
-msgstr ""
+msgstr "toe te voegen..."
 
 msgid "Theoretical distribution of the test statistic under H<sub>0</sub>"
-msgstr ""
+msgstr "Theoretische verdeling van de teststatistiek onder H<sub>0</sub>"
 
 msgid "Distribution plot"
-msgstr ""
+msgstr "Verdelingsfiguur"
 
 msgid "Test statistic"
-msgstr ""
+msgstr "Teststatistiek"
 
 msgid "Density"
-msgstr ""
+msgstr "Dichtheid"
 
 msgid "Simulation under H<sub>0</sub>"
-msgstr ""
+msgstr "Simulatie onder H<sub>0</sub>"
 
 msgid "Observed test statistics"
-msgstr ""
+msgstr "Waargenomen teststatistiek"
 
 msgid "Count"
-msgstr ""
+msgstr "Aantal"
 
 msgid "Null dist."
-msgstr ""
+msgstr "Nulverd."
 
 msgid "Alt dist."
-msgstr ""
+msgstr "Alt. verd."
 
 msgid "Observed p-values"
-msgstr ""
+msgstr "Waargenomen p-waardes"
 
 msgid "p-values"
-msgstr ""
+msgstr "p-waardes"
 
 msgid "Frequency Table"
-msgstr ""
+msgstr "Frequentietabel"
 
 msgid "Percent"
 msgstr "Percentage"
 
 msgid "Significant"
-msgstr ""
+msgstr "Significant"
 
 msgid "Not significant"
-msgstr ""
+msgstr "Niet significant"
 
 msgid "Total"
-msgstr ""
+msgstr "Totaal"
 
 msgid "Simulation under H<sub>a</sub>"
-msgstr ""
+msgstr "Simulatie onder H<sub>a</sub>"
 
 msgid "Error Message"
-msgstr ""
+msgstr "Foutmelding"
 
 msgid ""
 "Population size too small. Cannot draw %1$i samples with size %2$i from a "
 "finite population of %3$i."
 msgstr ""
+"Populatiegrootte te klein. Kan geen %1$i trekkingen met grootte %2$i trekken "
+"uit een eindige populatie van %3$i."
 
 msgid "Statistics Summary"
-msgstr ""
+msgstr "Samenvatting van Statistieken"
 
 msgid "Population and simulation distribution"
-msgstr ""
+msgstr "Populatie- en simulatieverdeling"
 
 msgid "Population distribution"
-msgstr ""
+msgstr "Populatieverdeling"
 
 msgid "Simulation distribution"
-msgstr ""
+msgstr "Simulatieverdeling"
 
 msgid "Raincloud plot"
-msgstr ""
+msgstr "Regenwolkfiguur"
 
 msgid "Group"
-msgstr ""
+msgstr "Groep"
 
 msgid "Control"
-msgstr ""
+msgstr "Controle"
 
 msgid "Experimental"
-msgstr ""
+msgstr "Experimenteel"
 
 msgid "Population"
-msgstr ""
+msgstr "Populatie"
 
 msgid "Simulation"
-msgstr ""
+msgstr "Simulatie"
 
 msgid "95%% CI"
-msgstr ""
+msgstr "95%% BI"
 
 msgid "Cohen's d"
-msgstr ""
+msgstr "Cohen's d"
 
 msgid "Cohen's U%1$s"
-msgstr ""
+msgstr "Cohen's U%1$s"
 
 msgid "Overlap"
-msgstr ""
+msgstr "Overlap"
 
 msgid "Probability of superiority"
-msgstr ""
+msgstr "Kans op superioriteit"
 
 msgid "Number needed to treat*"
-msgstr ""
+msgstr "Aantal nodig voor behandeling*"
 
 msgid "The number needed to treat is based on a %1$s event rate."
 msgstr ""
+"Het aantal dat nodig is om te behandelen is gebaseerd op een %1$s "
+"gebeurtenissnelheid."
 
 msgid ""
 "Cohen's %1$s is a measure of the standardized difference between two groups. "
 "The rules of thumbs for interpreting the measure are:<ul><li>Small: %1$s = "
 "0.20 </li> <li>Medium: %1$s = 0.50</li><li>Large: %1$s = 0.80</li></ul>"
 msgstr ""
+"Cohen's %1$s is een maatstaf voor het gestandaardiseerde verschil tussen "
+"twee groepen. De vuistregels voor het interpreteren van de meting "
+"zijn:<ul><li>Klein: %1$s = 0,20 </li> <li>Gemiddeld: %1$s = "
+"0,50</li><li>Groot: %1$s = 0,80</li></ul>"
 
 msgid ""
 "- Cohen's U%1$s corresponds to the proportion of the control group that is "
 "surpassed by the upper upper half of the experimental group."
 msgstr ""
+"- Cohen's U%1$s komt overeen met de proportie van de controlegroep die wordt "
+"overtroffen door de bovenste bovenste helft van de experimentele groep."
 
 msgid ""
 "- Overlap corresponds to the common are of the control and experimental "
 "density."
 msgstr ""
+"- Overlap komt overeen met het gemeenschappelijke gebied van de controle en "
+"experimentele dichtheid."
 
 msgid ""
 "- Probability of superiority corresponds to the probability that a randomly "
 "chosen participant from the experimental group will have higher value than a "
 "randomly chosen participant from the control group."
 msgstr ""
+"- De kans op superioriteit komt overeen met de kans dat een willekeurig "
+"gekozen deelnemer uit de experimentele groep een hogere waarde heeft dan een "
+"willekeurig gekozen deelnemer uit de controlegroep."
 
 msgid ""
 "- Number needed to treat corresponds to the number of participants in the "
 "experimental group that would be required to observe one more successful "
 "outcome than in the control group."
 msgstr ""
+"- Aantal nodig voor behandeling komt overeen met het aantal deelnemers in de "
+"experimentele groep dat nodig zou zijn om één succesvoller resultaat waar te "
+"nemen dan in de controlegroep."
 
 msgid "Pearson correlation"
-msgstr ""
+msgstr "Pearson correlatie"
 
 msgid "Shared variance (R%1$s)"
-msgstr ""
+msgstr "Gedeelde variantie (R%1$s)"
 
 msgid ""
 "Pearson correlation coefficient %1$s is a measure of the relationship "
@@ -419,37 +453,45 @@ msgid ""
 "measure are:<ul><li>Small: %1$s = 0.10 </li> <li>Medium: %1$s = 0.30</"
 "li><li>Large: %1$s = 0.50</li></ul>"
 msgstr ""
+"De Pearson-correlatiecoëfficiënt %1$s is een maatstaf voor de relatie tussen "
+"twee continue variabelen. De vuistregels voor het interpreteren van de "
+"meting zijn:<ul><li>Klein: %1$s = 0,10 </li> <li>Gemiddeld: %1$s = "
+"0,30</li><li>Groot: %1$s = 0,50</li></ul>"
 
 msgid ""
 "- Shared variance (R%1$s) corresponds to proportion of variance shared "
 "common between the variables."
 msgstr ""
+"- Gedeelde variantie (R%1$s) komt overeen met het deel van de variantie dat "
+"de variabelen gemeenschappelijk hebben."
 
 msgid ""
 "The specified phi, P(X), and P(Y) do not yield a valid contingency table. "
 "One of the frequencies would need to be negative."
 msgstr ""
+"De opgegeven phi, P(X) en P(Y) leveren geen geldige contingentietabel op. "
+"Een van de frequenties zou negatief moeten zijn."
 
 msgid "Frequencies"
-msgstr ""
+msgstr "Frequenties"
 
 msgid "P(X=1)"
-msgstr ""
+msgstr "P(X=1)"
 
 msgid "P(Y=1)"
-msgstr ""
+msgstr "P(Y=1)"
 
 msgid "Phi coefficient"
-msgstr ""
+msgstr "Phi-coëfficiënt"
 
 msgid "Odds ratio"
-msgstr ""
+msgstr "Odds ratio"
 
 msgid "Risk ratio"
-msgstr ""
+msgstr "Risicoratio"
 
 msgid "Risk difference"
-msgstr ""
+msgstr "Risicoverschil"
 
 msgid ""
 "Contingency coefficient %1$s is a measure of the relationship between two "
@@ -457,18 +499,28 @@ msgid ""
 "<ul><li>Weak: %1$s = 0.20 </li> <li>Moderate: %1$s = 0.30</li><li>Strong: "
 "%1$s = 0.40</li><li>Very Strong: %1$s = 0.70</li></ul>"
 msgstr ""
+"De contingentiecoëfficiënt %1$s is een maatstaf voor de relatie tussen twee "
+"nominale variabelen. De vuistregels voor het interpreteren van de meting "
+"zijn:<ul><li>Zwak: %1$s = 0,20 </li> <li>Gemiddeld: %1$s = "
+"0,30</li><li>Sterk: %1$s = 0,40</li><li>Zeer sterk: %1$s = 0,70</li></ul>"
 
 msgid ""
 "- Odds ratio corresponds to the ratio of the odds of an event occuring in "
 "the experimental and control groups."
 msgstr ""
+"- Odds ratio komt overeen met de verhouding van de odds dat een gebeurtenis "
+"zich voordoet in de experimentele en controlegroepen."
 
 msgid ""
 "- Risk ratio corresponds to the ratio of the risk of an event occuring in "
 "the experimental and control groups."
 msgstr ""
+"- Risicoratio komt overeen met de verhouding van het risico dat een "
+"gebeurtenis zich voordoet in de experimentele en controlegroepen."
 
 msgid ""
 "- Risk difference corresponds to the difference in the risk of the event "
 "occuring between the experimental and control groups."
 msgstr ""
+"- Risicoverschil komt overeen met het verschil in het risico dat de "
+"gebeurtenis zich voordoet tussen de experimentele en controlegroep."
