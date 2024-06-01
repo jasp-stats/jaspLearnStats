@@ -2,28 +2,31 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.19.0\n"
 "POT-Creation-Date: 2024-05-04 04:43\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2024-06-01 04:41+0000\n"
+"Last-Translator: Daiki Hojo <dhojo.bayes@gmail.com>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
+"jasplearnstats-r/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.6-dev\n"
 
 msgid "Parent Distribution"
-msgstr ""
+msgstr "母分布"
 
 msgid "Count: %i"
-msgstr ""
+msgstr "カウント: %i"
 
 msgid "Mean: %.2f"
-msgstr ""
+msgstr "平均: %.2f"
 
 msgid "SE: %.2f"
-msgstr ""
+msgstr "SE: %.2f"
 
 msgid "SD: %.2f"
-msgstr ""
+msgstr "SD: %.2f"
 
 msgid "Sample Nr. %i"
 msgstr ""
@@ -32,334 +35,352 @@ msgid "... until Sample Nr. %i"
 msgstr ""
 
 msgid "Samples"
-msgstr ""
+msgstr "標本"
 
 msgid "Std. Dev.: %.2f"
-msgstr ""
+msgstr "標準偏差: %.2f"
 
 msgid "Sampling Distribution of the Mean"
-msgstr ""
+msgstr "平均の標本分布"
 
 msgid "Std. Dev: %.2f"
-msgstr ""
+msgstr "標準偏差: %.2f"
 
 msgid "Coverage"
-msgstr ""
+msgstr "被覆"
 
 msgid "Coverage %%"
-msgstr ""
+msgstr "被覆 %%"
 
 msgid "Mean"
-msgstr ""
+msgstr "平均値"
 
 msgid "Estimate"
-msgstr ""
+msgstr "推定"
 
 msgid "%s%% CI for Mean Difference"
-msgstr ""
+msgstr "平均値差の %s%% 信頼区間"
 
 msgid "Lower"
-msgstr ""
+msgstr "下限"
 
 msgid "Upper"
-msgstr ""
+msgstr "上限"
 
 msgid "CI contains %s?"
-msgstr ""
+msgstr "信頼区間は %s を含む?"
 
 msgid "Tree Plot"
-msgstr ""
+msgstr "ツリープロット"
 
 msgid "Make sure to specify a lower bound that is lower than the upper bound for the x-axis."
-msgstr ""
+msgstr "x軸の上限よりも小さい下限を指定しているか確認してください."
 
 msgid "Observed mean and %s%% CI"
-msgstr ""
+msgstr "観測平均と %s%% 信頼区間"
 
 msgid "Data plots"
-msgstr ""
+msgstr "データプロット"
 
 msgid "Dependent"
-msgstr ""
+msgstr "従属"
 
 msgid "Repetition %d"
-msgstr ""
+msgstr "繰り返し %d"
 
 msgid "Convergence Plot"
-msgstr ""
+msgstr "収束プロット"
 
 msgid "Number of Replications"
-msgstr ""
+msgstr "反復回数"
 
 msgid "p(Coverage)"
-msgstr ""
+msgstr "p(被覆)"
 
 msgid "Rep"
-msgstr ""
+msgstr "反復"
 
 msgid "Decision Tree"
-msgstr ""
+msgstr "決定木"
 
 msgid "Test choice"
-msgstr ""
+msgstr "検定選択"
 
 msgid "Explanation"
-msgstr ""
+msgstr "説明"
 
 msgid "Theoretical example distribution"
-msgstr ""
+msgstr "理論的な例の分布"
 
 msgid "Visual Explanation"
-msgstr ""
+msgstr "視覚的説明"
 
 msgid "Visual Explanation 2"
-msgstr ""
+msgstr "視覚的説明2"
 
 msgid "Visual Explanation 3"
-msgstr ""
+msgstr "視覚的説明3"
 
 msgid "Visual Explanation 4"
-msgstr ""
+msgstr "視覚的説明4"
 
 msgid "Range"
-msgstr ""
+msgstr "範囲"
 
 msgid "Min"
-msgstr ""
+msgstr "最小値"
 
 msgid "Max"
-msgstr ""
+msgstr "最大値"
 
 msgid "1st quartile"
-msgstr ""
+msgstr "第1四分位"
 
 msgid "2nd quartile / \n Median"
 msgstr ""
+"第2四分位 / \n"
+" 中央値"
 
 msgid "3rd quartile"
-msgstr ""
+msgstr "第3四分位"
 
 msgid "IQR"
-msgstr ""
+msgstr "四分位範囲"
 
 msgid "Variance"
-msgstr ""
+msgstr "分散"
 
 msgid "-3 SD"
-msgstr ""
+msgstr "-3 SD"
 
 msgid "-2 SD"
-msgstr ""
+msgstr "-2 SD"
 
 msgid "-1 SD"
-msgstr ""
+msgstr "-1 SD"
 
 msgid "+1 SD"
-msgstr ""
+msgstr "+1 SD"
 
 msgid "+2 SD"
-msgstr ""
+msgstr "+2 SD"
 
 msgid "+3 SD"
-msgstr ""
+msgstr "+3 SD"
 
 msgid "Std. Dev."
-msgstr ""
+msgstr "標準偏差"
 
 msgid "Median"
-msgstr ""
+msgstr "中央値"
 
 msgid "Mode"
-msgstr ""
+msgstr "最頻値"
 
 msgid "Min: %.2f"
-msgstr ""
+msgstr "最小値: %.2f"
 
 msgid "Max: %.2f"
-msgstr ""
+msgstr "最大値: %.2f"
 
 msgid "Range: %.2f"
-msgstr ""
+msgstr "範囲: %.2f"
 
 msgid "1st quar. = %.2f"
-msgstr ""
+msgstr "第1四分位 = %.2f"
 
 msgid "2nd quar. / \n Median = %.2f"
 msgstr ""
+"第2四分位 / \n"
+" 中央値 = %.2f"
 
 msgid "3rd quar. = %.2f"
-msgstr ""
+msgstr "第3四分位 = %.2f"
 
 msgid "IQR = %.2f"
-msgstr ""
+msgstr "四分位範囲 = %.2f"
 
 msgid "-%i SD"
-msgstr ""
+msgstr "-%i SD"
 
 msgid "+%i SD"
-msgstr ""
+msgstr "+%i SD"
 
 msgid "Mean = %.2f"
-msgstr ""
+msgstr "平均 = %.2f"
 
 msgid "Std. Dev. = %.2f"
-msgstr ""
+msgstr "標準偏差 = %.2f"
 
 msgid "Dotplot"
-msgstr ""
+msgstr "ドットプロット"
 
 msgid "No variance: All values are equal."
-msgstr ""
+msgstr "分散なし: 全ての値が等しい."
 
 msgid "All values unique, \n no mode defined."
 msgstr ""
+"全ての値が一意, \n"
+" 最頻値は定義できません."
 
 msgid "Mode = %1$i \n (Count = %2$i)"
 msgstr ""
+"最頻値= %1$i \n"
+" (カウント = %2$i)"
 
 msgid "Mode = %.2f \n (Count = %i)"
 msgstr ""
+"最頻値= %2f \n"
+" (カウント = %i)"
 
 msgid "Mode = {%i"
-msgstr ""
+msgstr "最頻値 = {%i"
 
 msgid "Mode = /n {%.2f"
-msgstr ""
+msgstr "最頻値 = /n {%.2f"
 
 msgid ", %i"
-msgstr ""
+msgstr ", %i"
 
 msgid ", %.2f"
-msgstr ""
+msgstr ", %.2f"
 
 msgid "} \n (Count = %i)"
 msgstr ""
+"} \n"
+" (カウント = %i)"
 
 msgid "Median = %.2f"
-msgstr ""
+msgstr "中央値 = %.2f"
 
 msgid "2nd quar. / \n Median"
 msgstr ""
+"第2四分位 / \n"
+" 中央値"
 
 msgid "1st quar."
-msgstr ""
+msgstr "第1四分位"
 
 msgid "3rd quar."
-msgstr ""
+msgstr "第3四分位"
 
 msgid "to be added..."
-msgstr ""
+msgstr "追加する..."
 
 msgid "Theoretical distribution of the test statistic under H<sub>0</sub>"
-msgstr ""
+msgstr "H<sub>0</sub>下の検定統計量の理論的な分布"
 
 msgid "Distribution plot"
-msgstr ""
+msgstr "分布プロット"
 
 msgid "Test statistic"
-msgstr ""
+msgstr "検定統計量"
 
 msgid "Density"
-msgstr ""
+msgstr "密度"
 
 msgid "Simulation under H<sub>0</sub>"
-msgstr ""
+msgstr "H<sub>0</sub>下のシミュレーション"
 
 msgid "Observed test statistics"
-msgstr ""
+msgstr "観測された検定統計量"
 
 msgid "Count"
-msgstr ""
+msgstr "カウント"
 
 msgid "Null dist."
-msgstr ""
+msgstr "帰無分布"
 
 msgid "Alt dist."
-msgstr ""
+msgstr "対立分布"
 
 msgid "Observed p-values"
-msgstr ""
+msgstr "観測されたp値"
 
 msgid "p-values"
-msgstr ""
+msgstr "p値"
 
 msgid "Frequency Table"
-msgstr ""
+msgstr "度数分布表"
 
 msgid "Percent"
-msgstr ""
+msgstr "パーセント"
 
 msgid "Significant"
-msgstr ""
+msgstr "有意"
 
 msgid "Not significant"
-msgstr ""
+msgstr "有意ではない"
 
 msgid "Total"
-msgstr ""
+msgstr "合計"
 
 msgid "Simulation under H<sub>a</sub>"
-msgstr ""
+msgstr "H<sub>a</sub>下のシミュレーション"
 
 msgid "Error Message"
-msgstr ""
+msgstr "エラーメッセージ"
 
 msgid "Population size too small. Cannot draw %1$i samples with size %2$i from a finite population of %3$i."
-msgstr ""
+msgstr "母集団の大きさが小さい. %3$i の有限母集団からサイズ %2$i の標本 %1$i "
+"を抽出できません."
 
 msgid "Statistics Summary"
-msgstr ""
+msgstr "統計要約"
 
 msgid "Population and simulation distribution"
-msgstr ""
+msgstr "母集団分布とシミュレーション分布"
 
 msgid "Population distribution"
-msgstr ""
+msgstr "母集団分布"
 
 msgid "Simulation distribution"
-msgstr ""
+msgstr "シミュレーション分布"
 
 msgid "Raincloud plot"
-msgstr ""
+msgstr "雨雲プロット"
 
 msgid "Group"
-msgstr ""
+msgstr "群"
 
 msgid "Control"
-msgstr ""
+msgstr "統制"
 
 msgid "Experimental"
-msgstr ""
+msgstr "実験"
 
 msgid "Population"
-msgstr ""
+msgstr "母集団"
 
 msgid "Simulation"
-msgstr ""
+msgstr "シミュレーション"
 
 msgid "95%% CI"
-msgstr ""
+msgstr "95%% 信頼区間"
 
 msgid "Cohen's d"
-msgstr ""
+msgstr "コーエン(Cohen)のd"
 
 msgid "Cohen's U%1$s"
-msgstr ""
+msgstr "コーエン(Cohen)の U%1$s"
 
 msgid "Overlap"
-msgstr ""
+msgstr "重なり"
 
 msgid "Probability of superiority"
-msgstr ""
+msgstr "優越率"
 
 msgid "Number needed to treat*"
-msgstr ""
+msgstr "治療に必要な回数*"
 
 msgid "The number needed to treat is based on a %1$s event rate."
-msgstr ""
+msgstr "治療に必要な数は、イベント発生率 %1$s に基づいている."
 
 msgid "Cohen's %1$s is a measure of the standardized difference between two groups. The rules of thumbs for interpreting the measure are:<ul><li>Small: %1$s = 0.20 </li> <li>Medium: %1$s = 0.50</li><li>Large: %1$s = 0.80</li></ul>"
 msgstr ""
+"コーエン(Cohen)の %1$s は、2群間の標準化された差の指標である. "
+"この指標を解釈するための目安は次のとおりである: <ul><li>小：%1$s = 0.20 </"
+"li> <li>中：%1$s = 0.50</li><li> 大：%1$s = 0.80</li></ul>"
 
 msgid "- Cohen's U%1$s corresponds to the proportion of the control group that is surpassed by the upper upper half of the experimental group."
 msgstr ""
