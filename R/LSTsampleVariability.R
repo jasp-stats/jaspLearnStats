@@ -201,7 +201,7 @@ LSTsampleVariability <- function(jaspResults, dataset, options) {
     }
   }
   
-  if (samples != "") {
+  if (!identical(samples, "")) {
     for (s in samples) {
       sampleDot <- pData[[1]][s,]
       if (options[["cltParentDistribution"]] == "binomial") {
