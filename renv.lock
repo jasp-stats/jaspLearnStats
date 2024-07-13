@@ -261,7 +261,7 @@
     },
     "fitdistrplus": {
       "Package": "fitdistrplus",
-      "Version": "1.1-11",
+      "Version": "1.2-1",
       "Source": "Repository"
     },
     "flexplot": {
@@ -469,7 +469,7 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspBase",
       "RemoteRef": "HEAD",
-      "RemoteSha": "e7b21a684768ac8853057a935ff21bcba3314212"
+      "RemoteSha": "7de02c442478e028fe2036e3b906059bf504c13e"
     },
     "jaspDescriptives": {
       "Package": "jaspDescriptives",
@@ -480,7 +480,7 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspDescriptives",
       "RemoteRef": "HEAD",
-      "RemoteSha": "feaa9a47889074ed02841037c20c07285dd11f07"
+      "RemoteSha": "f6ba4aa4c933febecf2ff3a8c81e9af3341a451a"
     },
     "jaspDistributions": {
       "Package": "jaspDistributions",
@@ -491,7 +491,7 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspDistributions",
       "RemoteRef": "HEAD",
-      "RemoteSha": "613eb2ce4db44a619f9c61e4772c02c3a468b165"
+      "RemoteSha": "afc50c8cadb1fbb3990f8cb78c8aff836c98bc0e"
     },
     "jaspGraphs": {
       "Package": "jaspGraphs",
@@ -502,7 +502,7 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspGraphs",
       "RemoteRef": "HEAD",
-      "RemoteSha": "5c6cb6a4723197ca3befd3d0a5fab5b8291c08a2"
+      "RemoteSha": "e439c080e3841e0719c00ce35c376b34c833b546"
     },
     "jaspTTests": {
       "Package": "jaspTTests",
@@ -513,7 +513,7 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspTTests",
       "RemoteRef": "HEAD",
-      "RemoteSha": "ac388c2cf6fc23a1af6b8c60ce01c7e665f72591"
+      "RemoteSha": "e04f30b6db24df245bb46bcb7f7a115c98cc8e02"
     },
     "jpeg": {
       "Package": "jpeg",
