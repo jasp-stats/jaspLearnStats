@@ -173,7 +173,7 @@ Form
 					name:				"selectedVariable"
 					title:				qsTr("Selected")
 					singleVariable:		true
-					allowedColumns:		["ordinal", "scale"]
+					allowedColumns:		["scale"]
 				}
 			}
 		}
