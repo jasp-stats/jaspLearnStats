@@ -499,12 +499,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
 }
 
 .readDataLSTdesc <- function(jaspResults, options) {
-  variable <- unlist(options[["selectedVariable"]])
-  variable <- variable[variable != ""]
-  dataset <- .readDataSetToEnd(columns.as.numeric = variable)
-  df <- data.frame(x = unlist(dataset))
-  df <- na.omit(df)
-  return(df)
+  return( data.frame(x = dataset[[ options[["selectedVariable"]] ]]) )
 }
 
 .drawSpreadVisualization <- function(jaspResults, options, data, plotObject, yMax, xLimits, xBreaks, labelSize, colors) {
