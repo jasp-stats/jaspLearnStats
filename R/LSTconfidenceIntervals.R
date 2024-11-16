@@ -37,7 +37,7 @@ LSTconfidenceIntervals <- function(jaspResults, dataset = NULL, options) {
 }
 
 .getConfidenceContainer <- function(jaspResults) {
-  confidenceContainer <- jaspResults[["confidenceContainer"]] %setOrRetrieve% createJaspContainer(dependencies = c("mu", "sigma", "n", "confidenceIntervalInterval", "nReps", "treePlot", "seed"))
+  confidenceContainer <- jaspResults[["confidenceContainer"]] %setOrRetrieve% createJaspContainer(dependencies = c("mu", "sigma", "n", "confidenceIntervalInterval", "nReps", "treePlot", "setSeed", "seed"))
   return(confidenceContainer)
 }
 

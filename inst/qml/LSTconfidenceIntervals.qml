@@ -63,7 +63,6 @@ Form
 			defaultValue: 100
 			id:nReps
 		}
-		SetSeed{}
 	}
 	Group
 	{
@@ -240,5 +239,7 @@ Form
 
 		}
 	}
+	Divider{}
+	SetSeed{}
 }
 
