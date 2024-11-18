@@ -161,9 +161,9 @@ Form
 
 			Group
 			{
-			
+
 				columns:	3
-			
+
 				DropDown
 				{
 					name:				"ciSampleShowType"
@@ -189,8 +189,8 @@ Form
 					max:			ciSampleAmount.value
 					min:			1
 					}
-					
-					
+
+
 				IntegerField
 				{
 					name:			"ciFromSample"
@@ -202,7 +202,7 @@ Form
 					min: 			1
 					max:			ciToSample.value
 				}
-					
+
 				IntegerField
 				{
 					name:			"ciToSample"
@@ -216,7 +216,7 @@ Form
 				}
 			}
 		}
-	
+
 		CheckBox
 		{
 			name: "convergencePlot"
@@ -239,5 +239,7 @@ Form
 
 		}
 	}
+	Divider{}
+	SetSeed{}
 }
 
