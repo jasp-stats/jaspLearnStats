@@ -517,7 +517,7 @@ switchOptions <- function(options) {
   rhoTable <- createJaspContainer()
   rhoTable$position <- 3
   rhoTable$dependOn(c("effectSize", "effectSizeValueRho", "simulateData", "simulateDataN",
-                      "rhoSharedVariance", "setSeed", "seed"))
+                      "rhoSharedVariance", "setSeed", "seed", "explanatoryTexts"))
   jaspResults[["rhoTable"]] <- rhoTable
 
 
@@ -712,7 +712,7 @@ switchOptions <- function(options) {
 
   if (options[["plotRhoRegression"]]) {
     plot <- plot + ggplot2::geom_abline(
-      intercept = mu2,
+      intercept = mu2 - (rho * (sigma2/sigma1)) * mu1,
       slope     = rho * (sigma2/sigma1)
     )
   }
@@ -936,7 +936,7 @@ switchOptions <- function(options) {
 
   phiTable <-  createJaspContainer()
   phiTable$position <- 3
-  phiTable$dependOn(c("effectSize", "effectSizeValuePhi", "simulateData", "simulateDataN", "pX", "pY", "inputPopulation", "pX1Y1", "pX1Y0", "pX0Y1", "pX0Y0", "setSeed", "seed", "phiOR", "phiRR", "phiRD"))
+  phiTable$dependOn(c("effectSize", "effectSizeValuePhi", "simulateData", "simulateDataN", "pX", "pY", "inputPopulation", "pX1Y1", "pX1Y0", "pX0Y1", "pX0Y0", "setSeed", "seed", "phiOR", "phiRR", "phiRD", "explanatoryTexts"))
   jaspResults[["phiTable"]] <- phiTable
 
 
