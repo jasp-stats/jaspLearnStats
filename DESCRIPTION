@@ -18,7 +18,9 @@ Imports:
   jaspTTests,
   ggforce,
   tidyr,
-  igraph
+  igraph,
+  HDInterval,
+  metafor
 Remotes:
   jasp-stats/jaspBase,
   jasp-stats/jaspGraphs,
