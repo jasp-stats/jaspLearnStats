@@ -24,12 +24,18 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   data <- .getDataLSTdesc(jaspResults, options, inputType)
 
   #checking whether data is discrete or continuous, whereas only integers are treated as discrete
-  discrete <- ifelse(all(data$x == as.integer(data$x)), TRUE, FALSE)
+  integerData <- as.integer(data$x)
+  # conversion to integers fails with extreme values, if it failed for any value just treat it as continuous
+  if (any(is.na(integerData))) {
+    discrete <- FALSE
+  } else {
+    discrete <- ifelse(all(data$x == integerData), TRUE, FALSE)
+  }
 
   stats <- switch(options[["LSdescStatistics"]],
-                            "LSdescMean" = "ct", "LSdescMedian" = "ct", "LSdescMode" = "ct", "LSdescMMM" = "ct",
-                            "LSdescRange" = "spread", "LSdescQR" = "spread", "LSdescSD" = "spread",
-                            "none" = "none")
+                  "LSdescMean" = "ct", "LSdescMedian" = "ct", "LSdescMode" = "ct", "LSdescMMM" = "ct",
+                  "LSdescRange" = "spread", "LSdescQR" = "spread", "LSdescSD" = "spread",
+                  "none" = "none")
 
 
   if (options[["LSdescHistBar"]])
@@ -497,6 +503,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   variable <- variable[variable != ""]
   dataset <- .readDataSetToEnd(columns.as.numeric = variable)
   df <- data.frame(x = unlist(dataset))
+  df <- na.omit(df)
   return(df)
 }
 
