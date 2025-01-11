@@ -1,0 +1,473 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: jaspLearnStats 0.19.2\n"
+"POT-Creation-Date: 2024-10-19 04:44\n"
+"PO-Revision-Date: 2025-01-04 21:55+0000\n"
+"Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/jasp/"
+"jasplearnstats-r/ta/>\n"
+"Language: ta\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10-dev\n"
+
+msgid "Parent Distribution"
+msgstr "பெற்றோர் வழங்கல்"
+
+msgid "Count: %i"
+msgstr "எண்ணிக்கை: %i"
+
+msgid "Mean: %.2f"
+msgstr "சராசரி: %.2f"
+
+msgid "SE: %.2f"
+msgstr "SE: %.2f"
+
+msgid "SD: %.2f"
+msgstr "எச்டி: %.2 எஃப்"
+
+msgid "Sample Nr. %i"
+msgstr "மாதிரி என்.ஆர். %i"
+
+msgid "... until Sample Nr. %i"
+msgstr "... மாதிரி nr வரை. %i"
+
+msgid "Samples"
+msgstr "மாதிரிகள்"
+
+msgid "Std. Dev.: %.2f"
+msgstr "Std. தேவ்.: %.2 எஃப்"
+
+msgid "Sampling Distribution of the Mean"
+msgstr "சராசரியின் மாதிரி வழங்கல்"
+
+msgid "Std. Dev: %.2f"
+msgstr "Std. தேவ்: %.2 எஃப்"
+
+msgid "Coverage"
+msgstr "பாதுகாப்பு"
+
+msgid "Coverage %%"
+msgstr "கவரேச் %%"
+
+msgid "Mean"
+msgstr "இடை, சராசரி"
+
+msgid "Estimate"
+msgstr "மதிப்பீடு"
+
+msgid "%s%% CI for Mean Difference"
+msgstr "சராசரி வேறுபாட்டிற்கு%s %% தொஒ"
+
+msgid "Lower"
+msgstr "கீழ்"
+
+msgid "Upper"
+msgstr "மேல்"
+
+msgid "CI contains %s?"
+msgstr "தொஒ %s?"
+
+msgid "Tree Plot"
+msgstr "மர சூழ்ச்சி"
+
+msgid "Make sure to specify a lower bound that is lower than the upper bound for the x-axis."
+msgstr ""
+"எக்ச்-அச்சுக்கு மேல் கட்டுப்பாட்டை விட குறைவாக இருக்கும் குறைந்த வரம்பைக் குறிப்பிடுவதை "
+"உறுதிசெய்க."
+
+msgid "Observed mean and %s%% CI"
+msgstr "கவனிக்கப்பட்ட சராசரி மற்றும்%s %% தொஒ"
+
+msgid "Data plots"
+msgstr "தரவு அடுக்கு"
+
+msgid "Dependent"
+msgstr "சார்ந்தது"
+
+msgid "Repetition %d"
+msgstr "மறுபடியும் %d"
+
+msgid "Convergence Plot"
+msgstr "குவிப்பு சூழ்ச்சி"
+
+msgid "Number of Replications"
+msgstr "பிரதிகளின் எண்ணிக்கை"
+
+msgid "p(Coverage)"
+msgstr "பி (பாதுகாப்பு)"
+
+msgid "Rep"
+msgstr "சார்பாளர்"
+
+msgid "Decision Tree"
+msgstr "முடிவு மரம்"
+
+msgid "Test choice"
+msgstr "சோதனை தேர்வு"
+
+msgid "Explanation"
+msgstr "விளக்கம்"
+
+msgid "Theoretical example distribution"
+msgstr "தத்துவார்த்த எடுத்துக்காட்டு வழங்கல்"
+
+msgid "Visual Explanation"
+msgstr "காட்சி விளக்கம்"
+
+msgid "Visual Explanation 2"
+msgstr "காட்சி விளக்கம் 2"
+
+msgid "Visual Explanation 3"
+msgstr "காட்சி விளக்கம் 3"
+
+msgid "Visual Explanation 4"
+msgstr "காட்சி விளக்கம் 4"
+
+msgid "Range"
+msgstr "வீச்சு"
+
+msgid "Min"
+msgstr "மணித்துளி"
+
+msgid "Max"
+msgstr "அதிகபட்சம்"
+
+msgid "1st quartile"
+msgstr "1 வது காலாண்டு"
+
+msgid "2nd quartile / \n Median"
+msgstr ""
+"2 வது காலாண்டு /\n"
+" சராசரி"
+
+msgid "3rd quartile"
+msgstr "3 வது காலாண்டு"
+
+msgid "IQR"
+msgstr "Iqr"
+
+msgid "Variance"
+msgstr "மாறுபாட்டெண்"
+
+msgid "-3 SD"
+msgstr "-3 எச்டி"
+
+msgid "-2 SD"
+msgstr "-2 எச்டி"
+
+msgid "-1 SD"
+msgstr "-1 எச்டி"
+
+msgid "+1 SD"
+msgstr "+1 எச்டி"
+
+msgid "+2 SD"
+msgstr "+2 எச்டி"
+
+msgid "+3 SD"
+msgstr "+3 எச்டி"
+
+msgid "Std. Dev."
+msgstr "Std. தேவ்."
+
+msgid "Median"
+msgstr "இடைநடு"
+
+msgid "Mode"
+msgstr "பயன்முறை"
+
+msgid "Min: %.2f"
+msgstr "நிமிடம்: %.2 எஃப்"
+
+msgid "Max: %.2f"
+msgstr "அதிகபட்சம்: %.2f"
+
+msgid "Range: %.2f"
+msgstr "வரம்பு: %.2f"
+
+msgid "1st quar. = %.2f"
+msgstr "1 வது குவார். = %.2f"
+
+msgid "2nd quar. / \n Median = %.2f"
+msgstr ""
+"2 வது குவார். /\n"
+" சராசரி = %.2f"
+
+msgid "3rd quar. = %.2f"
+msgstr "3 வது குவார். = %.2f"
+
+msgid "IQR = %.2f"
+msgstr "IQR = %.2f"
+
+msgid "-%i SD"
+msgstr "-%i SD"
+
+msgid "+%i SD"
+msgstr "+%i SD"
+
+msgid "Mean = %.2f"
+msgstr "சராசரி = %.2f"
+
+msgid "Std. Dev. = %.2f"
+msgstr "Std. தேவ். = %.2f"
+
+msgid "Dotplot"
+msgstr "டாட் பிளாட்"
+
+msgid "No variance: All values are equal."
+msgstr "மாறுபாடு இல்லை: எல்லா மதிப்புகளும் சமமானவை."
+
+msgid "All values unique, \n no mode defined."
+msgstr ""
+"அனைத்து மதிப்புகளும் தனித்துவமானவை,\n"
+" பயன்முறை வரையறுக்கப்படவில்லை."
+
+msgid "Mode = %1$i \n (Count = %2$i)"
+msgstr ""
+"பயன்முறை = %1 $ i\n"
+" (எண்ணிக்கை = %2 $ i)"
+
+msgid "Mode = %.2f \n (Count = %i)"
+msgstr ""
+"பயன்முறை = %.2f\n"
+" (எண்ணிக்கை = %i)"
+
+msgid "Mode = {%i"
+msgstr "பயன்முறை = {%i"
+
+msgid "Mode = /n {%.2f"
+msgstr "பயன்முறை = /n {%.2f"
+
+msgid ", %i"
+msgstr ", %i"
+
+msgid ", %.2f"
+msgstr ", %"
+
+msgid "} \n (Count = %i)"
+msgstr ""
+"}\n"
+" (எண்ணிக்கை = %i)"
+
+msgid "Median = %.2f"
+msgstr "சராசரி = %.2f"
+
+msgid "2nd quar. / \n Median"
+msgstr ""
+"2 வது குவார். /\n"
+" சராசரி"
+
+msgid "1st quar."
+msgstr "1 வது குவார்."
+
+msgid "3rd quar."
+msgstr "3 வது குவார்."
+
+msgid "to be added..."
+msgstr "சேர்க்கப்பட வேண்டும் ..."
+
+msgid "Theoretical distribution of the test statistic under H<sub>0</sub>"
+msgstr "H <துணை> 0 </sub> இன் கீழ் சோதனை புள்ளிவிவரத்தின் தத்துவார்த்த வழங்கல்"
+
+msgid "Distribution plot"
+msgstr "விநியோக சூழ்ச்சி"
+
+msgid "Test statistic"
+msgstr "சோதனை புள்ளிவிவரம்"
+
+msgid "Density"
+msgstr "அடர்த்தி"
+
+msgid "Simulation under H<sub>0</sub>"
+msgstr "H <துணை> 0 </sub> இன் கீழ் உருவகப்படுத்துதல்"
+
+msgid "Observed test statistics"
+msgstr "சோதனை புள்ளிவிவரங்கள் கவனிக்கப்பட்டன"
+
+msgid "Count"
+msgstr "எண்ணுங்கள்"
+
+msgid "Null dist."
+msgstr "சுழிய மாவட்டம்."
+
+msgid "Alt dist."
+msgstr "மாற்று dist."
+
+msgid "Observed p-values"
+msgstr "கவனிக்கப்பட்ட பி-மதிப்புகள்"
+
+msgid "p-values"
+msgstr "பி-மதிப்புகள்"
+
+msgid "Frequency Table"
+msgstr "அதிர்வெண் அட்டவணை"
+
+msgid "Percent"
+msgstr "விழுக்காடு"
+
+msgid "Significant"
+msgstr "குறிப்பிடத்தக்க"
+
+msgid "Not significant"
+msgstr "குறிப்பிடத்தக்கதாக இல்லை"
+
+msgid "Total"
+msgstr "மொத்தம்"
+
+msgid "Simulation under H<sub>a</sub>"
+msgstr "H <துணை> A </sub> இன் கீழ் உருவகப்படுத்துதல்"
+
+msgid "Error Message"
+msgstr "பிழை செய்தி"
+
+msgid "Population size too small. Cannot draw %1$i samples with size %2$i from a finite population of %3$i."
+msgstr ""
+"மக்கள் தொகை அளவு மிகச் சிறியது. %1 $ i மாதிரிகள் %2 $ i உடன் %3 $ i இன் வரையறுக்கப்பட்"
+"ட மக்கள்தொகையில் இருந்து வரைய முடியாது."
+
+msgid "Statistics Summary"
+msgstr "புள்ளிவிவர சுருக்கம்"
+
+msgid "Population and simulation distribution"
+msgstr "மக்கள் தொகை மற்றும் உருவகப்படுத்துதல் வழங்கல்"
+
+msgid "Population distribution"
+msgstr "மக்கள் தொகை வழங்கல்"
+
+msgid "Simulation distribution"
+msgstr "உருவகப்படுத்துதல் வழங்கல்"
+
+msgid "Raincloud plot"
+msgstr "ரெயின்க்ளூட் சூழ்ச்சி"
+
+msgid "Group"
+msgstr "குழு"
+
+msgid "Control"
+msgstr "கட்டுப்பாடு"
+
+msgid "Experimental"
+msgstr "சோதனை"
+
+msgid "Population"
+msgstr "மக்கள் தொகை"
+
+msgid "Simulation"
+msgstr "பாவனை"
+
+msgid "95%% CI"
+msgstr "95 %% தொஒ"
+
+msgid "Cohen's d"
+msgstr "கோஅனின் டி"
+
+msgid "Cohen's U%1$s"
+msgstr "கோஅனின் u%1$s"
+
+msgid "Overlap"
+msgstr "ஒன்றுடன் ஒன்று"
+
+msgid "Probability of superiority"
+msgstr "மேன்மையின் நிகழ்தகவு"
+
+msgid "Number needed to treat*"
+msgstr "சிகிச்சையளிக்க தேவையான எண்*"
+
+msgid "The number needed to treat is based on a %1$s event rate."
+msgstr ""
+"சிகிச்சையளிக்க தேவையான எண்ணிக்கை %1$s நிகழ்வு வீதத்தை அடிப்படையாகக் கொண்டது."
+
+msgid "Cohen's %1$s is a measure of the standardized difference between two groups. The rules of thumbs for interpreting the measure are:<ul><li>Small: %1$s = 0.20 </li> <li>Medium: %1$s = 0.50</li><li>Large: %1$s = 0.80</li></ul>"
+msgstr ""
+"கோஅனின் %1$s என்பது இரண்டு குழுக்களுக்கு இடையிலான தரப்படுத்தப்பட்ட வேறுபாட்டின் ஒரு "
+"நடவடிக்கையாகும். அளவை விளக்குவதற்கான கட்டைவிரல்களின் விதிகள்: <ul> <li> சிறியது: %1$"
+"s = 0.20 </li> <li> நடுத்தர: %1$s = 0.50 </li> <li> பெரிய: %1$s = 0.80 </li> "
+"</ul>"
+
+msgid "- Cohen's U%1$s corresponds to the proportion of the control group that is surpassed by the upper upper half of the experimental group."
+msgstr ""
+"- கோஅனின் u%1$s சோதனைக் குழுவின் மேல் பாதியில் மிஞ்சும் கட்டுப்பாட்டுக் குழுவின் "
+"விகிதத்திற்கு ஒத்திருக்கிறது."
+
+msgid "- Overlap corresponds to the common are of the control and experimental density."
+msgstr "- ஒன்றுடன் ஒன்று பொதுவானது கட்டுப்பாடு மற்றும் சோதனை அடர்த்தி."
+
+msgid "- Probability of superiority corresponds to the probability that a randomly chosen participant from the experimental group will have higher value than a randomly chosen participant from the control group."
+msgstr ""
+"- மேன்மையின் நிகழ்தகவு, சோதனைக் குழுவிலிருந்து தோராயமாக தேர்ந்தெடுக்கப்பட்ட பங்கேற்பாளர் "
+"கட்டுப்பாட்டுக் குழுவிலிருந்து தோராயமாக தேர்ந்தெடுக்கப்பட்ட பங்கேற்பாளரைக் காட்டிலும் அதிக "
+"மதிப்பைக் கொண்டிருக்கும் நிகழ்தகவுக்கு ஒத்திருக்கிறது."
+
+msgid "- Number needed to treat corresponds to the number of participants in the experimental group that would be required to observe one more successful outcome than in the control group."
+msgstr ""
+"- சிகிச்சைக்குத் தேவையான எண், சோதனைக் குழுவில் பங்கேற்பாளர்களின் எண்ணிக்கையுடன் "
+"ஒத்திருக்கிறது, இது கட்டுப்பாட்டுக் குழுவில் இருப்பதை விட ஒரு வெற்றிகரமான விளைவைக் "
+"கவனிக்க வேண்டும்."
+
+msgid "Pearson correlation"
+msgstr "பியர்சன் தொடர்பு"
+
+msgid "Shared variance (R%1$s)"
+msgstr "பகிரப்பட்ட மாறுபாடு (r%1$s)"
+
+msgid "Pearson correlation coefficient %1$s is a measure of the relationship between two continuous variables. The rules of thumbs for interpreting the measure are:<ul><li>Small: %1$s = 0.10 </li> <li>Medium: %1$s = 0.30</li><li>Large: %1$s = 0.50</li></ul>"
+msgstr ""
+"பியர்சன் தொடர்பு குணகம் %1$s என்பது இரண்டு தொடர்ச்சியான மாறிகள் இடையேயான உறவின் அளவீடு "
+"ஆகும். அளவை விளக்குவதற்கான கட்டைவிரல்களின் விதிகள்: <ul> <li> சிறியது: %1$s = 0.10 "
+"</li> <li> நடுத்தர: %1$s = 0.30 </li> <li> பெரிய: %1$s = 0.50 </li> </ul>"
+
+msgid "- Shared variance (R%1$s) corresponds to proportion of variance shared common between the variables."
+msgstr ""
+"- பகிரப்பட்ட மாறுபாடு (R%1$s) மாறிகள் இடையே பொதுவான பகிரப்பட்ட மாறுபாட்டின் "
+"விகிதத்திற்கு ஒத்திருக்கிறது."
+
+msgid "The specified phi, P(X), and P(Y) do not yield a valid contingency table. One of the frequencies would need to be negative."
+msgstr ""
+"குறிப்பிட்ட PHI, P (x) மற்றும் P (y) ஆகியவை சரியான தற்செயல் அட்டவணையை வழங்காது. "
+"அதிர்வெண்களில் ஒன்று எதிர்மறையாக இருக்க வேண்டும்."
+
+msgid "Frequencies"
+msgstr "அலைவெண்கள்"
+
+msgid "P(X=1)"
+msgstr "பி (x = 1)"
+
+msgid "P(Y=1)"
+msgstr "பி (y = 1)"
+
+msgid "Phi coefficient"
+msgstr "PHI குணகம்"
+
+msgid "Odds ratio"
+msgstr "முரண்பாடுகள் விகிதம்"
+
+msgid "Risk ratio"
+msgstr "இடர் விகிதம்"
+
+msgid "Risk difference"
+msgstr "இடர் வேறுபாடு"
+
+msgid "Contingency coefficient %1$s is a measure of the relationship between two nominal variables. The rules of thumbs for interpreting the measure are:<ul><li>Weak: %1$s = 0.20 </li> <li>Moderate: %1$s = 0.30</li><li>Strong: %1$s = 0.40</li><li>Very Strong: %1$s = 0.70</li></ul>"
+msgstr ""
+"தற்செயல் குணகம் %1$s என்பது இரண்டு பெயரளவு மாறிகள் இடையேயான உறவின் அளவீடு ஆகும். அளவை "
+"விளக்குவதற்கான கட்டைவிரல்களின் விதிகள்: <ul> <li> பலவீனமான: %1$s = 0.20 </li> <li> "
+"மிதமான: %1$s = 0.30 </li> <li> வலுவான: %1$s = 0.40 </li> <li> மிகவும் "
+"வலுவானது: %1$s = 0.70 </li> </ul>"
+
+msgid "- Odds ratio corresponds to the ratio of the odds of an event occuring in the experimental and control groups."
+msgstr ""
+"- முரண்பாடுகள் விகிதம் சோதனை மற்றும் கட்டுப்பாட்டு குழுக்களில் நிகழும் நிகழ்வின் "
+"முரண்பாடுகளின் விகிதத்திற்கு ஒத்திருக்கிறது."
+
+msgid "- Risk ratio corresponds to the ratio of the risk of an event occuring in the experimental and control groups."
+msgstr ""
+"- இடர் விகிதம் சோதனை மற்றும் கட்டுப்பாட்டு குழுக்களில் நிகழும் நிகழ்வின் அபாயத்தின் "
+"விகிதத்துடன் ஒத்துள்ளது."
+
+msgid "- Risk difference corresponds to the difference in the risk of the event occuring between the experimental and control groups."
+msgstr ""
+"- இடர் வேறுபாடு சோதனை மற்றும் கட்டுப்பாட்டு குழுக்களுக்கு இடையில் நிகழும் நிகழ்வின் "
+"அபாயத்தின் வேறுபாட்டிற்கு ஒத்திருக்கிறது."
