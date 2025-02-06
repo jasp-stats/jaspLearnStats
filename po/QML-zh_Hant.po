@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2025-02-07 00:02+0000\n"
+"Last-Translator: 陳寬裕 <pf.kuan.yu.chen@gmail.com>\n"
+"Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
+"projects/jasp/jasplearnstats-qml/zh_Hant/>\n"
+"Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.10-dev\n"
 "X-Language: zh_Hant\n"
 "X-Qt-Contexts: true\n"
 
@@ -145,7 +151,7 @@ msgstr ""
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Range"
-msgstr ""
+msgstr "全距"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Left"
@@ -333,7 +339,7 @@ msgstr ""
 
 msgctxt "LSTdescriptives|"
 msgid "Range"
-msgstr ""
+msgstr "全距"
 
 msgctxt "LSTdescriptives|"
 msgid "Quartiles"
@@ -429,7 +435,7 @@ msgstr ""
 
 msgctxt "LSTsampleVariability|"
 msgid "Range"
-msgstr ""
+msgstr "全距"
 
 msgctxt "LSTsampleVariability|"
 msgid "Left"
@@ -581,7 +587,7 @@ msgstr ""
 
 msgctxt "LSTstandardError|"
 msgid "Range"
-msgstr ""
+msgstr "全距"
 
 msgctxt "LSTstandardError|"
 msgid "Left"
@@ -1065,7 +1071,7 @@ msgstr ""
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Range"
-msgstr ""
+msgstr "全距"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "All"
