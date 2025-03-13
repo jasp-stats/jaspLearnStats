@@ -743,9 +743,9 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       } else {
         firstMode <- ifelse(discrete, gettextf("Mode = {%i", mode[1]), gettextf("Mode = /n {%.2f", mode[1]))
         if (discrete) {
-          otherModes <- gettextf(rep(", %i", length(mode) - 1), mode[2:length(mode)])
+          otherModes <- sprintf(rep(", %i", length(mode) - 1), mode[2:length(mode)])
         } else {
-          otherModes <- gettextf(rep(", %.2f", length(mode) - 1), mode[2:length(mode)])
+          otherModes <- sprintf(rep(", %.2f", length(mode) - 1), mode[2:length(mode)])
         }
         otherModes <- paste(otherModes, collapse = "")
         modeHeightString <- gettextf( "} \n (Count = %i)", modeHeight)
