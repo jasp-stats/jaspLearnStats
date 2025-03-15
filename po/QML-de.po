@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2025-03-12 18:33+0000\n"
+"Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/jasp/"
+"jasplearnstats-qml/de/>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10.3-dev\n"
 "X-Language: de\n"
 "X-Qt-Contexts: true\n"
 
@@ -151,7 +157,7 @@ msgstr "Mittelwert"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Range"
-msgstr "Wertebereich"
+msgstr "Spannweite"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Left"
@@ -339,7 +345,7 @@ msgstr "Erklärung anzeigen"
 
 msgctxt "LSTdescriptives|"
 msgid "Range"
-msgstr "Wertebereich"
+msgstr "Spannweite"
 
 msgctxt "LSTdescriptives|"
 msgid "Quartiles"
@@ -435,7 +441,7 @@ msgstr "Mittelwert"
 
 msgctxt "LSTsampleVariability|"
 msgid "Range"
-msgstr "Wertebereich"
+msgstr "Spannweite"
 
 msgctxt "LSTsampleVariability|"
 msgid "Left"
@@ -587,7 +593,7 @@ msgstr "Mittelwert"
 
 msgctxt "LSTstandardError|"
 msgid "Range"
-msgstr "Wertebereich"
+msgstr "Spannweite"
 
 msgctxt "LSTstandardError|"
 msgid "Left"
@@ -1067,7 +1073,7 @@ msgstr "Letzte"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Range"
-msgstr "Wertebereich"
+msgstr "Spannweite"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "All"
