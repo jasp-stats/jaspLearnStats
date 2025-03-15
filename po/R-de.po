@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.15\n"
-"POT-Creation-Date: 2023-05-27 04:43\n"
+"POT-Creation-Date: 2025-03-15 04:44\n"
 "PO-Revision-Date: 2025-03-13 08:25+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
@@ -252,12 +252,6 @@ msgstr "Modus = {%i"
 
 msgid "Mode = /n {%.2f"
 msgstr "Modus = /n {%.2f"
-
-msgid ", %i"
-msgstr ", %i"
-
-msgid ", %.2f"
-msgstr ", %.2f"
 
 msgid ""
 "} \n"
@@ -525,6 +519,12 @@ msgid ""
 msgstr ""
 "- Die Risikodifferenz entspricht der Differenz im Risiko des Auftretens des "
 "Ereignisses zwischen der Experimental- und der Kontrollgruppe."
+
+#~ msgid ", %i"
+#~ msgstr ", %i"
+
+#~ msgid ", %.2f"
+#~ msgstr ", %.2f"
 
 #~ msgid "μ"
 #~ msgstr "μ"
