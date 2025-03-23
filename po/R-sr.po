@@ -2,58 +2,62 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.19.2\n"
 "POT-Creation-Date: 2025-03-15 04:44\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-03-24 01:54+0000\n"
+"Last-Translator: Marko Bojović <bojovicmarko@outlook.com>\n"
+"Language-Team: Serbian <https://hosted.weblate.org/projects/jasp/"
+"jasplearnstats-r/sr/>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.11-dev\n"
 
 msgid "Parent Distribution"
-msgstr ""
+msgstr "Дистрибуција родитеља"
 
 msgid "Count: %i"
-msgstr ""
+msgstr "Бројати: %i"
 
 msgid "Mean: %.2f"
-msgstr ""
+msgstr "Средина: %.2f"
 
 msgid "SE: %.2f"
-msgstr ""
+msgstr "SE: %.2f"
 
 msgid "SD: %.2f"
-msgstr ""
+msgstr "SD: %.2f"
 
 msgid "Sample Nr. %i"
-msgstr ""
+msgstr "Узорак бр. %i"
 
 msgid "... until Sample Nr. %i"
-msgstr ""
+msgstr "... до узорака бр. %i"
 
 msgid "Samples"
-msgstr ""
+msgstr "Узорци"
 
 msgid "Std. Dev.: %.2f"
-msgstr ""
+msgstr "Станд. дев.: %.2f"
 
 msgid "Sampling Distribution of the Mean"
-msgstr ""
+msgstr "Дистрибуција средње вредности узорковања"
 
 msgid "Std. Dev: %.2f"
-msgstr ""
+msgstr "Станд. дев: %.2f"
 
 msgid "Coverage"
-msgstr ""
+msgstr "Покривеност"
 
 msgid "Coverage %%"
-msgstr ""
+msgstr "Покривеност %%"
 
 msgid "Mean"
-msgstr ""
+msgstr "Аритметичка средина"
 
 msgid "Estimate"
-msgstr ""
+msgstr "Проценити"
 
 msgid "%s%% CI for Mean Difference"
 msgstr ""
@@ -95,124 +99,130 @@ msgid "p(Coverage)"
 msgstr ""
 
 msgid "Rep"
-msgstr ""
+msgstr "Rep"
 
 msgid "Decision Tree"
-msgstr ""
+msgstr "Стабла одлучивања"
 
 msgid "Test choice"
-msgstr ""
+msgstr "Избор теста"
 
 msgid "Explanation"
-msgstr ""
+msgstr "Објашњење"
 
 msgid "Theoretical example distribution"
-msgstr ""
+msgstr "Теоријски пример расподеле"
 
 msgid "Visual Explanation"
-msgstr ""
+msgstr "Визуелно објашњење"
 
 msgid "Visual Explanation 2"
-msgstr ""
+msgstr "Визуелно објашњење 2"
 
 msgid "Visual Explanation 3"
-msgstr ""
+msgstr "Визуелно објашњење 3"
 
 msgid "Visual Explanation 4"
-msgstr ""
+msgstr "Визуелно објашњење 4"
 
 msgid "Range"
-msgstr ""
+msgstr "Распон"
 
 msgid "Min"
-msgstr ""
+msgstr "Мининум"
 
 msgid "Max"
-msgstr ""
+msgstr "Максимум"
 
 msgid "1st quartile"
-msgstr ""
+msgstr "1. квартал"
 
 msgid "2nd quartile / \n Median"
 msgstr ""
+"2. квартал / \n"
+" Медијана"
 
 msgid "3rd quartile"
-msgstr ""
+msgstr "3. квартал"
 
 msgid "IQR"
-msgstr ""
+msgstr "IQR"
 
 msgid "Variance"
-msgstr ""
+msgstr "Варијанца"
 
 msgid "-3 SD"
-msgstr ""
+msgstr "-3 SD"
 
 msgid "-2 SD"
-msgstr ""
+msgstr "-2 SD"
 
 msgid "-1 SD"
-msgstr ""
+msgstr "-1 SD"
 
 msgid "+1 SD"
-msgstr ""
+msgstr "+1 SD"
 
 msgid "+2 SD"
-msgstr ""
+msgstr "+2 SD"
 
 msgid "+3 SD"
-msgstr ""
+msgstr "+3 SD"
 
 msgid "Std. Dev."
-msgstr ""
+msgstr "Станд. девиј."
 
 msgid "Median"
-msgstr ""
+msgstr "Медијана"
 
 msgid "Mode"
-msgstr ""
+msgstr "Мод"
 
 msgid "Min: %.2f"
-msgstr ""
+msgstr "Минимум: %.2f"
 
 msgid "Max: %.2f"
-msgstr ""
+msgstr "Максимум: %.2f"
 
 msgid "Range: %.2f"
-msgstr ""
+msgstr "Опсег: %.2f"
 
 msgid "1st quar. = %.2f"
-msgstr ""
+msgstr "1. квартал = %.2f"
 
 msgid "2nd quar. / \n Median = %.2f"
 msgstr ""
+"2. квартал / \n"
+" Медијана = %.2f"
 
 msgid "3rd quar. = %.2f"
-msgstr ""
+msgstr "3. квартал = %.2f"
 
 msgid "IQR = %.2f"
-msgstr ""
+msgstr "IQR = %.2f"
 
 msgid "-%i SD"
-msgstr ""
+msgstr "-%i SD"
 
 msgid "+%i SD"
-msgstr ""
+msgstr "+%i SD"
 
 msgid "Mean = %.2f"
-msgstr ""
+msgstr "Аритметичка средина = %.2f"
 
 msgid "Std. Dev. = %.2f"
-msgstr ""
+msgstr "Станд. дев. = %.2f"
 
 msgid "Dotplot"
-msgstr ""
+msgstr "Тачкаста дијаграм"
 
 msgid "No variance: All values are equal."
-msgstr ""
+msgstr "Без варијансе: Све вредности су једнаке."
 
 msgid "All values unique, \n no mode defined."
 msgstr ""
+"Све вредности су јединствене, \n"
+" није дефинисан режим."
 
 msgid "Mode = %1$i \n (Count = %2$i)"
 msgstr ""
