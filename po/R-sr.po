@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.19.2\n"
 "POT-Creation-Date: 2025-03-15 04:44\n"
-"PO-Revision-Date: 2025-03-24 01:54+0000\n"
+"PO-Revision-Date: 2025-03-24 17:05+0000\n"
 "Last-Translator: Marko Bojović <bojovicmarko@outlook.com>\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/jasp/"
 "jasplearnstats-r/sr/>\n"
@@ -60,43 +60,43 @@ msgid "Estimate"
 msgstr "Проценити"
 
 msgid "%s%% CI for Mean Difference"
-msgstr ""
+msgstr "%s%% CI за средњу разлику"
 
 msgid "Lower"
-msgstr ""
+msgstr "Ниже"
 
 msgid "Upper"
-msgstr ""
+msgstr "Горњи"
 
 msgid "CI contains %s?"
-msgstr ""
+msgstr "CI садржи %s?"
 
 msgid "Tree Plot"
-msgstr ""
+msgstr "Графикон стабла"
 
 msgid "Make sure to specify a lower bound that is lower than the upper bound for the x-axis."
-msgstr ""
+msgstr "Проверите да ли је доња граница за x-осу нижа од горње границе."
 
 msgid "Observed mean and %s%% CI"
-msgstr ""
+msgstr "Посматрана аритметика средина и %s%% CI"
 
 msgid "Data plots"
-msgstr ""
+msgstr "Графикони података"
 
 msgid "Dependent"
-msgstr ""
+msgstr "Зависни"
 
 msgid "Repetition %d"
-msgstr ""
+msgstr "Понављање %d"
 
 msgid "Convergence Plot"
-msgstr ""
+msgstr "Графикон конвергенције"
 
 msgid "Number of Replications"
-msgstr ""
+msgstr "Број понављања"
 
 msgid "p(Coverage)"
-msgstr ""
+msgstr "p(Покривеност)"
 
 msgid "Rep"
 msgstr "Rep"
@@ -226,141 +226,151 @@ msgstr ""
 
 msgid "Mode = %1$i \n (Count = %2$i)"
 msgstr ""
+"Мод = %1$i \n"
+" (Бројач = %2$i)"
 
 msgid "Mode = %.2f \n (Count = %i)"
 msgstr ""
+"Мод = %.2f \n"
+" (Бројач = %i)"
 
 msgid "Mode = {%i"
-msgstr ""
+msgstr "Мод = {%i"
 
 msgid "Mode = /n {%.2f"
-msgstr ""
+msgstr "Мод = /n {%.2f"
 
 msgid "} \n (Count = %i)"
 msgstr ""
+"} \n"
+" (Бројач = %i)"
 
 msgid "Median = %.2f"
-msgstr ""
+msgstr "Медијана = %.2f"
 
 msgid "2nd quar. / \n Median"
 msgstr ""
+"2. кварт. / \n"
+" Медијана"
 
 msgid "1st quar."
-msgstr ""
+msgstr "1. кварт."
 
 msgid "3rd quar."
-msgstr ""
+msgstr "3. кварт."
 
 msgid "to be added..."
-msgstr ""
+msgstr "за додавање..."
 
 msgid "Theoretical distribution of the test statistic under H<sub>0</sub>"
-msgstr ""
+msgstr "Теоретска расподела тест статистике под H<sub>0</sub>"
 
 msgid "Distribution plot"
-msgstr ""
+msgstr "Дистрибутивни графикон"
 
 msgid "Test statistic"
-msgstr ""
+msgstr "Тест статистика"
 
 msgid "Density"
-msgstr ""
+msgstr "Густина"
 
 msgid "Simulation under H<sub>0</sub>"
-msgstr ""
+msgstr "Симулација испод H<sub>0</sub>"
 
 msgid "Observed test statistics"
-msgstr ""
+msgstr "Посматрана статистика теста"
 
 msgid "Count"
-msgstr ""
+msgstr "Број"
 
 msgid "Null dist."
-msgstr ""
+msgstr "Нулта дистриб."
 
 msgid "Alt dist."
-msgstr ""
+msgstr "Алтернативна дистриб."
 
 msgid "Observed p-values"
-msgstr ""
+msgstr "Посматрана p-вредност"
 
 msgid "p-values"
-msgstr ""
+msgstr "p-вредност"
 
 msgid "Frequency Table"
-msgstr ""
+msgstr "Табела учесталости"
 
 msgid "Percent"
-msgstr ""
+msgstr "Проценат"
 
 msgid "Significant"
-msgstr ""
+msgstr "Значајно"
 
 msgid "Not significant"
-msgstr ""
+msgstr "Није значајно"
 
 msgid "Total"
-msgstr ""
+msgstr "Укупно"
 
 msgid "Simulation under H<sub>a</sub>"
-msgstr ""
+msgstr "Симулација испод H<sub>a</sub>"
 
 msgid "Error Message"
-msgstr ""
+msgstr "Порука о грешци"
 
 msgid "Population size too small. Cannot draw %1$i samples with size %2$i from a finite population of %3$i."
 msgstr ""
+"Величина популације је премала. Није могуће извући %1$i узорци са величином "
+"%2$i од коначне популације од %3$i."
 
 msgid "Statistics Summary"
-msgstr ""
+msgstr "Резиме статистике"
 
 msgid "Population and simulation distribution"
-msgstr ""
+msgstr "Популација и симулација дистрибуције"
 
 msgid "Population distribution"
-msgstr ""
+msgstr "Дистрибуција становништва"
 
 msgid "Simulation distribution"
-msgstr ""
+msgstr "Дистрибуција симулације"
 
 msgid "Raincloud plot"
-msgstr ""
+msgstr "Графикон кишног облака"
 
 msgid "Group"
-msgstr ""
+msgstr "Група"
 
 msgid "Control"
-msgstr ""
+msgstr "Контрола"
 
 msgid "Experimental"
-msgstr ""
+msgstr "Експериментална"
 
 msgid "Population"
-msgstr ""
+msgstr "Популација"
 
 msgid "Simulation"
-msgstr ""
+msgstr "Симулација"
 
 msgid "95%% CI"
-msgstr ""
+msgstr "95%% CI"
 
 msgid "Cohen's d"
-msgstr ""
+msgstr "Cohen's d"
 
 msgid "Cohen's U%1$s"
-msgstr ""
+msgstr "Cohen's U%1$s"
 
 msgid "Overlap"
-msgstr ""
+msgstr "Преклапање"
 
 msgid "Probability of superiority"
-msgstr ""
+msgstr "Вероватноћа супериорности"
 
 msgid "Number needed to treat*"
-msgstr ""
+msgstr "Број потребан за лечење*"
 
 msgid "The number needed to treat is based on a %1$s event rate."
-msgstr ""
+msgstr "Број потребан за лечење је заснован на а %1$s стопа догађаја."
 
 msgid "Cohen's %1$s is a measure of the standardized difference between two groups. The rules of thumbs for interpreting the measure are:<ul><li>Small: %1$s = 0.20 </li> <li>Medium: %1$s = 0.50</li><li>Large: %1$s = 0.80</li></ul>"
 msgstr ""
@@ -370,57 +380,73 @@ msgstr ""
 
 msgid "- Overlap corresponds to the common are of the control and experimental density."
 msgstr ""
+"- Преклапање одговара заједничкој површини густине контролне и "
+"експерименталне групе."
 
 msgid "- Probability of superiority corresponds to the probability that a randomly chosen participant from the experimental group will have higher value than a randomly chosen participant from the control group."
 msgstr ""
+"- Вероватноћа супериорности одговара вероватноћи да насумично изабран "
+"учесник из експерименталне групе има већу вредност од насумично изабраног "
+"учесника из контролне групе."
 
 msgid "- Number needed to treat corresponds to the number of participants in the experimental group that would be required to observe one more successful outcome than in the control group."
 msgstr ""
+"- Број потребан за лечење одговара броју учесника у експерименталној групи "
+"који су потребни да би се уочио још један успешни исход у поређењу са "
+"контролном групом."
 
 msgid "Pearson correlation"
-msgstr ""
+msgstr "Пирсонова корелација"
 
 msgid "Shared variance (R%1$s)"
-msgstr ""
+msgstr "Заједничка варијанса (R%1$s)"
 
 msgid "Pearson correlation coefficient %1$s is a measure of the relationship between two continuous variables. The rules of thumbs for interpreting the measure are:<ul><li>Small: %1$s = 0.10 </li> <li>Medium: %1$s = 0.30</li><li>Large: %1$s = 0.50</li></ul>"
 msgstr ""
 
 msgid "- Shared variance (R%1$s) corresponds to proportion of variance shared common between the variables."
 msgstr ""
+"- Заједничка варијанса (R%1$s) одговара проценту варијансе коју променљиве "
+"деле заједнички."
 
 msgid "The specified phi, P(X), and P(Y) do not yield a valid contingency table. One of the frequencies would need to be negative."
 msgstr ""
 
 msgid "Frequencies"
-msgstr ""
+msgstr "Фреквенције"
 
 msgid "P(X=1)"
-msgstr ""
+msgstr "P(X=1)"
 
 msgid "P(Y=1)"
-msgstr ""
+msgstr "P(Y=1)"
 
 msgid "Phi coefficient"
-msgstr ""
+msgstr "Phi коефицијент"
 
 msgid "Odds ratio"
-msgstr ""
+msgstr "Однос шанси"
 
 msgid "Risk ratio"
-msgstr ""
+msgstr "Релативни ризик"
 
 msgid "Risk difference"
-msgstr ""
+msgstr "Разлика у ризику"
 
 msgid "Contingency coefficient %1$s is a measure of the relationship between two nominal variables. The rules of thumbs for interpreting the measure are:<ul><li>Weak: %1$s = 0.20 </li> <li>Moderate: %1$s = 0.30</li><li>Strong: %1$s = 0.40</li><li>Very Strong: %1$s = 0.70</li></ul>"
 msgstr ""
 
 msgid "- Odds ratio corresponds to the ratio of the odds of an event occuring in the experimental and control groups."
 msgstr ""
+"- Однос шанси (Odds ratio) одговара односу шанси да се догађај деси у "
+"експерименталној групи у поређењу са контролном групом."
 
 msgid "- Risk ratio corresponds to the ratio of the risk of an event occuring in the experimental and control groups."
 msgstr ""
+"Релативни ризик (Risk ratio) одговара односу ризика да се догађај деси у "
+"експерименталној групи у поређењу са контролном групом."
 
 msgid "- Risk difference corresponds to the difference in the risk of the event occuring between the experimental and control groups."
 msgstr ""
+"- Разлика у ризику (Risk difference) представља апсолутну разлику у "
+"вероватноћи настанка догађаја између експерименталне и контролне групе."
