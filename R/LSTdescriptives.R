@@ -739,7 +739,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
       plotData <- ggplot2::ggplot_build(plot)$data
       if (length(mode) == 1) {
         modeLabelText <- ifelse(discrete, gettextf("Mode = %1$i \n (Count = %2$i)", mode, modeHeight),
-                                gettextf("Mode = %.2f \n (Count = %i)", mode, modeHeight))
+								gettextf("Mode = %1$.2f \n (Count = %2$i)", mode, modeHeight))
       } else {
         firstMode <- ifelse(discrete, gettextf("Mode = {%i", mode[1]), gettextf("Mode = /n {%.2f", mode[1]))
         if (discrete) {

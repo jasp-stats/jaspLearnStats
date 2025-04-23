@@ -232,8 +232,8 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Mode = %.2f \n"
-" (Count = %i)"
+"Mode = %1$.2f \n"
+" (Count = 2$%i)"
 msgstr ""
 
 msgid "Mode = {%i"
