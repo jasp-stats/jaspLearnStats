@@ -151,7 +151,7 @@ msgstr "Mittelwert"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Range"
-msgstr "Wertebereich"
+msgstr "Spannweite"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Left"
@@ -339,7 +339,7 @@ msgstr "Erklärung anzeigen"
 
 msgctxt "LSTdescriptives|"
 msgid "Range"
-msgstr "Wertebereich"
+msgstr "Spannweite"
 
 msgctxt "LSTdescriptives|"
 msgid "Quartiles"
@@ -435,7 +435,7 @@ msgstr "Mittelwert"
 
 msgctxt "LSTsampleVariability|"
 msgid "Range"
-msgstr "Wertebereich"
+msgstr "Spannweite"
 
 msgctxt "LSTsampleVariability|"
 msgid "Left"
@@ -587,7 +587,7 @@ msgstr "Mittelwert"
 
 msgctxt "LSTstandardError|"
 msgid "Range"
-msgstr "Wertebereich"
+msgstr "Spannweite"
 
 msgctxt "LSTstandardError|"
 msgid "Left"
@@ -1067,7 +1067,7 @@ msgstr "Letzte"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Range"
-msgstr "Wertebereich"
+msgstr "Spannweite"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "All"

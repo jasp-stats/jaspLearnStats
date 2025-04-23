@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.15\n"
-"POT-Creation-Date: 2023-05-27 04:43\n"
-"PO-Revision-Date: 2023-09-08 09:56+0000\n"
+"POT-Creation-Date: 2025-03-15 04:44\n"
+"PO-Revision-Date: 2025-03-13 08:25+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
 "jasplearnstats-r/de/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.0.1-dev\n"
+"X-Generator: Weblate 5.10.3-dev\n"
 
 msgid "Parent Distribution"
 msgstr "Eltern-Verteilung"
@@ -129,7 +129,7 @@ msgid "Visual Explanation 4"
 msgstr "Visuelle Erklärung 4"
 
 msgid "Range"
-msgstr "Wertebereich"
+msgstr "Spannweite"
 
 msgid "Min"
 msgstr "Min"
@@ -190,7 +190,7 @@ msgid "Max: %.2f"
 msgstr "Max: %.2f"
 
 msgid "Range: %.2f"
-msgstr "Wertebereich: %.2f"
+msgstr "Spannweite: %.2f"
 
 msgid "1st quar. = %.2f"
 msgstr "1. Quart. = %.2f"
@@ -241,23 +241,17 @@ msgstr ""
 " (Anzahl = %2$i)"
 
 msgid ""
-"Mode = %.2f \n"
-" (Count = %i)"
+"Mode = %1$.2f \n"
+" (Count = %2$i)"
 msgstr ""
-"Modus = %.2f \n"
-" (Anzahl = %i)"
+"Modus = %1$.2f \n"
+" (Anzahl = %2$i)"
 
 msgid "Mode = {%i"
 msgstr "Modus = {%i"
 
 msgid "Mode = /n {%.2f"
 msgstr "Modus = /n {%.2f"
-
-msgid ", %i"
-msgstr ", %i"
-
-msgid ", %.2f"
-msgstr ", %.2f"
 
 msgid ""
 "} \n"
@@ -525,6 +519,12 @@ msgid ""
 msgstr ""
 "- Die Risikodifferenz entspricht der Differenz im Risiko des Auftretens des "
 "Ereignisses zwischen der Experimental- und der Kontrollgruppe."
+
+#~ msgid ", %i"
+#~ msgstr ", %i"
+
+#~ msgid ", %.2f"
+#~ msgstr ", %.2f"
 
 #~ msgid "μ"
 #~ msgstr "μ"

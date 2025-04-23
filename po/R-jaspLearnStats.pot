@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: jaspLearnStats 0.19.2\n"
-"POT-Creation-Date: 2024-10-19 04:44\n"
+"Project-Id-Version: jaspLearnStats 0.20.0\n"
+"POT-Creation-Date: 2025-04-23 12:14\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -217,19 +217,13 @@ msgstr ""
 msgid "Mode = %1$i \n (Count = %2$i)"
 msgstr ""
 
-msgid "Mode = %.2f \n (Count = %i)"
+msgid "Mode = %1$.2f \n (Count = %2$i)"
 msgstr ""
 
 msgid "Mode = {%i"
 msgstr ""
 
 msgid "Mode = /n {%.2f"
-msgstr ""
-
-msgid ", %i"
-msgstr ""
-
-msgid ", %.2f"
 msgstr ""
 
 msgid "} \n (Count = %i)"

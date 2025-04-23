@@ -93,7 +93,7 @@ msgstr "Número necesario para tratar"
 
 msgctxt "LSeffectSizes|"
 msgid "Event rate"
-msgstr "Ratio de eventos"
+msgstr "Proporción de eventos"
 
 msgctxt "LSeffectSizes|"
 msgid "Shared variance (R²)"
@@ -885,7 +885,7 @@ msgstr "Configuraciones de contrastes"
 
 msgctxt "LSTPValues|"
 msgid "Type-I error rate α"
-msgstr "Ratio α de error tipo I"
+msgstr "Proporción α de error tipo I"
 
 msgctxt "LSTPValues|"
 msgid "Alt. hypothesis"
@@ -1013,7 +1013,7 @@ msgstr "Razón de probabilidades"
 
 msgctxt "LSeffectSizes|"
 msgid "Risk ratio"
-msgstr "Ratio de riesgos"
+msgstr "Proporción de riesgo"
 
 msgctxt "LSeffectSizes|"
 msgid "Risk difference"
