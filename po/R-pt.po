@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.15\n"
-"POT-Creation-Date: 2025-03-15 04:44\n"
+"POT-Creation-Date: 2025-04-23 12:14\n"
 "PO-Revision-Date: 2023-07-21 23:06+0000\n"
 "Last-Translator: Antonio de Carvalho Evangelista Junior <jrace01@yahoo.com."
 "br>\n"
@@ -233,7 +233,7 @@ msgstr ""
 
 msgid ""
 "Mode = %1$.2f \n"
-" (Count = 2$%i)"
+" (Count = %2$i)"
 msgstr ""
 
 msgid "Mode = {%i"
