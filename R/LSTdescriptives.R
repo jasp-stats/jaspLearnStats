@@ -18,18 +18,26 @@
 LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   inputType <- options[["lstDescDataType"]]
   colors <- .getColors(options[["descColorPalette"]])
+
   ready <- (inputType == "dataRandom" |
               (inputType == "dataSequence" && options[["lstDescDataSequenceInput"]] != "") |
               (inputType == "dataVariable" && options[["selectedVariable"]] != ""))
-  data <- .getDataLSTdesc(jaspResults, options, inputType)
+
+  if (inputType == "dataRandom") {
+    dataset <- .sampleRandomDataForLSTdesc(jaspResults, options)
+  } else if (inputType == "dataSequence") {
+    dataset <- .readInputSequenceForLSTdesc(jaspResults, options)
+  } else if (inputType == "dataVariable") {
+    dataset <- data.frame(x = na.omit( dataset[[ options[["selectedVariable"]] ]] ))
+  }
 
   #checking whether data is discrete or continuous, whereas only integers are treated as discrete
-  integerData <- as.integer(data$x)
+  integerData <- as.integer(dataset$x)
   # conversion to integers fails with extreme values, if it failed for any value just treat it as continuous
   if (any(is.na(integerData))) {
     discrete <- FALSE
   } else {
-    discrete <- ifelse(all(data$x == integerData), TRUE, FALSE)
+    discrete <- ifelse(all(dataset$x == integerData), TRUE, FALSE)
   }
 
   stats <- switch(options[["LSdescStatistics"]],
@@ -39,9 +47,9 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
 
 
   if (options[["LSdescHistBar"]])
-    .lstDescCreateHistogramOrBarplot(jaspResults, options, data, ready, discrete, stats = stats, colors)
+    .lstDescCreateHistogramOrBarplot(jaspResults, options, dataset, ready, discrete, stats = stats, colors)
   if (options[["LSdescDotPlot"]])
-    .lstDescCreateDotplot(jaspResults, options, data, ready, discrete, stats = stats, colors)
+    .lstDescCreateDotplot(jaspResults, options, dataset, ready, discrete, stats = stats, colors)
   if (options[["LSdescExplanation"]])
     .descExplanation(jaspResults, options, colors, stats = stats)
 }
@@ -64,8 +72,8 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     skew <- 1000
     distLimits <- c(mean - 4 * sd, mean + 4 * sd)
 
-    data <- data.frame(x = .scaledSkewedNormal(100000, xi = mean, omega = sd, alpha = skew))
-    data <- subset(data, data$x > distLimits[1] & data$x < distLimits[2]) # remove values outside limits
+    dataset <- data.frame(x = .scaledSkewedNormal(100000, xi = mean, omega = sd, alpha = skew))
+    dataset <- subset(data, data$x > distLimits[1] & data$x < distLimits[2]) # remove values outside limits
 
     plot1Object <- .plotCTexampleDistribution(data)
 
@@ -88,7 +96,7 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
     }
     plot1$plotObject <- plot1Object
   } else if(stats == "spread") {
-    data <- data.frame(index = 1:21, x = rnorm(21, 10, 2.5))
+    dataset <- data.frame(index = 1:21, x = rnorm(21, 10, 2.5))
     plot1 <- createJaspPlot(title = gettext("Visual Explanation"), width = 700, height = 700)
 
     if (options[["LSdescStatistics"]] == "LSdescRange") {
@@ -447,17 +455,6 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   return(plotObject)
 }
 
-.getDataLSTdesc <- function(jaspResults, options, inputType) {
-  if (inputType == "dataRandom") {
-    data <- .sampleRandomDataForLSTdesc(jaspResults, options)
-  } else if (inputType == "dataSequence") {
-    data <- .readInputSequenceForLSTdesc(jaspResults, options)
-  } else if (inputType == "dataVariable") {
-    data <- .readDataLSTdesc(jaspResults, options)
-  }
-  return(data)
-}
-
 .sampleRandomDataForLSTdesc <- function(jaspResults, options) {
   set.seed(options[["lstDescSampleSeed"]])
   n <- options[["lstDescSampleN"]]
@@ -495,15 +492,6 @@ LSTdescriptives <- function(jaspResults, dataset, options, state = NULL) {
   inputSequence <- unlist(strsplit(inputSequence, split = ","))
   inputSequence <- gsub(" ", "", inputSequence, fixed = TRUE)
   df <- data.frame(x = as.numeric(inputSequence))
-  return(df)
-}
-
-.readDataLSTdesc <- function(jaspResults, options) {
-  variable <- unlist(options[["selectedVariable"]])
-  variable <- variable[variable != ""]
-  dataset <- .readDataSetToEnd(columns.as.numeric = variable)
-  df <- data.frame(x = unlist(dataset))
-  df <- na.omit(df)
   return(df)
 }
 
