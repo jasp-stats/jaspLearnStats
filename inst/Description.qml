@@ -7,7 +7,7 @@ Description
 	name:			"jaspLearnStats"
 	icon:			"learning-stats.svg"
 	description:	qsTr("Learn classical statistics with simple examples and supporting text")
-	version			: "0.20.0"
+	version			: "0.95.0"
 	requiresData:	false
 	preloadData:	true
 	author:			"JASP Team"
