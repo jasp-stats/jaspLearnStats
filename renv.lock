@@ -1198,7 +1198,7 @@
     },
     "jaspDescriptives": {
       "Package": "jaspDescriptives",
-      "Version": "0.20.0",
+      "Version": "0.95.0",
       "Source": "GitHub",
       "Requirements": [
         "ggplot2",
@@ -1221,11 +1221,11 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspDescriptives",
-      "RemoteSha": "f76d58ffb634dc5a91e1b993396d80b37e4b168f"
+      "RemoteSha": "0e54c8e9261b41a94037cc2affaf6a8a980890f3"
     },
     "jaspDistributions": {
       "Package": "jaspDistributions",
-      "Version": "0.20.0",
+      "Version": "0.95.0",
       "Source": "GitHub",
       "Requirements": [
         "car",
@@ -1244,7 +1244,7 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspDistributions",
-      "RemoteSha": "05cf6348091bb79f0940e8b9a465d106424d26c8"
+      "RemoteSha": "319e6e31d3166036c578829d2130c05a64564be2"
     },
     "jaspGraphs": {
       "Package": "jaspGraphs",
@@ -1271,7 +1271,7 @@
     },
     "jaspTTests": {
       "Package": "jaspTTests",
-      "Version": "0.20.0",
+      "Version": "0.95.0",
       "Source": "GitHub",
       "Requirements": [
         "BayesFactor",
@@ -1287,7 +1287,7 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspTTests",
-      "RemoteSha": "20f0d01bc746315bca1338db9b5dea289bd58548"
+      "RemoteSha": "91356e2d9445269064239ef8e517d5ad5649ed67"
     },
     "jpeg": {
       "Package": "jpeg",
