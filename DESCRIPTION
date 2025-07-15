@@ -20,7 +20,8 @@ Imports:
   tidyr,
   igraph,
   HDInterval,
-  metafor
+  metafor,
+  psych
 Remotes:
   jasp-stats/jaspBase,
   jasp-stats/jaspGraphs,
