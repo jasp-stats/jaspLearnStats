@@ -56,6 +56,15 @@
         "stats"
       ]
     },
+    "GPArotation": {
+      "Package": "GPArotation",
+      "Version": "2025.3-1",
+      "Source": "Repository",
+      "Requirements": [
+        "R",
+        "stats"
+      ]
+    },
     "HDInterval": {
       "Package": "HDInterval",
       "Version": "0.2.4",
@@ -1859,6 +1868,22 @@
       "Requirements": [
         "R",
         "utils"
+      ]
+    },
+    "psych": {
+      "Package": "psych",
+      "Version": "2.5.3",
+      "Source": "Repository",
+      "Requirements": [
+        "GPArotation",
+        "graphics",
+        "grDevices",
+        "lattice",
+        "methods",
+        "mnormt",
+        "nlme",
+        "parallel",
+        "stats"
       ]
     },
     "purrr": {
