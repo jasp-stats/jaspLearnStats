@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-07-26 07:51+0000\n"
+"PO-Revision-Date: 2025-07-31 09:09+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
 "jasplearnstats-qml/es/>\n"
@@ -507,7 +507,7 @@ msgstr "De"
 
 msgctxt "LSTsampleVariability|"
 msgid "Plot Options"
-msgstr "Opciones de Gráfico"
+msgstr "Opciones de gráficos"
 
 msgctxt "LSTsampleVariability|"
 msgid "Color palette"
@@ -659,7 +659,7 @@ msgstr "Sobreponer la distribución Normal"
 
 msgctxt "LSTstandardError|"
 msgid "Plot Options"
-msgstr "Opciones de Gráfico"
+msgstr "Opciones de gráficos"
 
 msgctxt "LSTstandardError|"
 msgid "Color palette"
