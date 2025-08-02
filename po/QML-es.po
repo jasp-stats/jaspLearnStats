@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2025-07-31 09:09+0000\n"
+"Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
+"jasplearnstats-qml/es/>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.13-dev\n"
 "X-Language: es\n"
 "X-Qt-Contexts: true\n"
 
@@ -41,7 +47,7 @@ msgstr "Variabilidad Muestral"
 
 msgctxt "Description|"
 msgid "P Values"
-msgstr "Valores p"
+msgstr "Valores P"
 
 msgctxt "Description|"
 msgid "Effect Sizes"
@@ -501,7 +507,7 @@ msgstr "De"
 
 msgctxt "LSTsampleVariability|"
 msgid "Plot Options"
-msgstr "Opciones de Gráfico"
+msgstr "Opciones de gráficos"
 
 msgctxt "LSTsampleVariability|"
 msgid "Color palette"
@@ -653,7 +659,7 @@ msgstr "Sobreponer la distribución Normal"
 
 msgctxt "LSTstandardError|"
 msgid "Plot Options"
-msgstr "Opciones de Gráfico"
+msgstr "Opciones de gráficos"
 
 msgctxt "LSTstandardError|"
 msgid "Color palette"
@@ -921,7 +927,7 @@ msgstr "Especificar un estadístico de prueba"
 
 msgctxt "LSTPValues|"
 msgid "Specify p-value"
-msgstr "Especificar el valor p"
+msgstr "Especificar el valor P"
 
 msgctxt "LSTPValues|"
 msgid "Simulation under the null hypothesis"
@@ -957,7 +963,7 @@ msgstr "Sobreponer la distribución teórica"
 
 msgctxt "LSTPValues|"
 msgid "Plot p-values"
-msgstr "Representar los valores p"
+msgstr "Representar los valores P"
 
 msgctxt "LSTPValues|"
 msgid "Overlay uniform distribution"
