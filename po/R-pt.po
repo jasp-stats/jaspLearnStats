@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.15\n"
 "POT-Creation-Date: 2025-04-23 12:14\n"
-"PO-Revision-Date: 2025-08-04 17:02+0000\n"
+"PO-Revision-Date: 2025-08-06 02:02+0000\n"
 "Last-Translator: Wendel Paulo Silvestre <wpsilvestre@ucs.br>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
 "jasplearnstats-r/pt/>\n"
@@ -14,31 +14,31 @@ msgstr ""
 "X-Generator: Weblate 5.13-dev\n"
 
 msgid "Parent Distribution"
-msgstr ""
+msgstr "Distribuição Pai"
 
 msgid "Count: %i"
-msgstr ""
+msgstr "Contagem: %i"
 
 msgid "Mean: %.2f"
-msgstr ""
+msgstr "Média: %.2f"
 
 msgid "SE: %.2f"
-msgstr ""
+msgstr "EP: %.2f"
 
 msgid "SD: %.2f"
-msgstr ""
+msgstr "DP: %.2f"
 
 msgid "Sample Nr. %i"
-msgstr ""
+msgstr "Amostra N° %i"
 
 msgid "... until Sample Nr. %i"
-msgstr ""
+msgstr "... até a amostra N° %i"
 
 msgid "Samples"
 msgstr "Exemplos"
 
 msgid "Std. Dev.: %.2f"
-msgstr ""
+msgstr "Desv. Pad.: %.2f"
 
 msgid "Sampling Distribution of the Mean"
 msgstr ""
