@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.15\n"
 "POT-Creation-Date: 2025-04-23 12:14\n"
-"PO-Revision-Date: 2025-08-06 02:02+0000\n"
+"PO-Revision-Date: 2025-08-06 07:43+0000\n"
 "Last-Translator: Wendel Paulo Silvestre <wpsilvestre@ucs.br>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
 "jasplearnstats-r/pt/>\n"
@@ -41,25 +41,25 @@ msgid "Std. Dev.: %.2f"
 msgstr "Desv. Pad.: %.2f"
 
 msgid "Sampling Distribution of the Mean"
-msgstr ""
+msgstr "Distribuição Amostral da Média"
 
 msgid "Std. Dev: %.2f"
-msgstr ""
+msgstr "Desv. Pad.: %.2f"
 
 msgid "Coverage"
-msgstr ""
+msgstr "Cobertura"
 
 msgid "Coverage %%"
-msgstr ""
+msgstr "Cobertura %%"
 
 msgid "Mean"
 msgstr "Média"
 
 msgid "Estimate"
-msgstr ""
+msgstr "Estimativa"
 
 msgid "%s%% CI for Mean Difference"
-msgstr ""
+msgstr "%s%% IC para Diferença Média"
 
 msgid "Lower"
 msgstr "Inferior"
