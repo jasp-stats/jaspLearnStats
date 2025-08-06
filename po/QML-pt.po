@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-08-06 02:01+0000\n"
+"PO-Revision-Date: 2025-08-06 07:43+0000\n"
 "Last-Translator: Wendel Paulo Silvestre <wpsilvestre@ucs.br>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
 "jasplearnstats-qml/pt/>\n"
@@ -51,39 +51,39 @@ msgstr "Tamanhos de Efeito"
 
 msgctxt "LSeffectSizes|"
 msgid "Cohen's δ"
-msgstr ""
+msgstr "δ de Cohen"
 
 msgctxt "LSeffectSizes|"
 msgid "Pearson correlation coefficient ρ"
-msgstr ""
+msgstr "Coeficiente de correlação de Pearson ρ"
 
 msgctxt "LSeffectSizes|"
 msgid "Contingency coefficient φ"
-msgstr ""
+msgstr "Coeficiente de contingência φ"
 
 msgctxt "LSeffectSizes|"
 msgid "Explanatory text"
-msgstr ""
+msgstr "Texto Explicativo"
 
 msgctxt "LSeffectSizes|"
 msgid "Simulate data"
-msgstr ""
+msgstr "Simular dados"
 
 msgctxt "LSeffectSizes|"
 msgid "No. observations"
-msgstr ""
+msgstr "N° observações"
 
 msgctxt "LSeffectSizes|"
 msgid "Advanced"
-msgstr ""
+msgstr "Avançado"
 
 msgctxt "LSeffectSizes|"
 msgid "Cohen's U3"
-msgstr ""
+msgstr "U3 de Cohen"
 
 msgctxt "LSeffectSizes|"
 msgid "Overlap"
-msgstr ""
+msgstr "Sobreposição"
 
 msgctxt "LSeffectSizes|"
 msgid "Probability of superiority"
