@@ -1,0 +1,417 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: jaspLearnStats 0.95.0\n"
+"POT-Creation-Date: 2025-06-21 04:47\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: et\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+msgid "Parent Distribution"
+msgstr ""
+
+msgid "Count: %i"
+msgstr ""
+
+msgid "Mean: %.2f"
+msgstr ""
+
+msgid "SE: %.2f"
+msgstr ""
+
+msgid "SD: %.2f"
+msgstr ""
+
+msgid "Sample Nr. %i"
+msgstr ""
+
+msgid "... until Sample Nr. %i"
+msgstr ""
+
+msgid "Samples"
+msgstr ""
+
+msgid "Std. Dev.: %.2f"
+msgstr ""
+
+msgid "Sampling Distribution of the Mean"
+msgstr ""
+
+msgid "Std. Dev: %.2f"
+msgstr ""
+
+msgid "Coverage"
+msgstr ""
+
+msgid "Coverage %%"
+msgstr ""
+
+msgid "Mean"
+msgstr ""
+
+msgid "Estimate"
+msgstr ""
+
+msgid "%s%% CI for Mean Difference"
+msgstr ""
+
+msgid "Lower"
+msgstr ""
+
+msgid "Upper"
+msgstr ""
+
+msgid "CI contains %s?"
+msgstr ""
+
+msgid "Tree Plot"
+msgstr ""
+
+msgid "Make sure to specify a lower bound that is lower than the upper bound for the x-axis."
+msgstr ""
+
+msgid "Observed mean and %s%% CI"
+msgstr ""
+
+msgid "Data plots"
+msgstr ""
+
+msgid "Dependent"
+msgstr ""
+
+msgid "Repetition %d"
+msgstr ""
+
+msgid "Convergence Plot"
+msgstr ""
+
+msgid "Number of Replications"
+msgstr ""
+
+msgid "p(Coverage)"
+msgstr ""
+
+msgid "Rep"
+msgstr ""
+
+msgid "Decision Tree"
+msgstr ""
+
+msgid "Test choice"
+msgstr ""
+
+msgid "Explanation"
+msgstr ""
+
+msgid "Theoretical example distribution"
+msgstr ""
+
+msgid "Visual Explanation"
+msgstr ""
+
+msgid "Visual Explanation 2"
+msgstr ""
+
+msgid "Visual Explanation 3"
+msgstr ""
+
+msgid "Visual Explanation 4"
+msgstr ""
+
+msgid "Range"
+msgstr ""
+
+msgid "Min"
+msgstr ""
+
+msgid "Max"
+msgstr ""
+
+msgid "1st quartile"
+msgstr ""
+
+msgid "2nd quartile / \n Median"
+msgstr ""
+
+msgid "3rd quartile"
+msgstr ""
+
+msgid "IQR"
+msgstr ""
+
+msgid "Variance"
+msgstr ""
+
+msgid "-3 SD"
+msgstr ""
+
+msgid "-2 SD"
+msgstr ""
+
+msgid "-1 SD"
+msgstr ""
+
+msgid "+1 SD"
+msgstr ""
+
+msgid "+2 SD"
+msgstr ""
+
+msgid "+3 SD"
+msgstr ""
+
+msgid "Std. Dev."
+msgstr ""
+
+msgid "Median"
+msgstr ""
+
+msgid "Mode"
+msgstr ""
+
+msgid "Min: %.2f"
+msgstr ""
+
+msgid "Max: %.2f"
+msgstr ""
+
+msgid "Range: %.2f"
+msgstr ""
+
+msgid "1st quar. = %.2f"
+msgstr ""
+
+msgid "2nd quar. / \n Median = %.2f"
+msgstr ""
+
+msgid "3rd quar. = %.2f"
+msgstr ""
+
+msgid "IQR = %.2f"
+msgstr ""
+
+msgid "-%i SD"
+msgstr ""
+
+msgid "+%i SD"
+msgstr ""
+
+msgid "Mean = %.2f"
+msgstr ""
+
+msgid "Std. Dev. = %.2f"
+msgstr ""
+
+msgid "Dotplot"
+msgstr ""
+
+msgid "No variance: All values are equal."
+msgstr ""
+
+msgid "All values unique, \n no mode defined."
+msgstr ""
+
+msgid "Mode = %1$i \n (Count = %2$i)"
+msgstr ""
+
+msgid "Mode = %1$.2f \n (Count = %2$i)"
+msgstr ""
+
+msgid "Mode = {%i"
+msgstr ""
+
+msgid "Mode = /n {%.2f"
+msgstr ""
+
+msgid "} \n (Count = %i)"
+msgstr ""
+
+msgid "Median = %.2f"
+msgstr ""
+
+msgid "2nd quar. / \n Median"
+msgstr ""
+
+msgid "1st quar."
+msgstr ""
+
+msgid "3rd quar."
+msgstr ""
+
+msgid "to be added..."
+msgstr ""
+
+msgid "Theoretical distribution of the test statistic under H<sub>0</sub>"
+msgstr ""
+
+msgid "Distribution plot"
+msgstr ""
+
+msgid "Test statistic"
+msgstr ""
+
+msgid "Density"
+msgstr ""
+
+msgid "Simulation under H<sub>0</sub>"
+msgstr ""
+
+msgid "Observed test statistics"
+msgstr ""
+
+msgid "Count"
+msgstr ""
+
+msgid "Null dist."
+msgstr ""
+
+msgid "Alt dist."
+msgstr ""
+
+msgid "Observed p-values"
+msgstr ""
+
+msgid "p-values"
+msgstr ""
+
+msgid "Frequency Table"
+msgstr ""
+
+msgid "Percent"
+msgstr ""
+
+msgid "Significant"
+msgstr ""
+
+msgid "Not significant"
+msgstr ""
+
+msgid "Total"
+msgstr ""
+
+msgid "Simulation under H<sub>a</sub>"
+msgstr ""
+
+msgid "Error Message"
+msgstr ""
+
+msgid "Population size too small. Cannot draw %1$i samples with size %2$i from a finite population of %3$i."
+msgstr ""
+
+msgid "Statistics Summary"
+msgstr ""
+
+msgid "Population and simulation distribution"
+msgstr ""
+
+msgid "Population distribution"
+msgstr ""
+
+msgid "Simulation distribution"
+msgstr ""
+
+msgid "Raincloud plot"
+msgstr ""
+
+msgid "Group"
+msgstr ""
+
+msgid "Control"
+msgstr ""
+
+msgid "Experimental"
+msgstr ""
+
+msgid "Population"
+msgstr ""
+
+msgid "Simulation"
+msgstr ""
+
+msgid "95%% CI"
+msgstr ""
+
+msgid "Cohen's d"
+msgstr ""
+
+msgid "Cohen's U%1$s"
+msgstr ""
+
+msgid "Overlap"
+msgstr ""
+
+msgid "Probability of superiority"
+msgstr ""
+
+msgid "Number needed to treat*"
+msgstr ""
+
+msgid "The number needed to treat is based on a %1$s event rate."
+msgstr ""
+
+msgid "Cohen's %1$s is a measure of the standardized difference between two groups. The rules of thumbs for interpreting the measure are:<ul><li>Small: %1$s = 0.20 </li> <li>Medium: %1$s = 0.50</li><li>Large: %1$s = 0.80</li></ul>"
+msgstr ""
+
+msgid "- Cohen's U%1$s corresponds to the proportion of the control group that is surpassed by the upper upper half of the experimental group."
+msgstr ""
+
+msgid "- Overlap corresponds to the common are of the control and experimental density."
+msgstr ""
+
+msgid "- Probability of superiority corresponds to the probability that a randomly chosen participant from the experimental group will have higher value than a randomly chosen participant from the control group."
+msgstr ""
+
+msgid "- Number needed to treat corresponds to the number of participants in the experimental group that would be required to observe one more successful outcome than in the control group."
+msgstr ""
+
+msgid "Pearson correlation"
+msgstr ""
+
+msgid "Shared variance (R%1$s)"
+msgstr ""
+
+msgid "Pearson correlation coefficient %1$s is a measure of the relationship between two continuous variables. The rules of thumbs for interpreting the measure are:<ul><li>Small: %1$s = 0.10 </li> <li>Medium: %1$s = 0.30</li><li>Large: %1$s = 0.50</li></ul>"
+msgstr ""
+
+msgid "- Shared variance (R%1$s) corresponds to proportion of variance shared common between the variables."
+msgstr ""
+
+msgid "The specified phi, P(X), and P(Y) do not yield a valid contingency table. One of the frequencies would need to be negative."
+msgstr ""
+
+msgid "Frequencies"
+msgstr ""
+
+msgid "P(X=1)"
+msgstr ""
+
+msgid "P(Y=1)"
+msgstr ""
+
+msgid "Phi coefficient"
+msgstr ""
+
+msgid "Odds ratio"
+msgstr ""
+
+msgid "Risk ratio"
+msgstr ""
+
+msgid "Risk difference"
+msgstr ""
+
+msgid "Contingency coefficient %1$s is a measure of the relationship between two nominal variables. The rules of thumbs for interpreting the measure are:<ul><li>Weak: %1$s = 0.20 </li> <li>Moderate: %1$s = 0.30</li><li>Strong: %1$s = 0.40</li><li>Very Strong: %1$s = 0.70</li></ul>"
+msgstr ""
+
+msgid "- Odds ratio corresponds to the ratio of the odds of an event occuring in the experimental and control groups."
+msgstr ""
+
+msgid "- Risk ratio corresponds to the ratio of the risk of an event occuring in the experimental and control groups."
+msgstr ""
+
+msgid "- Risk difference corresponds to the difference in the risk of the event occuring between the experimental and control groups."
+msgstr ""
