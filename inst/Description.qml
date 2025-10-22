@@ -4,16 +4,11 @@ import JASP.Module
 Description
 {
 	title:			qsTr("Learn Stats")
-	name:			"jaspLearnStats"
 	icon:			"learning-stats.svg"
 	description:	qsTr("Learn classical statistics with simple examples and supporting text")
-	version			: "0.95.0"
 	requiresData:	false
-	preloadData:	true
-	author:			"JASP Team"
-	maintainer:		"JASP Team <info@jasp-stats.org>"
-	website:		"www.jasp-stats.org"
-	license:		"GPL (>= 2)"
+	hasWrappers: 	false
+	
 	
 	
 	Analysis
