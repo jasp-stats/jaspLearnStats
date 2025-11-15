@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.95.0\n"
 "POT-Creation-Date: 2025-06-21 04:47\n"
-"PO-Revision-Date: 2025-11-15 14:37+0000\n"
+"PO-Revision-Date: 2025-11-15 15:34+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
 "jasplearnstats-r/es/>\n"
@@ -140,7 +140,7 @@ msgstr "Cuartil 1"
 
 msgid "2nd quartile / \n Median"
 msgstr ""
-"Cuartil 2/ \n"
+"Cuartil2 / \n"
 "Mediana"
 
 msgid "3rd quartile"
@@ -264,172 +264,207 @@ msgid "to be added..."
 msgstr "Para añadir..."
 
 msgid "Theoretical distribution of the test statistic under H<sub>0</sub>"
-msgstr ""
+msgstr "Distribución teórica del estadístico de prueba bajo H<sub>0</sub>"
 
 msgid "Distribution plot"
-msgstr ""
+msgstr "Gráfico de distribución"
 
 msgid "Test statistic"
-msgstr ""
+msgstr "Estadístico de contraste"
 
 msgid "Density"
-msgstr ""
+msgstr "Densidad"
 
 msgid "Simulation under H<sub>0</sub>"
-msgstr ""
+msgstr "Simulación bajo H<sub>0</sub>"
 
 msgid "Observed test statistics"
-msgstr ""
+msgstr "Estadísticos de contraste observados"
 
 msgid "Count"
-msgstr ""
+msgstr "Recuento"
 
 msgid "Null dist."
-msgstr ""
+msgstr "Dist. nula"
 
 msgid "Alt dist."
-msgstr ""
+msgstr "Dist. alt."
 
 msgid "Observed p-values"
-msgstr ""
+msgstr "Valores P observados"
 
 msgid "p-values"
-msgstr ""
+msgstr "Valores P"
 
 msgid "Frequency Table"
-msgstr ""
+msgstr "Tabla de frecuencias"
 
 msgid "Percent"
-msgstr ""
+msgstr "Porcentaje"
 
 msgid "Significant"
-msgstr ""
+msgstr "Significativo"
 
 msgid "Not significant"
-msgstr ""
+msgstr "No significativo"
 
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
 msgid "Simulation under H<sub>a</sub>"
-msgstr ""
+msgstr "Simulación bajo H<sub>a</sub>"
 
 msgid "Error Message"
-msgstr ""
+msgstr "Mensaje de error"
 
 msgid "Population size too small. Cannot draw %1$i samples with size %2$i from a finite population of %3$i."
 msgstr ""
+"Tamaño poblacional demasiado pequeño. No se pueden extraer %1$i muestras de "
+"tamaño %2$i de una población finita de %3$i."
 
 msgid "Statistics Summary"
-msgstr ""
+msgstr "Resumen de estadísticos"
 
 msgid "Population and simulation distribution"
-msgstr ""
+msgstr "Distribución de población y de simulación"
 
 msgid "Population distribution"
-msgstr ""
+msgstr "Distribución de población"
 
 msgid "Simulation distribution"
-msgstr ""
+msgstr "Distribución de simulación"
 
 msgid "Raincloud plot"
-msgstr ""
+msgstr "Gráfico de tipo nube con lluvia"
 
 msgid "Group"
-msgstr ""
+msgstr "Grupo"
 
 msgid "Control"
-msgstr ""
+msgstr "Control"
 
 msgid "Experimental"
-msgstr ""
+msgstr "Experimental"
 
 msgid "Population"
-msgstr ""
+msgstr "Población"
 
 msgid "Simulation"
-msgstr ""
+msgstr "Simulación"
 
 msgid "95%% CI"
-msgstr ""
+msgstr "IC del 95%%"
 
 msgid "Cohen's d"
 msgstr "D de Cohen"
 
 msgid "Cohen's U%1$s"
-msgstr ""
+msgstr "U%1$s de Cohen"
 
 msgid "Overlap"
-msgstr ""
+msgstr "Superposición"
 
 msgid "Probability of superiority"
-msgstr ""
+msgstr "Probabilidad de superioridad"
 
 msgid "Number needed to treat*"
-msgstr ""
+msgstr "Número necesario para tratamiento*"
 
 msgid "The number needed to treat is based on a %1$s event rate."
 msgstr ""
+"El número necesario para tratamiento se basa en un ratio de sucesos de %1$s."
 
 msgid "Cohen's %1$s is a measure of the standardized difference between two groups. The rules of thumbs for interpreting the measure are:<ul><li>Small: %1$s = 0.20 </li> <li>Medium: %1$s = 0.50</li><li>Large: %1$s = 0.80</li></ul>"
 msgstr ""
+"El %1$s de Cohen es una medida de la diferencia tipificada entre dos grupos. "
+"La reglas generales para interpretar la medida son:<ul><li>Pequeña: %1$s = "
+"0.20 </li> <li>Media: %1$s = 0.50</li><li>Grande: %1$s = 0.80</li></ul>"
 
 msgid "- Cohen's U%1$s corresponds to the proportion of the control group that is surpassed by the upper upper half of the experimental group."
 msgstr ""
+"- El U%1$s de Cohen se corresponde con la proporción del grupo de control "
+"que está sobrepasada por la mitad superior del grupo experimental."
 
 msgid "- Overlap corresponds to the common are of the control and experimental density."
 msgstr ""
+"- Superposición se corresponde con la densidad que es común al control y al "
+"experimental."
 
 msgid "- Probability of superiority corresponds to the probability that a randomly chosen participant from the experimental group will have higher value than a randomly chosen participant from the control group."
 msgstr ""
+"- Probabilidad de superioridad se corresponde con la probabilidad de que un "
+"participante elegido aleatoriamente del grupo experimental, va a tener un "
+"valor mayor que un participante elegido aleatoriamente del grupo de control."
 
 msgid "- Number needed to treat corresponds to the number of participants in the experimental group that would be required to observe one more successful outcome than in the control group."
 msgstr ""
+"- Número necesario para tratamiento se corresponde con el número de "
+"participantes del grupo experimental que serían necesarios para observar un "
+"resultado más exitoso que en el grupo de control."
 
 msgid "Pearson correlation"
-msgstr ""
+msgstr "Correlación de Pearson"
 
 msgid "Shared variance (R%1$s)"
-msgstr ""
+msgstr "Varianza compartida (R%1$s)"
 
 msgid "Pearson correlation coefficient %1$s is a measure of the relationship between two continuous variables. The rules of thumbs for interpreting the measure are:<ul><li>Small: %1$s = 0.10 </li> <li>Medium: %1$s = 0.30</li><li>Large: %1$s = 0.50</li></ul>"
 msgstr ""
+"El coeficiente %1$s de correlación de Pearson es una medida de la relación "
+"entre dos variables continuas. Las reglas generales para interpretar la "
+"medida son:<ul><li>Pequeña: %1$s = 0.10 </li> <li>Media: %1$s = "
+"0.30</li><li>Grande: %1$s = 0.50</li></ul>"
 
 msgid "- Shared variance (R%1$s) corresponds to proportion of variance shared common between the variables."
 msgstr ""
+"La varianza compartida (R%1$s) se corresponde con la proporción de varianza "
+"compartida que es común a las variables."
 
 msgid "The specified phi, P(X), and P(Y) do not yield a valid contingency table. One of the frequencies would need to be negative."
 msgstr ""
+"Los phi, P(X) y P(Y) especificados no producen una tabla de contingencia "
+"válida. Una de las frecuencias podría ser negativa."
 
 msgid "Frequencies"
-msgstr ""
+msgstr "Frecuencias"
 
 msgid "P(X=1)"
-msgstr ""
+msgstr "P(X=1)"
 
 msgid "P(Y=1)"
-msgstr ""
+msgstr "P(Y=1)"
 
 msgid "Phi coefficient"
-msgstr ""
+msgstr "Coeficiente Phi"
 
 msgid "Odds ratio"
-msgstr ""
+msgstr "Razón de probabilidades"
 
 msgid "Risk ratio"
-msgstr ""
+msgstr "Proporción de riesgos"
 
 msgid "Risk difference"
-msgstr ""
+msgstr "Diferencia de riesgos"
 
 msgid "Contingency coefficient %1$s is a measure of the relationship between two nominal variables. The rules of thumbs for interpreting the measure are:<ul><li>Weak: %1$s = 0.20 </li> <li>Moderate: %1$s = 0.30</li><li>Strong: %1$s = 0.40</li><li>Very Strong: %1$s = 0.70</li></ul>"
 msgstr ""
+"El coeficiente %1$s de contingencia es una medida de la relación entre dos "
+"variables nominales. Las reglas generales para interpretar la medida "
+"son:<ul><li>Débil: %1$s = 0.20 </li> <li>Moderada: %1$s = "
+"0.30</li><li>Fuerte: %1$s = 0.40</li><li>Muy fuerte: %1$s = 0.70</li></ul>"
 
 msgid "- Odds ratio corresponds to the ratio of the odds of an event occuring in the experimental and control groups."
 msgstr ""
+"- La razón de probabilidades se corresponde con la ratio de las "
+"probabilidades de que ocurra un suceso en los grupos experimental y de "
+"control."
 
 msgid "- Risk ratio corresponds to the ratio of the risk of an event occuring in the experimental and control groups."
 msgstr ""
+"- La proporción de riesgos se corresponde con la ratio de los riesgos de que "
+"ocurra un suceso en los grupos experimental y de control."
 
 msgid "- Risk difference corresponds to the difference in the risk of the event occuring between the experimental and control groups."
 msgstr ""
+"- La diferencia de riesgos se corresponde con la diferencia entre los "
+"riesgos de que ocurra un suceso en los grupos experimental y de control."
