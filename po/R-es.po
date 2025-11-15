@@ -2,248 +2,266 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.95.0\n"
 "POT-Creation-Date: 2025-06-21 04:47\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-11-15 14:37+0000\n"
+"Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
+"jasplearnstats-r/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15-dev\n"
 
 msgid "Parent Distribution"
-msgstr ""
+msgstr "Distribución Generatriz"
 
 msgid "Count: %i"
-msgstr ""
+msgstr "Recuentos: %i"
 
 msgid "Mean: %.2f"
-msgstr ""
+msgstr "Media: %.2f"
 
 msgid "SE: %.2f"
-msgstr ""
+msgstr "ET: %.2f"
 
 msgid "SD: %.2f"
-msgstr ""
+msgstr "DT: %.2f"
 
 msgid "Sample Nr. %i"
-msgstr ""
+msgstr "Muestra Nr. %i"
 
 msgid "... until Sample Nr. %i"
-msgstr ""
+msgstr "... hasta la Muestra Nr. %i"
 
 msgid "Samples"
-msgstr ""
+msgstr "Muestras"
 
 msgid "Std. Dev.: %.2f"
-msgstr ""
+msgstr "Desv. Típ.: %.2f"
 
 msgid "Sampling Distribution of the Mean"
-msgstr ""
+msgstr "Distribución muestral de la Media"
 
 msgid "Std. Dev: %.2f"
-msgstr ""
+msgstr "Desv. Típ.: %.2f"
 
 msgid "Coverage"
-msgstr ""
+msgstr "Cobertura"
 
 msgid "Coverage %%"
-msgstr ""
+msgstr "Cobertura %%"
 
 msgid "Mean"
-msgstr ""
+msgstr "Media"
 
 msgid "Estimate"
-msgstr ""
+msgstr "Estimar"
 
 msgid "%s%% CI for Mean Difference"
-msgstr ""
+msgstr "IC del %s%% para la Diferencia de Medias"
 
 msgid "Lower"
-msgstr ""
+msgstr "Inferior"
 
 msgid "Upper"
-msgstr ""
+msgstr "Superior"
 
 msgid "CI contains %s?"
-msgstr ""
+msgstr "¿El IC contiene %s?"
 
 msgid "Tree Plot"
-msgstr ""
+msgstr "Gráfico de árbol"
 
 msgid "Make sure to specify a lower bound that is lower than the upper bound for the x-axis."
 msgstr ""
+"Asegúrese de especificar un límite inferior que sea menor que el límite "
+"superior, para el eje X."
 
 msgid "Observed mean and %s%% CI"
-msgstr ""
+msgstr "Media observada e IC del %s%%"
 
 msgid "Data plots"
-msgstr ""
+msgstr "Gráficos de datos"
 
 msgid "Dependent"
-msgstr ""
+msgstr "Dependiente"
 
 msgid "Repetition %d"
-msgstr ""
+msgstr "Repetición %d"
 
 msgid "Convergence Plot"
-msgstr ""
+msgstr "Gráfico de convergencia"
 
 msgid "Number of Replications"
-msgstr ""
+msgstr "Número de réplicas"
 
 msgid "p(Coverage)"
-msgstr ""
+msgstr "p(Cobertura)"
 
 msgid "Rep"
-msgstr ""
+msgstr "Rep"
 
 msgid "Decision Tree"
-msgstr ""
+msgstr "Árbol de Decisión"
 
 msgid "Test choice"
-msgstr ""
+msgstr "Elección de contraste"
 
 msgid "Explanation"
-msgstr ""
+msgstr "Explicación"
 
 msgid "Theoretical example distribution"
-msgstr ""
+msgstr "Distribución teórica de ejemplo"
 
 msgid "Visual Explanation"
-msgstr ""
+msgstr "Explicación visual"
 
 msgid "Visual Explanation 2"
-msgstr ""
+msgstr "Explicación visual 2"
 
 msgid "Visual Explanation 3"
-msgstr ""
+msgstr "Explicación visual 3"
 
 msgid "Visual Explanation 4"
-msgstr ""
+msgstr "Explicación visual 4"
 
 msgid "Range"
-msgstr ""
+msgstr "Rango"
 
 msgid "Min"
-msgstr ""
+msgstr "Mín"
 
 msgid "Max"
-msgstr ""
+msgstr "Máx"
 
 msgid "1st quartile"
-msgstr ""
+msgstr "Cuartil 1"
 
 msgid "2nd quartile / \n Median"
 msgstr ""
+"Cuartil 2/ \n"
+"Mediana"
 
 msgid "3rd quartile"
-msgstr ""
+msgstr "Cuartil 3"
 
 msgid "IQR"
-msgstr ""
+msgstr "RIC(IQR)"
 
 msgid "Variance"
-msgstr ""
+msgstr "Varianza"
 
 msgid "-3 SD"
-msgstr ""
+msgstr "-3 DT"
 
 msgid "-2 SD"
-msgstr ""
+msgstr "-2 DT"
 
 msgid "-1 SD"
-msgstr ""
+msgstr "-1 DT"
 
 msgid "+1 SD"
-msgstr ""
+msgstr "+1 DT"
 
 msgid "+2 SD"
-msgstr ""
+msgstr "+2 DT"
 
 msgid "+3 SD"
-msgstr ""
+msgstr "+3 DT"
 
 msgid "Std. Dev."
-msgstr ""
+msgstr "Desv. Típ."
 
 msgid "Median"
-msgstr ""
+msgstr "Mediana"
 
 msgid "Mode"
-msgstr ""
+msgstr "Moda"
 
 msgid "Min: %.2f"
-msgstr ""
+msgstr "Mín: %.2f"
 
 msgid "Max: %.2f"
-msgstr ""
+msgstr "Máx: %.2f"
 
 msgid "Range: %.2f"
-msgstr ""
+msgstr "Rango: %.2f"
 
 msgid "1st quar. = %.2f"
-msgstr ""
+msgstr "Cuart. 1 = %.2f"
 
 msgid "2nd quar. / \n Median = %.2f"
 msgstr ""
+"Cuart. 2/ \n"
+"Mediana = %.2f"
 
 msgid "3rd quar. = %.2f"
-msgstr ""
+msgstr "Cuart. 3 = %.2f"
 
 msgid "IQR = %.2f"
-msgstr ""
+msgstr "RIC(IQR) = %.2f"
 
 msgid "-%i SD"
-msgstr ""
+msgstr "-%i DT"
 
 msgid "+%i SD"
-msgstr ""
+msgstr "+%i DT"
 
 msgid "Mean = %.2f"
-msgstr ""
+msgstr "Media = %.2f"
 
 msgid "Std. Dev. = %.2f"
-msgstr ""
+msgstr "Desv. Típ. = %.2f"
 
 msgid "Dotplot"
-msgstr ""
+msgstr "Gráfico de puntos"
 
 msgid "No variance: All values are equal."
-msgstr ""
+msgstr "Sin varianza: Todos los valores son iguales."
 
 msgid "All values unique, \n no mode defined."
 msgstr ""
+"Todos los valores son únicos, \n"
+"Moda no definida."
 
 msgid "Mode = %1$i \n (Count = %2$i)"
 msgstr ""
+"Moda = %1$i \n"
+"(Recuento = %2$i)"
 
 msgid "Mode = %1$.2f \n (Count = %2$i)"
 msgstr ""
+"Moda = %1$.2f \n"
+"(Recuento = %2$i)"
 
 msgid "Mode = {%i"
-msgstr ""
+msgstr "Moda = {%i"
 
 msgid "Mode = /n {%.2f"
-msgstr ""
+msgstr "Moda = /n {%.2f"
 
 msgid "} \n (Count = %i)"
 msgstr ""
+"} \n"
+"(Recuento = %i)"
 
 msgid "Median = %.2f"
-msgstr ""
+msgstr "Mediana = %.2f"
 
 msgid "2nd quar. / \n Median"
 msgstr ""
+"Cuart. 2/ \n"
+"Mediana"
 
 msgid "1st quar."
-msgstr ""
+msgstr "Cuart. 1"
 
 msgid "3rd quar."
-msgstr ""
+msgstr "Cuart. 3"
 
 msgid "to be added..."
-msgstr ""
+msgstr "Para añadir..."
 
 msgid "Theoretical distribution of the test statistic under H<sub>0</sub>"
 msgstr ""
@@ -336,7 +354,7 @@ msgid "95%% CI"
 msgstr ""
 
 msgid "Cohen's d"
-msgstr ""
+msgstr "D de Cohen"
 
 msgid "Cohen's U%1$s"
 msgstr ""
