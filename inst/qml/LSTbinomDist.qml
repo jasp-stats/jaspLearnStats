@@ -17,6 +17,6 @@
 //
 import QtQuick
 import JASP.Controls
-import jaspDistributions
+import "../../../jaspDistributions"
 
 BinomialDistribution{}
