@@ -62,7 +62,7 @@ Form {
 				name:			"effectSizeValueDelta"
 				label:			"δ"
 				visible:		!inputPopulation.checked
-				defaultValue:	0
+				defaultValue:	0.5
 			}
 
 			DoubleField
