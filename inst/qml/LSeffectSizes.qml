@@ -62,7 +62,7 @@ Form {
 				name:			"effectSizeValueDelta"
 				label:			"δ"
 				visible:		!inputPopulation.checked
-				defaultValue:	0
+				defaultValue:	0.5
 			}
 
 			DoubleField
@@ -97,7 +97,7 @@ Form {
 				
 				name:			"effectSizeValueRho"
 				label:			"ρ"
-				defaultValue:	0
+				defaultValue:	0.5
 				min: 			-1
 				max:			1
 			}
@@ -142,11 +142,11 @@ Form {
 				name:			"effectSizeValuePhi"
 				visible:		!inputPopulation.checked
 				label:			"φ"
-				defaultValue:	0
+				defaultValue:	0.5
 				min: 			-1
 				max:			1
 			}
-		
+
 
 			DoubleField
 			{
