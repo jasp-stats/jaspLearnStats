@@ -1127,8 +1127,8 @@ switchOptions <- function(options) {
   }
 
   plot <- ggplot2::ggplot(data = data) +
-    ggplot2::scale_x_continuous(name = "", breaks = ticks, limits = range(ticks)) +
-    ggplot2::scale_y_continuous(name = "", breaks = ticks, limits = range(ticks)) +
+    ggplot2::scale_x_continuous(name = "", breaks = scales::pretty_breaks(n = 3)) +
+    ggplot2::scale_y_continuous(name = "", breaks = scales::pretty_breaks(n = 3)) +
     ggplot2::geom_rect(
       mapping = ggplot2::aes(
         xmin = x_start,
@@ -1188,8 +1188,8 @@ switchOptions <- function(options) {
   }
 
   plot <- ggplot2::ggplot(data = data) +
-    ggplot2::scale_x_continuous(name = "", breaks = ticks, limits = range(ticks)) +
-    ggplot2::scale_y_continuous(name = "", breaks = ticks, limits = range(ticks)) +
+    ggplot2::scale_x_continuous(name = "", breaks = scales::pretty_breaks(n = 3)) +
+    ggplot2::scale_y_continuous(name = "", breaks = scales::pretty_breaks(n = 3)) +
     ggplot2::geom_rect(
       mapping = ggplot2::aes(
         xmin = x_start,
@@ -1255,8 +1255,8 @@ switchOptions <- function(options) {
   }
 
   plot <- ggplot2::ggplot() +
-    ggplot2::scale_x_continuous(name = "", breaks = ticks, limits = range(ticks)) +
-    ggplot2::scale_y_continuous(name = "", breaks = ticks, limits = range(ticks)) +
+    ggplot2::scale_x_continuous(name = "", breaks = scales::pretty_breaks(n = 3)) +
+    ggplot2::scale_y_continuous(name = "", breaks = scales::pretty_breaks(n = 3)) +
     ggplot2::geom_rect(
       data    = dataS,
       mapping = ggplot2::aes(
