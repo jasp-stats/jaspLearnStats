@@ -1032,7 +1032,7 @@ switchOptions <- function(options) {
 
   if (options[["plotCombine"]] && options[["simulateData"]]){
 
-    phiCombinedPlot <- createJaspPlot(title = gettext("Population and simulation distribution"), height = 500, aspectRatio = 1)
+    phiCombinedPlot <- createJaspPlot(title = gettext("Population and simulation distribution"), width = 650, height = 500, aspectRatio = 1)
     phiCombinedPlot$position <- 1
     phiPlot[["phiCombinedPlot"]] <- phiCombinedPlot
 
@@ -1045,7 +1045,7 @@ switchOptions <- function(options) {
 
   } else {
 
-    phiPopulationPlot   <- createJaspPlot(title = gettext("Population distribution"), height = 500, aspectRatio = 1)
+    phiPopulationPlot   <- createJaspPlot(title = gettext("Population distribution"), width = 650, height = 500, aspectRatio = 1)
     phiPopulationPlot$position <- 1
     phiPlot[["phiPopulationPlot"]] <- phiPopulationPlot
 
@@ -1057,7 +1057,7 @@ switchOptions <- function(options) {
 
     if (options[["simulateData"]]) {
 
-      phiSimulationPlot   <- createJaspPlot(title = gettext("Simulation distribution"), height = 500, aspectRatio = 1)
+      phiSimulationPlot   <- createJaspPlot(title = gettext("Simulation distribution"), width = 650, height = 500, aspectRatio = 1)
       phiSimulationPlot$position <- 2
       phiPlot[["phiSimulationPlot"]] <- phiSimulationPlot
 
