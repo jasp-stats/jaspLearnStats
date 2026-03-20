@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.95.5\n"
 "POT-Creation-Date: 2025-11-15 04:45\n"
-"PO-Revision-Date: 2026-03-20 12:46+0000\n"
+"PO-Revision-Date: 2026-03-21 05:01+0000\n"
 "Last-Translator: Zahid Rizky Fakhri <zahidrizkyfakhri@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
 "jasplearnstats-r/id/>\n"
@@ -56,16 +56,16 @@ msgid "Mean"
 msgstr "Rerata"
 
 msgid "Estimate"
-msgstr ""
+msgstr "Estimasi"
 
 msgid "%s%% CI for Mean Difference"
 msgstr ""
 
 msgid "Lower"
-msgstr ""
+msgstr "Bawah"
 
 msgid "Upper"
-msgstr ""
+msgstr "Atas"
 
 msgid "CI contains %s?"
 msgstr ""
