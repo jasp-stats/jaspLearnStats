@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2026-03-22 16:09+0000\n"
+"Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
+"Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
+"projects/jasp/jasplearnstats-qml/zh_Hant/>\n"
+"Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.17-dev\n"
 "X-Language: zh_Hant\n"
 "X-Qt-Contexts: true\n"
 
@@ -41,7 +47,7 @@ msgstr ""
 
 msgctxt "Description|"
 msgid "Effect Sizes"
-msgstr ""
+msgstr "效果量"
 
 msgctxt "LSeffectSizes|"
 msgid "Cohen's δ"
@@ -49,23 +55,23 @@ msgstr ""
 
 msgctxt "LSeffectSizes|"
 msgid "Pearson correlation coefficient ρ"
-msgstr ""
+msgstr "皮爾森相關係數 ρ"
 
 msgctxt "LSeffectSizes|"
 msgid "Contingency coefficient φ"
-msgstr ""
+msgstr "列聯係數 φ"
 
 msgctxt "LSeffectSizes|"
 msgid "Explanatory text"
-msgstr ""
+msgstr "說明性文字"
 
 msgctxt "LSeffectSizes|"
 msgid "Simulate data"
-msgstr ""
+msgstr "模擬資料"
 
 msgctxt "LSeffectSizes|"
 msgid "No. observations"
-msgstr ""
+msgstr "觀測值個數"
 
 msgctxt "LSeffectSizes|"
 msgid "Advanced"
@@ -217,7 +223,7 @@ msgstr ""
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Color palette"
-msgstr ""
+msgstr "調色盤"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Colorblind"
@@ -361,7 +367,7 @@ msgstr ""
 
 msgctxt "LSTdescriptives|"
 msgid "Color palette"
-msgstr ""
+msgstr "調色盤"
 
 msgctxt "LSTdescriptives|"
 msgid "Colorblind"
@@ -501,7 +507,7 @@ msgstr ""
 
 msgctxt "LSTsampleVariability|"
 msgid "Color palette"
-msgstr ""
+msgstr "調色盤"
 
 msgctxt "LSTsampleVariability|"
 msgid "Colorblind"
@@ -653,7 +659,7 @@ msgstr ""
 
 msgctxt "LSTstandardError|"
 msgid "Color palette"
-msgstr ""
+msgstr "調色盤"
 
 msgctxt "LSTstandardError|"
 msgid "Colorblind"
