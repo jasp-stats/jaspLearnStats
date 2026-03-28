@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.95.5\n"
 "POT-Creation-Date: 2025-11-15 04:45\n"
-"PO-Revision-Date: 2026-03-21 05:01+0000\n"
+"PO-Revision-Date: 2026-03-28 01:09+0000\n"
 "Last-Translator: Zahid Rizky Fakhri <zahidrizkyfakhri@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
 "jasplearnstats-r/id/>\n"
@@ -59,7 +59,7 @@ msgid "Estimate"
 msgstr "Estimasi"
 
 msgid "%s%% CI for Mean Difference"
-msgstr ""
+msgstr "%s%% CI untuk Perbedaan Rerata"
 
 msgid "Lower"
 msgstr "Bawah"
@@ -83,7 +83,7 @@ msgid "Data plots"
 msgstr ""
 
 msgid "Dependent"
-msgstr ""
+msgstr "Dependen"
 
 msgid "Repetition %d"
 msgstr ""
@@ -125,7 +125,7 @@ msgid "Visual Explanation 4"
 msgstr ""
 
 msgid "Range"
-msgstr ""
+msgstr "Rentang"
 
 msgid "Min"
 msgstr ""
@@ -146,7 +146,7 @@ msgid "IQR"
 msgstr ""
 
 msgid "Variance"
-msgstr ""
+msgstr "Varians"
 
 msgid "-3 SD"
 msgstr ""
@@ -170,10 +170,10 @@ msgid "Std. Dev."
 msgstr ""
 
 msgid "Median"
-msgstr ""
+msgstr "Median"
 
 msgid "Mode"
-msgstr ""
+msgstr "Mode"
 
 msgid "Min: %.2f"
 msgstr ""
