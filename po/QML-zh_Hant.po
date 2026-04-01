@@ -1,27 +1,33 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2026-04-02 05:09+0000\n"
+"Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
+"Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
+"projects/jasp/jasplearnstats-qml/zh_Hant/>\n"
+"Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.17-dev\n"
 "X-Language: zh_Hant\n"
 "X-Qt-Contexts: true\n"
 
 msgctxt "Description|"
 msgid "Learn Stats"
-msgstr ""
+msgstr "學習統計學"
 
 msgctxt "Description|"
 msgid "Learn classical statistics with simple examples and supporting text"
-msgstr ""
+msgstr "透過簡易範例與輔助說明文字學習古典統計學"
 
 msgctxt "Description|"
 msgid "Normal Distribution"
-msgstr ""
+msgstr "常態分配"
 
 msgctxt "Description|"
 msgid "Central Limit Theorem"
-msgstr ""
+msgstr "中央極限定理"
 
 msgctxt "Description|"
 msgid "Standard Error"
@@ -33,11 +39,11 @@ msgstr "描述性統計"
 
 msgctxt "Description|"
 msgid "Sample Variability"
-msgstr ""
+msgstr "樣本變異性"
 
 msgctxt "Description|"
 msgid "P Values"
-msgstr ""
+msgstr "P 值"
 
 msgctxt "Description|"
 msgid "Effect Sizes"
@@ -81,7 +87,7 @@ msgstr ""
 
 msgctxt "LSeffectSizes|"
 msgid "Probability of superiority"
-msgstr ""
+msgstr "優越性機率"
 
 msgctxt "LSeffectSizes|"
 msgid "Number needed to treat"
@@ -829,11 +835,11 @@ msgstr ""
 
 msgctxt "LSTPValues|"
 msgid "Highlight specified test statistic"
-msgstr ""
+msgstr "標示指定的檢定統計量"
 
 msgctxt "LSTPValues|"
 msgid "Specify test statistic"
-msgstr ""
+msgstr "指定檢定統計量"
 
 msgctxt "LSTPValues|"
 msgid "Specify p-value"
@@ -1005,7 +1011,7 @@ msgstr "效果量"
 
 msgctxt "LSeffectSizes|"
 msgid "Additional statistics"
-msgstr ""
+msgstr "其他統計量"
 
 msgctxt "LSeffectSizes|"
 msgid "Odds ratio"
@@ -1209,7 +1215,7 @@ msgstr ""
 
 msgctxt "LSTdescriptives|"
 msgid "Upper bound"
-msgstr ""
+msgstr "上界"
 
 msgctxt "LSTdescriptives|"
 msgid "Normal distribution parameters"
