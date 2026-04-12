@@ -2,149 +2,153 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.96.1\n"
 "POT-Creation-Date: 2026-04-11 05:14\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-04-12 22:12+0000\n"
+"Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
+"Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
+"projects/jasp/jasplearnstats-r/zh_Hant/>\n"
 "Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 msgid "Parent Distribution"
-msgstr ""
+msgstr "母體分配"
 
 msgid "Count: %i"
-msgstr ""
+msgstr "計數：%i"
 
 msgid "Mean: %.2f"
-msgstr ""
+msgstr "平均數：%.2f"
 
 msgid "SE: %.2f"
-msgstr ""
+msgstr "標準誤：%.2f"
 
 msgid "SD: %.2f"
-msgstr ""
+msgstr "標準差：%.2f"
 
 msgid "Sample Nr. %i"
-msgstr ""
+msgstr "樣本編號 %i"
 
 msgid "... until Sample Nr. %i"
-msgstr ""
+msgstr "……直至樣本編號 %i"
 
 msgid "Samples"
-msgstr ""
+msgstr "樣本"
 
 msgid "Std. Dev.: %.2f"
-msgstr ""
+msgstr "標準差：%.2f"
 
 msgid "Sampling Distribution of the Mean"
-msgstr ""
+msgstr "平均數的抽樣分配"
 
 msgid "Std. Dev: %.2f"
-msgstr ""
+msgstr "標準差：%.2f"
 
 msgid "Coverage"
-msgstr ""
+msgstr "覆蓋率"
 
 msgid "Coverage %%"
-msgstr ""
+msgstr "覆蓋率 %%"
 
 msgid "Mean"
-msgstr ""
+msgstr "平均數"
 
 msgid "Estimate"
-msgstr ""
+msgstr "估計值"
 
 msgid "%s%% CI for Mean Difference"
-msgstr ""
+msgstr "平均數差異的 %s%% 信賴區間"
 
 msgid "Lower"
-msgstr ""
+msgstr "下界"
 
 msgid "Upper"
-msgstr ""
+msgstr "上界"
 
 msgid "CI contains %s?"
-msgstr ""
+msgstr "信賴區間是否包含 %s？"
 
 msgid "Tree Plot"
-msgstr ""
+msgstr "樹狀圖"
 
 msgid "Make sure to specify a lower bound that is lower than the upper bound for the x-axis."
-msgstr ""
+msgstr "請確保指定的下界低於上界，以設定X軸範圍。"
 
 msgid "Observed mean and %s%% CI"
-msgstr ""
+msgstr "觀察到的平均數與 %s%% 信賴區間"
 
 msgid "Data plots"
-msgstr ""
+msgstr "資料圖"
 
 msgid "Dependent"
-msgstr ""
+msgstr "依變項"
 
 msgid "Repetition %d"
-msgstr ""
+msgstr "重複 %d"
 
 msgid "Convergence Plot"
-msgstr ""
+msgstr "收斂圖"
 
 msgid "Number of Replications"
-msgstr ""
+msgstr "重複次數"
 
 msgid "p(Coverage)"
-msgstr ""
+msgstr "p(覆蓋率)"
 
 msgid "Rep"
-msgstr ""
+msgstr "重複"
 
 msgid "Decision Tree"
-msgstr ""
+msgstr "決策樹"
 
 msgid "Test choice"
-msgstr ""
+msgstr "檢定選擇"
 
 msgid "Explanation"
-msgstr ""
+msgstr "解釋"
 
 msgid "Theoretical example distribution"
-msgstr ""
+msgstr "理論例示分配"
 
 msgid "Visual Explanation"
-msgstr ""
+msgstr "視覺化解釋"
 
 msgid "Visual Explanation 2"
-msgstr ""
+msgstr "視覺化解釋 2"
 
 msgid "Visual Explanation 3"
-msgstr ""
+msgstr "視覺化解釋 3"
 
 msgid "Visual Explanation 4"
-msgstr ""
+msgstr "視覺化解釋 4"
 
 msgid "Range"
-msgstr ""
+msgstr "全距"
 
 msgid "Min"
-msgstr ""
+msgstr "最小值"
 
 msgid "Max"
-msgstr ""
+msgstr "最大值"
 
 msgid "1st quartile"
-msgstr ""
+msgstr "第一四分位數"
 
 msgid "2nd quartile / \n Median"
 msgstr ""
+"第一四分位數 / \n"
+" 中位數"
 
 msgid "3rd quartile"
-msgstr ""
+msgstr "第三四分位數"
 
 msgid "IQR"
-msgstr ""
+msgstr "四分位距"
 
 msgid "Variance"
-msgstr ""
+msgstr "變異數"
 
 msgid "-3 SD"
 msgstr ""
@@ -165,175 +169,189 @@ msgid "+3 SD"
 msgstr ""
 
 msgid "Std. Dev."
-msgstr ""
+msgstr "標準差"
 
 msgid "Median"
-msgstr ""
+msgstr "中位數"
 
 msgid "Mode"
-msgstr ""
+msgstr "眾數"
 
 msgid "Min: %.2f"
-msgstr ""
+msgstr "最小值：%.2f"
 
 msgid "Max: %.2f"
-msgstr ""
+msgstr "最大值：%.2f"
 
 msgid "Range: %.2f"
-msgstr ""
+msgstr "全距：%.2f"
 
 msgid "1st quar. = %.2f"
-msgstr ""
+msgstr "第一四分位數 = %.2f"
 
 msgid "2nd quar. / \n Median = %.2f"
 msgstr ""
+"第一四分位數 / \n"
+" 中位數 = %.2f"
 
 msgid "3rd quar. = %.2f"
-msgstr ""
+msgstr "第三四分位數"
 
 msgid "IQR = %.2f"
-msgstr ""
+msgstr "四分位距 = %.2f"
 
 msgid "-%i SD"
-msgstr ""
+msgstr "-%i 個標準差"
 
 msgid "+%i SD"
-msgstr ""
+msgstr "+%i 個標準差"
 
 msgid "Mean = %.2f"
-msgstr ""
+msgstr "平均數 = %.2f"
 
 msgid "Std. Dev. = %.2f"
-msgstr ""
+msgstr "標準差 = %.2f"
 
 msgid "Dotplot"
-msgstr ""
+msgstr "點狀圖"
 
 msgid "No variance: All values are equal."
-msgstr ""
+msgstr "無變異：所有數值皆相等。"
 
 msgid "All values unique, \n no mode defined."
 msgstr ""
+"所有值皆唯一，\n"
+" 無眾數。"
 
 msgid "Mode = %1$i \n (Count = %2$i)"
 msgstr ""
+"眾數 = %1$i \n"
+" （次數 = %2$i）"
 
 msgid "Mode = %1$.2f \n (Count = %2$i)"
 msgstr ""
+"眾數 = %1$.2f \n"
+" （次數 = %2$i）"
 
 msgid "Mode = {%i"
-msgstr ""
+msgstr "眾數 = {%i"
 
 msgid "Mode = /n {%.2f"
-msgstr ""
+msgstr "眾數 = /n {%.2f"
 
 msgid "} \n (Count = %i)"
 msgstr ""
+"} \n"
+" (次數 = %i)"
 
 msgid "Median = %.2f"
-msgstr ""
+msgstr "中位數 = %.2f"
 
 msgid "2nd quar. / \n Median"
 msgstr ""
+"第二四分位數 / \n"
+" 中位數"
 
 msgid "1st quar."
-msgstr ""
+msgstr "第一四分位數"
 
 msgid "3rd quar."
-msgstr ""
+msgstr "第三四分位數"
 
 msgid "to be added..."
-msgstr ""
+msgstr "待新增……"
 
 msgid "Theoretical distribution of the test statistic under H<sub>0</sub>"
-msgstr ""
+msgstr "虛無假設 H<sub>0</sub>之下檢定統計量的理論分配"
 
 msgid "Distribution plot"
-msgstr ""
+msgstr "分布圖"
 
 msgid "Test statistic"
-msgstr ""
+msgstr "檢定統計量"
 
 msgid "Density"
-msgstr ""
+msgstr "密度"
 
 msgid "Simulation under H<sub>0</sub>"
-msgstr ""
+msgstr "虛無假設 H<sub>>0</sub>下的模擬"
 
 msgid "Observed test statistics"
-msgstr ""
+msgstr "觀察到的檢定統計量"
 
 msgid "Count"
-msgstr ""
+msgstr "計數"
 
 msgid "Null dist."
-msgstr ""
+msgstr "虛無分配"
 
 msgid "Alt dist."
-msgstr ""
+msgstr "對立分配"
 
 msgid "Observed p-values"
-msgstr ""
+msgstr "觀察到的 p 值"
 
 msgid "p-values"
-msgstr ""
+msgstr "p 值"
 
 msgid "Frequency Table"
-msgstr ""
+msgstr "次數分配表"
 
 msgid "Percent"
-msgstr ""
+msgstr "百分比"
 
 msgid "Significant"
-msgstr ""
+msgstr "顯著"
 
 msgid "Not significant"
-msgstr ""
+msgstr "不顯著"
 
 msgid "Total"
-msgstr ""
+msgstr "總計"
 
 msgid "Simulation under H<sub>a</sub>"
-msgstr ""
+msgstr "對立假設 H<sub>a</sub> 下的模擬"
 
 msgid "Error Message"
-msgstr ""
+msgstr "錯誤訊息"
 
 msgid "Population size too small. Cannot draw %1$i samples with size %2$i from a finite population of %3$i."
 msgstr ""
+"母體規模過小。無法從大小為 %3$i 的有限母體中抽出 %1$i 個樣本數為 %2$i 的樣本"
+"。"
 
 msgid "Statistics Summary"
-msgstr ""
+msgstr "統計量摘要"
 
 msgid "Population and simulation distribution"
-msgstr ""
+msgstr "母體與模擬分配"
 
 msgid "Population distribution"
-msgstr ""
+msgstr "母體分配"
 
 msgid "Simulation distribution"
-msgstr ""
+msgstr "模擬分配"
 
 msgid "Raincloud plot"
-msgstr ""
+msgstr "雨雲圖"
 
 msgid "Group"
-msgstr ""
+msgstr "組別"
 
 msgid "Control"
-msgstr ""
+msgstr "控制"
 
 msgid "Experimental"
-msgstr ""
+msgstr "實驗"
 
 msgid "Population"
-msgstr ""
+msgstr "母群體"
 
 msgid "Simulation"
-msgstr ""
+msgstr "模擬"
 
 msgid "95%% CI"
-msgstr ""
+msgstr "95%% 信賴區間"
 
 msgid "Cohen's d"
 msgstr ""
@@ -342,49 +360,59 @@ msgid "Cohen's U%1$s"
 msgstr ""
 
 msgid "Overlap"
-msgstr ""
+msgstr "重疊"
 
 msgid "Probability of superiority"
-msgstr ""
+msgstr "優越性機率"
 
 msgid "Number needed to treat*"
-msgstr ""
+msgstr "需治療人數*"
 
 msgid "The number needed to treat is based on a %1$s event rate."
-msgstr ""
+msgstr "需治療人數係基於 %1$s 的事件率。"
 
 msgid "Cohen's %1$s is a measure of the standardized difference between two groups. The rules of thumbs for interpreting the measure are:<ul><li>Small: %1$s = 0.20 </li> <li>Medium: %1$s = 0.50</li><li>Large: %1$s = 0.80</li></ul>"
 msgstr ""
+"Cohen's %1$s 是衡量兩組之間標準化差異的指標。解讀此指標的經驗法則如下：<ul>"
+"<li>小：%1$s = 0.20 </li> <li>中：%1$s = 0.50</li><li>大：%1$s = 0.80</li></"
+"ul>"
 
 msgid "- Cohen's U%1$s corresponds to the proportion of the control group that is surpassed by the upper upper half of the experimental group."
-msgstr ""
+msgstr "- Cohen's U%1$s 指的是實驗組上半部分超越對照組的比例。"
 
 msgid "- Overlap corresponds to the common are of the control and experimental density."
-msgstr ""
+msgstr "- 重疊對應於對照組與實驗組密度曲線的共同面積。"
 
 msgid "- Probability of superiority corresponds to the probability that a randomly chosen participant from the experimental group will have higher value than a randomly chosen participant from the control group."
 msgstr ""
+"- 優越性機率指的是從實驗組隨機選取一名參與者，其數值高於從對照組隨機選取一名"
+"參與者的機率。"
 
 msgid "- Number needed to treat corresponds to the number of participants in the experimental group that would be required to observe one more successful outcome than in the control group."
 msgstr ""
+"- 需治療人數指的是在實驗組中，相較於對照組，為了多觀察到一個成功結果所需治療"
+"的參與者人數。"
 
 msgid "Pearson correlation"
-msgstr ""
+msgstr "皮爾森相關"
 
 msgid "Shared variance (R%1$s)"
-msgstr ""
+msgstr "共同變異（R%1$s）"
 
 msgid "Pearson correlation coefficient %1$s is a measure of the relationship between two continuous variables. The rules of thumbs for interpreting the measure are:<ul><li>Small: %1$s = 0.10 </li> <li>Medium: %1$s = 0.30</li><li>Large: %1$s = 0.50</li></ul>"
 msgstr ""
+"皮爾森相關係數 %1$s 是衡量兩個連續變數之間關係的指標。解讀此指標的經驗法則如"
+"下：<ul><li>小：%1$s = 0.10 </li> <li>中：%1$s = 0.30</li><li>大：%1$s = "
+"0.50</li></ul>"
 
 msgid "- Shared variance (R%1$s) corresponds to proportion of variance shared common between the variables."
-msgstr ""
+msgstr "- 共同變異（R%1$s）指的是變數之間共同分享的變異數比例。"
 
 msgid "The specified phi, P(X), and P(Y) do not yield a valid contingency table. One of the frequencies would need to be negative."
-msgstr ""
+msgstr "指定的phi係數、P(X)與P(Y)無法產生有效的列聯表。其中一個細格次數將會是負數。"
 
 msgid "Frequencies"
-msgstr ""
+msgstr "次數"
 
 msgid "P(X=1)"
 msgstr ""
@@ -393,25 +421,28 @@ msgid "P(Y=1)"
 msgstr ""
 
 msgid "Phi coefficient"
-msgstr ""
+msgstr "Phi 係數"
 
 msgid "Odds ratio"
-msgstr ""
+msgstr "勝算比"
 
 msgid "Risk ratio"
-msgstr ""
+msgstr "風險比"
 
 msgid "Risk difference"
-msgstr ""
+msgstr "風險差異"
 
 msgid "Contingency coefficient %1$s is a measure of the relationship between two nominal variables. The rules of thumbs for interpreting the measure are:<ul><li>Weak: %1$s = 0.20 </li> <li>Moderate: %1$s = 0.30</li><li>Strong: %1$s = 0.40</li><li>Very Strong: %1$s = 0.70</li></ul>"
 msgstr ""
+"列聯係數 %1$s 是衡量兩個名義變數之間關係的指標。解讀此指標的經驗法則如下"
+"：<ul><li>弱：%1$s = 0.20 </li> <li>中度：%1$s = 0.30</li><li>強：%1$s = "
+"0.40</li><li>非常強：%1$s = 0.70</li></ul>"
 
 msgid "- Odds ratio corresponds to the ratio of the odds of an event occuring in the experimental and control groups."
-msgstr ""
+msgstr "- 勝算比指的是實驗組與對照組中事件發生之勝算的比值。"
 
 msgid "- Risk ratio corresponds to the ratio of the risk of an event occuring in the experimental and control groups."
-msgstr ""
+msgstr "- 風險比指的是實驗組與對照組中事件發生之風險的比值。"
 
 msgid "- Risk difference corresponds to the difference in the risk of the event occuring between the experimental and control groups."
-msgstr ""
+msgstr "- 風險差異指的是實驗組與對照組之間事件發生風險的差異。"
