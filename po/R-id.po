@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.95.5\n"
 "POT-Creation-Date: 2025-11-15 04:45\n"
-"PO-Revision-Date: 2026-04-12 22:12+0000\n"
-"Last-Translator: Zahid Rizky Fakhri <zahidrizkyfakhri@gmail.com>\n"
+"PO-Revision-Date: 2026-05-17 06:11+0000\n"
+"Last-Translator: Arif Budiman <arifpedia@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
 "jasplearnstats-r/id/>\n"
 "Language: id\n"
@@ -11,409 +11,458 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.17-dev\n"
+"X-Generator: Weblate 2026.6.dev0\n"
 
 msgid "Parent Distribution"
-msgstr ""
+msgstr "Distribusi Induk"
 
 msgid "Count: %i"
-msgstr ""
+msgstr "Jumlah: %i"
 
 msgid "Mean: %.2f"
-msgstr ""
+msgstr "Rata-rata: %.2f"
 
 msgid "SE: %.2f"
-msgstr ""
+msgstr "SE: %.2f"
 
 msgid "SD: %.2f"
-msgstr ""
+msgstr "SD: %.2f"
 
 msgid "Sample Nr. %i"
-msgstr ""
+msgstr "Sampel Nr. %i"
 
 msgid "... until Sample Nr. %i"
-msgstr ""
+msgstr "... hingga Sampel Nr. %i"
 
 msgid "Samples"
-msgstr ""
+msgstr "Sampel"
 
 msgid "Std. Dev.: %.2f"
-msgstr ""
+msgstr "Std. Dev.: %.2f"
 
 msgid "Sampling Distribution of the Mean"
-msgstr ""
+msgstr "Distribusi Sampling dari Rata-rata"
 
 msgid "Std. Dev: %.2f"
-msgstr ""
+msgstr "Std. Dev: %.2f"
 
 msgid "Coverage"
 msgstr "Cakupan"
 
 msgid "Coverage %%"
-msgstr ""
+msgstr "Cakupan %%"
 
 msgid "Mean"
-msgstr "Rerata"
+msgstr "Rata-rata"
 
 msgid "Estimate"
 msgstr "Estimasi"
 
 msgid "%s%% CI for Mean Difference"
-msgstr "%s%% CI untuk Perbedaan Rerata"
+msgstr "%s%% CI untuk Selisih Rata-rata"
 
 msgid "Lower"
-msgstr "Bawah"
+msgstr "Batas Bawah"
 
 msgid "Upper"
-msgstr "Atas"
+msgstr "Batas Atas"
 
 msgid "CI contains %s?"
-msgstr ""
+msgstr "CI memuat %s?"
 
 msgid "Tree Plot"
-msgstr ""
+msgstr "Diagram Pohon"
 
 msgid "Make sure to specify a lower bound that is lower than the upper bound for the x-axis."
 msgstr ""
+"Pastikan untuk menentukan batas bawah yang lebih kecil dari batas atas untuk "
+"sumbu-x."
 
 msgid "Observed mean and %s%% CI"
-msgstr ""
+msgstr "Rata-rata teramati dan CI %s%%"
 
 msgid "Data plots"
-msgstr ""
+msgstr "Plot data"
 
 msgid "Dependent"
 msgstr "Dependen"
 
 msgid "Repetition %d"
-msgstr ""
+msgstr "Pengulangan %d"
 
 msgid "Convergence Plot"
-msgstr ""
+msgstr "Plot Konvergensi"
 
 msgid "Number of Replications"
-msgstr ""
+msgstr "Jumlah Replikasi"
 
 msgid "p(Coverage)"
-msgstr ""
+msgstr "p(Cakupan)"
 
 msgid "Rep"
-msgstr ""
+msgstr "Rep"
 
 msgid "Decision Tree"
-msgstr ""
+msgstr "Pohon Keputusan"
 
 msgid "Test choice"
-msgstr ""
+msgstr "Pilihan uji"
 
 msgid "Explanation"
-msgstr ""
+msgstr "Penjelasan"
 
 msgid "Theoretical example distribution"
-msgstr ""
+msgstr "Distribusi contoh teoretis"
 
 msgid "Visual Explanation"
-msgstr ""
+msgstr "Penjelasan Visual"
 
 msgid "Visual Explanation 2"
-msgstr ""
+msgstr "Penjelasan Visual 2"
 
 msgid "Visual Explanation 3"
-msgstr ""
+msgstr "Penjelasan Visual 3"
 
 msgid "Visual Explanation 4"
-msgstr ""
+msgstr "Penjelasan Visual 4"
 
 msgid "Range"
 msgstr "Rentang"
 
 msgid "Min"
-msgstr ""
+msgstr "Min"
 
 msgid "Max"
-msgstr ""
+msgstr "Maks"
 
 msgid "1st quartile"
-msgstr ""
+msgstr "Kuartil ke-1"
 
 msgid "2nd quartile / \n Median"
 msgstr ""
+"Kuartil ke-2 / \n"
+" Median"
 
 msgid "3rd quartile"
-msgstr ""
+msgstr "Kuartil ke-3"
 
 msgid "IQR"
-msgstr ""
+msgstr "IQR"
 
 msgid "Variance"
 msgstr "Varians"
 
 msgid "-3 SD"
-msgstr ""
+msgstr "-3 SD"
 
 msgid "-2 SD"
-msgstr ""
+msgstr "-2 SD"
 
 msgid "-1 SD"
-msgstr ""
+msgstr "-1 SD"
 
 msgid "+1 SD"
-msgstr ""
+msgstr "+1 SD"
 
 msgid "+2 SD"
-msgstr ""
+msgstr "+2 SD"
 
 msgid "+3 SD"
-msgstr ""
+msgstr "+3 SD"
 
 msgid "Std. Dev."
-msgstr ""
+msgstr "Std. Dev."
 
 msgid "Median"
 msgstr "Median"
 
 msgid "Mode"
-msgstr "Mode"
+msgstr "Modus"
 
 msgid "Min: %.2f"
-msgstr ""
+msgstr "Min: %.2f"
 
 msgid "Max: %.2f"
-msgstr ""
+msgstr "Maks: %.2f"
 
 msgid "Range: %.2f"
-msgstr ""
+msgstr "Rentang: %.2f"
 
 msgid "1st quar. = %.2f"
-msgstr ""
+msgstr "Kuartil ke-1 = %.2f"
 
 msgid "2nd quar. / \n Median = %.2f"
 msgstr ""
+"Kuartil ke-2 / \n"
+" Median = %.2f"
 
 msgid "3rd quar. = %.2f"
-msgstr ""
+msgstr "Kuartil ke-3 = %.2f"
 
 msgid "IQR = %.2f"
-msgstr ""
+msgstr "IQR = %.2f"
 
 msgid "-%i SD"
-msgstr ""
+msgstr "-%i SD"
 
 msgid "+%i SD"
-msgstr ""
+msgstr "+%i SD"
 
 msgid "Mean = %.2f"
-msgstr ""
+msgstr "Rata-rata = %.2f"
 
 msgid "Std. Dev. = %.2f"
-msgstr ""
+msgstr "Std. Dev. = %.2f"
 
 msgid "Dotplot"
-msgstr ""
+msgstr "Dotplot"
 
 msgid "No variance: All values are equal."
-msgstr ""
+msgstr "Tidak ada varians: Semua nilai sama."
 
 msgid "All values unique, \n no mode defined."
 msgstr ""
+"Semua nilai unik, \n"
+" modus tidak terdefinisi."
 
 msgid "Mode = %1$i \n (Count = %2$i)"
 msgstr ""
+"Modus = %1$i \n"
+" (Jumlah = %2$i)"
 
 msgid "Mode = %1$.2f \n (Count = %2$i)"
 msgstr ""
+"Modus = %1$.2f \n"
+" (Jumlah = %2$i)"
 
 msgid "Mode = {%i"
-msgstr ""
+msgstr "Modus = {%i"
 
 msgid "Mode = /n {%.2f"
-msgstr ""
+msgstr "Modus = /n {%.2f"
 
 msgid "} \n (Count = %i)"
 msgstr ""
+"} \n"
+" (Jumlah = %i)"
 
 msgid "Median = %.2f"
-msgstr ""
+msgstr "Median = %.2f"
 
 msgid "2nd quar. / \n Median"
 msgstr ""
+"Kuartil ke-2 / \n"
+" Median"
 
 msgid "1st quar."
-msgstr ""
+msgstr "Kuartil ke-1"
 
 msgid "3rd quar."
-msgstr ""
+msgstr "Kuartil ke-3"
 
 msgid "to be added..."
-msgstr ""
+msgstr "akan ditambahkan..."
 
 msgid "Theoretical distribution of the test statistic under H<sub>0</sub>"
-msgstr ""
+msgstr "Distribusi teoretis statistik uji di bawah H<sub>0</sub>"
 
 msgid "Distribution plot"
-msgstr ""
+msgstr "Plot distribusi"
 
 msgid "Test statistic"
-msgstr ""
+msgstr "Statistik uji"
 
 msgid "Density"
-msgstr "Kepadatan"
+msgstr "Densitas"
 
 msgid "Simulation under H<sub>0</sub>"
-msgstr ""
+msgstr "Simulasi di bawah H<sub>0</sub>"
 
 msgid "Observed test statistics"
-msgstr ""
+msgstr "Statistik uji teramati"
 
 msgid "Count"
-msgstr "Hitung"
+msgstr "Jumlah"
 
 msgid "Null dist."
-msgstr ""
+msgstr "Dist. nol"
 
 msgid "Alt dist."
-msgstr ""
+msgstr "Dist. alternatif"
 
 msgid "Observed p-values"
-msgstr ""
+msgstr "Nilai p teramati"
 
 msgid "p-values"
-msgstr ""
+msgstr "Nilai p"
 
 msgid "Frequency Table"
-msgstr ""
+msgstr "Tabel Frekuensi"
 
 msgid "Percent"
 msgstr "Persen"
 
 msgid "Significant"
-msgstr ""
+msgstr "Signifikan"
 
 msgid "Not significant"
-msgstr ""
+msgstr "Tidak signifikan"
 
 msgid "Total"
 msgstr "Total"
 
 msgid "Simulation under H<sub>a</sub>"
-msgstr ""
+msgstr "Simulasi di bawah H<sub>a</sub>"
 
 msgid "Error Message"
-msgstr ""
+msgstr "Pesan Kesalahan"
 
 msgid "Population size too small. Cannot draw %1$i samples with size %2$i from a finite population of %3$i."
 msgstr ""
+"Ukuran populasi terlalu kecil. Tidak dapat mengambil %1$i sampel dengan "
+"ukuran %2$i dari populasi terbatas sejumlah %3$i."
 
 msgid "Statistics Summary"
-msgstr ""
+msgstr "Ringkasan Statistik"
 
 msgid "Population and simulation distribution"
-msgstr ""
+msgstr "Distribusi populasi dan simulasi"
 
 msgid "Population distribution"
-msgstr ""
+msgstr "Distribusi populasi"
 
 msgid "Simulation distribution"
-msgstr ""
+msgstr "Distribusi simulasi"
 
 msgid "Raincloud plot"
-msgstr ""
+msgstr "Plot raincloud"
 
 msgid "Group"
-msgstr "Grup"
+msgstr "Kelompok"
 
 msgid "Control"
-msgstr ""
+msgstr "Kontrol"
 
 msgid "Experimental"
-msgstr ""
+msgstr "Eksperimental"
 
 msgid "Population"
-msgstr ""
+msgstr "Populasi"
 
 msgid "Simulation"
-msgstr ""
+msgstr "Simulasi"
 
 msgid "95%% CI"
-msgstr ""
+msgstr "CI 95%%"
 
 msgid "Cohen's d"
-msgstr "d Cohen"
+msgstr "Cohen's d"
 
 msgid "Cohen's U%1$s"
-msgstr ""
+msgstr "Cohen's U%1$s"
 
 msgid "Overlap"
-msgstr ""
+msgstr "Tumpang tindih"
 
 msgid "Probability of superiority"
-msgstr ""
+msgstr "Probabilitas keunggulan"
 
 msgid "Number needed to treat*"
-msgstr ""
+msgstr "Jumlah yang perlu ditangani*"
 
 msgid "The number needed to treat is based on a %1$s event rate."
-msgstr ""
+msgstr "Jumlah yang perlu ditangani didasarkan pada tingkat kejadian %1$s."
 
 msgid "Cohen's %1$s is a measure of the standardized difference between two groups. The rules of thumbs for interpreting the measure are:<ul><li>Small: %1$s = 0.20 </li> <li>Medium: %1$s = 0.50</li><li>Large: %1$s = 0.80</li></ul>"
 msgstr ""
+"Cohen's %1$s adalah ukuran perbedaan terstandarisasi antara dua kelompok. "
+"Panduan umum untuk menginterpretasikan ukuran ini adalah:<ul><li>Kecil: %1$s "
+"= 0,20 </li> <li>Sedang: %1$s = 0,50</li><li>Besar: %1$s = 0,80</li></ul>"
 
 msgid "- Cohen's U%1$s corresponds to the proportion of the control group that is surpassed by the upper upper half of the experimental group."
 msgstr ""
+"- Cohen's U%1$s sesuai dengan proporsi kelompok kontrol yang dilampaui oleh "
+"setengah bagian atas kelompok eksperimental."
 
 msgid "- Overlap corresponds to the common are of the control and experimental density."
 msgstr ""
+"- Tumpang tindih sesuai dengan area bersama dari densitas kelompok kontrol "
+"dan eksperimental."
 
 msgid "- Probability of superiority corresponds to the probability that a randomly chosen participant from the experimental group will have higher value than a randomly chosen participant from the control group."
 msgstr ""
+"- Probabilitas keunggulan sesuai dengan probabilitas bahwa peserta yang "
+"dipilih secara acak dari kelompok eksperimental akan memiliki nilai lebih "
+"tinggi daripada peserta yang dipilih secara acak dari kelompok kontrol."
 
 msgid "- Number needed to treat corresponds to the number of participants in the experimental group that would be required to observe one more successful outcome than in the control group."
 msgstr ""
+"- Jumlah yang perlu ditangani sesuai dengan jumlah peserta dalam kelompok "
+"eksperimental yang diperlukan untuk mengamati satu hasil yang berhasil lebih "
+"banyak dibandingkan kelompok kontrol."
 
 msgid "Pearson correlation"
-msgstr ""
+msgstr "Korelasi Pearson"
 
 msgid "Shared variance (R%1$s)"
-msgstr ""
+msgstr "Varians bersama (R%1$s)"
 
 msgid "Pearson correlation coefficient %1$s is a measure of the relationship between two continuous variables. The rules of thumbs for interpreting the measure are:<ul><li>Small: %1$s = 0.10 </li> <li>Medium: %1$s = 0.30</li><li>Large: %1$s = 0.50</li></ul>"
 msgstr ""
+"Koefisien korelasi Pearson %1$s adalah ukuran hubungan antara dua variabel "
+"kontinu. Panduan umum untuk menginterpretasikan ukuran ini adalah:<ul><li>"
+"Kecil: %1$s = 0,10 </li> <li>Sedang: %1$s = 0,30</li><li>Besar: %1$s = 0,50</"
+"li></ul>"
 
 msgid "- Shared variance (R%1$s) corresponds to proportion of variance shared common between the variables."
 msgstr ""
+"- Varians bersama (R%1$s) sesuai dengan proporsi varians yang dimiliki "
+"bersama antara variabel-variabel tersebut."
 
 msgid "The specified phi, P(X), and P(Y) do not yield a valid contingency table. One of the frequencies would need to be negative."
 msgstr ""
+"Phi, P(X), dan P(Y) yang ditentukan tidak menghasilkan tabel kontingensi "
+"yang valid. Salah satu frekuensi harus bernilai negatif."
 
 msgid "Frequencies"
-msgstr ""
+msgstr "Frekuensi"
 
 msgid "P(X=1)"
-msgstr ""
+msgstr "P(X=1)"
 
 msgid "P(Y=1)"
-msgstr ""
+msgstr "P(Y=1)"
 
 msgid "Phi coefficient"
-msgstr ""
+msgstr "Koefisien phi"
 
 msgid "Odds ratio"
-msgstr ""
+msgstr "Rasio odds"
 
 msgid "Risk ratio"
-msgstr ""
+msgstr "Rasio risiko"
 
 msgid "Risk difference"
-msgstr ""
+msgstr "Selisih risiko"
 
 msgid "Contingency coefficient %1$s is a measure of the relationship between two nominal variables. The rules of thumbs for interpreting the measure are:<ul><li>Weak: %1$s = 0.20 </li> <li>Moderate: %1$s = 0.30</li><li>Strong: %1$s = 0.40</li><li>Very Strong: %1$s = 0.70</li></ul>"
 msgstr ""
+"Koefisien kontingensi %1$s adalah ukuran hubungan antara dua variabel "
+"nominal. Panduan umum untuk menginterpretasikan ukuran ini adalah:<ul><li>"
+"Lemah: %1$s = 0,20 </li> <li>Sedang: %1$s = 0,30</li><li>Kuat: %1$s = 0,40</"
+"li><li>Sangat Kuat: %1$s = 0,70</li></ul>"
 
 msgid "- Odds ratio corresponds to the ratio of the odds of an event occuring in the experimental and control groups."
 msgstr ""
+"- Rasio odds sesuai dengan rasio peluang terjadinya suatu kejadian pada "
+"kelompok eksperimental dan kontrol."
 
 msgid "- Risk ratio corresponds to the ratio of the risk of an event occuring in the experimental and control groups."
 msgstr ""
+"- Rasio risiko sesuai dengan rasio risiko terjadinya suatu kejadian pada "
+"kelompok eksperimental dan kontrol."
 
 msgid "- Risk difference corresponds to the difference in the risk of the event occuring between the experimental and control groups."
 msgstr ""
+"- Selisih risiko sesuai dengan perbedaan risiko terjadinya kejadian antara "
+"kelompok eksperimental dan kontrol."
