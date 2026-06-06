@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.95.5\n"
 "POT-Creation-Date: 2025-11-15 04:45\n"
-"PO-Revision-Date: 2026-05-17 06:11+0000\n"
-"Last-Translator: Arif Budiman <arifpedia@gmail.com>\n"
+"PO-Revision-Date: 2026-06-05 00:47+0000\n"
+"Last-Translator: Zahid Rizky Fakhri <zahidrizkyfakhri@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
 "jasplearnstats-r/id/>\n"
 "Language: id\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.6.dev0\n"
+"X-Generator: Weblate 2026.6\n"
 
 msgid "Parent Distribution"
 msgstr "Distribusi Induk"
@@ -38,13 +38,13 @@ msgid "Samples"
 msgstr "Sampel"
 
 msgid "Std. Dev.: %.2f"
-msgstr "Std. Dev.: %.2f"
+msgstr "Dev. Std.: %.2f"
 
 msgid "Sampling Distribution of the Mean"
 msgstr "Distribusi Sampling dari Rata-rata"
 
 msgid "Std. Dev: %.2f"
-msgstr "Std. Dev: %.2f"
+msgstr "Dev. Std: %.2f"
 
 msgid "Coverage"
 msgstr "Cakupan"
@@ -171,7 +171,7 @@ msgid "+3 SD"
 msgstr "+3 SD"
 
 msgid "Std. Dev."
-msgstr "Std. Dev."
+msgstr "Dev. Std."
 
 msgid "Median"
 msgstr "Median"
@@ -212,10 +212,10 @@ msgid "Mean = %.2f"
 msgstr "Rata-rata = %.2f"
 
 msgid "Std. Dev. = %.2f"
-msgstr "Std. Dev. = %.2f"
+msgstr "Dev. Std. = %.2f"
 
 msgid "Dotplot"
-msgstr "Dotplot"
+msgstr "Diagram titik"
 
 msgid "No variance: All values are equal."
 msgstr "Tidak ada varians: Semua nilai sama."
@@ -255,10 +255,10 @@ msgstr ""
 " Median"
 
 msgid "1st quar."
-msgstr "Kuartil ke-1"
+msgstr "Kuar. ke-1"
 
 msgid "3rd quar."
-msgstr "Kuartil ke-3"
+msgstr "Kuar. ke-3"
 
 msgid "to be added..."
 msgstr "akan ditambahkan..."
@@ -288,7 +288,7 @@ msgid "Null dist."
 msgstr "Dist. nol"
 
 msgid "Alt dist."
-msgstr "Dist. alternatif"
+msgstr "Dist. alt"
 
 msgid "Observed p-values"
 msgstr "Nilai p teramati"
@@ -356,10 +356,10 @@ msgid "95%% CI"
 msgstr "CI 95%%"
 
 msgid "Cohen's d"
-msgstr "Cohen's d"
+msgstr "d Cohen"
 
 msgid "Cohen's U%1$s"
-msgstr "Cohen's U%1$s"
+msgstr "U%1$s Cohen"
 
 msgid "Overlap"
 msgstr "Tumpang tindih"
