@@ -151,22 +151,22 @@ msgid "Variance"
 msgstr "變異數"
 
 msgid "-3 SD"
-msgstr ""
+msgstr "-3 SD"
 
 msgid "-2 SD"
-msgstr ""
+msgstr "-2 SD"
 
 msgid "-1 SD"
-msgstr ""
+msgstr "-1 SD"
 
 msgid "+1 SD"
-msgstr ""
+msgstr "+1 SD"
 
 msgid "+2 SD"
-msgstr ""
+msgstr "+2 SD"
 
 msgid "+3 SD"
-msgstr ""
+msgstr "+3 SD"
 
 msgid "Std. Dev."
 msgstr "標準差"
@@ -354,10 +354,10 @@ msgid "95%% CI"
 msgstr "95%% 信賴區間"
 
 msgid "Cohen's d"
-msgstr ""
+msgstr "Cohen's d 效果量"
 
 msgid "Cohen's U%1$s"
-msgstr ""
+msgstr "Cohen's U%1$s"
 
 msgid "Overlap"
 msgstr "重疊"
@@ -415,10 +415,10 @@ msgid "Frequencies"
 msgstr "次數"
 
 msgid "P(X=1)"
-msgstr ""
+msgstr "P(X=1)"
 
 msgid "P(Y=1)"
-msgstr ""
+msgstr "P(Y=1)"
 
 msgid "Phi coefficient"
 msgstr "Phi 係數"
