@@ -37,7 +37,7 @@ msgstr "描述性统计"
 
 msgctxt "Description|"
 msgid "Sample Variability"
-msgstr ""
+msgstr "样本变异性"
 
 msgctxt "Description|"
 msgid "P Values"
@@ -49,7 +49,7 @@ msgstr "效应量"
 
 msgctxt "LSeffectSizes|"
 msgid "Cohen's δ"
-msgstr ""
+msgstr "Cohen's δ"
 
 msgctxt "LSeffectSizes|"
 msgid "Pearson correlation coefficient ρ"
@@ -57,11 +57,11 @@ msgstr "皮尔逊相关系数 ρ"
 
 msgctxt "LSeffectSizes|"
 msgid "Contingency coefficient φ"
-msgstr ""
+msgstr "列联系数 φ"
 
 msgctxt "LSeffectSizes|"
 msgid "Explanatory text"
-msgstr ""
+msgstr "说明文字"
 
 msgctxt "LSeffectSizes|"
 msgid "Simulate data"
@@ -69,43 +69,43 @@ msgstr "模拟数据"
 
 msgctxt "LSeffectSizes|"
 msgid "No. observations"
-msgstr ""
+msgstr "观测数"
 
 msgctxt "LSeffectSizes|"
 msgid "Advanced"
-msgstr ""
+msgstr "高级"
 
 msgctxt "LSeffectSizes|"
 msgid "Cohen's U3"
-msgstr ""
+msgstr "Cohen's U3"
 
 msgctxt "LSeffectSizes|"
 msgid "Overlap"
-msgstr ""
+msgstr "重叠"
 
 msgctxt "LSeffectSizes|"
 msgid "Probability of superiority"
-msgstr ""
+msgstr "优越概率"
 
 msgctxt "LSeffectSizes|"
 msgid "Number needed to treat"
-msgstr ""
+msgstr "需处理人数（NNT）"
 
 msgctxt "LSeffectSizes|"
 msgid "Event rate"
-msgstr ""
+msgstr "事件率"
 
 msgctxt "LSeffectSizes|"
 msgid "Shared variance (R²)"
-msgstr ""
+msgstr "共享方差（R²）"
 
 msgctxt "LSeffectSizes|"
 msgid "Combine population and simulation"
-msgstr ""
+msgstr "合并总体与模拟"
 
 msgctxt "LSeffectSizes|"
 msgid "Raincloud plot"
-msgstr ""
+msgstr "雨云图"
 
 msgctxt "LSeffectSizes|"
 msgid "Show regression line"
@@ -113,27 +113,27 @@ msgstr "显示回归线"
 
 msgctxt "LSeffectSizes|"
 msgid "Show as mosiac plot"
-msgstr ""
+msgstr "显示为马赛克图"
 
 msgctxt "LSeffectSizes|"
 msgid "Show proportions"
-msgstr ""
+msgstr "显示比例"
 
 msgctxt "LSeffectSizes|"
 msgid "Specify populational characteristics"
-msgstr ""
+msgstr "指定总体特征"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Normal"
-msgstr ""
+msgstr "正态"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Uniform"
-msgstr ""
+msgstr "均匀"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Skewed"
-msgstr ""
+msgstr "偏斜"
 
 #, fuzzy
 msgctxt "LSTcentralLimitTheorem|"
@@ -142,7 +142,7 @@ msgstr "显示母体分布"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Show explanatory text"
-msgstr ""
+msgstr "显示说明文字"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Mean"
@@ -163,23 +163,23 @@ msgstr "右"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Low skew"
-msgstr ""
+msgstr "低偏斜"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Medium skew"
-msgstr ""
+msgstr "中等偏斜"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "High skew"
-msgstr ""
+msgstr "高偏斜"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Number of observations per sample"
-msgstr ""
+msgstr "每个样本的观测数"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Number of total samples"
-msgstr ""
+msgstr "样本总数"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Show samples"
@@ -187,7 +187,7 @@ msgstr "显示样本"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Show rug marks"
-msgstr ""
+msgstr "显示地毯标记"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Set seed"
@@ -199,7 +199,7 @@ msgstr "第一"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Last"
-msgstr ""
+msgstr "最后"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "All"
@@ -217,63 +217,63 @@ msgstr "至"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Show sampling distribution"
-msgstr ""
+msgstr "显示抽样分布"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Superimpose normal distribution"
-msgstr ""
+msgstr "叠加正态分布"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Color palette"
-msgstr ""
+msgstr "配色方案"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Colorblind"
-msgstr ""
+msgstr "色盲适应"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Colorblind Alt."
-msgstr ""
+msgstr "色盲适应（备用）"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Viridis"
-msgstr ""
+msgstr "Viridis"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "ggplot2"
-msgstr ""
+msgstr "ggplot2"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Gray"
-msgstr ""
+msgstr "灰色"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Bin width type"
-msgstr ""
+msgstr "箱宽类型"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Sturges"
-msgstr ""
+msgstr "Sturges"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Scott"
-msgstr ""
+msgstr "Scott"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Doane"
-msgstr ""
+msgstr "Doane"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Freedman-Diaconis"
-msgstr ""
+msgstr "Freedman-Diaconis"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Manual"
-msgstr ""
+msgstr "手动"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Number of bins"
-msgstr ""
+msgstr "箱数"
 
 msgctxt "LSTdescriptives|"
 msgid "Data options"
@@ -281,7 +281,7 @@ msgstr "数据选项"
 
 msgctxt "LSTdescriptives|"
 msgid "Enter sequence"
-msgstr ""
+msgstr "输入序列"
 
 msgctxt "LSTdescriptives|"
 msgid "Select variable"
@@ -297,11 +297,11 @@ msgstr "设置种子"
 
 msgctxt "LSTdescriptives|"
 msgid "Discrete"
-msgstr ""
+msgstr "离散"
 
 msgctxt "LSTdescriptives|"
 msgid "Continuous"
-msgstr ""
+msgstr "连续"
 
 msgctxt "LSTdescriptives|"
 msgid "Distribution"
@@ -321,7 +321,7 @@ msgstr "偏态分布"
 
 msgctxt "LSTdescriptives|"
 msgid "Uniform distribution"
-msgstr ""
+msgstr "均匀分布"
 
 msgctxt "LSTdescriptives|"
 msgid "Normal distribution"
@@ -329,15 +329,15 @@ msgstr "正太分布"
 
 msgctxt "LSTdescriptives|"
 msgid "Available"
-msgstr ""
+msgstr "可用"
 
 msgctxt "LSTdescriptives|"
 msgid "Selected"
-msgstr ""
+msgstr "已选"
 
 msgctxt "LSTdescriptives|"
 msgid "Show explanation"
-msgstr ""
+msgstr "显示说明"
 
 #, fuzzy
 msgctxt "LSTdescriptives|"
@@ -346,51 +346,51 @@ msgstr "全距"
 
 msgctxt "LSTdescriptives|"
 msgid "Quartiles"
-msgstr ""
+msgstr "四分位数"
 
 msgctxt "LSTdescriptives|"
 msgid "Plots"
-msgstr ""
+msgstr "绘图"
 
 msgctxt "LSTdescriptives|"
 msgid "Histogram / Barplot"
-msgstr ""
+msgstr "直方图 / 条形图"
 
 msgctxt "LSTdescriptives|"
 msgid "Show counts"
-msgstr ""
+msgstr "显示计数"
 
 msgctxt "LSTdescriptives|"
 msgid "Display rug marks"
-msgstr ""
+msgstr "显示地毯标记"
 
 msgctxt "LSTdescriptives|"
 msgid "Dot plot"
-msgstr ""
+msgstr "点图"
 
 msgctxt "LSTdescriptives|"
 msgid "Color palette"
-msgstr ""
+msgstr "配色方案"
 
 msgctxt "LSTdescriptives|"
 msgid "Colorblind"
-msgstr ""
+msgstr "色盲适应"
 
 msgctxt "LSTdescriptives|"
 msgid "Colorblind Alt."
-msgstr ""
+msgstr "色盲适应（备用）"
 
 msgctxt "LSTdescriptives|"
 msgid "Viridis"
-msgstr ""
+msgstr "Viridis"
 
 msgctxt "LSTdescriptives|"
 msgid "ggplot2"
-msgstr ""
+msgstr "ggplot2"
 
 msgctxt "LSTdescriptives|"
 msgid "Gray"
-msgstr ""
+msgstr "灰色"
 
 msgctxt "LSTsampleVariability|"
 msgid "Parent Distribution"
@@ -398,31 +398,31 @@ msgstr "母体分布"
 
 msgctxt "LSTsampleVariability|"
 msgid "Infinite"
-msgstr ""
+msgstr "无限"
 
 msgctxt "LSTsampleVariability|"
 msgid "Finite"
-msgstr ""
+msgstr "有限"
 
 msgctxt "LSTsampleVariability|"
 msgid "Size"
-msgstr ""
+msgstr "大小"
 
 msgctxt "LSTsampleVariability|"
 msgid "Normal"
-msgstr ""
+msgstr "正态"
 
 msgctxt "LSTsampleVariability|"
 msgid "Uniform"
-msgstr ""
+msgstr "均匀"
 
 msgctxt "LSTsampleVariability|"
 msgid "Skewed"
-msgstr ""
+msgstr "偏斜"
 
 msgctxt "LSTsampleVariability|"
 msgid "Binomial"
-msgstr ""
+msgstr "二项"
 
 #, fuzzy
 msgctxt "LSTsampleVariability|"
@@ -431,7 +431,7 @@ msgstr "显示母体分布"
 
 msgctxt "LSTsampleVariability|"
 msgid "Show explanatory text"
-msgstr ""
+msgstr "显示说明文字"
 
 msgctxt "LSTsampleVariability|"
 msgid "Mean"
@@ -452,31 +452,31 @@ msgstr "右"
 
 msgctxt "LSTsampleVariability|"
 msgid "Low skew"
-msgstr ""
+msgstr "低偏斜"
 
 msgctxt "LSTsampleVariability|"
 msgid "Medium skew"
-msgstr ""
+msgstr "中等偏斜"
 
 msgctxt "LSTsampleVariability|"
 msgid "High skew"
-msgstr ""
+msgstr "高偏斜"
 
 msgctxt "LSTsampleVariability|"
 msgid "Probability"
-msgstr ""
+msgstr "概率"
 
 msgctxt "LSTsampleVariability|"
 msgid "Sample Options"
-msgstr ""
+msgstr "样本选项"
 
 msgctxt "LSTsampleVariability|"
 msgid "Number of observations per sample"
-msgstr ""
+msgstr "每个样本的观测数"
 
 msgctxt "LSTsampleVariability|"
 msgid "Number of total samples"
-msgstr ""
+msgstr "样本总数"
 
 msgctxt "LSTsampleVariability|"
 msgid "Show samples"
@@ -484,7 +484,7 @@ msgstr "显示样本"
 
 msgctxt "LSTsampleVariability|"
 msgid "Show rug marks"
-msgstr ""
+msgstr "显示地毯标记"
 
 msgctxt "LSTsampleVariability|"
 msgid "Set seed"
@@ -496,7 +496,7 @@ msgstr "第一"
 
 msgctxt "LSTsampleVariability|"
 msgid "Last"
-msgstr ""
+msgstr "最后"
 
 msgctxt "LSTsampleVariability|"
 msgid "All"
@@ -508,59 +508,59 @@ msgstr "从"
 
 msgctxt "LSTsampleVariability|"
 msgid "Plot Options"
-msgstr ""
+msgstr "绘图选项"
 
 msgctxt "LSTsampleVariability|"
 msgid "Color palette"
-msgstr ""
+msgstr "配色方案"
 
 msgctxt "LSTsampleVariability|"
 msgid "Colorblind"
-msgstr ""
+msgstr "色盲适应"
 
 msgctxt "LSTsampleVariability|"
 msgid "Colorblind Alt."
-msgstr ""
+msgstr "色盲适应（备用）"
 
 msgctxt "LSTsampleVariability|"
 msgid "Viridis"
-msgstr ""
+msgstr "Viridis"
 
 msgctxt "LSTsampleVariability|"
 msgid "ggplot2"
-msgstr ""
+msgstr "ggplot2"
 
 msgctxt "LSTsampleVariability|"
 msgid "Gray"
-msgstr ""
+msgstr "灰色"
 
 msgctxt "LSTsampleVariability|"
 msgid "Bin width type"
-msgstr ""
+msgstr "箱宽类型"
 
 msgctxt "LSTsampleVariability|"
 msgid "Sturges"
-msgstr ""
+msgstr "Sturges"
 
 msgctxt "LSTsampleVariability|"
 msgid "Scott"
-msgstr ""
+msgstr "Scott"
 
 msgctxt "LSTsampleVariability|"
 msgid "Doane"
-msgstr ""
+msgstr "Doane"
 
 msgctxt "LSTsampleVariability|"
 msgid "Freedman-Diaconis"
-msgstr ""
+msgstr "Freedman-Diaconis"
 
 msgctxt "LSTsampleVariability|"
 msgid "Manual"
-msgstr ""
+msgstr "手动"
 
 msgctxt "LSTsampleVariability|"
 msgid "Number of bins"
-msgstr ""
+msgstr "箱数"
 
 #, fuzzy
 msgctxt "LSTstandardError|"
@@ -569,15 +569,15 @@ msgstr "母体分布"
 
 msgctxt "LSTstandardError|"
 msgid "Normal"
-msgstr ""
+msgstr "正态"
 
 msgctxt "LSTstandardError|"
 msgid "Uniform"
-msgstr ""
+msgstr "均匀"
 
 msgctxt "LSTstandardError|"
 msgid "Skewed"
-msgstr ""
+msgstr "偏斜"
 
 msgctxt "LSTstandardError|"
 msgid "Show parent distribution"
@@ -585,7 +585,7 @@ msgstr "显示母体分布"
 
 msgctxt "LSTstandardError|"
 msgid "Show explanatory text"
-msgstr ""
+msgstr "显示说明文字"
 
 msgctxt "LSTstandardError|"
 msgid "Mean"
@@ -605,23 +605,23 @@ msgstr "右"
 
 msgctxt "LSTstandardError|"
 msgid "Low skew"
-msgstr ""
+msgstr "低偏斜"
 
 msgctxt "LSTstandardError|"
 msgid "Medium skew"
-msgstr ""
+msgstr "中等偏斜"
 
 msgctxt "LSTstandardError|"
 msgid "High skew"
-msgstr ""
+msgstr "高偏斜"
 
 msgctxt "LSTstandardError|"
 msgid "Number of observations per sample"
-msgstr ""
+msgstr "每个样本的观测数"
 
 msgctxt "LSTstandardError|"
 msgid "Number of total samples"
-msgstr ""
+msgstr "样本总数"
 
 msgctxt "LSTstandardError|"
 msgid "Show samples"
@@ -629,7 +629,7 @@ msgstr "显示样本"
 
 msgctxt "LSTstandardError|"
 msgid "Show rug marks"
-msgstr ""
+msgstr "显示地毯标记"
 
 msgctxt "LSTstandardError|"
 msgid "Set seed"
@@ -641,7 +641,7 @@ msgstr "第一"
 
 msgctxt "LSTstandardError|"
 msgid "Last"
-msgstr ""
+msgstr "最后"
 
 msgctxt "LSTstandardError|"
 msgid "All"
@@ -653,67 +653,67 @@ msgstr "从"
 
 msgctxt "LSTstandardError|"
 msgid "Show sampling distribution"
-msgstr ""
+msgstr "显示抽样分布"
 
 msgctxt "LSTstandardError|"
 msgid "Superimpose normal distribution"
-msgstr ""
+msgstr "叠加正态分布"
 
 msgctxt "LSTstandardError|"
 msgid "Plot Options"
-msgstr ""
+msgstr "绘图选项"
 
 msgctxt "LSTstandardError|"
 msgid "Color palette"
-msgstr ""
+msgstr "配色方案"
 
 msgctxt "LSTstandardError|"
 msgid "Colorblind"
-msgstr ""
+msgstr "色盲适应"
 
 msgctxt "LSTstandardError|"
 msgid "Colorblind Alt."
-msgstr ""
+msgstr "色盲适应（备用）"
 
 msgctxt "LSTstandardError|"
 msgid "Viridis"
-msgstr ""
+msgstr "Viridis"
 
 msgctxt "LSTstandardError|"
 msgid "ggplot2"
-msgstr ""
+msgstr "ggplot2"
 
 msgctxt "LSTstandardError|"
 msgid "Gray"
-msgstr ""
+msgstr "灰色"
 
 msgctxt "LSTstandardError|"
 msgid "Bin width type"
-msgstr ""
+msgstr "箱宽类型"
 
 msgctxt "LSTstandardError|"
 msgid "Sturges"
-msgstr ""
+msgstr "Sturges"
 
 msgctxt "LSTstandardError|"
 msgid "Scott"
-msgstr ""
+msgstr "Scott"
 
 msgctxt "LSTstandardError|"
 msgid "Doane"
-msgstr ""
+msgstr "Doane"
 
 msgctxt "LSTstandardError|"
 msgid "Freedman-Diaconis"
-msgstr ""
+msgstr "Freedman-Diaconis"
 
 msgctxt "LSTstandardError|"
 msgid "Manual"
-msgstr ""
+msgstr "手动"
 
 msgctxt "LSTstandardError|"
 msgid "Number of bins"
-msgstr ""
+msgstr "箱数"
 
 msgctxt "Description|"
 msgid "Confidence Intervals"
@@ -721,7 +721,7 @@ msgstr "置信区间"
 
 msgctxt "Description|"
 msgid "Statistical Test Decision Tree"
-msgstr ""
+msgstr "统计检验决策树"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "μ"
@@ -741,63 +741,63 @@ msgstr "置信水平"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Repetitions"
-msgstr ""
+msgstr "重复次数"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Show last"
-msgstr ""
+msgstr "显示最后"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "<b>- 10</b>"
-msgstr ""
+msgstr "<b>- 10</b>"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "<b>- 1</b>"
-msgstr ""
+msgstr "<b>- 1</b>"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "<b>+ 1</b>"
-msgstr ""
+msgstr "<b>+ 1</b>"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "<b>+ 10</b>"
-msgstr ""
+msgstr "<b>+ 10</b>"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Plots"
-msgstr ""
+msgstr "绘图"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Tree plot"
-msgstr ""
+msgstr "树图"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Display table"
-msgstr ""
+msgstr "显示表格"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Fix x-axis from "
-msgstr ""
+msgstr "固定 x 轴从 "
 
 msgctxt "LSTconfidenceIntervals|"
 msgid " to "
-msgstr ""
+msgstr " 到 "
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Data distribution plots"
-msgstr ""
+msgstr "数据分布图"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Convergence plot"
-msgstr ""
+msgstr "收敛图"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Zoom in with margin"
-msgstr ""
+msgstr "带边距放大"
 
 msgctxt "LSTdecisionTree|"
 msgid "How many outcome variables?"
-msgstr ""
+msgstr "有多少个结果变量？"
 
 msgctxt "LSTdecisionTree|"
 msgid "One"
@@ -809,31 +809,31 @@ msgstr "二或更多"
 
 msgctxt "LSTdecisionTree|"
 msgid "What type of outcome?"
-msgstr ""
+msgstr "结果属于什么类型？"
 
 msgctxt "LSTdecisionTree|"
 msgid "Continuous"
-msgstr ""
+msgstr "连续"
 
 msgctxt "LSTdecisionTree|"
 msgid "Categorical"
-msgstr ""
+msgstr "分类"
 
 msgctxt "LSTdecisionTree|"
 msgid "How many predictor variables?"
-msgstr ""
+msgstr "有多少个预测变量？"
 
 msgctxt "LSTdecisionTree|"
 msgid "What type of predictor?"
-msgstr ""
+msgstr "预测变量属于什么类型？"
 
 msgctxt "LSTdecisionTree|"
 msgid "Both"
-msgstr ""
+msgstr "两者"
 
 msgctxt "LSTdecisionTree|"
 msgid "How many categories in predictor variable?"
-msgstr ""
+msgstr "预测变量中有多少个类别？"
 
 msgctxt "LSTdecisionTree|"
 msgid "Two"
@@ -845,39 +845,39 @@ msgstr "大于二"
 
 msgctxt "LSTdecisionTree|"
 msgid "Same or different entities in categories of predictor?"
-msgstr ""
+msgstr "预测变量的类别中是相同还是不同的个体？"
 
 msgctxt "LSTdecisionTree|"
 msgid "Same"
-msgstr ""
+msgstr "相同"
 
 msgctxt "LSTdecisionTree|"
 msgid "Different"
-msgstr ""
+msgstr "不同"
 
 msgctxt "LSTdecisionTree|"
 msgid "Are the assumptions for a parametric test met?"
-msgstr ""
+msgstr "是否满足参数检验的假设？"
 
 msgctxt "LSTdecisionTree|"
 msgid "Assumptions met"
-msgstr ""
+msgstr "假设得到满足"
 
 msgctxt "LSTdecisionTree|"
 msgid "Assumptions not met"
-msgstr ""
+msgstr "假设未得到满足"
 
 msgctxt "LSTdecisionTree|"
 msgid "Show full decision tree"
-msgstr ""
+msgstr "显示完整决策树"
 
 msgctxt "LSTPValues|"
 msgid "Theoretical distribution"
-msgstr ""
+msgstr "理论分布"
 
 msgctxt "LSTPValues|"
 msgid "Normal"
-msgstr ""
+msgstr "正态"
 
 msgctxt "LSTPValues|"
 msgid "T distribution"
@@ -885,31 +885,31 @@ msgstr "T 分布"
 
 msgctxt "LSTPValues|"
 msgid "df"
-msgstr ""
+msgstr "自由度"
 
 msgctxt "LSTPValues|"
 msgid "Test settings"
-msgstr ""
+msgstr "检验设置"
 
 msgctxt "LSTPValues|"
 msgid "Type-I error rate α"
-msgstr ""
+msgstr "第一类错误率 α"
 
 msgctxt "LSTPValues|"
 msgid "Alt. hypothesis"
-msgstr ""
+msgstr "备择假设"
 
 msgctxt "LSTPValues|"
 msgid "Two sided"
-msgstr ""
+msgstr "双侧"
 
 msgctxt "LSTPValues|"
 msgid "Greater"
-msgstr ""
+msgstr "大于"
 
 msgctxt "LSTPValues|"
 msgid "Less"
-msgstr ""
+msgstr "小于"
 
 msgctxt "LSTPValues|"
 msgid "Plot theoretical distribution"
@@ -917,39 +917,39 @@ msgstr "绘制理论分布"
 
 msgctxt "LSTPValues|"
 msgid "Highlight critical region"
-msgstr ""
+msgstr "突出临界区域"
 
 msgctxt "LSTPValues|"
 msgid "Highlight specified test statistic"
-msgstr ""
+msgstr "突出指定的检验统计量"
 
 msgctxt "LSTPValues|"
 msgid "Specify test statistic"
-msgstr ""
+msgstr "指定检验统计量"
 
 msgctxt "LSTPValues|"
 msgid "Specify p-value"
-msgstr ""
+msgstr "指定 p 值"
 
 msgctxt "LSTPValues|"
 msgid "Simulation under the null hypothesis"
-msgstr ""
+msgstr "原假设下的模拟"
 
 msgctxt "LSTPValues|"
 msgid "Simulation"
-msgstr ""
+msgstr "模拟"
 
 msgctxt "LSTPValues|"
 msgid "Number of studies to simulate"
-msgstr ""
+msgstr "要模拟的研究数"
 
 msgctxt "LSTPValues|"
 msgid "Simulate"
-msgstr ""
+msgstr "模拟"
 
 msgctxt "LSTPValues|"
 msgid "Reset"
-msgstr ""
+msgstr "重置"
 
 msgctxt "LSTPValues|"
 msgid "Output"
@@ -957,31 +957,31 @@ msgstr "输出"
 
 msgctxt "LSTPValues|"
 msgid "Plot test statistics"
-msgstr ""
+msgstr "绘制检验统计量图"
 
 msgctxt "LSTPValues|"
 msgid "Overlay theoretical distribution"
-msgstr ""
+msgstr "叠加理论分布"
 
 msgctxt "LSTPValues|"
 msgid "Plot p-values"
-msgstr ""
+msgstr "绘制 p 值图"
 
 msgctxt "LSTPValues|"
 msgid "Overlay uniform distribution"
-msgstr ""
+msgstr "叠加均匀分布"
 
 msgctxt "LSTPValues|"
 msgid "Frequency table"
-msgstr ""
+msgstr "频率表"
 
 msgctxt "LSTPValues|"
 msgid "Simulation under the alternative hypothesis"
-msgstr ""
+msgstr "备择假设下的模拟"
 
 msgctxt "LSTPValues|"
 msgid "Specify alternative sampling distribution"
-msgstr ""
+msgstr "指定备择抽样分布"
 
 msgctxt "LSTPValues|"
 msgid "Mean"
@@ -989,15 +989,15 @@ msgstr "均值"
 
 msgctxt "LSTPValues|"
 msgid "Non-centrality"
-msgstr ""
+msgstr "非中心参数"
 
 msgctxt "LSTPValues|"
 msgid "Overlay theoretical null distribution"
-msgstr ""
+msgstr "叠加理论原假设分布"
 
 msgctxt "LSTPValues|"
 msgid "Overlay theoretical alternative distribution"
-msgstr ""
+msgstr "叠加理论备择分布"
 
 msgctxt "LSTPValues|"
 msgid "Options"
@@ -1005,59 +1005,59 @@ msgstr "选项"
 
 msgctxt "LSTPValues|"
 msgid "Introductory text"
-msgstr ""
+msgstr "简介文字"
 
 msgctxt "LSeffectSizes|"
 msgid "Effect size"
-msgstr ""
+msgstr "效应量"
 
 msgctxt "LSeffectSizes|"
 msgid "Additional statistics"
-msgstr ""
+msgstr "附加统计量"
 
 msgctxt "LSeffectSizes|"
 msgid "Odds ratio"
-msgstr ""
+msgstr "比值比"
 
 msgctxt "LSeffectSizes|"
 msgid "Risk ratio"
-msgstr ""
+msgstr "风险比"
 
 msgctxt "LSeffectSizes|"
 msgid "Risk difference"
-msgstr ""
+msgstr "风险差"
 
 msgctxt "LSeffectSizes|"
 msgid "Plot options"
-msgstr ""
+msgstr "绘图选项"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Parent distribution"
-msgstr ""
+msgstr "母体分布"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Std. dev."
-msgstr ""
+msgstr "标准差"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Skew direction"
-msgstr ""
+msgstr "偏斜方向"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Skew intensity"
-msgstr ""
+msgstr "偏斜强度"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Sample options"
-msgstr ""
+msgstr "样本选项"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Sampling distribution options"
-msgstr ""
+msgstr "抽样分布选项"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Plot options"
-msgstr ""
+msgstr "绘图选项"
 
 #, fuzzy
 msgctxt "LSTconfidenceIntervals|"
@@ -1071,7 +1071,7 @@ msgstr "第一"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Last"
-msgstr ""
+msgstr "最后"
 
 #, fuzzy
 msgctxt "LSTconfidenceIntervals|"
@@ -1095,27 +1095,27 @@ msgstr "至"
 
 msgctxt "LSTdescriptives|"
 msgid "Data input type"
-msgstr ""
+msgstr "数据输入类型"
 
 msgctxt "LSTdescriptives|"
 msgid "Random sample"
-msgstr ""
+msgstr "随机样本"
 
 msgctxt "LSTdescriptives|"
 msgid "Distribution type"
-msgstr ""
+msgstr "分布类型"
 
 msgctxt "LSTdescriptives|"
 msgid "Comma-separated sequence of observations"
-msgstr ""
+msgstr "以逗号分隔的观测序列"
 
 msgctxt "LSTdescriptives|"
 msgid "Statistics to display"
-msgstr ""
+msgstr "要显示的统计量"
 
 msgctxt "LSTdescriptives|"
 msgid "Central tendency measures"
-msgstr ""
+msgstr "集中趋势度量"
 
 #, fuzzy
 msgctxt "LSTdescriptives|"
@@ -1124,11 +1124,11 @@ msgstr "均值"
 
 msgctxt "LSTdescriptives|"
 msgid "Median"
-msgstr ""
+msgstr "中位数"
 
 msgctxt "LSTdescriptives|"
 msgid "Mode"
-msgstr ""
+msgstr "众数"
 
 #, fuzzy
 msgctxt "LSTdescriptives|"
@@ -1137,160 +1137,160 @@ msgstr "全部"
 
 msgctxt "LSTdescriptives|"
 msgid "Spread measures"
-msgstr ""
+msgstr "离散趋势度量"
 
 msgctxt "LSTdescriptives|"
 msgid "Std. dev."
-msgstr ""
+msgstr "标准差"
 
 msgctxt "LSTdescriptives|"
 msgid "None"
-msgstr ""
+msgstr "无"
 
 msgctxt "LSTdescriptives|"
 msgid "Show density (histogram only)"
-msgstr ""
+msgstr "显示密度（仅直方图）"
 
 msgctxt "LSTdescriptives|"
 msgid "Histogram bin width type"
-msgstr ""
+msgstr "直方图箱宽类型"
 
 msgctxt "LSTdescriptives|"
 msgid "Sturges"
-msgstr ""
+msgstr "Sturges"
 
 msgctxt "LSTdescriptives|"
 msgid "Scott"
-msgstr ""
+msgstr "Scott"
 
 msgctxt "LSTdescriptives|"
 msgid "Doane"
-msgstr ""
+msgstr "Doane"
 
 msgctxt "LSTdescriptives|"
 msgid "Freedman-Diaconis"
-msgstr ""
+msgstr "Freedman-Diaconis"
 
 msgctxt "LSTdescriptives|"
 msgid "Manual"
-msgstr ""
+msgstr "手动"
 
 msgctxt "LSTdescriptives|"
 msgid "Number of bins"
-msgstr ""
+msgstr "箱数"
 
 msgctxt "LSTdescriptives|"
 msgid "Distribution options"
-msgstr ""
+msgstr "分布选项"
 
 msgctxt "LSTdescriptives|"
 msgid "Binomial distribution parameters"
-msgstr ""
+msgstr "二项分布参数"
 
 msgctxt "LSTdescriptives|"
 msgid "Probability of success (p)"
-msgstr ""
+msgstr "成功概率（p）"
 
 msgctxt "LSTdescriptives|"
 msgid "Poisson distribution parameters"
-msgstr ""
+msgstr "泊松分布参数"
 
 msgctxt "LSTdescriptives|"
 msgid "Rate (λ)"
-msgstr ""
+msgstr "速率（λ）"
 
 msgctxt "LSTdescriptives|"
 msgid "Skewed normal distribution parameters"
-msgstr ""
+msgstr "偏斜正态分布参数"
 
 msgctxt "LSTdescriptives|"
 msgid "Location (ξ)"
-msgstr ""
+msgstr "位置（ξ）"
 
 msgctxt "LSTdescriptives|"
 msgid "Scale (ω)"
-msgstr ""
+msgstr "尺度（ω）"
 
 msgctxt "LSTdescriptives|"
 msgid "Shape (α)"
-msgstr ""
+msgstr "形状（α）"
 
 msgctxt "LSTdescriptives|"
 msgid "Uniform distribution parameters"
-msgstr ""
+msgstr "均匀分布参数"
 
 msgctxt "LSTdescriptives|"
 msgid "Lower bound"
-msgstr ""
+msgstr "下限"
 
 msgctxt "LSTdescriptives|"
 msgid "Upper bound"
-msgstr ""
+msgstr "上限"
 
 msgctxt "LSTdescriptives|"
 msgid "Normal distribution parameters"
-msgstr ""
+msgstr "正态分布参数"
 
 msgctxt "LSTdescriptives|"
 msgid "Mean (μ)"
-msgstr ""
+msgstr "均值（μ）"
 
 msgctxt "LSTdescriptives|"
 msgid "Std. dev. (σ)"
-msgstr ""
+msgstr "标准差（σ）"
 
 msgctxt "LSTsampleVariability|"
 msgid "Parent distribution size"
-msgstr ""
+msgstr "母体分布大小"
 
 msgctxt "LSTsampleVariability|"
 msgid "Parent distribution shape"
-msgstr ""
+msgstr "母体分布形状"
 
 msgctxt "LSTsampleVariability|"
 msgid "Std. dev."
-msgstr ""
+msgstr "标准差"
 
 msgctxt "LSTsampleVariability|"
 msgid "Skew direction"
-msgstr ""
+msgstr "偏斜方向"
 
 msgctxt "LSTsampleVariability|"
 msgid "Skew intensity"
-msgstr ""
+msgstr "偏斜强度"
 
 msgctxt "LSTsampleVariability|"
 msgid "to"
-msgstr ""
+msgstr "到"
 
 msgctxt "LSTstandardError|"
 msgid "Parent distribution"
-msgstr ""
+msgstr "母体分布"
 
 msgctxt "LSTstandardError|"
 msgid "Std. dev."
-msgstr ""
+msgstr "标准差"
 
 msgctxt "LSTstandardError|"
 msgid "Skew direction"
-msgstr ""
+msgstr "偏斜方向"
 
 msgctxt "LSTstandardError|"
 msgid "Skew intensity"
-msgstr ""
+msgstr "偏斜强度"
 
 msgctxt "LSTstandardError|"
 msgid "Sample options"
-msgstr ""
+msgstr "样本选项"
 
 msgctxt "LSTstandardError|"
 msgid "to"
-msgstr ""
+msgstr "到"
 
 msgctxt "LSTstandardError|"
 msgid "Sampling distribution options"
-msgstr ""
+msgstr "抽样分布选项"
 
 msgctxt "LSTdescriptives|"
 msgid "Number of trials (n)"
-msgstr ""
+msgstr "试验次数（n）"
