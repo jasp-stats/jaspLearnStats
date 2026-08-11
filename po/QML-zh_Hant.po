@@ -45,7 +45,7 @@ msgstr "效果量"
 
 msgctxt "LSeffectSizes|"
 msgid "Cohen's δ"
-msgstr ""
+msgstr "Cohen's δ 效果量"
 
 msgctxt "LSeffectSizes|"
 msgid "Pearson correlation coefficient ρ"
@@ -73,7 +73,7 @@ msgstr "進階"
 
 msgctxt "LSeffectSizes|"
 msgid "Cohen's U3"
-msgstr ""
+msgstr "Cohen's U3"
 
 msgctxt "LSeffectSizes|"
 msgid "Overlap"
@@ -229,15 +229,15 @@ msgstr "色盲友善替代版"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Viridis"
-msgstr ""
+msgstr "Viridis"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "ggplot2"
-msgstr ""
+msgstr "ggplot2"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Gray"
-msgstr ""
+msgstr "灰色"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Bin width type"
@@ -245,19 +245,19 @@ msgstr "組距寬度類型"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Sturges"
-msgstr ""
+msgstr "Sturges"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Scott"
-msgstr ""
+msgstr "Scott"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Doane"
-msgstr ""
+msgstr "Doane"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Freedman-Diaconis"
-msgstr ""
+msgstr "Freedman-Diaconis"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Manual"
@@ -373,15 +373,15 @@ msgstr "色盲友善替代版"
 
 msgctxt "LSTdescriptives|"
 msgid "Viridis"
-msgstr ""
+msgstr "Viridis"
 
 msgctxt "LSTdescriptives|"
 msgid "ggplot2"
-msgstr ""
+msgstr "ggplot2"
 
 msgctxt "LSTdescriptives|"
 msgid "Gray"
-msgstr ""
+msgstr "灰色"
 
 msgctxt "LSTsampleVariability|"
 msgid "Parent Distribution"
@@ -513,15 +513,15 @@ msgstr "色盲友善替代版"
 
 msgctxt "LSTsampleVariability|"
 msgid "Viridis"
-msgstr ""
+msgstr "Viridis"
 
 msgctxt "LSTsampleVariability|"
 msgid "ggplot2"
-msgstr ""
+msgstr "ggplot2"
 
 msgctxt "LSTsampleVariability|"
 msgid "Gray"
-msgstr ""
+msgstr "灰色"
 
 msgctxt "LSTsampleVariability|"
 msgid "Bin width type"
@@ -529,19 +529,19 @@ msgstr "組距寬度類型"
 
 msgctxt "LSTsampleVariability|"
 msgid "Sturges"
-msgstr ""
+msgstr "Sturges"
 
 msgctxt "LSTsampleVariability|"
 msgid "Scott"
-msgstr ""
+msgstr "Scott"
 
 msgctxt "LSTsampleVariability|"
 msgid "Doane"
-msgstr ""
+msgstr "Doane"
 
 msgctxt "LSTsampleVariability|"
 msgid "Freedman-Diaconis"
-msgstr ""
+msgstr "Freedman-Diaconis"
 
 msgctxt "LSTsampleVariability|"
 msgid "Manual"
@@ -665,15 +665,15 @@ msgstr "色盲友善替代版"
 
 msgctxt "LSTstandardError|"
 msgid "Viridis"
-msgstr ""
+msgstr "Viridis"
 
 msgctxt "LSTstandardError|"
 msgid "ggplot2"
-msgstr ""
+msgstr "ggplot2"
 
 msgctxt "LSTstandardError|"
 msgid "Gray"
-msgstr ""
+msgstr "灰色"
 
 msgctxt "LSTstandardError|"
 msgid "Bin width type"
@@ -681,19 +681,19 @@ msgstr "組距寬度類型"
 
 msgctxt "LSTstandardError|"
 msgid "Sturges"
-msgstr ""
+msgstr "Sturges"
 
 msgctxt "LSTstandardError|"
 msgid "Scott"
-msgstr ""
+msgstr "Scott"
 
 msgctxt "LSTstandardError|"
 msgid "Doane"
-msgstr ""
+msgstr "Doane"
 
 msgctxt "LSTstandardError|"
 msgid "Freedman-Diaconis"
-msgstr ""
+msgstr "Freedman-Diaconis"
 
 msgctxt "LSTstandardError|"
 msgid "Manual"
@@ -709,11 +709,11 @@ msgstr "信賴區間"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "μ"
-msgstr ""
+msgstr "μ"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "σ"
-msgstr ""
+msgstr "σ"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Sample size (n)"
@@ -733,19 +733,19 @@ msgstr "顯示最後"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "<b>- 10</b>"
-msgstr ""
+msgstr "<b>- 10</b>"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "<b>- 1</b>"
-msgstr ""
+msgstr "<b>- 1</b>"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "<b>+ 1</b>"
-msgstr ""
+msgstr "<b>+ 1</b>"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "<b>+ 10</b>"
-msgstr ""
+msgstr "<b>+ 10</b>"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Plots"
@@ -1141,19 +1141,19 @@ msgstr "直方圖組距寬度類型"
 
 msgctxt "LSTdescriptives|"
 msgid "Sturges"
-msgstr ""
+msgstr "Sturges"
 
 msgctxt "LSTdescriptives|"
 msgid "Scott"
-msgstr ""
+msgstr "Scott"
 
 msgctxt "LSTdescriptives|"
 msgid "Doane"
-msgstr ""
+msgstr "Doane"
 
 msgctxt "LSTdescriptives|"
 msgid "Freedman-Diaconis"
-msgstr ""
+msgstr "Freedman-Diaconis"
 
 msgctxt "LSTdescriptives|"
 msgid "Manual"
