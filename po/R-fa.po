@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspLearnStats 0.96.4\n"
 "POT-Creation-Date: 2026-04-25 05:23\n"
-"PO-Revision-Date: 2026-09-14 02:35+0000\n"
+"PO-Revision-Date: 2026-09-15 04:04+0000\n"
 "Last-Translator: Sohrab Delshad <sdel4030@gmail.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/jasp/"
 "jasplearnstats-r/fa/>\n"
@@ -59,7 +59,7 @@ msgid "Estimate"
 msgstr "برآورد"
 
 msgid "%s%% CI for Mean Difference"
-msgstr "فاصله اطمینان %s%% برای اختلاف میانگین"
+msgstr "بازه اطمینان %s%% برای تفاوت میانگین"
 
 msgid "Lower"
 msgstr "پایین"
@@ -125,7 +125,7 @@ msgid "Visual Explanation 4"
 msgstr ""
 
 msgid "Range"
-msgstr ""
+msgstr "دامنه"
 
 msgid "Min"
 msgstr ""
@@ -143,10 +143,10 @@ msgid "3rd quartile"
 msgstr ""
 
 msgid "IQR"
-msgstr ""
+msgstr "دامنه میان‌چارکی (IQR)"
 
 msgid "Variance"
-msgstr ""
+msgstr "واریانس"
 
 msgid "-3 SD"
 msgstr ""
@@ -170,10 +170,10 @@ msgid "Std. Dev."
 msgstr "انحراف معیار"
 
 msgid "Median"
-msgstr ""
+msgstr "میانه"
 
 msgid "Mode"
-msgstr ""
+msgstr "مُد"
 
 msgid "Min: %.2f"
 msgstr ""
@@ -266,7 +266,7 @@ msgid "Observed test statistics"
 msgstr ""
 
 msgid "Count"
-msgstr ""
+msgstr "شمارش"
 
 msgid "Null dist."
 msgstr ""
@@ -284,7 +284,7 @@ msgid "Frequency Table"
 msgstr ""
 
 msgid "Percent"
-msgstr ""
+msgstr "درصد"
 
 msgid "Significant"
 msgstr ""
@@ -293,7 +293,7 @@ msgid "Not significant"
 msgstr ""
 
 msgid "Total"
-msgstr ""
+msgstr "کل"
 
 msgid "Simulation under H<sub>a</sub>"
 msgstr ""
@@ -320,7 +320,7 @@ msgid "Raincloud plot"
 msgstr ""
 
 msgid "Group"
-msgstr ""
+msgstr "گروه"
 
 msgid "Control"
 msgstr ""
@@ -386,7 +386,7 @@ msgid "The specified phi, P(X), and P(Y) do not yield a valid contingency table.
 msgstr ""
 
 msgid "Frequencies"
-msgstr ""
+msgstr "فراوانی‌ها"
 
 msgid "P(X=1)"
 msgstr ""
