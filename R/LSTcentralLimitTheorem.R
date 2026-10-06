@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-LSTcentralLimitTheorem <- function(jaspResults, dataset, options) {
+LSTcentralLimitTheoremInternal <- function(jaspResults, dataset, options) {
   set.seed(options[["cltSampleSeed"]])
   colors <- .getColors(options[["cltColorPalette"]])
   parentData <- .generateParentData(options)

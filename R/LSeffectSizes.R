@@ -19,7 +19,7 @@
 # - upper index for R^2 does not work in the table
 # - aspect ratio on correlation does not work
 
-LSeffectSizes   <- function(jaspResults, dataset, options, state = NULL){
+LSeffectSizesInternal <- function(jaspResults, dataset, options, state = NULL){
 
   options <- switchOptions(options)
 

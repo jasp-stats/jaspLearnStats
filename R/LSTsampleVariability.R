@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-LSTsampleVariability <- function(jaspResults, dataset, options) {
+LSTsampleVariabilityInternal <- function(jaspResults, dataset, options) {
   errors <- .svCheckErrors(options, jaspResults)
   if (!errors) {
     set.seed(options[["cltSampleSeed"]])

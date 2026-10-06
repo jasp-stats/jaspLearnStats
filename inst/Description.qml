@@ -7,7 +7,7 @@ Description
 	icon:			"learning-stats.svg"
 	description:	qsTr("Learn classical statistics with simple examples and supporting text")
 	requiresData:	false
-	hasWrappers: 	false
+	hasWrappers: 	true
 	
 	
 	

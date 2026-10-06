@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-LSTconfidenceIntervals <- function(jaspResults, dataset = NULL, options) {
+LSTconfidenceIntervalsInternal <- function(jaspResults, dataset = NULL, options) {
 
   confidenceContainer <- .getConfidenceContainer(jaspResults)
 

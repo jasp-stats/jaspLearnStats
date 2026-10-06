@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-pValues <- function(jaspResults, dataset = NULL, options) {
+pValuesInternal <- function(jaspResults, dataset = NULL, options) {
   if(options[["introText"]])
     .pvIntroText(jaspResults, options, position = 1)
 

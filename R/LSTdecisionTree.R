@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-LSTdecisionTree <- function(jaspResults, dataset = NULL, options) {
+LSTdecisionTreeInternal <- function(jaspResults, dataset = NULL, options) {
   decisionDf <- data.frame(from = c("One", "One", "Two or more", "Continuous", "Continuous", "Categorical", "Categorical",
                                     "Continuous2", "Continuous2", "One2", "One2", "Two or more2", "Two or more2", "Two or more2",
                                     "One3", "One3", "Two or more3", "Two or more3", "Two or more3", "One4",
