@@ -6,6 +6,12 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Language: zh_Hans\n"
 "X-Qt-Contexts: true\n"
+"PO-Revision-Date: 2026-10-25 12:51+0000\n"
+"Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
+"Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
+"projects/jasp/jasplearnstats-qml/zh_Hans/>\n"
+"Language: zh_Hans\n"
+"X-Generator: Weblate 2026.11.dev0\n"
 
 msgctxt "Description|"
 msgid "Learn Stats"
@@ -41,7 +47,7 @@ msgstr "样本变异性"
 
 msgctxt "Description|"
 msgid "P Values"
-msgstr "P 值"
+msgstr "p 值"
 
 msgctxt "Description|"
 msgid "Effect Sizes"
@@ -135,10 +141,9 @@ msgctxt "LSTcentralLimitTheorem|"
 msgid "Skewed"
 msgstr "偏斜"
 
-#, fuzzy
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Show parent distribution"
-msgstr "显示母体分布"
+msgstr "显示总体分布"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Show explanatory text"
@@ -148,10 +153,9 @@ msgctxt "LSTcentralLimitTheorem|"
 msgid "Mean"
 msgstr "均值"
 
-#, fuzzy
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Range"
-msgstr "全距"
+msgstr "范围"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Left"
@@ -205,15 +209,13 @@ msgctxt "LSTcentralLimitTheorem|"
 msgid "All"
 msgstr "全部"
 
-#, fuzzy
 msgctxt "LSTcentralLimitTheorem|"
 msgid "From"
-msgstr "从"
+msgstr "起始"
 
-#, fuzzy
 msgctxt "LSTcentralLimitTheorem|"
 msgid "To"
-msgstr "至"
+msgstr "结束"
 
 msgctxt "LSTcentralLimitTheorem|"
 msgid "Show sampling distribution"
@@ -339,10 +341,9 @@ msgctxt "LSTdescriptives|"
 msgid "Show explanation"
 msgstr "显示说明"
 
-#, fuzzy
 msgctxt "LSTdescriptives|"
 msgid "Range"
-msgstr "全距"
+msgstr "范围"
 
 msgctxt "LSTdescriptives|"
 msgid "Quartiles"
@@ -424,10 +425,9 @@ msgctxt "LSTsampleVariability|"
 msgid "Binomial"
 msgstr "二项"
 
-#, fuzzy
 msgctxt "LSTsampleVariability|"
 msgid "Show parent distribution"
-msgstr "显示母体分布"
+msgstr "显示总体分布"
 
 msgctxt "LSTsampleVariability|"
 msgid "Show explanatory text"
@@ -437,10 +437,9 @@ msgctxt "LSTsampleVariability|"
 msgid "Mean"
 msgstr "均值"
 
-#, fuzzy
 msgctxt "LSTsampleVariability|"
 msgid "Range"
-msgstr "全距"
+msgstr "范围"
 
 msgctxt "LSTsampleVariability|"
 msgid "Left"
@@ -732,7 +731,7 @@ msgstr "σ"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Sample size (n)"
-msgstr "样本大小 (n)"
+msgstr "样本量 (n)"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Confidence level"
@@ -1058,39 +1057,33 @@ msgctxt "LSTcentralLimitTheorem|"
 msgid "Plot options"
 msgstr "绘图选项"
 
-#, fuzzy
 msgctxt "LSTconfidenceIntervals|"
 msgid "Show samples"
 msgstr "显示样本"
 
-#, fuzzy
 msgctxt "LSTconfidenceIntervals|"
 msgid "First"
-msgstr "第一"
+msgstr "第一个"
 
 msgctxt "LSTconfidenceIntervals|"
 msgid "Last"
 msgstr "最后"
 
-#, fuzzy
 msgctxt "LSTconfidenceIntervals|"
 msgid "Range"
-msgstr "全距"
+msgstr "范围"
 
-#, fuzzy
 msgctxt "LSTconfidenceIntervals|"
 msgid "All"
 msgstr "全部"
 
-#, fuzzy
 msgctxt "LSTconfidenceIntervals|"
 msgid "From"
-msgstr "从"
+msgstr "起始"
 
-#, fuzzy
 msgctxt "LSTconfidenceIntervals|"
 msgid "To"
-msgstr "至"
+msgstr "结束"
 
 msgctxt "LSTdescriptives|"
 msgid "Data input type"
@@ -1116,7 +1109,6 @@ msgctxt "LSTdescriptives|"
 msgid "Central tendency measures"
 msgstr "集中趋势度量"
 
-#, fuzzy
 msgctxt "LSTdescriptives|"
 msgid "Mean"
 msgstr "均值"
@@ -1129,7 +1121,6 @@ msgctxt "LSTdescriptives|"
 msgid "Mode"
 msgstr "众数"
 
-#, fuzzy
 msgctxt "LSTdescriptives|"
 msgid "All"
 msgstr "全部"
