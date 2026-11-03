@@ -473,6 +473,10 @@ LSTcentralLimitTheoremInternal <- function(jaspResults, dataset, options) {
 
 .getBinWidth <- function(variable, options) {
   binWidthType <- options[["cltBinWidthType"]]
+  # sd(), IQR() and Doane's skewness term are undefined for too few observations (e.g. one observation per sample)
+  minObservations <- if (binWidthType == "doane") 3 else 2
+  if (binWidthType != "manual" && length(variable) < minObservations)
+    binWidthType <- "sturges"
   if (binWidthType == "doane") {  # https://en.wikipedia.org/wiki/Histogram#Doane's_formula
     sigma.g1 <- sqrt((6*(length(variable) - 2)) / ((length(variable) + 1)*(length(variable) + 3)))
     g1 <- mean(abs(variable)^3)
