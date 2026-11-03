@@ -144,6 +144,7 @@ Form
 				label:			qsTr("Number of observations per sample")
 				fieldWidth:		60
 				defaultValue:	30
+				min:			1
 			}
 		
 			IntegerField

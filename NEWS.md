@@ -16,6 +16,9 @@
 
 # jaspLearnStats (development version)
 
+## Fixed
+* Sample variability, Central limit theorem and Standard error: one observation per sample no longer crashes with the Scott, Freedman-Diaconis or Doane bin width rules (and two observations with Doane's rule); the histograms fall back to Sturges' rule. The number of observations per sample must now be at least 1.
+
 
 
 ---
